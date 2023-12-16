@@ -1,0 +1,2612 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{graphicx}
+\usepackage{wrapfig}
+% \usepackage[a4paper,margin=0.25in,footskip=0.25in]{geometry}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+The Diffusion Equation
+\end_layout
+
+\begin_layout Author
+Xiaolei Xie
+\end_layout
+
+\begin_layout Section
+1D diffusion
+\end_layout
+
+\begin_layout Standard
+In this case the diffusion equation is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\kappa\frac{\partial^{2}u}{\partial x^{2}}=\frac{\partial u}{\partial t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Combined Variable Solutions
+\end_layout
+
+\begin_layout Standard
+One solution to this equation is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(x,t) & =f(\eta)=-\intop_{0}^{\eta}\frac{A}{\sqrt{\mu}}\exp\left(-\frac{\mu}{4}\right)d\mu+T_{\infty}\\
+ & =-A\gamma\left(\frac{1}{2},\eta\right)+T_{\infty}\\
+ & =-A\gamma\left(\frac{1}{2},\frac{x^{2}}{\kappa t}\right)+T_{\infty}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\eta=\frac{x^{2}}{\kappa t}$
+\end_inset
+
+ and 
+\begin_inset Formula $A,T_{\infty}$
+\end_inset
+
+ are constants.
+ 
+\begin_inset Formula $\gamma(\cdot,\cdot)$
+\end_inset
+
+ is the lower incomplete gamma function.
+ When 
+\begin_inset Formula $A>0$
+\end_inset
+
+, the solution describes a heating process and otherwise a cooling process.
+ As 
+\begin_inset Formula $t\to0$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{x^{2}}{\kappa t}\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{0}=\lim_{t\to0}u(x,t)=-A\sqrt{\pi}+T_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\frac{T_{\infty}-T_{0}}{\sqrt{\pi}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Separable Solutions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{sec:1D_sep}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now suppose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x,t)=X(x)T(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\kappa X''(x)T(t) & =X(x)T'(t)\\
+\frac{X''}{X} & =\frac{1}{\kappa}\frac{T'}{T}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose constant 
+\begin_inset Formula $c$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{X''}{X} & =c\\
+\frac{1}{\kappa}\frac{T'}{T} & =c
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 2nd equation apparently has the solution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T=A\exp\left(c\kappa t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first equation can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X''-cX=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $c>0$
+\end_inset
+
+, the solution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X=Ce^{\sqrt{c}x}+De^{-\sqrt{c}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $c<0$
+\end_inset
+
+ the solution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X=C\cos\left(\sqrt{\left|c\right|}x\right)+D\sin\left(\sqrt{\left|c\right|}x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $c=0$
+\end_inset
+
+, the equation reduces to the Laplace equation and has the solution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x)=Cx+D
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Superposition of Separable Solutions
+\end_layout
+
+\begin_layout Standard
+Suppose we want a solution that satisfies the boundary condition 
+\begin_inset Formula $u(0,t)=f(t)$
+\end_inset
+
+ for an arbitrary, but continuous function 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+If 
+\begin_inset Formula $c<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case, a superposed solution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+u(x,t) & =X(x)T(t)\nonumber \\
+ & =\intop_{-\infty}^{\infty}C_{\omega}e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega\label{eq:fghyjyu}\\
+f(t)=u(0,t) & =\intop_{-\infty}^{\infty}C_{\omega}e^{-\omega^{2}\kappa t}d\omega\nonumber \\
+ & =\intop_{0}^{\infty}\left(C_{\omega}+C_{-\omega}\right)e^{-\omega^{2}\kappa t}d\omega\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\omega^{2}=s$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\omega=\sqrt{s},$
+\end_inset
+
+
+\begin_inset Formula $d\omega=\frac{ds}{2\sqrt{s}}$
+\end_inset
+
+.
+ Also, let 
+\begin_inset Formula $D_{\omega}=C_{\omega}+C_{-\omega}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $u$
+\end_inset
+
+ must be real, we have 
+\begin_inset Formula $C_{-\omega}=C_{\omega}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{\omega}=2\Re(C_{\omega})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f(t) & =\intop_{0}^{\infty}D_{\sqrt{s}}e^{-s\kappa t}\frac{ds}{2\sqrt{s}}\\
+ & =\mathscr{L}\left[\frac{D_{\sqrt{s}}}{2\sqrt{s}}\right](\kappa t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+ denotes the Laplace transform.
+ It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f\left(\frac{t}{\kappa}\right) & =\mathscr{L}\left[\frac{D_{\sqrt{s}}}{2\sqrt{s}}\right](t)\\
+\frac{D_{\sqrt{s}}}{2\sqrt{s}} & =\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](s)\\
+D_{\omega} & =2\omega\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](\omega^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we can express 
+\begin_inset Formula $u$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(x,t) & =\intop_{-\infty}^{\infty}\left\{ \left|\omega\right|\mathscr{L}^{-1}\left[f\left(\frac{t}{\kappa}\right)\right](\omega^{2})+ib_{\omega}\right\} e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega\\
+ & =\intop_{-\infty}^{\infty}\left(\frac{D_{\omega}}{2}+ib_{\omega}\right)e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $b_{\omega}=\Im(C_{\omega})\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{\omega}=\left|\omega\right|\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](\omega^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{\omega}=\frac{D_{\omega}}{2}+ib_{\omega}$
+\end_inset
+
+.
+ Clearly 
+\begin_inset Formula $D_{-\omega}=D_{\omega}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{-\omega}=-b_{\omega}$
+\end_inset
+
+.
+ Since we only care about 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+.
+ We can limit ourselves to the case 
+\begin_inset Formula $u(-x,t)=u(x,t)$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+.
+ This corresponds to 
+\begin_inset Formula $b_{\omega}=0$
+\end_inset
+
+.
+ Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x,t)=\intop_{0}^{\infty}D_{\omega}\cos\omega xe^{-\omega^{2}\kappa t}d\omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+3D diffusion in cylindrical coordinates
+\end_layout
+
+\begin_layout Standard
+The lid of the reaction chamber is shown in figure 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:fig1}
+\end_layout
+
+\end_inset
+
+.
+ The shaded cylindrical part is part of the tungsten electrode.
+ Suppose we know the temperature of this part, we would like to find out
+ the temperature distribution in the lid.
+ Clearly, this distribution must be independent of the azimuthal angle 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ So the diffusion equation is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{r}\left(\frac{\partial}{\partial r}r\frac{\partial u}{\partial r}\right)+\frac{\partial^{2}u}{\partial z^{2}}=\frac{1}{\kappa}\frac{\partial u}{\partial t}\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We first seek a separable solution.
+ Expanding equation (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:2}
+\end_layout
+
+\end_inset
+
+) gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{1}{r}\left(\frac{\partial u}{\partial r}+r\frac{\partial^{2}u}{\partial r^{2}}\right)+\frac{\partial^{2}u}{\partial z^{2}} & =\frac{1}{\kappa}\frac{\partial u}{\partial t}\nonumber \\
+\frac{1}{r}\frac{\partial u}{\partial r}+\frac{\partial^{2}u}{\partial r^{2}}+\frac{\partial^{2}u}{\partial z^{2}} & =\frac{1}{\kappa}\frac{\partial u}{\partial t}\label{eq:3}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wrapfigure}{R}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=0.5
+\backslash
+textwidth]{IMG_3454.pdf}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{
+\backslash
+label{fig:fig1} The Lid}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wrapfigure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=R(r)Z(z)T(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting the above expression into (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:3}
+\end_layout
+
+\end_inset
+
+) and dividing through by 
+\begin_inset Formula $u$
+\end_inset
+
+ gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{R}\left(\frac{1}{r}R'+R''\right)+\frac{1}{Z}Z''=\frac{1}{\kappa}\frac{T'}{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose constants 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{1}{R}\left(\frac{1}{r}R'+R''\right) & =a\label{eq:4}\\
+\frac{Z''}{Z} & =b\label{eq:5}\\
+\frac{1}{\kappa}\frac{T'}{T} & =c\label{eq:6}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $a+b=c$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+The Radial Equation
+\end_layout
+
+\begin_layout Standard
+Eq.
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:4}
+\end_layout
+
+\end_inset
+
+) can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+rR''+R'-arR & =0\\
+r^{2}R''+rR'-ar^{2}R & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+When 
+\begin_inset Formula $a<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $R(r)=y$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda^{2}=-a$
+\end_inset
+
+, so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+r^{2}R''+rR'+\lambda^{2}r^{2}R & =0\\
+\lambda^{2}r^{2}\frac{d^{2}y}{d\left(\lambda r\right)^{2}}+\lambda r\frac{dy}{d\left(\lambda r\right)}+\lambda^{2}r^{2}y & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\lambda r=q$
+\end_inset
+
+ so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q^{2}\frac{d^{2}y}{dq^{2}}+q\frac{dy}{dq}+q^{2}y=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is Bessel's equation of order 0.
+ Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+y & =AJ_{0}(q)+BY_{0}(q)\\
+R(r) & =\left[AJ_{0}(\lambda r)+BY_{0}(\lambda r)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ are Bessel's functions of the 1st and the 2nd kind, respectively.
+\end_layout
+
+\begin_layout Subsection
+The Vertical Equation
+\end_layout
+
+\begin_layout Standard
+Eq.
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:5}
+\end_layout
+
+\end_inset
+
+) can be re-written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{d^{2}Z}{dz^{2}} & =bZ\nonumber \\
+\frac{d^{2}Z}{dz^{2}}-bZ & =0\label{eq:7}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+When 
+\begin_inset Formula $b>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:7}
+\end_layout
+
+\end_inset
+
+) can be written as
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\left(\frac{d}{dz}+\sqrt{b}\right)\left(\frac{d}{dz}-\sqrt{b}\right)Z=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z_{1}=\left(\frac{d}{dz}-\sqrt{b}\right)Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{dZ_{1}}{dz}+\sqrt{b}Z_{1} & =0\\
+\frac{dZ_{1}}{dz} & =-\sqrt{b}Z_{1}\\
+Z_{1} & =C\exp\left(-\sqrt{b}z\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dZ}{dz}-\sqrt{b}Z=C\exp\left(-\sqrt{b}z\right)\label{eq:8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving the equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dZ}{dz}-\sqrt{b}Z=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z_{2}=D\exp\left(\sqrt{b}z\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find a particular integral of eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:8}
+\end_layout
+
+\end_inset
+
+), consider
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(z)=C'\exp\left(-\sqrt{b}z\right)+D'\exp\left(\sqrt{b}z\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting it into eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:8}
+\end_layout
+
+\end_inset
+
+) gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{df}{dz}-\sqrt{b}f & =-C'\sqrt{b}\exp\left(-\sqrt{b}z\right)+D'\sqrt{b}\exp\left(\sqrt{b}z\right)-C'\sqrt{b}\exp\left(-\sqrt{b}z\right)-D'\sqrt{b}\exp\left(\sqrt{b}z\right)\\
+ & =-2C'\sqrt{b}\exp\left(-\sqrt{b}z\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $C'=-\frac{C}{2\sqrt{b}}$
+\end_inset
+
+, then eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:8}
+\end_layout
+
+\end_inset
+
+) is satisfied.
+ So a general solution to eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:7}
+\end_layout
+
+\end_inset
+
+) in this case is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z(z)=C\exp\left(-\sqrt{b}z\right)+D\exp\left(\sqrt{b}z\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with constants 
+\begin_inset Formula $C,D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+When 
+\begin_inset Formula $b<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\omega^{2}=-b$
+\end_inset
+
+ with 
+\begin_inset Formula $\omega>0$
+\end_inset
+
+ so that eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:7}
+\end_layout
+
+\end_inset
+
+) can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d^{2}Z}{dz^{2}}+\omega^{2}Z & =0\\
+\left(\frac{d}{dz}+\omega i\right)\left(\frac{d}{dz}-\omega i\right)Z & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following the same steps as in the case 
+\begin_inset Formula $b>0$
+\end_inset
+
+, we arrive at
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z=Ce^{i\omega z}+De^{-i\omega z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+When 
+\begin_inset Formula $b=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:7}
+\end_layout
+
+\end_inset
+
+) becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d^{2}Z}{dz^{2}} & =0\\
+Z & =Cz+D
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Temporal Equation
+\end_layout
+
+\begin_layout Standard
+The solution to eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:6}
+\end_layout
+
+\end_inset
+
+) is obviously
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T=E\exp\left(c\kappa t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since we must have, for 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\left|T\right|<\infty$
+\end_inset
+
+, we require 
+\begin_inset Formula $c<0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $c=-\nu^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The combined solution
+\end_layout
+
+\begin_layout Standard
+Combining the radial, the vertical and the temporal solutions, we obtain
+ a complete solution to eq.(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:2}
+\end_layout
+
+\end_inset
+
+).
+ Note the relation between the seperation constants:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a+b & =-\nu^{2}\\
+-\lambda^{2}+b & =-\nu^{2}\\
+b & =\lambda^{2}-\nu^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\lambda^{2}>\nu^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{1}=\left[AJ_{0}(\lambda r)+BY_{0}(\lambda r)\right]\left[C\exp\left(-\sqrt{\lambda^{2}-\nu^{2}}z\right)+D\exp\left(\sqrt{\lambda^{2}-\nu^{2}}z\right)\right]e^{-\nu^{2}\kappa t}+T_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\lambda^{2}<\nu^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u_{2} & =\left[AJ_{0}(\lambda r)+BY_{0}(\lambda r)\right]\left[C\cos\left(\sqrt{\nu^{2}-\lambda^{2}}z\right)+D\sin\left(\sqrt{\nu^{2}-\lambda^{2}}z\right)\right]e^{-\nu^{2}\kappa t}+T_{\infty}\\
+ & =\left[AJ_{0}(\lambda r)+BY_{0}(\lambda r)\right]\left[C'\exp\left(i\sqrt{\nu^{2}-\lambda^{2}}z\right)+D'\exp\left(-i\sqrt{\nu^{2}-\lambda^{2}}z\right)\right]e^{-\nu^{2}\kappa t}+T_{\infty}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\sqrt{\nu^{2}-\lambda^{2}}=\omega$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C'e^{i\omega z}+D'e^{-i\omega z} & =C\cos\omega z+D\sin\omega z\\
+C'\cos\omega z+D'\cos\omega z+iC'\sin\omega z-iD'\sin\omega z & =C\cos\omega z+D\sin\omega z\\
+C'+D' & =C\\
+iC'-iD' & =D
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inversely
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C'=\frac{iC+D}{2i}=\frac{C}{2}-\frac{D}{2}i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D'=\frac{iC-D}{2i}=\frac{C}{2}+\frac{D}{2}i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C & =2\Re(C')\\
+D & =i\cdot i\cdot2\Im(C')=-2\Im\left(C'\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $C,$
+\end_inset
+
+D must be real, we have 
+\begin_inset Formula $D'=\bar{C'}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $C',D'$
+\end_inset
+
+ are complex conjugate to each other.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C'e^{i\omega z}+\bar{C}'e^{-i\omega z}=\Re\left(2C'e^{i\omega z}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\lambda^{2}=\nu^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{3}=\left[AJ_{0}(\lambda r)+BY_{0}(\lambda r)\right]\left[Cz+D\right]e^{-\nu^{2}\kappa t}+T_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The superposed solution
+\end_layout
+
+\begin_layout Subsubsection
+A Temperature Curve Specified for the Bottom and the Top insulated
+\end_layout
+
+\begin_layout Standard
+The boundary condition on 
+\begin_inset Formula $u(r,z,t)$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,0,t)=f(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By superposing the separable solutions, we have, for 
+\begin_inset Formula $z\in[0,L+h]$
+\end_inset
+
+ and 
+\begin_inset Formula $r\in[0,r_{0}]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}\left[A_{\lambda}J_{0}\left(\lambda r\right)+B_{\lambda}Y_{0}\left(\lambda r\right)\right]C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly, we must have 
+\begin_inset Formula $\left|u(0,z,t)\right|<\infty$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $B_{\lambda}=0$
+\end_inset
+
+.
+ So we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(r,z,t) & =\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solution must satisfy the boundary condition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(r,0,t) & =f(t)\\
+\frac{\partial u}{\partial z}\left(r,L+h,t\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 2nd equation stems from the fact that the top of the cylinder is insulated
+ from heat transmission.
+ It implies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)\omega C_{\omega}\sin\omega\left(L+h\right)e^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since this equation holds for all 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sin\omega\left(L+h\right) & =0\\
+\omega\left(L+h\right) & =n\pi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $n=0,1,2,\dots$
+\end_inset
+
+.
+ Hence we'd rather have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(r,z,t) & =\intop_{0}^{\infty}\sum_{n=0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{n}\cos\frac{n\pi z}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t-\lambda^{2}\kappa t\right]d\lambda\\
+u(r,0,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda\right]\sum_{n=0}^{\infty}C_{n}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(\kappa t)=\sum_{n=0}^{\infty}C_{n}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The exact form of 
+\begin_inset Formula $g(\kappa t)$
+\end_inset
+
+ is to be determined by the determination of 
+\begin_inset Formula $C_{n},n=0,1,2,\dots$
+\end_inset
+
+.
+ It follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial r}\left[\frac{f(t)}{g(\kappa t)}\right]=-\intop_{0}^{\infty}\lambda A_{\lambda}J_{1}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equating the LHS to 0 gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{\infty}\lambda A_{\lambda}J_{1}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This only plausible choice of 
+\begin_inset Formula $A_{\lambda}$
+\end_inset
+
+ is 
+\begin_inset Formula $A_{\lambda}=0$
+\end_inset
+
+.
+ So the solution is similar to that in the 1D case:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi z}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D_{n}=\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\frac{n\pi}{L+h}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Temperature curve specified at 
+\begin_inset Formula $r=r_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $u(r,z,t)$
+\end_inset
+
+ with 
+\begin_inset Formula $0\leq r\leq r_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $0\leq z\leq h$
+\end_inset
+
+ satisfies, for 
+\begin_inset Formula $r\leq r_{0}<r_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(r,z,t) & =\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]\\
+D_{n} & =\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\frac{n\pi}{L+h}\right)^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $g(z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $r\in[r_{0},r_{1}]$
+\end_inset
+
+, we assume
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It should satisfy the condition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial u}{\partial z}(r,0,t) & =0\\
+\frac{\partial u}{\partial z}(r,h,t) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Differentiation gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial u}{\partial z}=-\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)\omega C_{\omega}\sin\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly 
+\begin_inset Formula $\frac{\partial u}{\partial z}(r,0,t)=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\frac{\partial u}{\partial z}(r,h,t)=0$
+\end_inset
+
+ implies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sin\omega h & =0\\
+\omega h & =m\pi\\
+\omega & =\frac{m\pi}{h}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\\
+u(r_{0},z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\\
+ & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\right\} 
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+We can expand 
+\begin_inset Formula $g(z,t)$
+\end_inset
+
+, 
+\begin_inset Formula $z\in[0,h]$
+\end_inset
+
+ as a cosine series:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g(z,t)=\frac{a_{0,t}}{2}+\sum_{m=1}^{\infty}a_{m,t}\cos\left(\frac{2\pi mz}{h}\right)\label{eq:ghtynjyyuk}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Fourier coefficients of 
+\begin_inset Formula $u(r_{0},z,t)$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a'_{n,t} & =\frac{2}{h}\intop_{0}^{h}u(r_{0},z,t)\cos\frac{2\pi nz}{h}dz\\
+ & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}\left\{ \exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\frac{2}{h}\intop_{0}^{h}C_{m}\cos\frac{m\pi z}{h}\cos\frac{2\pi nz}{h}dz\right\} \\
+ & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}\left\{ \exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]C_{m}\left(1_{\{m=2n\}}1_{\{m\neq0\}}+1_{\{m=n=0\}}2\right)\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a'_{0,t} & =2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\\
+a'_{n,t} & =C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+u(r_{0},z,t)=\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ C_{0}+\sum_{n=1}^{\infty}C_{2n}\cos\frac{2n\pi z}{h}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\right\} \label{eq:5yvhb6b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equating the Fourier coefficients in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ghtynjyyuk"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5yvhb6b"
+
+\end_inset
+
+, we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =\frac{a_{0,t}}{2}\\
+C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{n,t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Steady-State temperature distribution of a Cylinder
+\end_layout
+
+\begin_layout Standard
+When the divergence of the temperature gradient is 0 everywhere, including
+ on the boundary of the object, the temperature distribution has reached
+ a steady state.
+ Clearly this steady-state distribution is described by the Laplace equation.
+ For a cylinder, the solution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,\phi,z)=\left[AJ_{m}\left(\lambda r\right)+BY_{m}\left(\lambda r\right)\right]\left[C\cos m\phi+D\sin m\phi\right]\left[Ee^{-\lambda z}+Fe^{\lambda z}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The temperature must be finite everywhere in the cylinder, hence 
+\begin_inset Formula $B=0$
+\end_inset
+
+ and 
+\begin_inset Formula $F=0$
+\end_inset
+
+.
+ If the temperature distribution is axially symmetric, then 
+\begin_inset Formula $m=0$
+\end_inset
+
+.
+ In these scenarios, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,z)=AJ_{0}\left(\lambda r\right)e^{-\lambda z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly, this solution cannot describe a scenario where the temperature
+ has no radial dependence.
+ If 
+\begin_inset Formula $u$
+\end_inset
+
+ only depends on 
+\begin_inset Formula $z$
+\end_inset
+
+, then the Laplace equation gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nabla^{2}u=\frac{\partial^{2}u}{\partial z^{2}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u=Cz+D
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attempted Solutions to 2D & 3D diffusion
+\end_layout
+
+\begin_layout Subsection
+2D Diffusion
+\end_layout
+
+\begin_layout Standard
+Now in 2D we consider solutions of the form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x,y,t)=f(\eta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\eta=\frac{x^{2}+y^{2}}{\kappa t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial u}{\partial x}=\frac{2x}{\kappa t}f'(\eta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial^{2}u}{\partial x^{2}}=f''(\eta)\left(\frac{2x}{\kappa t}\right)^{2}+f'(\eta)\frac{2}{\kappa t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\kappa\nabla^{2}u & =\kappa f''(\eta)\cdot4\frac{x^{2}+y^{2}}{\kappa^{2}t^{2}}+\kappa f'(\eta)\frac{4}{\kappa t}\\
+ & =f''(\eta)\frac{4\eta}{t}+f'(\eta)\frac{4}{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial u}{\partial t}=-\frac{x^{2}+y^{2}}{\kappa t^{2}}f'(\eta)=-\frac{\eta}{t}f'(\eta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting these expressions into the PDE, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+4\eta f''(\eta)+4f'(\eta)=-\eta f'(\eta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $g=f'(\eta)$
+\end_inset
+
+, then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+4\eta g'+4g & =-\eta g\\
+4\eta g' & =-(\eta+4)g\\
+\frac{dg}{g} & =\left(-\frac{1}{4}-\frac{1}{\eta}\right)d\eta\\
+\ln\left|g\right| & =-\frac{\eta}{4}-\ln(\eta)+C'\\
+g & =A\frac{e^{-\eta/4}}{\eta}\\
+f & =A\intop_{\eta_{0}}^{\eta}\frac{e^{-\mu/4}}{\mu}d\mu+C\\
+ & =A\intop_{\eta_{0}/4}^{\eta/4}\frac{e^{-\mu}}{4\mu}4d\mu+C\\
+ & =A\intop_{\eta_{0}/4}^{\eta/4}\frac{e^{-\mu}}{\mu}d\mu+C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $\eta_{0}>4$
+\end_inset
+
+ so that we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(\eta)=A\intop_{1}^{\eta/4}\frac{e^{-\mu}}{\mu}d\mu+C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $t\to0$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\eta=\frac{x^{2}+y^{2}}{\kappa t}\to\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{1}^{\infty}\frac{e^{-\mu}}{\mu}d\mu<\intop_{1}^{\infty}\frac{e^{-\mu}}{\sqrt{\mu}}d\mu<\sqrt{\pi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\eta\to0$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{1}^{\eta/4}\frac{e^{-\mu}}{\mu}d\mu\to-\intop_{0}^{1}\frac{e^{-\mu}}{\mu}d\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{1}\frac{e^{-\mu}}{\mu}d\mu>\intop_{0}^{1}\frac{e^{-1}}{\mu}d\mu=\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore this is NOT a sensible solution either.
+\end_layout
+
+\begin_layout Standard
+Another possibility is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x,y,t)=\frac{A}{t}\exp\left(-\frac{x^{2}+y^{2}}{4\kappa t}\right)+C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{t\to\infty}\frac{1}{t}\exp\left(-\frac{B}{t}\right)=\lim_{s\to0}\frac{s}{e^{Bs}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $u(x,y,t)\to C$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $t\to0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{t\to0}\frac{1}{t}\exp\left(-\frac{B}{t}\right)=\lim_{s\to\infty}\frac{s}{e^{Bs}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To have different values of 
+\begin_inset Formula $u(r,t)$
+\end_inset
+
+ when 
+\begin_inset Formula $t\to0$
+\end_inset
+
+ and 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+, we need to superpose the above solution with another one.
+ Using the method of separation of variables, we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,t)=\exp\left(-\lambda^{2}\kappa t\right)\cdot\sum_{m=1}^{\infty}\left[EJ_{m}(\lambda r)+FY_{m}(\lambda r)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+are Bessel functions of the 1st and the 2nd kind.
+\end_layout
+
+\begin_layout Subsection
+3D Diffusion
+\end_layout
+
+\begin_layout Standard
+In 3D, the equation becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\kappa\nabla^{2}u & =\frac{\partial u}{\partial t}\\
+\kappa\left(\frac{\partial^{2}u}{\partial x^{2}}+\frac{\partial^{2}u}{\partial y^{2}}+\frac{\partial^{2}u}{\partial z^{2}}\right) & =\frac{\partial u}{\partial t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula 
+\[
+u=f(\eta)=f\left(\frac{x^{2}+y^{2}+z^{2}}{\kappa t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\eta=\frac{x^{2}+y^{2}+z^{2}}{\kappa t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial u}{\partial x} & =\frac{2x}{\kappa t}f'(\eta)\\
+\frac{\partial^{2}u}{\partial x^{2}} & =\frac{4x^{2}}{\kappa^{2}t^{2}}f''(\eta)+\frac{2}{\kappa t}f'(\eta)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\nabla^{2}u & =\frac{4}{\kappa^{2}t^{2}}\left(x^{2}+y^{2}+z^{2}\right)f''(\eta)+\frac{6}{\kappa t}f'(\eta)\\
+\frac{\partial u}{\partial t} & =f'(\eta)\cdot\left(-\frac{x^{2}+y^{2}+z^{2}}{\kappa t^{2}}\right)=-\frac{\eta}{t}f'(\eta)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The original equation becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+-\frac{\eta}{t}f'(\eta) & =\frac{4}{\kappa t^{2}}\left(x^{2}+y^{2}+z^{2}\right)f''(\eta)+\frac{6}{t}f'(\eta)\\
+-\eta f'(\eta) & =4\eta f''(\eta)+6f'(\eta)\\
+4\eta f''(\eta) & =-(\eta+6)f'(\eta)\\
+\frac{1}{f'(\eta)}\frac{df'(\eta)}{d\eta} & =-\frac{\eta+6}{4\eta}\\
+\frac{d}{d\eta}\ln\left|f'(\eta)\right| & =-\frac{\eta+6}{4\eta}\\
+\ln\left|f'(\eta)\right| & =-\frac{1}{4}\eta-\frac{3}{2}\ln\eta+C\\
+\left|f'(\eta)\right| & =\eta^{-3/2}e^{-\eta/4+C}\\
+f'(\eta) & =A\eta^{-3/2}e^{-\eta/4}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+u(x,y,z,t)=f(\eta)=\intop_{\eta_{0}}^{\eta}A\mu^{-3/2}e^{-\mu/4}d\mu+C
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+ are constants.
+ To solve equation (1), we note
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f(\eta) & =\intop_{\eta_{0}}^{\eta}A\mu^{-3/2}e^{-\mu/4}d\mu+C\\
+f(\eta) & =4A\intop_{\eta_{0}/4}^{\eta/4}\left(4\mu\right)^{-3/2}e^{-\mu}d\mu+C\\
+f(\eta) & =\frac{A}{2}\intop_{\eta_{0}/4}^{\eta/4}\mu^{-3/2}e^{-\mu}d\mu+C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The integral diverges when 
+\begin_inset Formula $t\to\infty,\eta\to0$
+\end_inset
+
+.
+ So it does NOT represent a sensible solution, In other words, it does not
+ satisfy the Dirichlet boundary condition.
+\end_layout
+
+\begin_layout Standard
+If we instead seek a solution of the form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(x,y,z,t)=f\left(\frac{z^{2}}{\kappa t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then we'll again obtain the 1D solution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(z,t) & =\intop_{0}^{z^{2}/\kappa t}\frac{A}{\sqrt{\mu}}\exp\left(-\frac{\mu}{4}\right)d\mu+C\\
+u(z,t) & =4A\intop_{0}^{z^{2}/4\kappa t}\left(4\mu\right)^{-1/2}e^{-\mu}d\mu+C\\
+u(z,t) & =2A\intop_{0}^{z^{2}/4\kappa t}\mu^{-1/2}e^{-\mu}d\mu+C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $t\to0$
+\end_inset
+
+, 
+\begin_inset Formula $u(z,t)\to2A\Gamma(1/2)+C=2A\sqrt{\pi}+C=T_{0}$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+, 
+\begin_inset Formula $u(z,t)\to C=T_{\infty}$
+\end_inset
+
+.
+ Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=-\frac{T_{\infty}-T_{0}}{2\sqrt{\pi}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(z,t)=-\frac{T_{\infty}-T_{0}}{\sqrt{\pi}}\intop_{0}^{z^{2}/4\kappa t}\mu^{-1/2}e^{-\mu}d\mu+T_{\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

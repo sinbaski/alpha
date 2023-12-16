@@ -1,0 +1,305 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Hydrogen & Graphene Reactor
+\end_layout
+
+\begin_layout Author
+Xiaolei Xie
+\end_layout
+
+\begin_layout Standard
+Suppose we process 
+\begin_inset Formula $m$
+\end_inset
+
+kg of plastic each time, which according to Tour et.
+ al.
+ will produce 
+\begin_inset Formula $am$
+\end_inset
+
+kg of 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+where 
+\begin_inset Formula $a=0.06$
+\end_inset
+
+.
+ The molar mass of hydrogen gas is 
+\begin_inset Formula $m_{H}=2.01568\times10^{-3}$
+\end_inset
+
+ kg/mol.
+ 
+\end_layout
+
+\begin_layout Standard
+Treat 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+as an ideal gas.
+ The ideal gas law gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+pV=Nk_{B}T=a\frac{m}{m_{H}}N_{A}k_{B}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p=\frac{a}{V}\frac{m}{m_{H}}N_{A}k_{B}T=\frac{a}{V}mc_{H}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where we have defined a constant 
+\begin_inset Formula $c_{H}=\frac{N_{A}k_{B}}{m_{H}}$
+\end_inset
+
+.
+ Suppose the main part of the reactor is a cylinder with radius 
+\begin_inset Formula $R$
+\end_inset
+
+and height 
+\begin_inset Formula $H$
+\end_inset
+
+, then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V=\pi R^{2}H+V_{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $V_{a}$
+\end_inset
+
+accounts for the additional volume owing to the rest of the reactor and
+ the tubes.
+ The upward pressure on the lid of the reactor is therefore
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+p\pi R^{2} & =\frac{a}{\pi R^{2}H+V_{a}}mc_{H}T\cdot\pi R^{2}\\
+p\pi R^{2} & =\frac{a}{H+\frac{V_{a}}{\pi R^{2}}}mc_{H}T
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If a spring is fixed to the bottom of the lid and compressed by 
+\begin_inset Formula $\Delta l$
+\end_inset
+
+when in operation, then the upward force exerted on the lid is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{u}=k\Delta l+\frac{a}{H+\frac{V_{a}}{\pi R^{2}}}mc_{H}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose the atmospheric pressure force on the lid is
+\begin_inset Formula $F_{d}=p_{A}\pi R^{2}$
+\end_inset
+
+.
+ Then, to guarantee that the lid stays in place, its weight 
+\begin_inset Formula $W$
+\end_inset
+
+must satisfy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W+p_{A}\pi R^{2}\geq k\Delta l+\frac{a}{H+\frac{V_{a}}{\pi R^{2}}}mc_{H}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the minimum weight of the lid that guarantees the lid staying in
+ place throughout the reaction.
+ Now suppose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+m & =50\times10^{-3}\\
+R & =5\times10^{-2}\\
+H & =15\times10^{-2}\\
+k & =9.8\times50\times10^{-2}\\
+\Delta l & =5.0\times10^{-3}\\
+T & =3100\\
+V_{a} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{H}=\frac{6.02214076\times10^{23}\times1.380649\times10^{-23}}{2.01568\times10^{-3}}=4.124892154584676\times10^{3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+p & =\frac{a}{\pi R^{2}H}\cdot mc_{H}T\\
+p & =\frac{0.06}{\pi\times25\times10^{-4}\times15\times10^{-2}}\times50\times10^{-3}\times c_{H}\times3100\\
+p & =32562250.015707232
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p$
+\end_inset
+
+is 321.36 times the atmospheric air pressure at the sea level.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

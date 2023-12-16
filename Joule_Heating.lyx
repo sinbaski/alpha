@@ -1,0 +1,642 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% \newcommand{\pd}[2]{\partial #1}{\partial #2}
+\newcommand{\R}{\mathbb R}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Joule Heating
+\end_layout
+
+\begin_layout Author
+Xiaolei Xie
+\end_layout
+
+\begin_layout Standard
+Suppose at time 
+\begin_inset Formula $t$
+\end_inset
+
+, the mass of graphene (G), plastic (P) and carbon black (C) in the sample
+ is 
+\begin_inset Formula $m_{G},m_{P},m_{C}$
+\end_inset
+
+respectively.
+\end_layout
+
+\begin_layout Standard
+At temperature 
+\begin_inset Formula $T\geq T_{0}$
+\end_inset
+
+, the amount of P destructed in the time interval 
+\begin_inset Formula $dt$
+\end_inset
+
+is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dm_{P}=-a(T)m_{P}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The destructed P is turned into G, hydrogen (H), a variety of hydrocarbon
+ gases, as well as oil, wax and aromatic residues.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $b(T)$
+\end_inset
+
+ denote the proportion of P mass turned into G.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dm_{G} & =-b(T)dm_{P}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $m_{P}(0)=\bar{m}_{P}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+m_{G}(t) & =b(T)\left[\bar{m}_{P}-m_{P}(t)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a(T)=\begin{cases}
+0 & T<T_{0}\\
+r\left(T-T_{0}\right) & T\geq T_{0}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $r$
+\end_inset
+
+ is a constant.
+ Also assume
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+b(T)=\bar{b}-e^{-\alpha(T-T_{0})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\alpha,\bar{b}$
+\end_inset
+
+ are constants.
+ For HDPE (high density polyethylene 
+\begin_inset Formula $\left(C_{2}H_{4}\right)_{n}$
+\end_inset
+
+), 
+\begin_inset Formula $\bar{b}=0.8571428571428571$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dm_{G}=\left[e^{-\alpha(T-T_{0})}-\bar{b}\right]dm_{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let the specific heat of P, G, and C be 
+\begin_inset Formula $c_{P},c_{G},c_{C}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Standard
+Assume the resistivity of the sample is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho=\rho_{P}^{V_{P}}\rho_{G}^{V_{G}}\rho_{C}^{V_{C}}\label{eq:rho}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $V_{P},V_{G},V_{C}$
+\end_inset
+
+are the volume fractions of P, G, C, respectively.
+ Clearly
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+V_{P} & =\frac{\frac{m_{P}}{\varrho_{P}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}\\
+V_{G} & =\frac{\frac{m_{G}}{\varrho_{G}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}\\
+V_{C} & =\frac{\frac{m_{C}}{\varrho_{C}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\varrho_{P},\varrho_{G},\varrho_{C}$
+\end_inset
+
+is the density of P, G and C, respectively.
+ Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R(t)=\rho\frac{\ell}{A}\label{eq:R}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\ell$
+\end_inset
+
+ is the length of the sample and 
+\begin_inset Formula $A$
+\end_inset
+
+is its cross-sectional area.
+ When a current 
+\begin_inset Formula $I(t)$
+\end_inset
+
+ runs through the sample, the heat generated in time 
+\begin_inset Formula $dt$
+\end_inset
+
+is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dE=I^{2}Rdt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which causes the temperature of the sample to increase by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dT=\frac{I^{2}R}{c_{P}m_{P}+c_{G}m_{G}+c_{C}m_{C}}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I(t) & =-\frac{dQ(t)}{dt}=-C\frac{dV(t)}{dt}=-C\frac{d}{dt}\left[I(t)R(t)\right]\\
+ & =-C\frac{d}{dt}\left(IR\right)\\
+ & =-C\left(\dot{I}R+I\dot{R}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inverting this equation yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\dot{I} & =-\frac{I+CI\dot{R}}{CR}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ is the capacity of the capacitor and an overhead dot denotes differentiation
+ w.r.t.
+ 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ From (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{eq:R}
+\end_layout
+
+\end_inset
+
+), we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{R}=\frac{\ell}{A}\dot{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $T>T_{0}$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dm_{P}=-\left[r\left(T-T_{0}\right)\right]m_{P}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dm_{G} & =-b(T)dm_{P}\\
+ & =-\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]dm_{P}\\
+ & =r\left(T-T_{0}\right)\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]m_{P}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have obtained a system of differential equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dm_{P}}{dt}=-r\left(T-T_{0}\right)m_{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dm_{G}}{dt}=r\left(T-T_{0}\right)\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]m_{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dI}{dt}=-\frac{I+CI\dot{R}}{CR}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dT}{dt}=\frac{I^{2}\cdot R(t)}{c_{P}m_{P}+c_{G}m_{G}+c_{C}m_{C}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This non-linear system of equation cannot be solved analytically.
+ We can simulate it by following
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(t+\Delta t\right)=f(t)+\dot{f}(t)\Delta t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $T<T_{0}$
+\end_inset
+
+, the resistance of the sample remains constant at 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+.
+ Similarly, the heat capacity remains at 
+\begin_inset Formula $c_{0}=c_{P}\bar{m}_{P}+c_{C}m_{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The current 
+\begin_inset Formula $I$
+\end_inset
+
+is governed by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I & =-\frac{dQ}{dt}\\
+ & =-C\frac{dV}{dt}\\
+ & =-CR_{0}\frac{dI}{dt}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{dI}{dt} & =-\frac{I}{CR_{0}}\\
+I & =I_{0}e^{-t/CR_{0}}\\
+ & =\frac{V_{0}}{R}e^{-t/CR_{0}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The heat generated is therefore
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+E(t) & =\left(\frac{V_{0}}{R_{0}}\right)^{2}\intop_{0}^{t}e^{-2t'/CR_{0}}R_{0}dt'\\
+ & =\frac{V_{0}^{2}}{R_{0}}\cdot\intop_{0}^{t}e^{-2t'/CR_{0}}dt'\\
+ & =-\frac{CR_{0}}{2}\cdot\frac{V_{0}^{2}}{R_{0}}\cdot\left[e^{-2t'/CR_{0}}\right]_{t'=0}^{t}\\
+ & =\frac{CV_{0}^{2}}{2}\left(1-e^{-2t/CR_{0}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The temperature is then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+T(t) & =\frac{E(t)}{c_{P}\bar{m}_{P}+c_{C}m_{C}}\\
+ & =\frac{CV_{0}^{2}}{c_{P}\bar{m}_{P}+c_{C}m_{C}}\cdot\frac{1-e^{-2t/CR_{0}}}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The time 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ when 
+\begin_inset Formula $T(t_{0})=T_{0}$
+\end_inset
+
+ is thus given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+1-e^{-2t_{0}/CR_{0}} & =\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\\
+1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}} & =e^{-2t_{0}/CR_{0}}\\
+-\frac{2t_{0}}{CR_{0}} & =\ln\left[1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\right]\\
+t_{0} & =-\frac{CR_{0}}{2}\ln\left[1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\right]\\
+ & =\frac{CR_{0}}{2}\ln\left[\frac{CV_{0}^{2}}{CV_{0}^{2}-2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
