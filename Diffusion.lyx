@@ -1744,21 +1744,13 @@ Suppose
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-u(r,z,t) & =\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]\\
+u(r,z,t) & =g(z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]\\
 D_{n} & =\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\frac{n\pi}{L+h}\right)^{2}
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $g(z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -1771,9 +1763,9 @@ For
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda
-\]
+\begin{equation}
+u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda\label{eq:thy6j6u7j}
+\end{equation}
 
 \end_inset
 
@@ -1797,7 +1789,14 @@ It should satisfy the condition
 \end_layout
 
 \begin_layout Standard
-Differentiation gives
+Differentiating (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:thy6j6u7j"
+
+\end_inset
+
+) gives
 \end_layout
 
 \begin_layout Standard
@@ -1843,11 +1842,9 @@ Hence
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\\
-u(r_{0},z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\\
- & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\right\} 
-\end{align*}
+\begin{align}
+u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\right\} \label{eq:h7uk8k}
+\end{align}
 
 \end_inset
 
@@ -1882,7 +1879,14 @@ The Fourier coefficients of
 \begin_inset Formula $u(r_{0},z,t)$
 \end_inset
 
- is
+ according to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h7uk8k"
+
+\end_inset
+
+) is
 \end_layout
 
 \begin_layout Standard
@@ -1904,9 +1908,133 @@ We have
 
 \begin_layout Standard
 \begin_inset Formula 
+\begin{align}
+a'_{n,t} & =\begin{cases}
+2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
+C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
+\end{cases}\label{eq:j7k7j7um}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Letting 
+\begin_inset Formula $a'_{n,t}=a_{n,t}$
+\end_inset
+
+, we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{0,t}\label{eq:th6j7j7jj}\\
+C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{n,t}\label{eq:k9lo9g5h}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\lambda^{2}=x$
+\end_inset
+
+ so that 
+\begin_inset Formula $\lambda=\sqrt{x}$
+\end_inset
+
+, 
+\begin_inset Formula $d\lambda=\frac{dx}{2\sqrt{x}}$
+\end_inset
+
+.
+ Rewrite (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:th6j7j7jj"
+
+\end_inset
+
+) as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+2C_{0}\intop_{0}^{\infty}A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)e^{-x\kappa't}\frac{dx}{2\sqrt{x}} & =a_{0,t}\nonumber \\
+\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}}\right]\left(\kappa't\right) & =\frac{a_{0,t}}{C_{0}}\nonumber \\
+\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}}\right]\left(t\right) & =\frac{a_{0,t/\kappa'}}{C_{0}}\nonumber \\
+\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}} & =\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right](x)\nonumber \\
+A_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right](\lambda^{2})\label{eq:h68i9}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly, using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:k9lo9g5h"
+
+\end_inset
+
+), we can write
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{2\sqrt{x}}\right]\left(\kappa't\right) & =\frac{a_{n,t}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\nonumber \\
+\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{2\sqrt{x}}\right]\left(t\right) & =\frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\nonumber \\
+\frac{A_{\lambda}J_{0}\left(\lambda r_{0}\right)}{2\lambda} & =\mathscr{L}^{-1}\left\{ \frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\right\} \left(\lambda^{2}\right)\nonumber \\
+A_{\lambda} & =\frac{2\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left\{ \frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\right\} \left(\lambda^{2}\right)\label{eq:h6yj7j78}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h68i9"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h6yj7j78"
+
+\end_inset
+
+) imply, for every 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
 \begin{align*}
-a'_{0,t} & =2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\\
-a'_{n,t} & =C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda
+\frac{a_{0,t/\kappa'}}{C_{0}} & =\frac{2a_{n,t/k'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\\
+C_{2n} & =2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]
 \end{align*}
 
 \end_inset
@@ -1915,14 +2043,25 @@ a'_{n,t} & =C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\int
 \end_layout
 
 \begin_layout Standard
-Thus
+Substituting this into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:j7k7j7um"
+
+\end_inset
+
+), we get, for 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-u(r_{0},z,t)=\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ C_{0}+\sum_{n=1}^{\infty}C_{2n}\cos\frac{2n\pi z}{h}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\right\} \label{eq:5yvhb6b}
-\end{equation}
+\[
+a'_{n,t}=2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda
+\]
 
 \end_inset
 
@@ -1930,28 +2069,46 @@ u(r_{0},z,t)=\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)
 \end_layout
 
 \begin_layout Standard
-Equating the Fourier coefficients in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:ghtynjyyuk"
-
+So we can write 
+\begin_inset Formula $u(r,z,t)$
 \end_inset
 
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:5yvhb6b"
-
-\end_inset
-
-, we get
+ as
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =\frac{a_{0,t}}{2}\\
-C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{n,t}
+u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left[\frac{a'_{0,t}}{2}+\sum_{n=1}^{\infty}a'_{n,t}\cos\frac{2n\pi z}{h}\right]\\
+A_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right]\left(\lambda^{2}\right)\\
+a'_{n,t} & =\begin{cases}
+2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
+2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $C_{0}A_{\lambda}=A'_{\lambda}$
+\end_inset
+
+ so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A'_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[a_{0,t/\kappa'}\right]\left(\lambda^{2}\right)\\
+a'_{n,t} & =\begin{cases}
+2\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
+2\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
+\end{cases}\\
+u(r,z,t) & =\frac{1}{C_{0}}\left[\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left[\frac{a'_{0,t}}{2}+\sum_{n=1}^{\infty}a'_{n,t}\cos\frac{2n\pi z}{h}\right]
 \end{align*}
 
 \end_inset
