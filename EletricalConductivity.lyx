@@ -1,0 +1,280 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Eletrical Conductivity of a Random Mixture
+\end_layout
+
+\begin_layout Author
+Xiaolei Xie
+\end_layout
+
+\begin_layout Standard
+Consider a random mixture of 
+\begin_inset Formula $n$
+\end_inset
+
+ materials with density 
+\begin_inset Formula $\left\{ \varrho_{i}\right\} _{i=1,2,\dots,n}$
+\end_inset
+
+ and eletrical conductivity 
+\begin_inset Formula $\left\{ \rho_{i}\right\} _{i=1,2,\dots,n}$
+\end_inset
+
+.
+ The total mass of material 
+\begin_inset Formula $i$
+\end_inset
+
+ in the mixture is 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+.
+ Compress the mixture into a cylinder, the hight and cross-sectional area
+ of which are 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $A=\pi r^{2}$
+\end_inset
+
+, respectively.
+ What is the resistance of the mixture?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wrapfigure}{R}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=0.5
+\backslash
+textwidth]{IMG_3502.pdf}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{
+\backslash
+label{fig:fig1} Random mixture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wrapfigure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $V_{i}=\frac{m_{i}}{\varrho_{i}}$
+\end_inset
+
+.
+ Consider a section of the cylinder with thickness 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+.
+ Suppose, on this section, the volume of material 
+\begin_inset Formula $i$
+\end_inset
+
+ is 
+\begin_inset Formula $A_{i}\Delta x$
+\end_inset
+
+ with 
+\begin_inset Formula $\frac{A_{i}}{A}=\frac{V_{i}}{V_{1}+\cdots+V_{n}}$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,2,\dots,n$
+\end_inset
+
+.
+ The resistance of material 
+\begin_inset Formula $i$
+\end_inset
+
+ on this section is therefore 
+\begin_inset Formula $\frac{1}{\rho_{i}}\frac{\Delta x}{A_{i}}$
+\end_inset
+
+.
+ The resistance of the whole section 
+\begin_inset Formula $\Delta R$
+\end_inset
+
+ satisfies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\Delta R} & =\sum_{i=1}^{n}\left(\frac{\Delta x}{\rho_{i}A_{i}}\right)^{-1}\\
+\Delta R & =\left(\sum_{i=1}^{n}\frac{\rho_{i}A_{i}}{\Delta x}\right)^{-1}\\
+ & =\left(\sum_{i=1}^{n}\frac{\rho_{i}V_{i}A}{V_{1}+\cdots+V_{n}}\right)^{-1}\Delta x\\
+ & =\frac{\Delta x}{A}\left(\sum_{i=1}^{n}V_{i}\right)\left(\sum_{i=1}^{n}\rho_{i}V_{i}\right)^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R=\frac{\Delta x}{A}\left(\sum_{i=1}^{n}V_{i}\right)\left(\sum_{i=1}^{n}\rho_{i}V_{i}\right)^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the conductivity of the whole mixture is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\rho & =\left(\sum_{i=1}^{n}V_{i}\right)^{-1}\left(\sum_{i=1}^{n}\rho_{i}V_{i}\right)\\
+ & =\sum_{i=1}^{n}\rho_{i}\hat{V}_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\hat{V}_{i}=\frac{V_{i}}{V_{1}+V_{2}+\cdots+V_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

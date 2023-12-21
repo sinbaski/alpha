@@ -372,63 +372,44 @@ If
 \end_layout
 
 \begin_layout Standard
-In this case, a superposed solution is
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-u(x,t) & =X(x)T(t)\nonumber \\
- & =\intop_{-\infty}^{\infty}C_{\omega}e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega\label{eq:fghyjyu}\\
-f(t)=u(0,t) & =\intop_{-\infty}^{\infty}C_{\omega}e^{-\omega^{2}\kappa t}d\omega\nonumber \\
- & =\intop_{0}^{\infty}\left(C_{\omega}+C_{-\omega}\right)e^{-\omega^{2}\kappa t}d\omega\nonumber 
-\end{align}
-
+We may extend 
+\begin_inset Formula $X(x)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\omega^{2}=s$
+ as 
+\begin_inset Formula $\mathbb{R}\to\mathbb{R}$
 \end_inset
 
-, i.e.
- 
-\begin_inset Formula $\omega=\sqrt{s},$
-\end_inset
-
-
-\begin_inset Formula $d\omega=\frac{ds}{2\sqrt{s}}$
+ so that 
+\begin_inset Formula $X(-x)=X(x)$
 \end_inset
 
 .
- Also, let 
-\begin_inset Formula $D_{\omega}=C_{\omega}+C_{-\omega}$
-\end_inset
-
-.
- Since 
-\begin_inset Formula $u$
-\end_inset
-
- must be real, we have 
-\begin_inset Formula $C_{-\omega}=C_{\omega}^{*}$
-\end_inset
-
- and 
-\begin_inset Formula $D_{\omega}=2\Re(C_{\omega})$
-\end_inset
-
-.
+ Then a superposed solution is
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-f(t) & =\intop_{0}^{\infty}D_{\sqrt{s}}e^{-s\kappa t}\frac{ds}{2\sqrt{s}}\\
- & =\mathscr{L}\left[\frac{D_{\sqrt{s}}}{2\sqrt{s}}\right](\kappa t)
+u(x,t) & =X(x)T(t)\\
+ & =\intop_{0}^{\infty}C_{\omega}\cos\omega xe^{-\omega^{2}\kappa t}d\omega
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(0,t) & =\intop_{0}^{\infty}C_{\omega}e^{-\omega^{2}\kappa t}d\omega\\
+ & =\intop_{0}^{\infty}C_{\sqrt{\xi}}e^{-\xi\kappa t}\frac{d\xi}{2\sqrt{\xi}}\\
+ & =\mathscr{L}\left[\frac{C_{\sqrt{\xi}}}{\sqrt{\xi}}\right]\left(\kappa t\right)
 \end{align*}
 
 \end_inset
@@ -442,15 +423,19 @@ where
 \end_inset
 
  denotes the Laplace transform.
- It then follows
+ Since 
+\begin_inset Formula $u(0,t)=f(t)$
+\end_inset
+
+, we can write
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-f\left(\frac{t}{\kappa}\right) & =\mathscr{L}\left[\frac{D_{\sqrt{s}}}{2\sqrt{s}}\right](t)\\
-\frac{D_{\sqrt{s}}}{2\sqrt{s}} & =\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](s)\\
-D_{\omega} & =2\omega\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](\omega^{2})
+f\left(\frac{t}{\kappa}\right) & =\mathscr{L}\left[\frac{C_{\sqrt{\xi}}}{\sqrt{\xi}}\right]\left(t\right)\\
+\frac{C_{\sqrt{\xi}}}{\sqrt{\xi}} & =\mathscr{L}^{-1}\left[f\left(\frac{t}{\kappa}\right)\right]\left(\xi\right)\\
+C_{\omega} & =\omega\mathscr{L}^{-1}\left[f\left(\frac{t}{\kappa}\right)\right]\left(\omega^{2}\right)
 \end{align*}
 
 \end_inset
@@ -468,69 +453,8 @@ Thus we can express
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-u(x,t) & =\intop_{-\infty}^{\infty}\left\{ \left|\omega\right|\mathscr{L}^{-1}\left[f\left(\frac{t}{\kappa}\right)\right](\omega^{2})+ib_{\omega}\right\} e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega\\
- & =\intop_{-\infty}^{\infty}\left(\frac{D_{\omega}}{2}+ib_{\omega}\right)e^{i\omega x}e^{-\omega^{2}\kappa t}d\omega
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $b_{\omega}=\Im(C_{\omega})\in\mathbb{R}$
-\end_inset
-
- and 
-\begin_inset Formula $D_{\omega}=\left|\omega\right|\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right](\omega^{2})$
-\end_inset
-
- and 
-\begin_inset Formula $C_{\omega}=\frac{D_{\omega}}{2}+ib_{\omega}$
-\end_inset
-
-.
- Clearly 
-\begin_inset Formula $D_{-\omega}=D_{\omega}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{-\omega}=-b_{\omega}$
-\end_inset
-
-.
- Since we only care about 
-\begin_inset Formula $u(x,t)$
-\end_inset
-
- for 
-\begin_inset Formula $x\in[0,L]$
-\end_inset
-
-.
- We can limit ourselves to the case 
-\begin_inset Formula $u(-x,t)=u(x,t)$
-\end_inset
-
- for 
-\begin_inset Formula $x\in[0,L]$
-\end_inset
-
-.
- This corresponds to 
-\begin_inset Formula $b_{\omega}=0$
-\end_inset
-
-.
- Thus
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
 \[
-u(x,t)=\intop_{0}^{\infty}D_{\omega}\cos\omega xe^{-\omega^{2}\kappa t}d\omega
+u(x,t)=\intop_{0}^{\infty}\omega\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\omega^{2}\right)\cos\omega xe^{-\omega^{2}\kappa t}d\omega
 \]
 
 \end_inset
@@ -1472,240 +1396,28 @@ The superposed solution
 \end_layout
 
 \begin_layout Subsubsection
-A Temperature Curve Specified for the Bottom and the Top insulated
+Temperature Curve Specified for the Bottom
 \end_layout
 
 \begin_layout Standard
-The boundary condition on 
+The 1st boundary condition on 
 \begin_inset Formula $u(r,z,t)$
 \end_inset
 
- is
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-u(r,0,t)=f(t)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-By superposing the separable solutions, we have, for 
-\begin_inset Formula $z\in[0,L+h]$
-\end_inset
-
- and 
-\begin_inset Formula $r\in[0,r_{0}]$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}\left[A_{\lambda}J_{0}\left(\lambda r\right)+B_{\lambda}Y_{0}\left(\lambda r\right)\right]C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Clearly, we must have 
-\begin_inset Formula $\left|u(0,z,t)\right|<\infty$
-\end_inset
-
-.
- Hence 
-\begin_inset Formula $B_{\lambda}=0$
-\end_inset
-
-.
- So we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-u(r,z,t) & =\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The solution must satisfy the boundary condition
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-u(r,0,t) & =f(t)\\
-\frac{\partial u}{\partial z}\left(r,L+h,t\right) & =0
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The 2nd equation stems from the fact that the top of the cylinder is insulated
- from heat transmission.
- It implies
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
--\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)\omega C_{\omega}\sin\omega\left(L+h\right)e^{-(\omega^{2}+\lambda^{2})\kappa t}d\omega d\lambda=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Since this equation holds for all 
-\begin_inset Formula $t$
-\end_inset
-
- and 
-\begin_inset Formula $r$
-\end_inset
-
-, we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sin\omega\left(L+h\right) & =0\\
-\omega\left(L+h\right) & =n\pi
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $n=0,1,2,\dots$
-\end_inset
-
-.
- Hence we'd rather have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-u(r,z,t) & =\intop_{0}^{\infty}\sum_{n=0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{n}\cos\frac{n\pi z}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t-\lambda^{2}\kappa t\right]d\lambda\\
-u(r,0,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda\right]\sum_{n=0}^{\infty}C_{n}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Let
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-g(\kappa t)=\sum_{n=0}^{\infty}C_{n}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The exact form of 
-\begin_inset Formula $g(\kappa t)$
-\end_inset
-
- is to be determined by the determination of 
-\begin_inset Formula $C_{n},n=0,1,2,\dots$
-\end_inset
-
-.
- It follows
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{\partial}{\partial r}\left[\frac{f(t)}{g(\kappa t)}\right]=-\intop_{0}^{\infty}\lambda A_{\lambda}J_{1}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Equating the LHS to 0 gives
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\intop_{0}^{\infty}\lambda A_{\lambda}J_{1}\left(\lambda r\right)e^{-\lambda^{2}\kappa t}d\lambda=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This only plausible choice of 
-\begin_inset Formula $A_{\lambda}$
-\end_inset
-
  is 
-\begin_inset Formula $A_{\lambda}=0$
+\begin_inset Formula $u(r,0,t)=f(t)$
 \end_inset
 
 .
- So the solution is similar to that in the 1D case:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-u(r,z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi z}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]
-\]
-
+ Because 
+\begin_inset Formula $\frac{\partial u}{\partial r}(r,0,t)=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-with
-\end_layout
-
-\begin_layout Standard
+.
+ The solution must be the same as in the 1D case:
 \begin_inset Formula 
 \[
-D_{n}=\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\frac{n\pi}{L+h}\right)^{2}
+u(z,t)=\intop_{0}^{\infty}\omega\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\omega^{2}\right)\cos\omega ze^{-\omega^{2}\kappa t}d\omega
 \]
 
 \end_inset
@@ -1727,26 +1439,17 @@ Suppose
 \end_inset
 
  with 
-\begin_inset Formula $0\leq r\leq r_{1}$
+\begin_inset Formula $r\in[0,r_{0}],z\in[0,h]$
 \end_inset
 
- and 
-\begin_inset Formula $0\leq z\leq h$
-\end_inset
-
- satisfies, for 
-\begin_inset Formula $r\leq r_{0}<r_{1}$
-\end_inset
-
-:
+ satisfies
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-u(r,z,t) & =g(z,t)=\sum_{n=0}^{\infty}D_{n}\cos\frac{n\pi(z+L)}{L+h}\exp\left[-\left(\frac{n\pi}{L+h}\right)^{2}\kappa t\right]\\
-D_{n} & =\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\frac{n\pi}{L+h}\right)^{2}
-\end{align*}
+\begin{align}
+u(r,z,t) & =g(z,t)=\intop_{0}^{\infty}\omega\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right)\right]\left(\omega^{2}\right)\cos\omega\left(z+L\right)e^{-\omega^{2}\kappa t}d\omega\label{eq:trh6j7u6j}
+\end{align}
 
 \end_inset
 
@@ -1755,7 +1458,7 @@ D_{n} & =\frac{n\pi}{L+h}\mathscr{L}^{-1}\left[f\left(\frac{\cdot}{\kappa}\right
 
 \begin_layout Standard
 For 
-\begin_inset Formula $r\in[r_{0},r_{1}]$
+\begin_inset Formula $r\in[r_{0},r_{1}],z\in[0,h]$
 \end_inset
 
 , we assume
@@ -1763,24 +1466,9 @@ For
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-u(r,z,t)=\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)C_{\omega}\cos\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda\label{eq:thy6j6u7j}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-It should satisfy the condition
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
 \begin{align*}
-\frac{\partial u}{\partial z}(r,0,t) & =0\\
-\frac{\partial u}{\partial z}(r,h,t) & =0
+u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(r\lambda\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{n=1}^{\infty}C_{n}\cos\frac{2n\pi z}{2h}\exp\left[-\left(\frac{2n\pi}{2h}\right)^{2}\kappa't\right]\right\} \\
+u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(r\lambda\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{n=1}^{\infty}C_{n}\cos\frac{n\pi z}{h}\exp\left[-\left(\frac{n\pi}{h}\right)^{2}\kappa't\right]\right\} 
 \end{align*}
 
 \end_inset
@@ -1789,70 +1477,23 @@ It should satisfy the condition
 \end_layout
 
 \begin_layout Standard
-Differentiating (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:thy6j6u7j"
-
+Expand 
+\begin_inset Formula $g(z,t)$
 \end_inset
 
-) gives
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{\partial u}{\partial z}=-\intop_{0}^{\infty}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)\omega C_{\omega}\sin\omega ze^{-(\omega^{2}+\lambda^{2})\kappa't}d\omega d\lambda
-\]
-
+ as 
+\begin_inset Formula $g:[-h,h]\times\mathbb{R}\to\mathbb{R}_{+}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Clearly 
-\begin_inset Formula $\frac{\partial u}{\partial z}(r,0,t)=0$
+ so that 
+\begin_inset Formula $g(-z,t)=g(z,t)$
 \end_inset
 
-.
- 
-\begin_inset Formula $\frac{\partial u}{\partial z}(r,h,t)=0$
+ for all 
+\begin_inset Formula $z\in[-h,h]$
 \end_inset
 
- implies
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sin\omega h & =0\\
-\omega h & =m\pi\\
-\omega & =\frac{m\pi}{h}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hence
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{m=0}^{\infty}C_{m}\cos\frac{m\pi z}{h}\exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\right\} \label{eq:h7uk8k}
-\end{align}
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-We can expand 
+, then we can expand 
 \begin_inset Formula $g(z,t)$
 \end_inset
 
@@ -1865,9 +1506,9 @@ We can expand
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-g(z,t)=\frac{a_{0,t}}{2}+\sum_{m=1}^{\infty}a_{m,t}\cos\left(\frac{2\pi mz}{h}\right)\label{eq:ghtynjyyuk}
-\end{equation}
+\[
+g(z,t)=\frac{a_{0,t}}{2}+\sum_{n=1}^{\infty}a_{n,t}\cos\frac{2n\pi z}{2h}
+\]
 
 \end_inset
 
@@ -1875,26 +1516,18 @@ g(z,t)=\frac{a_{0,t}}{2}+\sum_{m=1}^{\infty}a_{m,t}\cos\left(\frac{2\pi mz}{h}\r
 \end_layout
 
 \begin_layout Standard
-The Fourier coefficients of 
-\begin_inset Formula $u(r_{0},z,t)$
+where, for 
+\begin_inset Formula $n\geq0$
 \end_inset
 
- according to (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:h7uk8k"
-
-\end_inset
-
-) is
+,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-a'_{n,t} & =\frac{2}{h}\intop_{0}^{h}u(r_{0},z,t)\cos\frac{2\pi nz}{h}dz\\
- & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}\left\{ \exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]\frac{2}{h}\intop_{0}^{h}C_{m}\cos\frac{m\pi z}{h}\cos\frac{2\pi nz}{h}dz\right\} \\
- & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\sum_{m=0}^{\infty}\left\{ \exp\left[-\left(\frac{m\pi}{h}\right)^{2}\kappa't\right]C_{m}\left(1_{\{m=2n\}}1_{\{m\neq0\}}+1_{\{m=n=0\}}2\right)\right\} 
+a_{n,t} & =\frac{1}{h}\intop_{-h}^{h}g(z,t)\cos\frac{2n\pi z}{2h}dz\\
+ & =\frac{2}{h}\intop_{0}^{h}g(z,t)\cos\frac{n\pi z}{h}dz
 \end{align*}
 
 \end_inset
@@ -1908,159 +1541,8 @@ We have
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align}
-a'_{n,t} & =\begin{cases}
-2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
-C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
-\end{cases}\label{eq:j7k7j7um}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Letting 
-\begin_inset Formula $a'_{n,t}=a_{n,t}$
-\end_inset
-
-, we get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{0,t}\label{eq:th6j7j7jj}\\
-C_{2n}\exp\left[-\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & =a_{n,t}\label{eq:k9lo9g5h}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\lambda^{2}=x$
-\end_inset
-
- so that 
-\begin_inset Formula $\lambda=\sqrt{x}$
-\end_inset
-
-, 
-\begin_inset Formula $d\lambda=\frac{dx}{2\sqrt{x}}$
-\end_inset
-
-.
- Rewrite (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:th6j7j7jj"
-
-\end_inset
-
-) as
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-2C_{0}\intop_{0}^{\infty}A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)e^{-x\kappa't}\frac{dx}{2\sqrt{x}} & =a_{0,t}\nonumber \\
-\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}}\right]\left(\kappa't\right) & =\frac{a_{0,t}}{C_{0}}\nonumber \\
-\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}}\right]\left(t\right) & =\frac{a_{0,t/\kappa'}}{C_{0}}\nonumber \\
-\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{\sqrt{x}} & =\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right](x)\nonumber \\
-A_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right](\lambda^{2})\label{eq:h68i9}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Similarly, using (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:k9lo9g5h"
-
-\end_inset
-
-), we can write
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{2\sqrt{x}}\right]\left(\kappa't\right) & =\frac{a_{n,t}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\kappa't\right]\nonumber \\
-\mathscr{L}\left[\frac{A_{\sqrt{x}}J_{0}\left(\sqrt{x}r_{0}\right)}{2\sqrt{x}}\right]\left(t\right) & =\frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\nonumber \\
-\frac{A_{\lambda}J_{0}\left(\lambda r_{0}\right)}{2\lambda} & =\mathscr{L}^{-1}\left\{ \frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\right\} \left(\lambda^{2}\right)\nonumber \\
-A_{\lambda} & =\frac{2\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left\{ \frac{a_{n,t/\kappa'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\right\} \left(\lambda^{2}\right)\label{eq:h6yj7j78}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:h68i9"
-
-\end_inset
-
-) and (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:h6yj7j78"
-
-\end_inset
-
-) imply, for every 
-\begin_inset Formula $n\geq1$
-\end_inset
-
- and 
-\begin_inset Formula $t$
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{a_{0,t/\kappa'}}{C_{0}} & =\frac{2a_{n,t/k'}}{C_{2n}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]\\
-C_{2n} & =2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}t\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Substituting this into (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:j7k7j7um"
-
-\end_inset
-
-), we get, for 
-\begin_inset Formula $n\geq1$
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
 \[
-a'_{n,t}=2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda
+C_{n}\exp\left[-\left(\frac{n\pi}{h}\right)^{2}\kappa't\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(r_{0}\lambda\right)e^{-\lambda^{2}\kappa't}d\lambda=a_{n,t}
 \]
 
 \end_inset
@@ -2069,22 +1551,44 @@ a'_{n,t}=2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\righ
 \end_layout
 
 \begin_layout Standard
-So we can write 
-\begin_inset Formula $u(r,z,t)$
-\end_inset
-
- as
+It follows
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-u(r,z,t) & =\left[\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left[\frac{a'_{0,t}}{2}+\sum_{n=1}^{\infty}a'_{n,t}\cos\frac{2n\pi z}{h}\right]\\
-A_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[\frac{a_{0,t/\kappa'}}{C_{0}}\right]\left(\lambda^{2}\right)\\
-a'_{n,t} & =\begin{cases}
-2C_{0}\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
-2C_{0}\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
-\end{cases}
+\intop_{0}^{\infty}A_{\sqrt{\xi}}J_{0}\left(r_{0}\sqrt{\xi}\right)e^{-\xi\kappa't}\frac{d\xi}{2\sqrt{\xi}} & =C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}\kappa't\right]a_{n,t}\\
+\mathscr{L}\left[\frac{A_{\sqrt{\xi}}J_{0}\left(r_{0}\sqrt{\xi}\right)}{2\sqrt{\xi}}\right]\left(\kappa't\right) & =C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}\kappa't\right]a_{n,t}\\
+\mathscr{L}\left[\frac{A_{\sqrt{\xi}}J_{0}\left(r_{0}\sqrt{\xi}\right)}{2\sqrt{\xi}}\right]\left(t\right) & =C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}\\
+\frac{A_{\lambda}J_{0}\left(r_{0}\lambda\right)}{2\lambda} & =\mathscr{L}^{-1}\left\{ C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}\right\} \left(\lambda^{2}\right)\\
+A_{\lambda} & =\frac{2\lambda}{J_{0}\left(r_{0}\lambda\right)}\mathscr{L}^{-1}\left\{ C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}\right\} \left(\lambda^{2}\right)
+\end{align*}
+
+\end_inset
+
+The last equation has to hold for all 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+ So there must exist a constant 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ such that, for all 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathscr{L}^{-1}\left\{ C_{n}^{-1}\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}\right\} \left(\lambda^{2}\right) & =\alpha\\
+\mathscr{L}^{-1}\left\{ \exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}\right\} \left(\lambda^{2}\right) & =\alpha C_{n}\\
+\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'} & =\frac{\alpha C_{n}}{t}\\
+C_{n} & =\frac{t}{\alpha}\exp\left[\left(\frac{n\pi}{h}\right)^{2}t\right]a_{n,t/\kappa'}
 \end{align*}
 
 \end_inset
@@ -2093,27 +1597,49 @@ a'_{n,t} & =\begin{cases}
 \end_layout
 
 \begin_layout Standard
-Let 
-\begin_inset Formula $C_{0}A_{\lambda}=A'_{\lambda}$
-\end_inset
-
- so that
+Thus
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-A'_{\lambda} & =\frac{\lambda}{J_{0}\left(\lambda r_{0}\right)}\mathscr{L}^{-1}\left[a_{0,t/\kappa'}\right]\left(\lambda^{2}\right)\\
-a'_{n,t} & =\begin{cases}
-2\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n=0\\
-2\frac{a_{n,t/k'}}{a_{0,t/k'}}\exp\left[\left(\frac{2n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r_{0}\right)e^{-\lambda^{2}\kappa't}d\lambda & n\geq1
-\end{cases}\\
-u(r,z,t) & =\frac{1}{C_{0}}\left[\intop_{0}^{\infty}A'_{\lambda}J_{0}\left(\lambda r\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left[\frac{a'_{0,t}}{2}+\sum_{n=1}^{\infty}a'_{n,t}\cos\frac{2n\pi z}{h}\right]
-\end{align*}
+\[
+A_{\lambda}=\frac{2\alpha\lambda}{J_{0}\left(r_{0}\lambda\right)}
+\]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Therefore
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(r,z,t)=\left[\intop_{0}^{\infty}\frac{2\lambda}{J_{0}\left(r_{0}\lambda\right)}J_{0}\left(r\lambda\right)e^{-\lambda^{2}\kappa't}d\lambda\right]\left\{ \sum_{n=1}^{\infty}ta_{n,t/\kappa'}\cos\frac{n\pi z}{h}\exp\left[-\left(\frac{n\pi}{h}\right)^{2}\left(1-\kappa'\right)t\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the value of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ doesn't affect 
+\begin_inset Formula $u$
+\end_inset
+
+, we can choose 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ for convenience.
 \end_layout
 
 \begin_layout Section
