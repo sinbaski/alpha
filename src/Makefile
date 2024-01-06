@@ -13,7 +13,7 @@ CXXFLAGS := -std=c++11 $(CFLAGS)
 LDFLAGS := -L/usr/lib/x86_64-linux-gnu -fopenmp
 LDLIBS := -lgsl -lpthread -lm
 
-CPPSRC := joule_heating.cpp
+CPPSRC := joule_heating.cpp DebyeModel.cpp
 
 OBJ := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(CPPSRC))
 

@@ -155,22 +155,7 @@ Let
 \end_inset
 
 .
- Then
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-m_{G}(t) & =b(T)\left[\bar{m}_{P}-m_{P}(t)\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Assume
+ Assume
 \end_layout
 
 \begin_layout Standard
@@ -199,7 +184,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \[
-b(T)=\bar{b}-e^{-\alpha(T-T_{0})}
+b(T)=\bar{b}\left[1-e^{-\alpha(T-T_{0})}\right]
 \]
 
 \end_inset
@@ -231,7 +216,7 @@ Thus we have
 \begin_layout Standard
 \begin_inset Formula 
 \[
-dm_{G}=\left[e^{-\alpha(T-T_{0})}-\bar{b}\right]dm_{P}
+dm_{G}=\bar{b}\left[e^{-\alpha(T-T_{0})}-1\right]dm_{P}
 \]
 
 \end_inset
@@ -248,13 +233,13 @@ Let the specific heat of P, G, and C be
 \end_layout
 
 \begin_layout Standard
-Assume the resistivity of the sample is
+Assume the conductivity of the sample is
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\rho=\rho_{P}^{V_{P}}\rho_{G}^{V_{G}}\rho_{C}^{V_{C}}\label{eq:rho}
+\rho=\rho_{P}V_{P}+\rho_{G}V_{G}+\rho_{C}V_{C}\label{eq:rho}
 \end{equation}
 
 \end_inset
@@ -296,7 +281,7 @@ is the density of P, G and C, respectively.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-R(t)=\rho\frac{\ell}{A}\label{eq:R}
+R(t)=\rho^{-1}\frac{\ell}{A}\label{eq:R}
 \end{equation}
 
 \end_inset
@@ -358,9 +343,8 @@ On the other hand,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-I(t) & =-\frac{dQ(t)}{dt}=-C\frac{dV(t)}{dt}=-C\frac{d}{dt}\left[I(t)R(t)\right]\\
- & =-C\frac{d}{dt}\left(IR\right)\\
- & =-C\left(\dot{I}R+I\dot{R}\right)
+dQ & =-Idt\\
+\dot{Q} & =-I
 \end{align*}
 
 \end_inset
@@ -369,14 +353,14 @@ I(t) & =-\frac{dQ(t)}{dt}=-C\frac{dV(t)}{dt}=-C\frac{d}{dt}\left[I(t)R(t)\right]
 \end_layout
 
 \begin_layout Standard
-Inverting this equation yields
+We also have
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\dot{I} & =-\frac{I+CI\dot{R}}{CR}
-\end{align*}
+\[
+I=\frac{Q}{CR}
+\]
 
 \end_inset
 
@@ -414,7 +398,111 @@ ref{eq:R}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{R}=\frac{\ell}{A}\dot{\rho}
+\dot{R}=-\frac{\ell}{A\rho^{2}}\dot{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho"
+
+\end_inset
+
+), we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\rho}=\rho_{P}\dot{V_{P}}+\rho_{G}\dot{V_{G}}+\rho_{C}\dot{V}_{C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To compute 
+\begin_inset Formula $\dot{\rho}$
+\end_inset
+
+, we observe
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{P}=\frac{\frac{m_{P}}{\varrho_{P}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dV_{P}}{dt}=\left(\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}\right)^{-2}\left[\frac{\dot{m_{P}}}{\varrho_{P}}\left(\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}\right)-\frac{m_{P}}{\varrho_{P}}\left(\frac{\dot{m}_{P}}{\varrho_{P}}+\frac{\dot{m}_{G}}{\varrho_{G}}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{G}=\frac{\frac{m_{G}}{\varrho_{G}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dV_{G}}{dt}=\left(\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}\right)^{-2}\left[\frac{\dot{m_{G}}}{\varrho_{G}}\left(\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}\right)-\frac{m_{G}}{\varrho_{G}}\left(\frac{\dot{m}_{P}}{\varrho_{P}}+\frac{\dot{m}_{G}}{\varrho_{G}}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And for the carbon black
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{C}=\frac{\frac{m_{C}}{\varrho_{C}}}{\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dV_{C}}{dt}=-\frac{m_{C}}{\varrho_{C}}\left(\frac{m_{P}}{\varrho_{P}}+\frac{m_{G}}{\varrho_{G}}+\frac{m_{C}}{\varrho_{C}}\right)^{-2}\left(\frac{\dot{m}_{P}}{\varrho_{P}}+\frac{\dot{m}_{G}}{\varrho_{G}}\right)
 \]
 
 \end_inset
@@ -433,7 +521,7 @@ When
 \begin_layout Standard
 \begin_inset Formula 
 \[
-dm_{P}=-\left[r\left(T-T_{0}\right)\right]m_{P}dt
+dm_{P}=-r\left(T-T_{0}\right)m_{P}dt
 \]
 
 \end_inset
@@ -450,7 +538,7 @@ and
 \begin{align*}
 dm_{G} & =-b(T)dm_{P}\\
  & =-\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]dm_{P}\\
- & =r\left(T-T_{0}\right)\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]m_{P}dt
+ & =r\left(T-T_{0}\right)\bar{b}\left[1-e^{-\alpha(T-T_{0})}\right]m_{P}dt
 \end{align*}
 
 \end_inset
@@ -476,7 +564,7 @@ Thus we have obtained a system of differential equations
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{dm_{G}}{dt}=r\left(T-T_{0}\right)\left[\bar{b}-e^{-\alpha(T-T_{0})}\right]m_{P}
+\frac{dm_{G}}{dt}=r\left(T-T_{0}\right)\bar{b}\left[1-e^{-\alpha(T-T_{0})}\right]m_{P}
 \]
 
 \end_inset
@@ -486,9 +574,9 @@ Thus we have obtained a system of differential equations
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\frac{dI}{dt}=-\frac{I+CI\dot{R}}{CR}
-\]
+\begin{align*}
+\frac{dQ}{dt} & =-\frac{Q}{CR}
+\end{align*}
 
 \end_inset
 
@@ -532,11 +620,6 @@ When
 \end_inset
 
 .
- Similarly, the heat capacity remains at 
-\begin_inset Formula $c_{0}=c_{P}\bar{m}_{P}+c_{C}m_{C}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -544,7 +627,7 @@ The current
 \begin_inset Formula $I$
 \end_inset
 
-is governed by
+ is governed by
 \end_layout
 
 \begin_layout Standard
@@ -552,7 +635,7 @@ is governed by
 \begin{align*}
 I & =-\frac{dQ}{dt}\\
  & =-C\frac{dV}{dt}\\
- & =-CR_{0}\frac{dI}{dt}
+ & =-CR\frac{dI}{dt}
 \end{align*}
 
 \end_inset
@@ -567,9 +650,9 @@ Thus
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{dI}{dt} & =-\frac{I}{CR_{0}}\\
-I & =I_{0}e^{-t/CR_{0}}\\
- & =\frac{V_{0}}{R}e^{-t/CR_{0}}
+\frac{dI}{dt} & =-\frac{I}{CR}\\
+I & =I_{0}e^{-t/CR}\\
+ & =\frac{V_{0}}{R}\exp\left(-\frac{t}{CR}\right)
 \end{align*}
 
 \end_inset
@@ -583,12 +666,9 @@ The heat generated is therefore
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-E(t) & =\left(\frac{V_{0}}{R_{0}}\right)^{2}\intop_{0}^{t}e^{-2t'/CR_{0}}R_{0}dt'\\
- & =\frac{V_{0}^{2}}{R_{0}}\cdot\intop_{0}^{t}e^{-2t'/CR_{0}}dt'\\
- & =-\frac{CR_{0}}{2}\cdot\frac{V_{0}^{2}}{R_{0}}\cdot\left[e^{-2t'/CR_{0}}\right]_{t'=0}^{t}\\
- & =\frac{CV_{0}^{2}}{2}\left(1-e^{-2t/CR_{0}}\right)
-\end{align*}
+\[
+dE=I^{2}Rdt
+\]
 
 \end_inset
 
@@ -596,42 +676,29 @@ E(t) & =\left(\frac{V_{0}}{R_{0}}\right)^{2}\intop_{0}^{t}e^{-2t'/CR_{0}}R_{0}dt
 \end_layout
 
 \begin_layout Standard
-The temperature is then
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-T(t) & =\frac{E(t)}{c_{P}\bar{m}_{P}+c_{C}m_{C}}\\
- & =\frac{CV_{0}^{2}}{c_{P}\bar{m}_{P}+c_{C}m_{C}}\cdot\frac{1-e^{-2t/CR_{0}}}{2}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The time 
-\begin_inset Formula $t_{0}$
-\end_inset
-
- when 
-\begin_inset Formula $T(t_{0})=T_{0}$
-\end_inset
-
- is thus given by
+The temperature differential is hence
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-1-e^{-2t_{0}/CR_{0}} & =\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\\
-1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}} & =e^{-2t_{0}/CR_{0}}\\
--\frac{2t_{0}}{CR_{0}} & =\ln\left[1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\right]\\
-t_{0} & =-\frac{CR_{0}}{2}\ln\left[1-\frac{2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}{CV_{0}^{2}}\right]\\
- & =\frac{CR_{0}}{2}\ln\left[\frac{CV_{0}^{2}}{CV_{0}^{2}-2T_{0}\left(c_{P}\bar{m}_{P}+c_{C}m_{C}\right)}\right]
-\end{align*}
+\[
+dT=\frac{dE}{c_{V}}=\frac{I^{2}R}{c_{V}}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dT}{dt}=\frac{I^{2}R}{c_{V}}
+\]
 
 \end_inset
 

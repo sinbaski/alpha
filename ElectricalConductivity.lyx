@@ -82,7 +82,7 @@
 \begin_body
 
 \begin_layout Title
-Eletrical Conductivity of a Random Mixture
+Electrical Conductivity of a Random Mixture
 \end_layout
 
 \begin_layout Author
@@ -240,7 +240,7 @@ It follows
 \begin_layout Standard
 \begin_inset Formula 
 \[
-R=\frac{\Delta x}{A}\left(\sum_{i=1}^{n}V_{i}\right)\left(\sum_{i=1}^{n}\rho_{i}V_{i}\right)^{-1}
+R=\frac{h}{A}\left(\sum_{i=1}^{n}V_{i}\right)\left(\sum_{i=1}^{n}\rho_{i}V_{i}\right)^{-1}
 \]
 
 \end_inset
@@ -270,10 +270,6 @@ where
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \end_body
