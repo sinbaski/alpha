@@ -16,7 +16,7 @@ shared_ptr<FILE> outfile;
 
 const double T0 = 2300;
 const double T1 = 3100;
-const double destruction_factor = 0.5/(T1 - T0);
+const double destruction_factor = -2*log(0.01)/(T1 - T0);
 
 enum StateVariable {
     Plastic, Graphene, CarbonBlack, n_ingredients,
@@ -33,7 +33,7 @@ const double resistivity[] = {
 
 const double density[] = {
     961.0, //HDPE: 970 kg/m^3
-    0.065 * 1.0e-3 * 1.0e+6, // graphene: 0.065 g/cc
+    2.3 * 1.0e-3 * 1.0e+6, // graphene: 2.3 g/cc
     1.79 * 1.0e-3 * 1.0e+6 // carbon black: 1.79 g/cc
 };
 
@@ -163,20 +163,18 @@ void print_statvar(double t, const array<double, n_statvar> &statvar)
 void simulate_pulse(const struct measurements &msmt, array<double, n_statvar> &statvar, double &t)
 {
     double ratio = msmt.height / (M_PI * gsl_pow_2(msmt.radius));
-    const double dt = 1.0e-3;
-    // double Q = statvar[ElectricCharge];
+    double dt = 1.0e-3;
+    double Q = statvar[ElectricCharge];
     
-    while (statvar[ElectricCharge]/msmt.capacity > 5.0) {
+    while (statvar[ElectricCharge]/Q > 0.01) {
 	print_statvar(t, statvar);
 	
-	double masses[n_ingredients], V[n_ingredients];
-	memcpy(masses, statvar.data(), sizeof(double) * (n_ingredients - 1));
-	masses[CarbonBlack] = msmt.Cmass;
-	
-	calc_volume_ratios(masses, V);
-	double R = ratio / calc_conductivity(masses, V);
-	t += dt;
         if (statvar[Temperature] < T0) {
+	    double masses[n_ingredients], V[n_ingredients];
+	    memcpy(masses, statvar.data(), sizeof(double) * (n_ingredients - 1));
+	    masses[CarbonBlack] = msmt.Cmass;
+	    calc_volume_ratios(masses, V);
+	    double R = ratio / calc_conductivity(masses, V);
 	    double I = statvar[ElectricCharge]/msmt.capacity/R;
 	    double dE = gsl_pow_2(I) * R * dt;
 	    double Cv = 0;
@@ -188,10 +186,28 @@ void simulate_pulse(const struct measurements &msmt, array<double, n_statvar> &s
         } else {
 	    array<double, n_statvar> deriv;
 	    calc_time_deriv(msmt, statvar, destruction_factor, deriv);
+	    auto statvar_old = statvar;
+	    bool negflag = false;
 	    for (size_t i = 0; i < n_statvar; i++) {
 		statvar[i] += deriv[i] * dt;
+		negflag = negflag || statvar[i] < 0;
+	    }
+	    if (statvar[Plastic] < 0 && statvar[ElectricCharge] > 0) {
+		dt = statvar_old[Plastic]/fabs(deriv[Plastic]);
+	    } else if (statvar[Plastic] > 0 && statvar[ElectricCharge] < 0) {
+		dt = statvar_old[ElectricCharge]/fabs(deriv[ElectricCharge]);
+	    } else if (statvar[Plastic] < 0 && statvar[ElectricCharge] < 0) {
+		double dt1 = statvar_old[Plastic]/fabs(deriv[Plastic]);
+		dt = statvar_old[ElectricCharge]/fabs(deriv[ElectricCharge]);
+		dt = min(dt, dt1);
+	    }
+	    if (negflag) {
+		for (size_t i = 0; i < n_statvar; i++) {
+		    statvar[i] = statvar_old[i] + deriv[i] * dt;
+		}
 	    }
         }
+	t += dt;
     }
 }
 
@@ -209,8 +225,8 @@ int main(int argc, char *argv[])
     struct measurements msmt = {
         .radius = NAN,
         .height = strtod(argv[3], NULL),
-        .V0 = 3400,
-        .capacity = 50e-2,
+        .V0 = 1000,
+        .capacity = 1,
         .Cmass = mc,
         .ambient_temperature = 273.15 + 25
     };
@@ -227,7 +243,13 @@ int main(int argc, char *argv[])
     state_var[ElectricCharge] = msmt.V0 * msmt.capacity;
 
     double t = 0;
-    simulate_pulse(msmt, state_var, t);
+    do {
+	simulate_pulse(msmt, state_var, t);
+	msmt.V0 = 220;
+	state_var[ElectricCharge] = msmt.capacity * msmt.V0;
+	t += 1.0;
+    } while (state_var[Plastic] / masses[Plastic] > 0.02);
+
     /* while (state_var[Plastic] / masses[Plastic] > 0.05) { */
     /* 	simulate_pulse(msmt, state_var); */
     /* } */
