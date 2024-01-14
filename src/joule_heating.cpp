@@ -14,7 +14,7 @@ using namespace std;
 
 shared_ptr<FILE> outfile;
 
-const double T0 = 2300;
+const double T0 = 1000;
 const double T1 = 3100;
 const double destruction_factor = -2*log(0.01)/(T1 - T0);
 
@@ -74,7 +74,6 @@ void calc_volume_ratios(const double *masses, double *V)
         V[i] = masses[i]/density[i];
         V_tot += V[i];
     }
-    #pragma omp parallel for
     for (size_t i = 0; i < n_ingredients; i++) {
         V[i] /= V_tot;
     }
@@ -213,29 +212,33 @@ void simulate_pulse(const struct measurements &msmt, array<double, n_statvar> &s
 
 int main(int argc, char *argv[])
 {
-    if (argc < 4) {
-        printf("Usage: jh.exe m_P r_C height\n");
+    if (argc < 3) {
+        printf("Usage: jh.exe m_P m_C\n");
         return 0;
     }
     double mp0 = strtod(argv[1], NULL);
-    double carbon_black_ratio = strtod(argv[2], NULL);
-    double mc = carbon_black_ratio * mp0;
+    double mc = strtod(argv[2], NULL);
     double init_vol = mp0/density[Plastic] + mc/density[CarbonBlack];
-    
+    double init_R = 6;
+
+    // The masses of plastic, graphene and carbon black
+    double masses[] = {mp0, 0, mc};
+    double V[n_ingredients];
+    calc_volume_ratios(masses, V);
+    double sigma = calc_conductivity(masses, V);
+
     struct measurements msmt = {
         .radius = NAN,
-        .height = strtod(argv[3], NULL),
-        .V0 = 1000,
-        .capacity = 1,
+        .height = NAN,
+        .V0 = 230,
+        .capacity = 60e-3,
         .Cmass = mc,
         .ambient_temperature = 273.15 + 25
     };
+
+    msmt.height = sqrt(init_R * init_vol * sigma);
     msmt.radius = sqrt(init_vol/msmt.height/M_PI);
-    // The masses of plastic, graphene and carbon black
-    double masses[] = {
-        mp0, 0, mp0 * carbon_black_ratio
-    };
-    
+
     array<double, n_statvar> state_var;
     state_var[Plastic] = masses[Plastic];
     state_var[Graphene] = masses[Graphene];
@@ -245,7 +248,6 @@ int main(int argc, char *argv[])
     double t = 0;
     do {
 	simulate_pulse(msmt, state_var, t);
-	msmt.V0 = 220;
 	state_var[ElectricCharge] = msmt.capacity * msmt.V0;
 	t += 1.0;
     } while (state_var[Plastic] / masses[Plastic] > 0.02);
