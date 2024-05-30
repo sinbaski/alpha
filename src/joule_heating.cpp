@@ -14,7 +14,8 @@ using namespace std;
 
 shared_ptr<FILE> outfile;
 
-const double T0 = 1000;
+const double ZERO_CELSIUS = 273.15;
+const double T0 = 1000 + ZERO_CELSIUS;
 const double T1 = 3100;
 const double destruction_factor = -2*log(0.01)/(T1 - T0);
 
@@ -233,7 +234,7 @@ int main(int argc, char *argv[])
         .V0 = 230,
         .capacity = 60e-3,
         .Cmass = mc,
-        .ambient_temperature = 273.15 + 25
+        .ambient_temperature = ZERO_CELSIUS + 25
     };
 
     msmt.height = sqrt(init_R * init_vol * sigma);
@@ -246,10 +247,12 @@ int main(int argc, char *argv[])
     state_var[ElectricCharge] = msmt.V0 * msmt.capacity;
 
     double t = 0;
+    size_t n_pulses = 0;
     do {
 	simulate_pulse(msmt, state_var, t);
 	state_var[ElectricCharge] = msmt.capacity * msmt.V0;
 	t += 1.0;
+	n_pulses++;
     } while (state_var[Plastic] / masses[Plastic] > 0.02);
 
     /* while (state_var[Plastic] / masses[Plastic] > 0.05) { */

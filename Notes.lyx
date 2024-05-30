@@ -1,0 +1,1561 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extbook
+\begin_preamble
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes on Mathematics & Statistics
+\end_layout
+
+\begin_layout Chapter
+Statistical Methods
+\end_layout
+
+\begin_layout Section
+The delta method
+\end_layout
+
+\begin_layout Standard
+Suppose that a sequence of random variables 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ satisfy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{n}\left(X_{n}-\theta\right)\overset{d}{\to}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+ and that function 
+\begin_inset Formula $g$
+\end_inset
+
+ is differentiable at 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with 
+\begin_inset Formula $g'(\theta)\neq0$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{n}\left(g(X_{n})-g(\theta)\right)\overset{d}{\to}N\left(0,\sigma^{2}g'^{2}(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Frechet Derivative
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a functional defined on the space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ of functions 
+\begin_inset Formula $f:V\to W$
+\end_inset
+
+,
+ where both 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $W$
+\end_inset
+
+ are equiped with a norm.
+ The Frechet derivative of 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ call it 
+\begin_inset Formula $\mathscr{D}A$
+\end_inset
+
+,
+ is a functional defined on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ that satisfies 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\|h\|\to0}\frac{\|A(f+h)-Af-(\mathscr{D}A)(h)\|}{\|h\|}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ an operator 
+\begin_inset Formula $A$
+\end_inset
+
+ that is Frechet differentiable at 
+\begin_inset Formula $f\in\Omega$
+\end_inset
+
+ can be approximated as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A(f+h)=A(f)+(\mathscr{D}A)h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Generalized delta method
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $F$
+\end_inset
+
+ is the distribution function of a random variable 
+\begin_inset Formula $Z$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is a real-valued functional on the space of probability distributions.
+ 
+\begin_inset Formula $\hat{F}_{R}$
+\end_inset
+
+ is the empirical distribution function defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{F}_{R}(dx)=\frac{1}{R}\sum_{i=1}^{R}\delta_{Z_{i}}(dx)
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $Z_{i}\sim Z$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the point-mass distribution at 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $\delta_{Z_{i}}(A)=1_{A}(Z_{i})$
+\end_inset
+
+.
+ It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{F}_{R}(x)=\frac{1}{R}\sum_{i=1}^{R}1_{(-\infty,x]}(Z_{i})
+\]
+
+\end_inset
+
+ It is known
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(\hat{F}_{R}\right)\overset{a.s.}{\to}\psi\left(F\right)
+\]
+
+\end_inset
+
+ as 
+\begin_inset Formula $R\to\infty$
+\end_inset
+
+.
+ Moreover,
+ we have the central limit theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{R}\left[\psi\left(\hat{F}_{R}\right)-\psi\left(F\right)\right]\overset{d}{\to}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ depends on the Frechet or Hadamard directional derivative of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ at 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ In other words,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(\hat{F}_{R}\right)\overset{d}{\approx}\psi\left(F\right)+Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $Y\sim N\left(0,\frac{\sigma^{2}}{R}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $R$
+\end_inset
+
+ large.
+ Now we divide the sample of size 
+\begin_inset Formula $R$
+\end_inset
+
+ into 
+\begin_inset Formula $N$
+\end_inset
+
+ sections,
+ each with 
+\begin_inset Formula $K$
+\end_inset
+
+ samples.
+ Then by the above argument
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(\hat{F}_{n,K}\right)\overset{d}{\approx}\psi(F)+\frac{\sigma}{\sqrt{K}}Y_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Y_{n}\sim N(0,1)$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{F}_{n,K}(dx)=\frac{1}{K}\sum_{i=(n-1)K+1}^{nK}\delta_{Z_{i}}(dx)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is the empirical distribution of the 
+\begin_inset Formula $n$
+\end_inset
+
+th section.
+ It follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{n=1}^{N}\psi\left(\hat{F}_{n,K}\right)\overset{d}{\approx}\psi(F)+\frac{\sigma}{\sqrt{K}}\frac{1}{N}\sum_{n=1}^{N}Y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi\left(\hat{F}_{R}\right)\approx\psi(F)+\left(\mathscr{D}\psi\right)(F)\left(\hat{F}_{R}-F\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\left(\mathscr{D}\psi\right)(F)$
+\end_inset
+
+ is the Frechet derivative of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ at 
+\begin_inset Formula $F$
+\end_inset
+
+,
+ we can write
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{n=1}^{N}\psi\left(\hat{F}_{n,K}\right)\overset{d}{\approx}\psi\left(\hat{F}_{R}\right)-\left(\mathscr{D}\psi\right)(F)\left(\hat{F}_{R}-F\right)+\frac{\sigma}{\sqrt{K}}\frac{1}{N}\sum_{n=1}^{N}Y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\psi\left(\hat{F}_{R}\right)-\frac{1}{N}\sum_{n=1}^{N}\psi\left(\hat{F}_{n,K}\right) & \overset{d}{\approx}\left(\mathscr{D}\psi\right)(F)\left(\hat{F}_{R}-F\right)-\frac{\sigma}{\sqrt{K}}\frac{1}{N}\sum_{n=1}^{N}Y_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Asmussen showed
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{N}\left[\psi\left(\hat{F}_{R}\right)-\psi\left(F\right)\right]\left\{ \frac{1}{N-1}\sum_{n=1}^{n}\left[\psi\left(\hat{F}_{n,K}\right)-\psi\left(\hat{F}_{R}\right)\right]^{2}\right\} ^{-1/2}\overset{d}{\to}t\left(N-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+that is,
+ the left hand side of the expression converges weakly to a Student t random variable with 
+\begin_inset Formula $N-1$
+\end_inset
+
+ degrees of freedom.
+ This allows us to establish a confidence interval about the estimate 
+\begin_inset Formula $\psi\left(\hat{F}_{R}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Jackknife
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $Z\sim F$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $z=\mathbb{E}Z$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\hat{F}_{R}$
+\end_inset
+
+ is the empirical distribution function of 
+\begin_inset Formula $R$
+\end_inset
+
+ replicates that corresponds to 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{z}_{R}=\frac{1}{R}\sum_{i=1}^{R}z_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $z_{i}\sim F$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $f$
+\end_inset
+
+ be a smooth function.
+ It is known
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}f\left(\hat{z}_{R}\right)=f\left(\mathbb{E}Z\right)+\frac{c}{R}+\frac{\beta}{R^{2}}+o\left(R^{-2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+R\mathbb{E}f\left(\hat{z}_{R}\right) & =Rf\left(\mathbb{E}Z\right)+c+\frac{\beta}{R}+o\left(R^{-1}\right)\\
+(R-1)\mathbb{E}f\left(\hat{z}_{R-1}\right) & =(R-1)f\left(\mathbb{E}Z\right)+c+\frac{\beta}{R-1}+o\left(R^{-1}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[Rf\left(\hat{z}_{R}\right)-(R-1)f\left(\hat{z}_{R-1}\right)\right] & =f\left(\mathbb{E}Z\right)+\left(\frac{1}{R}-\frac{1}{R-1}\right)\beta+o\left(R^{-2}\right)\\
+ & =f\left(\mathbb{E}Z\right)-\frac{\beta}{R(R-1)}+o\left(R^{-2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{J}_{n}=Rf\left(\hat{z}_{R}\right)-\left(R-1\right)f\left(\frac{1}{R-1}\sum_{i=1}^{R}z_{i}1_{\{i\neq n\}}\right)
+\]
+
+\end_inset
+
+ Then we can define the jackknife estimator as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{R}\sum_{n=1}^{R}\hat{J}_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This estimator has a bias of order 
+\begin_inset Formula $O\left(R^{-2}\right)$
+\end_inset
+
+ instead of the bias of 
+\begin_inset Formula $O\left(R^{-1}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $f\left(\hat{z}_{R}\right)$
+\end_inset
+
+.
+ Moreover,
+ the sample variance of the jackknife estimator is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{R-1}\sum_{n=1}^{R}\left(\hat{J}_{n}-\frac{1}{R}\sum_{i=1}^{R}\hat{J}_{i}\right)^{2}\to f'^{2}\left(\mathbb{E}Z\right)\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\sigma^{2}=var(Z)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Bootstrap
+\end_layout
+
+\begin_layout Subsection
+Bootstrap with linear regression
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\{(x_{i},y_{i})\}_{i=1,2,\dots,n}$
+\end_inset
+
+ is a sample of the model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y=\sum_{i=1}^{p}X_{i}\beta_{i}+\epsilon
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can write these 
+\begin_inset Formula $n$
+\end_inset
+
+ samples in matrix form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{pmatrix}y_{1}\\
+y_{2}\\
+\vdots\\
+y_{n}
+\end{pmatrix}=\begin{pmatrix}x_{11} & x_{12} & \cdots & x_{1p}\\
+x_{21} & x_{22} & \cdots & x_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n1} & x_{n2} & \cdots & x_{np}
+\end{pmatrix}\begin{pmatrix}\beta_{1}\\
+\beta_{2}\\
+\vdots\\
+\beta_{p}
+\end{pmatrix}+\begin{pmatrix}\epsilon_{1}\\
+\epsilon_{2}\\
+\vdots\\
+\epsilon_{n}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The OLS estimator of 
+\begin_inset Formula $\vec{\beta}$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\hat{\beta} & =\left(X^{\top}X\right)^{-1}X^{\top}Y
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is understood that 
+\begin_inset Formula $\mathbb{E}\hat{\beta}=\vec{\beta}$
+\end_inset
+
+,
+ i.e.
+ the estimator 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+ is unbiased.
+\end_layout
+
+\begin_layout Chapter
+Results of large random matrices
+\end_layout
+
+\begin_layout Section
+The eigenvalues of the sample covariance matrix of a heavy-tailed stochastic volatility model
+\end_layout
+
+\begin_layout Standard
+Consider the mode
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{it}=\sigma_{it}Z_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $(Z_{it})$
+\end_inset
+
+ is an iid field independent of a strictly stationary ergodic field 
+\begin_inset Formula $(\sigma_{i,t})$
+\end_inset
+
+ of non-negative random variables.
+ Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{X_{t}}=\begin{pmatrix}X_{1t}\\
+X_{2t}\\
+\vdots\\
+X_{pt}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $t\in\mathbb{Z}$
+\end_inset
+
+ for a given dimension 
+\begin_inset Formula $p\geq1$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $n>1$
+\end_inset
+
+,
+ we write 
+\begin_inset Formula $\boldsymbol{X}^{n}\in\mathbb{R}^{p\times n}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{X}^{n}=\begin{pmatrix}X_{11} & X_{12} & \cdots & X_{1n}\\
+X_{21} & X_{22} & \cdots & X_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+X_{p1} & X_{p2} & \cdots & X_{pn}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the non-normalized sample covariance matrices
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{S}=\boldsymbol{X}^{n}\boldsymbol{X}^{n\top}=\begin{pmatrix}S_{11} & S_{12} & \cdots & S_{1p}\\
+S_{21} & S_{22} & \cdots & S_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+S_{p1} & S_{p2} & \cdots & S_{pp}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{ij}=\sum_{t=1}^{n}X_{it}X_{jt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $S_{i}=S_{ii}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+When 
+\begin_inset Formula $Z$
+\end_inset
+
+ dominates the tail 
+\end_layout
+
+\begin_layout Standard
+Assume the following conditions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(Z>x\right) & \sim p_{+}\frac{L(x)}{x^{\alpha}}\\
+\mathbb{P}\left(Z<-x\right) & \sim p_{-}\frac{L(x)}{x^{\alpha}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as 
+\begin_inset Formula $x\to\infty$
+\end_inset
+
+.
+ That is,
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ has regularly varying tails with index 
+\begin_inset Formula $\alpha\in(0,4)\backslash\{2\}$
+\end_inset
+
+.
+ Moreover 
+\begin_inset Formula $p_{+}+p_{-}=1$
+\end_inset
+
+.
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+ is a slowly varying functions,
+ i.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{x\to\infty}\frac{L(ax)}{L(x)}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathbb{E}\left(\sigma^{\alpha+\delta}\right)<\infty$
+\end_inset
+
+ for some 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+.
+ Note that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\sigma Z>x\right) & \sim\mathbb{E}(\sigma^{\alpha})\mathbb{P}(Z>x)\\
+\mathbb{P}(\sigma Z<-x) & \sim\mathbb{E}(\sigma^{\alpha})\mathbb{P}(Z<-x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as 
+\begin_inset Formula $x\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{n}^{-2}\|\boldsymbol{X}^{n}\boldsymbol{X}^{n\top}-\text{diag}\left(\boldsymbol{X}^{n}\boldsymbol{X}^{n\top}\right)\|_{2}\overset{\mathbb{P}}{\to}0
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\|\cdot\|_{2}$
+\end_inset
+
+ denotes the spectral norm of a matrix,
+ i.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\|A\|_{2}=\sqrt{\lambda_{\max}\left(AA^{*}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is the conjugate transform of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+Results of Stochastic Calculus
+\end_layout
+
+\begin_layout Section
+Dynkin's formula
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f\in C_{0}^{2}\left(\boldsymbol{R}^{n}\right)$
+\end_inset
+
+,
+ i.e.
+ a function with compact support on 
+\begin_inset Formula $\boldsymbol{R}^{n}$
+\end_inset
+
+ and with continuous 2nd derivative.
+ Let 
+\begin_inset Formula $X_{t}\in\boldsymbol{R}^{n}$
+\end_inset
+
+ be an Ito diffusion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=b(X_{t})dt+\sigma(X_{t})dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then the infinitesimal generator of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+,
+ call it 
+\begin_inset Formula $\mathscr{A}$
+\end_inset
+
+,
+ is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathscr{A}f(\vec{x})=\sum_{i=1}^{n}b_{i}\frac{\partial f}{\partial x_{i}}+\frac{1}{2}\sum_{i,j=1}^{n}(\sigma\sigma^{\top})_{i,j}\frac{\partial^{2}f}{\partial x_{i}\partial x_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\vec{x}=(x_{1},x_{2},\dots,x_{n})^{\top}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Komogorov's backward equation
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f\in C_{0}^{2}\left(\boldsymbol{R}^{n}\right)$
+\end_inset
+
+ and define,
+ for 
+\begin_inset Formula $x\in\boldsymbol{R}^{n}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(t,x)=\mathbb{E}^{x}\left[f\left(X_{t}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial u}{\partial t} & =\mathscr{A}u\\
+u(0,x) & =f(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=b(X_{t})dt+\sigma(X_{t})dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\mathscr{A}$
+\end_inset
+
+ is the generator of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The resolvant operator
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $g\in C_{b}\left(\boldsymbol{R}^{n}\right)$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $g$
+\end_inset
+
+ is a continuous,
+ bounded function on 
+\begin_inset Formula $\boldsymbol{R^{n}}$
+\end_inset
+
+.
+ Define,
+ for 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathscr{R}_{\alpha}g(x)=\mathbb{E}^{x}\left[\intop_{0}^{\infty}e^{-\alpha t}g(X_{t})dt\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then 
+\begin_inset Formula $\mathscr{R}_{\alpha}g(x)$
+\end_inset
+
+ is a bounded continuous function and 
+\begin_inset Formula $\mathscr{R}_{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha-A$
+\end_inset
+
+ are inverse operators,
+ i.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $f\in C_{0}^{2}(\boldsymbol{R}^{n})$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\mathscr{A}f\in C_{b}(\boldsymbol{R}^{n})$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathscr{R}_{\alpha}\left(\alpha-\mathscr{A}\right)f=f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for all 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $g\in C_{b}(\boldsymbol{R}^{n})$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\mathscr{R}_{\alpha}g\in\mathcal{D}_{\mathscr{A}}$
+\end_inset
+
+,
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\alpha-\mathscr{A}\right)\mathscr{R}_{\alpha}g=g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for all 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Feynman-Kac formula
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f\in C_{0}^{2}(\boldsymbol{R}^{n})$
+\end_inset
+
+ and 
+\begin_inset Formula $q\in C(\boldsymbol{R}^{n})$
+\end_inset
+
+.
+ Assume that 
+\begin_inset Formula $q$
+\end_inset
+
+ is lower bounded.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v(t,x)=\mathbb{E}^{x}\left\{ \exp\left[-\intop_{0}^{t}q(X_{s})\right]f(X_{t})\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial v}{\partial t} & =\mathscr{A}v-qv\\
+v(0,x) & =f(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Moreover,
+ if 
+\begin_inset Formula $w(t,\vec{x})\in C^{1,2}\left(\boldsymbol{R}\times\boldsymbol{R}^{n}\right)$
+\end_inset
+
+ is bounded on 
+\begin_inset Formula $K\times\boldsymbol{R}^{n}$
+\end_inset
+
+ for each compact 
+\begin_inset Formula $K\subset\boldsymbol{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $w$
+\end_inset
+
+ solves the above PDE with the boundary condition,
+ then 
+\begin_inset Formula $w=v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
