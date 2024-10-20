@@ -1108,6 +1108,303 @@ Results of Stochastic Calculus
 \end_layout
 
 \begin_layout Section
+Local Martingales
+\end_layout
+
+\begin_layout Standard
+An 
+\begin_inset Formula $\mathbb{\mathcal{N}}_{t}$
+\end_inset
+
+-adapted stochastic process 
+\begin_inset Formula $Z_{t}\in\boldsymbol{R}^{n}$
+\end_inset
+
+ is called a local martingale if there exists an increasing sequence of 
+\begin_inset Formula $\mathcal{N}_{t}$
+\end_inset
+
+-stopping times 
+\begin_inset Formula $\tau_{k}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\tau_{k}\to\infty\;a.s.\text{ as }k\to\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $Z_{t\wedge\tau_{k}}$
+\end_inset
+
+ is an 
+\begin_inset Formula $\mathcal{N}_{t}$
+\end_inset
+
+-martingale for all 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+lower-bounded local martingale
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ is a lower-bounded local martingale,
+ then 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ is a super-martingale.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Proof:
+\end_layout
+
+\begin_layout Standard
+We need to show
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathbb{E}\left(\left|Z_{t}\right|\right)<\infty$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathbb{E}\left(Z_{t}|\mathcal{F}_{s}\right)\leq Z_{s}$
+\end_inset
+
+ for all 
+\begin_inset Formula $s\leq t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\tau_{k}\to\infty$
+\end_inset
+
+ almost surely as 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+,
+ for any given 
+\begin_inset Formula $t<\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\exists k$
+\end_inset
+
+ such that 
+\begin_inset Formula $\tau_{k}\geq t$
+\end_inset
+
+.
+ Therefore,
+\begin_inset Formula 
+\[
+Z_{t}=Z_{t\wedge\tau_{k}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and hence
+\begin_inset Formula 
+\[
+\mathbb{E}\left|Z_{t}\right|=\mathbb{E}\left|Z_{t\wedge\tau_{k}}\right|<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the inequality is due to the fact that 
+\begin_inset Formula $Z_{t\wedge\tau_{k}}$
+\end_inset
+
+ is a martingale,
+ implying 
+\begin_inset Formula $\mathbb{E}\left|Z_{t\wedge\tau_{k}}\right|<\infty$
+\end_inset
+
+.
+ Next we will show
+\begin_inset Formula 
+\[
+\mathbb{E}\left|\lim_{t\to\infty}Z_{t}\right|<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\tau_{k}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+Z_{t}(\omega)=\lim_{k\to\infty}Z_{t\wedge\tau_{k}}(\omega)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for almost all 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+.
+ Observe
+\begin_inset Formula 
+\[
+\left|Z_{t\wedge\tau_{k}}\right|=Z_{t\wedge\tau_{k}}^{+}+Z_{t\wedge\tau_{k}}^{-}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Z_{t}^{+}=\max\{Z_{t},0\}$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{t}^{-}=\max\{-Z_{t},0\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align*}
+\left(\mathbb{E}\left|Z_{t\wedge\tau_{k}}\right|^{p}\right)^{1/p} & \leq\left(\mathbb{E}\left|Z_{t\wedge\tau_{k}}^{+}\right|^{p}\right)^{1/p}+\left(\mathbb{E}\left|Z_{t\wedge\tau_{k}}^{-}\right|^{p}\right)^{1/p}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Markov inequality,
+\begin_inset Formula 
+\[
+\mathbb{P}\left(Z_{t\wedge\tau_{k}}^{+}\geq a\right)\leq\frac{\mathbb{E}Z_{t\wedge\tau_{k}}^{+}}{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Dynkin's formula
 \end_layout
 
@@ -1992,6 +2289,80 @@ end{enumerate}
 \end_layout
 
 \begin_layout Section
+Random time change
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be an Ito diffusion given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=b(X_{t})dt+\sigma(X_{t})dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and let
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ be a stochastic process given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dY_{t}=u(t,\omega)dt+v(t,\omega)dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $u(t,\omega)=c(t,\omega)b(Y_{t})$
+\end_inset
+
+ and 
+\begin_inset Formula $vv^{\top}(t,\omega)=c(t,\omega)\sigma\sigma^{\top}(Y_{t})$
+\end_inset
+
+,
+ then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{\alpha(t)}\overset{d}{=}X_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\alpha(t)=\inf\left\{ \tau>0:\intop_{0}^{\tau}c(s,\omega)ds>t\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Girsanov theorem
 \end_layout
 
@@ -2862,7 +3233,7 @@ with
  given by 
 \begin_inset Formula 
 \begin{align*}
-\sigma S_{t}^{\gamma}u_{t} & =\rho_{t}S_{t}-\mu S_{t}\\
+\sigma S_{t}^{\gamma}u_{t} & =\mu S_{t}-\rho_{t}S_{t}\\
 u_{t} & =\frac{\mu}{\sigma}S_{t}^{1-\gamma}-\frac{\rho_{t}S_{t}^{1-\gamma}}{\sigma}
 \end{align*}
 
@@ -2979,6 +3350,226 @@ Therefore
 \[
 \frac{\partial u}{\partial t}=xy\frac{\partial u}{\partial x}-\kappa\left(y-\overline{\rho}\right)\frac{\partial u}{\partial y}+\frac{1}{2}\left(\sigma^{2}x^{2\gamma}\frac{\partial^{2}u}{\partial x^{2}}+\theta^{2}y\frac{\partial^{2}u}{\partial y^{2}}\right)
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Interest Rate Swap
+\end_layout
+
+\begin_layout Standard
+The floating leg of the IRS pays LIBOR rate 
+\begin_inset Formula $L\left(T_{i-1},T_{i}\right)$
+\end_inset
+
+ at time 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ which resets at time 
+\begin_inset Formula $T_{i-1}$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,2,3,\dots,N$
+\end_inset
+
+.
+ The fixed leg of the IRS pays a fixed rate 
+\begin_inset Formula $K$
+\end_inset
+
+ on the same dates for the same durations.
+\end_layout
+
+\begin_layout Standard
+Let the present time be 0.
+ Then the present value of the cashflow on the floating leg is
+\begin_inset Formula 
+\[
+\mathbb{E}\sum_{i=1}^{N}D\left(0,T_{i}\right)\left(T_{i}-T_{i-1}\right)L\left(T_{i-1},T_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+D\left(a,b\right)=\exp\left(-\intop_{a}^{b}r_{s}ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $r_{s}$
+\end_inset
+
+ is the short rate at time 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ Let
+\begin_inset Formula 
+\[
+P(a,b)=\mathbb{E}\left[\exp\left(-\intop_{a}^{b}r_{s}ds\right)|\mathcal{F}_{a}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+be the price of a zero-coupon bond at time 
+\begin_inset Formula $a$
+\end_inset
+
+ that matures at time 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ The present value of the cahsflow on the fixed leg is
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\sum_{i=1}^{N}D\left(0,T_{i}\right)\left(T_{i}-T_{i-1}\right)K\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equating the present values of the two cashflows,
+ we get
+\begin_inset Formula 
+\[
+\mathbb{E}\sum_{i=1}^{N}D\left(0,T_{i}\right)\left(T_{i}-T_{i-1}\right)L\left(T_{i-1},T_{i}\right)=\mathbb{E}\sum_{i=1}^{N}D\left(0,T_{i}\right)\left(T_{i}-T_{i-1}\right)K
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The LHS is
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}\left\{ \sum_{i=1}^{N}\mathbb{E}\left[\exp\left(-\intop_{0}^{T_{i}}r_{s}ds\right)\left(T_{i}-T_{i-1}\right)L\left(T_{i-1},T_{i}\right)|\mathcal{F}_{T_{i-1}}\right]\right\} \\
+= & \mathbb{E}\left\{ \sum_{i=1}^{N}\left(T_{i}-T_{i-1}\right)\exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)L\left(T_{i-1},T_{i}\right)\mathbb{E}\left[\exp\left(-\intop_{T_{i-1}}^{T_{i}}r_{s}ds\right)|\mathcal{F}_{T_{i-1}}\right]\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Recall
+\begin_inset Formula 
+\[
+L\left(T_{i-1},T_{i}\right)=\frac{1}{T_{i}-T_{i-1}}\left[\frac{1-P(T_{i-1},T_{i})}{P(T_{i-1},T_{i})}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Hence the LHS is equal to
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}\left\{ \sum_{i=1}^{N}\exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)\frac{1-P(T_{i-1},T_{i})}{P(T_{i-1},T_{i})}P\left(T_{i-1},T_{i}\right)\right\} \\
+= & \mathbb{E}\left\{ \sum_{i=1}^{N}\exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)\left[1-P(T_{i-1},T_{i})\right]\right\} \\
+= & \sum_{i=1}^{N}\mathbb{E}\exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)-\sum_{i=1}^{N}\mathbb{E}\left[\exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)P(T_{i-1},T_{i})\right]\\
+= & \sum_{i=1}^{N}P\left(0,T_{i-1}\right)-\sum_{i=1}^{N}\mathbb{E}\left\{ \exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)\cdot\mathbb{E}\left[\exp\left(-\intop_{T_{i-1}}^{T_{i}}r_{s}ds\right)|\mathcal{F}_{T_{i-1}}\right]\right\} \\
+= & \sum_{i=1}^{N}P\left(0,T_{i-1}\right)-\sum_{i=1}^{N}\mathbb{E}\left\{ \exp\left(-\intop_{0}^{T_{i-1}}r_{s}ds\right)\cdot\exp\left(-\intop_{T_{i-1}}^{T_{i}}r_{s}ds\right)\right\} \\
+= & \sum_{i=1}^{N}P\left(0,T_{i-1}\right)-\sum_{i=1}^{N}\mathbb{E}\left\{ \exp\left(-\intop_{0}^{T_{i}}r_{s}ds\right)\right\} \\
+= & \sum_{i=1}^{N}P\left(0,T_{i-1}\right)-\sum_{i=1}^{N}P\left(0,T_{i}\right)\\
+= & P\left(0,T_{0}\right)-P\left(0,T_{N}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Meanwhile,
+ the RHS is
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}\left[\sum_{i=1}^{N}D\left(0,T_{i}\right)\left(T_{i}-T_{i-1}\right)K\right]\\
+= & \sum_{i=1}^{N}\left(T_{i}-T_{i-1}\right)KP\left(0,T_{i}\right)\\
+= & K\sum_{i=1}^{N}\left(T_{i}-T_{i-1}\right)P\left(0,T_{i}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Equating the two sides,
+ we get
+\begin_inset Formula 
+\[
+K=\left[\sum_{i=1}^{N}\left(T_{i}-T_{i-1}\right)P\left(0,T_{i}\right)\right]^{-1}\left[P\left(0,T_{0}\right)-P\left(0,T_{N}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $N=1$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+K=\frac{P\left(0,T_{0}\right)-P\left(0,T_{1}\right)}{\left(T_{1}-T_{0}\right)P\left(0,T_{1}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{P(a,b)}-1 & =L(a,b)(b-a)\\
+P(a,b) & =\frac{1}{(b-a)L(a,b)+1}
+\end{align*}
 
 \end_inset
 
@@ -3523,10 +4114,10 @@ Therefore
 \begin_layout Standard
 So we can write
 \begin_inset Formula 
-\begin{align*}
-\intop_{0}^{t}I_{A,s}ds & =f\left(\overline{I}_{A},I_{A,0},\beta_{A},\eta_{A},t\right)-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}\\
- & =f_{A,t}-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}
-\end{align*}
+\begin{align}
+\intop_{0}^{t}I_{A,s}ds & =f\left(\overline{I}_{A},I_{A,0},\beta_{A},\eta_{A},t\right)-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}\nonumber \\
+ & =f_{A,t}-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}\label{eq:inflation-1}
+\end{align}
 
 \end_inset
 
@@ -3536,10 +4127,10 @@ So we can write
 \begin_layout Standard
 where
 \begin_inset Formula 
-\begin{align*}
-Z_{A,t} & =\intop_{0}^{t}\left[e^{\beta_{A}(s-t)}-1\right]dB_{A,s}\\
-f_{A,t} & =-\frac{\left(\overline{I}_{A}-I_{A,0}\right)\left(1-e^{-\beta_{A}t}\right)}{\beta_{A}}+\overline{I}_{A}t
-\end{align*}
+\begin{align}
+Z_{A,t} & =\intop_{0}^{t}\left[e^{\beta_{A}(s-t)}-1\right]dB_{A,s}\label{eq:inflation-2}\\
+f_{A,t} & =-\frac{\left(\overline{I}_{A}-I_{A,0}\right)\left(1-e^{-\beta_{A}t}\right)}{\beta_{A}}+\overline{I}_{A}t\label{eq:inflation-3}
+\end{align}
 
 \end_inset
 
@@ -3795,6 +4386,305 @@ reference "eq:hy6hj67"
  & +\intop_{0}^{T}\left\{ \frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}e^{\theta(t-T)}-\frac{\eta_{A}\rho_{A}}{\beta_{A}-\beta_{A}^{2}/\theta}\left[\frac{\beta_{A}}{\theta}\left(1-e^{-\theta(T-t)}\right)-\left(1-e^{-\beta_{A}(T-t)}\right)\right]\right\} dW_{A,t}\\
  & -\intop_{0}^{T}\left\{ \frac{\kappa\sigma_{B}}{\theta-\alpha_{B}}e^{\theta(t-T)}-\frac{\eta_{B}\rho_{B}}{\beta_{B}-\beta_{B}^{2}/\theta}\left[\frac{\beta_{B}}{\theta}\left(1-e^{-\theta(T-t)}\right)-\left(1-e^{-\beta_{B}(T-t)}\right)\right]\right\} dW_{B,t}\\
  & +\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calibrating Inflation parameters to Consumer Prices Index
+\end_layout
+
+\begin_layout Standard
+Suppose the index follows
+\begin_inset Formula 
+\[
+P_{t}=P_{0}\exp\left(\intop_{0}^{t}I_{s}ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ being an OU process:
+\begin_inset Formula 
+\[
+dI_{t}=-\beta\left(I_{t}-\overline{I}\right)dt+\eta dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\[
+\ln P_{(n+1)\Delta t}-\ln P_{n\Delta t}=\intop_{n\Delta t}^{(n+1)\Delta t}I_{s}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ is small so that we can approximate 
+\begin_inset Formula $\intop_{n\Delta t}^{(n+1)\Delta t}I_{s}ds$
+\end_inset
+
+ as 
+\begin_inset Formula $I_{n\Delta t}\Delta t$
+\end_inset
+
+.
+ Thus we have
+\begin_inset Formula 
+\[
+\frac{\ln P_{(n+1)\Delta t}-\ln P_{n\Delta t}}{\Delta t}=I_{n\Delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimating the correlation between short rate & inflation rate
+\end_layout
+
+\begin_layout Standard
+We have assumed
+\begin_inset Formula 
+\begin{align*}
+dr_{t} & =-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma dW_{t}\\
+dI_{t} & =-\beta\left(I_{t}-\overline{I}\right)dt++\eta dB_{t}\\
+dW_{t}dB_{t} & =\rho dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following the same steps that leads to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:inflation-1"
+
+\end_inset
+
+) to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:inflation-3"
+
+\end_inset
+
+),
+ we obtain
+\begin_inset Formula 
+\[
+\intop_{0}^{t}r_{t}dt=f\left(t,\overline{r},r_{0},\alpha\right)-\frac{\sigma}{\alpha}Z_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+f\left(t,\overline{r},r_{0},\alpha\right) & =\frac{\left(r_{0}-\overline{r}\right)\left(1-e^{-\alpha t}\right)}{\alpha}+\overline{r}t\\
+Z_{t} & =\intop_{0}^{t}\left[e^{\alpha(s-t)}-1\right]dW_{s}
+\end{align*}
+
+\end_inset
+
+ It follows
+\begin_inset Formula 
+\begin{align*}
+\intop_{n\Delta t}^{(n+1)\Delta t}r_{t}dt & =\intop_{0}^{(n+1)\Delta t}r_{t}dt-\intop_{0}^{n\Delta t}r_{t}dt\\
+ & =\frac{\left(r_{0}-\overline{r}\right)\left(-e^{-\alpha(n+1)\Delta t}+e^{-\alpha n\Delta t}\right)}{\alpha}+\overline{r}\Delta t-\frac{\sigma}{\alpha}\left(Z_{(n+1)\Delta t}-Z_{n\Delta t}\right)\\
+ & =\frac{\left(r_{0}-\overline{r}\right)\left(e^{-\alpha n\Delta t}-e^{-\alpha(n+1)\Delta t}\right)}{\alpha}+\overline{r}\Delta t\\
+ & -\frac{\sigma}{\alpha}\left[\intop_{0}^{(n+1)\Delta t}\left(e^{\alpha s-\alpha(n+1)\Delta t}-1\right)dW_{s}-\intop_{0}^{n\Delta t}\left(e^{\alpha s-\alpha n\Delta t}-1\right)dW_{s}\right]\\
+ & =\frac{\left(r_{0}-\overline{r}\right)\left(e^{-\alpha n\Delta t}-e^{-\alpha(n+1)\Delta t}\right)}{\alpha}+\overline{r}\Delta t\\
+ & -\frac{\sigma}{\alpha}\left\{ \intop_{0}^{n\Delta t}e^{\alpha(s-n\Delta t)}\left(e^{-\alpha\Delta t}-1\right)dW_{s}+\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{\alpha\left(s-(n+1)\Delta t\right)}-1\right]dW_{s}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\begin_inset Formula 
+\begin{align*}
+\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt & =\frac{\left(I_{0}-\overline{I}\right)\left(e^{-\beta n\Delta t}-e^{-\beta(n+1)\Delta t}\right)}{\beta}+\overline{I}\Delta t\\
+ & -\frac{\eta}{\beta}\left\{ \intop_{0}^{n\Delta t}e^{\beta(s-n\Delta t)}\left(e^{-\beta\Delta t}-1\right)dB_{s}+\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{\beta\left(s-(n+1)\Delta t\right)}-1\right]dB_{s}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now write 
+\begin_inset Formula $dB_{t}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+dB_{t}=\rho dW_{t}+\sqrt{1-\rho^{2}}dW'_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $W_{t}\perp W'_{t}$
+\end_inset
+
+.
+ Then we have
+\begin_inset Formula 
+\begin{align*}
+\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt & =\frac{\left(I_{0}-\overline{I}\right)\left(e^{-\beta n\Delta t}-e^{-\beta(n+1)\Delta t}\right)}{\beta}+\overline{I}\Delta t\\
+ & -\frac{\eta}{\beta}\left\{ \intop_{0}^{n\Delta t}e^{\beta(s-n\Delta t)}\left(e^{-\beta\Delta t}-1\right)\rho dW_{s}+\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{\beta\left(s-(n+1)\Delta t\right)}-1\right]\rho dW_{s}\right\} \\
+ & -\frac{\eta}{\beta}\left\{ \intop_{0}^{n\Delta t}e^{\beta(s-n\Delta t)}\left(e^{-\beta\Delta t}-1\right)\sqrt{1-\rho^{2}}dW'_{s}+\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{\beta\left(s-(n+1)\Delta t\right)}-1\right]\sqrt{1-\rho^{2}}dW'_{s}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\text{} & \mathbb{E}\left[\left(\intop_{n\Delta t}^{(n+1)\Delta t}r_{t}dt\right)\left(\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt\right)\right]-\mathbb{E}\left(\intop_{n\Delta t}^{(n+1)\Delta t}r_{t}dt\right)\mathbb{E}\left(\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt\right)\\
+= & \frac{\sigma\eta}{\alpha\beta}\intop_{0}^{n\Delta t}e^{\alpha(s-n\Delta t)}\left(e^{-\alpha\Delta t}-1\right)e^{\beta(s-n\Delta t)}\left(e^{-\beta\Delta t}-1\right)\rho ds\\
+ & +\frac{\sigma\eta}{\alpha\beta}\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{\alpha\left(s-(n+1)\Delta t\right)}-1\right]\left[e^{\beta\left(s-(n+1)\Delta t\right)}-1\right]\rho ds
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+\begin_inset Formula 
+\begin{align*}
+ & \text{cov}\left[\intop_{n\Delta t}^{(n+1)\Delta t}r_{t}dt,\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt\right]\\
+= & \frac{\sigma\eta}{\alpha\beta}\intop_{0}^{n\Delta t}e^{(\alpha+\beta)(s-n\Delta t)}\left(e^{-(\alpha+\beta)\Delta t}-e^{-\alpha\Delta t}-e^{-\beta\Delta t}+1\right)\rho ds\\
+ & +\frac{\sigma\eta}{\alpha\beta}\intop_{n\Delta t}^{(n+1)\Delta t}\left[e^{(\alpha+\beta)(s-(n+1)\Delta t)}-e^{\alpha\left(s-(n+1)\Delta t\right)}-e^{\beta\left(s-(n+1)\Delta t\right)}+1\right]\rho ds\\
+= & \frac{\sigma\eta}{\alpha\beta}\rho\left(e^{-(\alpha+\beta)\Delta t}-e^{-\alpha\Delta t}-e^{-\beta\Delta t}+1\right)e^{-(\alpha+\beta)n\Delta t}\frac{e^{(\alpha+\beta)n\Delta t}-1}{\alpha+\beta}\\
+ & +\frac{\sigma\eta}{\alpha\beta}\rho\frac{e^{-(\alpha+\beta)(n+1)\Delta t}}{\alpha+\beta}e^{(\alpha+\beta)n\Delta t}\left(e^{(\alpha+\beta)\Delta t}-1\right)\\
+ & -\frac{\sigma\eta}{\alpha\beta}\rho e^{-\alpha(n+1)\Delta t}\frac{e^{\alpha n\Delta t}\left(e^{\alpha\Delta t}-1\right)}{\alpha}-\frac{\sigma\eta}{\alpha\beta}\rho e^{-\beta(n+1)\Delta t}\frac{e^{\beta n\Delta t}\left(e^{\beta\Delta t}-1\right)}{\beta}\\
+ & +\frac{\sigma\eta}{\alpha\beta}\rho\Delta t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simplifying the expression,
+ we get
+\begin_inset Formula 
+\begin{align*}
+ & \text{cov}\left[\intop_{n\Delta t}^{(n+1)\Delta t}r_{t}dt,\intop_{n\Delta t}^{(n+1)\Delta t}I_{t}dt\right]\\
+= & \frac{\rho}{\alpha+\beta}\frac{\sigma\eta}{\alpha\beta}\left[e^{-(\alpha+\beta)\Delta t}-e^{-\alpha\Delta t}-e^{-\beta\Delta t}+1\right]\left[1-e^{-(\alpha+\beta)n\Delta t}\right]\\
+ & +\rho\frac{\sigma\eta}{\alpha\beta}\left[\frac{1-e^{-(\alpha+\beta)\Delta t}}{\alpha+\beta}-\frac{1-e^{-\alpha\Delta t}}{\alpha}-\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This expression allows us to estimate 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Correlated stocks
+\end_layout
+
+\begin_layout Standard
+Suppose a group of stocks are modeled by
+\begin_inset Formula 
+\[
+\begin{bmatrix}dX_{1,t}\\
+dX_{2,t}\\
+\vdots\\
+dX_{n,t}
+\end{bmatrix}=\begin{bmatrix}\mu_{1}X_{1,t}dt\\
+\mu_{2}X_{2,t}dt\\
+\vdots\\
+\mu_{n}X_{n,t}dt
+\end{bmatrix}+\begin{bmatrix}a_{11}X_{1,t} & a_{12}X_{1,t} & \cdots & a_{1n}X_{1,t}\\
+a_{21}X_{2,t} & a_{22}X_{2,t} & \cdots & a_{2n}X_{2,t}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1}X_{n,t} & a_{n2}X_{n,t} & \cdots & a_{nn}X_{n,t}
+\end{bmatrix}\begin{bmatrix}dB_{1,t}\\
+dB_{2,t}\\
+\vdots\\
+dB_{n,t}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $dB_{i,t}dB_{j,t}=\delta_{i,j}dt$
+\end_inset
+
+.
+ Suppose we construct a admissible self-financing portfolio 
+\begin_inset Formula $\left(\theta_{1,t},\cdots\theta_{n,t}\right)$
+\end_inset
+
+.
+ The value process of the portfolio is
+\begin_inset Formula 
+\begin{align*}
+dV_{t} & =\sum_{i=1}^{n}\theta_{i,t}dX_{i,t}\\
+ & =\sum_{i=1}^{n}\theta_{i,t}\left(\mu_{i}X_{i,t}dt+X_{i,t}\sum_{j=1}^{n}a_{ij}dB_{j,t}\right)\\
+ & =\sum_{i=1}^{n}\theta_{i,t}\mu_{i}X_{i,t}dt+\sum_{j=1}^{n}\sigma_{j}\left(\sum_{i=1}^{n}\theta_{i,t}X_{i,t}\sigma_{i}\rho_{ij}\right)dB_{j,t}
 \end{align*}
 
 \end_inset
