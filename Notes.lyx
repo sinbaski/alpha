@@ -3576,7 +3576,7 @@ P(a,b) & =\frac{1}{(b-a)L(a,b)+1}
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 An FX model
 \end_layout
 
@@ -3669,7 +3669,7 @@ d\ln X_{t} & =-\theta\left(\ln X_{t}-\ln p_{t}\right)dt+\kappa\left(r_{B,t}-r_{A
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Constant interest rate & constant inflation
 \end_layout
 
@@ -3791,8 +3791,8 @@ Plugging in the expressions for
 
 \end_layout
 
-\begin_layout Subsection
-OU short rates and constant inflation
+\begin_layout Section
+OU short rates & constant inflation
 \end_layout
 
 \begin_layout Standard
@@ -3927,9 +3927,35 @@ e^{\theta T}r_{A,T}-r_{A,0}=\left(\theta-\alpha_{A}\right)\intop_{0}^{T}e^{\thet
 \begin_layout Standard
 Hence
 \begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}e^{\theta t}r_{A,t}dt & =\frac{1}{\theta-\alpha_{A}}\left[e^{\theta T}r_{A,T}-r_{A,0}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(e^{\theta T}-1\right)-\sigma_{A}\intop_{0}^{T}e^{\theta t}dW_{A,t}\right]\\
+ & =\frac{e^{\theta T}}{\theta-\alpha_{A}}\left[r_{A,T}-r_{A,0}e^{-\theta T}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(1-e^{-\theta T}\right)-\sigma_{A}\intop_{0}^{T}e^{\theta(t-T)}dW_{A,t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall
+\begin_inset Formula 
 \[
-\intop_{0}^{T}e^{\theta t}r_{A,t}dt=\frac{1}{\theta-\alpha_{A}}\left[e^{\theta T}r_{A,T}-r_{A,0}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(e^{\theta T}-1\right)-\sigma_{A}\intop_{0}^{T}e^{\theta t}dW_{A,t}\right]
+r_{A,T}=r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)+\sigma\intop_{0}^{T}e^{\alpha_{A}(t-T)}dW_{A,t}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}e^{\theta t}r_{A,t}dt & =\frac{e^{\theta T}}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & +\frac{e^{\theta T}}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}
+\end{align*}
 
 \end_inset
 
@@ -3940,8 +3966,10 @@ Hence
 Then it follows
 \begin_inset Formula 
 \begin{align*}
-e^{\theta T}Y_{T}-Y_{0} & =\frac{\kappa}{\theta-\alpha_{B}}\left[e^{\theta T}r_{B,T}-r_{B,0}-\frac{\alpha_{B}\overline{r}_{B}}{\theta}\left(e^{\theta T}-1\right)-\sigma_{B}\intop_{0}^{T}e^{\theta t}dW_{B,t}\right]\\
- & -\frac{\kappa}{\theta-\alpha_{A}}\left[e^{\theta T}r_{A,T}-r_{A,0}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(e^{\theta T}-1\right)-\sigma_{A}\intop_{0}^{T}e^{\theta t}dW_{A,t}\right]\\
+e^{\theta T}Y_{T}-Y_{0} & =\frac{e^{\theta T}}{\theta-\alpha_{B}}\kappa\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & +\frac{e^{\theta T}}{\theta-\alpha_{B}}\kappa\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\\
+ & -\frac{e^{\theta T}}{\theta-\alpha_{A}}\kappa\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & -\frac{e^{\theta T}}{\theta-\alpha_{A}}\kappa\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\\
  & +\intop_{0}^{T}\theta\left[\ln p_{0}+\left(I_{A}-I_{B}\right)t\right]e^{\theta t}dt+\sigma\intop_{0}^{T}e^{\theta t}dW_{t}
 \end{align*}
 
@@ -3955,8 +3983,10 @@ Finally,
 \begin_inset Formula 
 \begin{align*}
 \ln X_{T} & =e^{-\theta T}\ln X_{0}+\ln p_{0}\left(1-e^{-\theta T}\right)+\left(I_{A}-I_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)+\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}\\
- & +\frac{\kappa}{\theta-\alpha_{B}}\left[r_{B,T}-r_{B,0}e^{-\theta T}-\frac{\alpha_{B}\overline{r}_{B}}{\theta}\left(1-e^{-\theta T}\right)-\sigma_{B}\intop_{0}^{T}e^{\theta(t-T)}dW_{B,t}\right]\\
- & -\frac{\kappa}{\theta-\alpha_{A}}\left[r_{A,T}-r_{A,0}e^{-\theta T}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(1-e^{-\theta T}\right)-\sigma_{A}\intop_{0}^{T}e^{\theta(t-T)}dW_{A,t}\right]
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}
 \end{align*}
 
 \end_inset
@@ -3964,8 +3994,8 @@ Finally,
 
 \end_layout
 
-\begin_layout Subsection
-OU short rates correlated to OU inflation rates
+\begin_layout Section
+OU short rates & OU inflation rates
 \end_layout
 
 \begin_layout Standard
@@ -4262,10 +4292,14 @@ As for the time integrals of
 ,
  we have,
  from the previous section,
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\[
-\intop_{0}^{T}e^{\theta t}r_{A,t}dt=\frac{1}{\theta-\alpha_{A}}\left[e^{\theta T}r_{A,T}-r_{A,0}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(e^{\theta T}-1\right)-\sigma_{A}\intop_{0}^{T}e^{\theta t}dW_{A,t}\right]
-\]
+\begin{align*}
+\intop_{0}^{T}e^{\theta t}r_{A,t}dt & =\frac{e^{\theta T}}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & +\frac{e^{\theta T}}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}
+\end{align*}
 
 \end_inset
 
@@ -4319,13 +4353,15 @@ ref{eq:gt4hg}
  we get
 \begin_inset Formula 
 \begin{align}
-\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\label{eq:hy6hj67}\\
+\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
  & +\frac{\theta\left(\overline{I}_{A}-I_{A,0}\right)}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
  & -\frac{\theta\left(\overline{I}_{B}-I_{B,0}\right)}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
  & -\frac{\eta_{A}}{\beta_{A}}\frac{1}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dB_{A,t}\nonumber \\
- & +\frac{\eta_{B}}{\beta_{B}}\frac{1}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dB_{B,t}\nonumber \\
- & -\frac{\kappa}{\theta-\alpha_{A}}\left[r_{A,T}-r_{A,0}e^{-\theta T}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(1-e^{-\theta T}\right)-\sigma_{A}\intop_{0}^{T}e^{\theta(t-T)}dW_{A,t}\right]\nonumber \\
- & +\frac{\kappa}{\theta-\alpha_{B}}\left[r_{B,T}-r_{B,0}e^{-\theta T}-\frac{\alpha_{B}\overline{r}_{B}}{\theta}\left(1-e^{-\theta T}\right)-\sigma_{B}\intop_{0}^{T}e^{\theta(t-T)}dW_{B,t}\right]\nonumber \\
+ & +\frac{\eta_{B}}{\beta_{B}}\frac{1}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dB_{B,t}\label{eq:rbyhju6j}\\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\nonumber \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\nonumber \\
  & +\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}\nonumber 
 \end{align}
 
@@ -4334,8 +4370,8 @@ ref{eq:gt4hg}
 
 \end_layout
 
-\begin_layout Subsubsection
-Correlation between inflation and short rate
+\begin_layout Subsection
+Inflation & short rate correlation
 \end_layout
 
 \begin_layout Standard
@@ -4369,23 +4405,51 @@ where
  Pluggin this into (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:hy6hj67"
+reference "eq:rbyhju6j"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
 ) gives
 \begin_inset Formula 
+\begin{align}
+\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
+ & +\frac{\theta\left(\overline{I}_{A}-I_{A,0}\right)}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
+ & -\frac{\theta\left(\overline{I}_{B}-I_{B,0}\right)}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
+ & -\frac{\eta_{A}}{\beta_{A}}\frac{\sqrt{1-\rho_{A}^{2}}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\label{eq:rgt5h64yh}\\
+ & -\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}\nonumber \\
+ & +\frac{\eta_{B}}{\beta_{B}}\frac{\sqrt{1-\rho_{B}^{2}}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}^{\perp}\nonumber \\
+ & +\frac{\eta_{B}}{\beta_{B}}\frac{\rho_{B}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}\nonumber \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\nonumber \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\nonumber \\
+ & +\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This expression of 
+\begin_inset Formula $\ln X_{T}$
+\end_inset
+
+ involves 5 normal random variables.
+ Their variances are as follows
+\begin_inset Formula 
 \begin{align*}
-\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & +\frac{\theta\left(\overline{I}_{A}-I_{A,0}\right)}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & -\frac{\theta\left(\overline{I}_{B}-I_{B,0}\right)}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & -\frac{\eta_{A}}{\beta_{A}}\frac{\sqrt{1-\rho_{A}^{2}}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\\
- & +\frac{\eta_{B}}{\beta_{B}}\frac{\sqrt{1-\rho_{B}^{2}}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}^{\perp}\\
- & -\frac{1}{\theta-\alpha_{A}}\left[r_{A,T}-r_{A,0}e^{-\theta T}-\frac{\alpha_{A}\overline{r}_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\\
- & +\frac{1}{\theta-\alpha_{B}}\left[r_{B,T}-r_{B,0}e^{-\theta T}-\frac{\alpha_{B}\overline{r}_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\\
- & +\intop_{0}^{T}\left\{ \frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}e^{\theta(t-T)}-\frac{\eta_{A}\rho_{A}}{\beta_{A}-\beta_{A}^{2}/\theta}\left[\frac{\beta_{A}}{\theta}\left(1-e^{-\theta(T-t)}\right)-\left(1-e^{-\beta_{A}(T-t)}\right)\right]\right\} dW_{A,t}\\
- & -\intop_{0}^{T}\left\{ \frac{\kappa\sigma_{B}}{\theta-\alpha_{B}}e^{\theta(t-T)}-\frac{\eta_{B}\rho_{B}}{\beta_{B}-\beta_{B}^{2}/\theta}\left[\frac{\beta_{B}}{\theta}\left(1-e^{-\theta(T-t)}\right)-\left(1-e^{-\beta_{B}(T-t)}\right)\right]\right\} dW_{B,t}\\
- & +\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}
+ & \text{var}\left(\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\right)\\
+ & =\frac{1}{\theta^{2}}\text{var}\left(\intop_{0}^{T}\left\{ \beta_{A}\left[1-e^{-\theta(T-t)}\right]-\theta\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\right)\\
+ & =\frac{1}{\theta^{2}}\intop_{0}^{T}\left\{ \beta_{A}\left[1-e^{-\theta(T-t)}\right]-\theta\left[1-e^{-\beta_{A}(T-t)}\right]\right\} ^{2}dt\\
+ & =\frac{1}{\theta^{2}}\left[\beta_{A}^{2}\intop_{0}^{T}\left(e^{-\theta T}\left(e^{\theta T}-e^{\theta t}\right)\right)^{2}dt\right]\\
+ & +\frac{1}{\theta^{2}}\left[\theta^{2}\intop_{0}^{T}\left(e^{-\beta_{A}T}\left(e^{\beta_{A}T}-e^{\beta_{A}t}\right)\right)^{2}dt\right]\\
+ & -\frac{1}{\theta^{2}}\intop_{0}^{T}2\theta\beta_{A}\left(1-e^{-\theta(T-t)}\right)\left(1-e^{-\beta_{A}(T-t)}\right)dt
 \end{align*}
 
 \end_inset
@@ -4393,7 +4457,328 @@ reference "eq:hy6hj67"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+ & \text{var}\left(\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\right)\\
+ & =\frac{\beta_{A}^{2}e^{-2\theta T}}{\theta^{2}}\intop_{0}^{T}\left(e^{\theta T}-e^{\theta t}\right)^{2}dt+e^{-2\beta_{A}T}\intop_{0}^{T}\left(e^{\beta_{A}T}-e^{\beta_{A}t}\right)^{2}dt\\
+ & -2\frac{\beta_{A}}{\theta}\intop_{0}^{T}\left(1-e^{-\theta(T-t)}\right)\left(1-e^{-\beta_{A}(T-t)}\right)dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course,
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}\left(e^{aT}-e^{at}\right)^{2}dt & =\intop_{0}^{T}e^{2aT}dt-2\intop_{0}^{T}e^{a(t+T)}dt+\intop_{0}^{T}e^{2at}dt\\
+ & =e^{2aT}T-2e^{aT}\left(\frac{e^{aT}-1}{a}\right)+\frac{e^{2aT}-1}{2a}\\
+ & =e^{2aT}\left(T-\frac{2}{a}+\frac{1}{2a}\right)+\frac{2}{a}e^{aT}-\frac{1}{2a}\\
+ & =\left(T-\frac{3}{2a}\right)e^{2aT}+\frac{2}{a}e^{aT}-\frac{1}{2a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\begin_inset Formula 
+\begin{align*}
+ & \text{var}\left(\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\right)\\
+ & =\frac{\beta_{A}^{2}e^{-2\theta T}}{\theta^{2}}\left[\left(T-\frac{3}{2\theta}\right)e^{2\theta T}+\frac{2}{\theta}e^{\theta T}-\frac{1}{2\theta}\right]\\
+ & +e^{-2\beta_{A}T}\left[\left(T-\frac{3}{2\beta_{A}}\right)e^{2\beta_{A}T}+\frac{2}{\beta_{A}}e^{\beta_{A}T}-\frac{1}{2\beta_{A}}\right]\\
+ & -\frac{2\beta_{A}}{\theta}\left[T-e^{-\theta T}\frac{e^{\theta T}-1}{\theta}-e^{-\beta_{A}T}\frac{e^{\beta_{A}T}-1}{\beta_{A}}+\intop_{0}^{T}e^{-(\theta+\beta_{A})(T-t)}dt\right]\\
+ & =\frac{\beta_{A}^{2}}{\theta^{2}}\left[\left(T-\frac{3}{2\theta}\right)+\frac{2}{\theta}e^{-\theta T}-\frac{e^{-2\theta T}}{2\theta}\right]\\
+ & +\left[\left(T-\frac{3}{2\beta_{A}}\right)+\frac{2}{\beta_{A}}e^{-\beta_{A}T}-\frac{e^{-2\beta_{A}T}}{2\beta_{A}}\right]\\
+ & -\frac{2\beta_{A}}{\theta}\left[T-\frac{1-e^{-\theta T}}{\theta}-\frac{1-e^{-\beta_{A}T}}{\beta_{A}}+\frac{1-e^{-(\theta+\beta_{A})T}}{\theta+\beta_{A}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+ the variance of the 
+\begin_inset Formula $W_{A,t}$
+\end_inset
+
+ integral is
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{0}^{T}\left\{ \frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\left[\frac{\beta_{A}}{\theta}\left(1-e^{-\theta(T-t)}\right)-\left(1-e^{-\beta_{A}(T-t)}\right)\right]+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]\right\} ^{2}dt\\
+= & \intop_{0}^{T}\left\{ \left[-\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}\beta_{A}}{\theta-\beta_{A}}-\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right]e^{\theta(t-T)}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}e^{\alpha_{A}(t-T)}+\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}e^{\beta_{A}(t-T)}+\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\left(\frac{\beta_{A}}{\theta}-1\right)\right\} ^{2}dt\\
+ & =\intop_{0}^{T}\left[-\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)e^{\theta(t-T)}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}e^{\alpha_{A}(t-T)}+\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}e^{\beta_{A}(t-T)}-\frac{\eta_{A}\rho_{A}}{\beta_{A}}\right]^{2}dt\\
+ & =\sum_{i=1}^{10}I_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+I_{1}=\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)^{2}e^{2\theta(t-T)}dt=\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)^{2}\frac{1-e^{-2\theta T}}{2\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}=\intop_{0}^{T}\left(\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)^{2}e^{2\alpha_{A}(t-T)}dt=\left(\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)^{2}\frac{1-e^{-2\alpha_{A}T}}{2\alpha_{A}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{3}=\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\right)^{2}e^{2\beta_{A}(t-T)}dt=\left(\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\right)^{2}\frac{1-e^{-2\beta_{A}T}}{2\beta_{A}}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+I_{4}=\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\beta_{A}}\right)^{2}dt=\left(\frac{\eta_{A}\rho_{A}}{\beta_{A}}\right)^{2}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{5} & =-2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}e^{(\theta+\alpha_{A})(t-T)}dt\\
+ & =-2\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\frac{1-e^{-(\theta+\alpha_{A})T}}{\theta+\alpha_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{6} & =-2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}e^{(\theta+\beta_{A})(t-T)}dt\\
+ & =-2\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\frac{1-e^{-(\theta+\beta_{A})T}}{\theta+\beta_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{7} & =2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}e^{\theta(t-T)}dt\\
+ & =2\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{1-e^{-\theta T}}{\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{8} & =2\intop_{0}^{T}\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}e^{(\alpha_{A}+\beta_{A})(t-T)}dt\\
+ & =2\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\frac{1-e^{-(\alpha_{A}+\beta_{A})T}}{\alpha_{A}+\beta_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{9} & =-2\intop_{0}^{T}\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}e^{\alpha_{A}(t-T)}dt\\
+ & =-2\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{1-e^{-\alpha_{A}T}}{\alpha_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{10} & =-2\intop_{0}^{T}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}e^{\beta_{A}(t-T)}dt\\
+ & =-2\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{1-e^{-\beta_{A}T}}{\beta_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally the variance of the 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ integral is
+\begin_inset Formula 
+\[
+\text{var}\left(\intop_{0}^{T}e^{\theta(t-T)}dW_{t}\right)=\intop_{0}^{T}e^{2\theta(t-T)}dt=\frac{1-e^{-2\theta T}}{2\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All in all,
+ we can write
+\begin_inset Formula 
+\begin{align*}
+X_{T} & =\exp\left(u+vH\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $H\sim N(0,1)$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\[
+\mathbb{E}X_{T}=e^{u+v^{2}/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The relative return is therefore
+\begin_inset Formula 
+\[
+R_{T}=\frac{X_{T}}{X_{0}}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The expected shortfall
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $X_{T}=\exp\left(u+vH\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $H\sim N(0,1)$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+R_{T}=\frac{X_{T}}{X_{0}}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $q(\alpha)$
+\end_inset
+
+ as 
+\begin_inset Formula $\mathbb{P}\left(\frac{X_{T}}{X_{0}}-1\leq q\right)=1-\alpha\}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[X_{T}\leq X_{0}\left(1+q\right)\right] & =1-\alpha\\
+\mathbb{P}\left[\log X_{T}\leq\ln X_{0}+\ln\left(1+q\right)\right] & =1-\alpha\\
+\mathbb{P}\left[u+vH\leq\ln X_{0}+\ln(1+q)\right] & =1-\alpha\\
+\mathbb{P}\left[H\leq\frac{\ln X_{0}+\ln(1+q)-u}{v}\right] & =1-\alpha\\
+\frac{\ln X_{0}+\ln(1+q)-u}{v} & =\Phi^{-1}(1-\alpha)\\
+\ln(1+q) & =v\Phi^{-1}(1-\alpha)+u-\ln X_{0}\\
+q & =\frac{\exp\left[v\Phi^{-1}(1-\alpha)+u\right]}{X_{0}}-1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus the expected shortfall is
+\begin_inset Formula 
+\[
+\mathbb{E}\left(R_{T}|R_{T}\leq q\right)=\frac{1}{1-\alpha}\intop_{-1}^{q}xf(x)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+f(x) & =\frac{d}{dx}\mathbb{P}\left(\frac{X_{T}}{X_{0}}-1\leq x\right)\\
+ & =\frac{d}{dx}\mathbb{P}\left[X_{T}\leq X_{0}\left(1+x\right)\right]\\
+ & =\frac{d}{dx}\mathbb{P}\left[u+vH\leq\ln X_{0}+\ln(1+x)\right]\\
+ & =\frac{d}{dx}\mathbb{P}\left[H\leq\frac{\ln X_{0}+\ln(1+x)-u}{v}\right]\\
+ & =\phi\left[\frac{\ln X_{0}+\ln(1+x)-u}{v}\right]\cdot\frac{d}{dx}\left[\frac{\ln X_{0}+\ln(1+x)-u}{v}\right]\\
+ & =\phi\left[\frac{\ln X_{0}+\ln(1+x)-u}{v}\right]\cdot\frac{1}{v(1+x)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Calibrating Inflation parameters to Consumer Prices Index
 \end_layout
 
@@ -4462,7 +4847,7 @@ Suppose
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Estimating the correlation between short rate & inflation rate
 \end_layout
 
@@ -4637,6 +5022,365 @@ This expression allows us to estimate
 \end_layout
 
 \begin_layout Section
+FX Option pricing
+\end_layout
+
+\begin_layout Subsection
+European call option
+\end_layout
+
+\begin_layout Standard
+Consider a European call option 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ on the GBP/USD rate that matures at time 
+\begin_inset Formula $T$
+\end_inset
+
+ and has strike price 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ Clearly,
+\begin_inset Formula 
+\[
+C_{0}=\mathbb{E}_{Q}\left[\exp\left(-\intop_{0}^{T}r_{A,t}dt\right)\left(X_{T}-K\right)1_{X_{T}>K}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the Martingale measure defined by its Radon-Nikodym derivative w.r.t.
+ the real-world measure P:
+\begin_inset Formula 
+\[
+\frac{dQ}{dP}=\exp\left[-\intop_{0}^{T}u_{t}dB_{t}-\frac{1}{2}\intop_{0}^{T}u_{t}^{2}dt\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y_{t}=\ln X_{t}$
+\end_inset
+
+ so that 
+\begin_inset Formula $X_{t}=e^{Y_{t}}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+dX_{t}=X_{t}dY_{t}+\frac{1}{2}X_{t}\left(dY_{t}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From
+\begin_inset Formula 
+\[
+dY_{t}=-\theta\left(Y_{t}-\ln p_{t}\right)dt+\kappa\left(r_{B,t}-r_{A,t}\right)dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+it can be deduced
+\begin_inset Formula 
+\[
+dX_{t}=-\theta\left(Y_{t}-\ln p_{t}\right)X_{t}dt+\kappa\left(r_{B,t}-r_{A,t}\right)X_{t}dt+\frac{1}{2}X_{t}\sigma^{2}dt+\sigma X_{t}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ by Girsanov's theorem,
+ we have
+\begin_inset Formula 
+\[
+dX_{t}=r_{A,t}X_{t}dt+\sigma X_{t}d\tilde{W}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\tilde{W}_{t}$
+\end_inset
+
+ is a Brownian motion of 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ It then follows
+\begin_inset Formula 
+\begin{align*}
+d\ln X_{t} & =\left(r_{A,t}dt+\sigma d\tilde{B}_{t}\right)-\frac{1}{2X_{t}^{2}}\sigma^{2}X_{t}^{2}dt\\
+ & =\left(r_{A,t}-\frac{\sigma^{2}}{2}\right)dt+\sigma d\tilde{W}_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\begin_inset Formula 
+\begin{align*}
+\ln X_{t} & =\ln X_{0}+\intop_{0}^{t}\left(r_{A,s}-\frac{\sigma^{2}}{2}\right)ds+\sigma\tilde{W}_{t}\\
+X_{t} & =X_{0}\exp\left[\intop_{0}^{t}r_{A,s}ds-\frac{\sigma^{2}}{2}t+\sigma\tilde{W}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\xi_{t}=\exp\left(-\intop_{0}^{T}r_{A,t}dt\right)$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+X_{t}=X_{0}\xi_{t}^{-1}\exp\left(\sigma\tilde{W}_{t}-\frac{\sigma^{2}}{2}t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\begin_inset Formula 
+\begin{align*}
+C_{0} & =\mathbb{E}_{Q}\left[\xi_{T}\left(X_{T}-K\right)1_{\left\{ X_{T}>K\right\} }\right]\\
+ & =\mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]-K\mathbb{E}_{Q}\left(\xi_{T};X_{T}>K\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that for the 
+\begin_inset Formula $r_{A,t}$
+\end_inset
+
+ integral,
+ we have
+\begin_inset Formula 
+\[
+\intop_{0}^{T}r_{A,t}dt=\frac{\left(r_{A,0}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}T}\right)}{\alpha_{A}}+\bar{r}_{A}T-\frac{\sigma_{A}}{\alpha_{A}}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-1\right]dW_{A,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The variance of this integral is
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(\intop_{0}^{T}r_{A,t}dt\right) & =\frac{\sigma_{A}^{2}}{\alpha_{A}^{2}}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-1\right]^{2}dt\\
+ & =\frac{\sigma_{A}^{2}}{\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}T}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}T}}{\alpha_{A}}+T\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+X_{T}>K & \Leftrightarrow X_{0}\xi_{T}^{-1}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>K\\
+ & \Leftrightarrow\exp\left(\intop_{0}^{T}r_{A,t}dt+\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>\frac{K}{X_{0}}\\
+ & \Leftrightarrow\exp\left(-\ln\xi_{T}+\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>\frac{K}{X_{0}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]\\
+= & X_{0}\intop_{-\infty}^{\infty}\intop_{-\infty}^{\infty}\exp\left(\sigma\sqrt{T}x-\frac{\sigma^{2}}{2}T\right)1_{\left\{ \sigma\sqrt{T}x-\sigma^{2}T/2+ay+b>\ln\left(K/X_{0}\right)\right\} }\phi(x)\phi(y)dxdy
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+a & =\frac{\sigma_{A}}{\alpha_{A}}\sqrt{\frac{1-e^{-2\alpha_{A}T}}{2\alpha_{A}}-2\cdot\frac{1-e^{-\alpha_{A}T}}{\alpha_{A}}+T}\\
+b & =\frac{\left(r_{A,0}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}T}\right)}{\alpha_{A}}+\bar{r}_{A}T
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course,
+\begin_inset Formula 
+\begin{align*}
+ & \sigma\sqrt{T}x-\sigma^{2}T/2+ay+b>\ln\left(K/X_{0}\right)\\
+\Leftrightarrow & y>-\frac{\sigma}{a}\sqrt{T}x+\frac{\sigma^{2}T}{2a}-\frac{b}{a}+\frac{1}{a}\ln\frac{K}{X_{0}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]\\
+= & X_{0}\intop_{-\infty}^{\infty}\left[\intop_{-\frac{\sigma}{a}\sqrt{T}x+\frac{\sigma^{2}T}{2a}-\frac{b}{a}+\frac{1}{a}\ln\frac{K}{X_{0}}}^{\infty}e^{\sigma\sqrt{T}x-\sigma^{2}T/2}\phi(y)dy\right]\phi(x)dx\\
+= & X_{0}e^{-\sigma^{2}T/2}\intop_{-\infty}^{\infty}e^{\sigma\sqrt{T}x}\Phi\left(\frac{\sigma}{a}\sqrt{T}x-\frac{\sigma^{2}T}{2a}+\frac{b}{a}-\frac{1}{a}\ln\frac{K}{X_{0}}\right)\cdot\phi(x)dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Phi(x)=x'$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]\\
+= & X_{0}e^{-\sigma^{2}T/2}\intop_{0}^{1}e^{\sigma\sqrt{T}\Phi^{-1}(x')}\Phi\left[\frac{\sigma}{a}\sqrt{T}\Phi^{-1}(x')-\frac{\sigma^{2}T}{2a}+\frac{b}{a}-\frac{1}{a}\ln\frac{K}{X_{0}}\right]dx'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}_{Q}\left(\xi_{T};X_{T}>K\right)\\
+= & \intop_{-\infty}^{\infty}\left[\intop_{-\frac{\sigma}{a}\sqrt{T}x+\frac{\sigma^{2}T}{2a}-\frac{b}{a}+\frac{1}{a}\ln\frac{K}{X_{0}}}^{\infty}e^{-ay-b}\phi(y)dy\right]\phi(x)dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+A model of Stock Index & Gold
+\end_layout
+
+\begin_layout Section
+Model specification
+\end_layout
+
+\begin_layout Standard
+We consider the following model of the S&P 500 index and the gold price:
+\begin_inset Formula 
+\[
+d\ln G_{t}=-\theta\left(\ln\frac{G_{t}}{G_{0}}-\ln\frac{p_{t}}{p_{0}}\right)dt-\kappa r_{t}dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ is the consumer price index at time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ which is modelled as
+\begin_inset Formula 
+\begin{align*}
+p_{t} & =p_{0}\exp\left(\intop_{0}^{t}I_{s}ds\right)\\
+dI_{t} & =-\beta\left(I_{t}-\overline{I}\right)dt+\eta dB_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ is the instantaneous inflation rate at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Solution of the model
+\end_layout
+
+\begin_layout Chapter
 Correlated stocks
 \end_layout
 
