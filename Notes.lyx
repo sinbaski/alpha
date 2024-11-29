@@ -5022,6 +5022,102 @@ This expression allows us to estimate
 \end_layout
 
 \begin_layout Section
+Calibrating the risk-free rate model to a yield curve
+\end_layout
+
+\begin_layout Standard
+Suppose we have a yield curve 
+\begin_inset Formula $\{T_{i},R_{i}\}_{i=1,2,3,\dots}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ is the 
+\begin_inset Formula $i$
+\end_inset
+
+-th time-to-maturity and 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ is the corresponding yield.
+ We would like to calibrate to this yield curve the short rate model
+\begin_inset Formula 
+\[
+dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma W_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By definition,
+\begin_inset Formula 
+\[
+e^{R_{i}T_{i}}=\mathbb{E}\exp\left(\intop_{0}^{T_{i}}I_{t}dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the results from the last section,
+ we have
+\begin_inset Formula 
+\[
+\intop_{0}^{T}r_{t}dt=\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T-\frac{\sigma}{\alpha}\intop_{0}^{T}\left[e^{\alpha(t-T)}-1\right]dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The variance of this integral is
+\begin_inset Formula 
+\[
+\text{var}\left(\intop_{0}^{T}r_{t}dt\right)=\frac{\sigma^{2}}{\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left(\intop_{0}^{T}I_{t}dt\right)=\exp\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then it follows
+\begin_inset Formula 
+\begin{align*}
+R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)\right]\\
+ & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 FX Option pricing
 \end_layout
 
