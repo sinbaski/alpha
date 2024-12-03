@@ -5084,7 +5084,7 @@ Using the results from the last section,
 The variance of this integral is
 \begin_inset Formula 
 \[
-\text{var}\left(\intop_{0}^{T}r_{t}dt\right)=\frac{\sigma^{2}}{\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)
+\text{var}\left(\intop_{0}^{T}r_{t}dt\right)=\frac{\sigma^{2}}{\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)
 \]
 
 \end_inset
@@ -5096,7 +5096,7 @@ The variance of this integral is
 Therefore,
 \begin_inset Formula 
 \[
-\mathbb{E}\exp\left(\intop_{0}^{T}I_{t}dt\right)=\exp\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)\right]
+\mathbb{E}\exp\left(\intop_{0}^{T}I_{t}dt\right)=\exp\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]
 \]
 
 \end_inset
@@ -5108,8 +5108,8 @@ Therefore,
 Then it follows
 \begin_inset Formula 
 \begin{align*}
-R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)\right]\\
- & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+1\right)
+R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]\\
+ & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)
 \end{align*}
 
 \end_inset
@@ -5419,7 +5419,7 @@ Similarly,
 \end_layout
 
 \begin_layout Chapter
-A model of Stock Index & Gold
+A model of Gold
 \end_layout
 
 \begin_layout Section
@@ -5430,30 +5430,20 @@ Model specification
 We consider the following model of the S&P 500 index and the gold price:
 \begin_inset Formula 
 \[
-d\ln G_{t}=-\theta\left(\ln\frac{G_{t}}{G_{0}}-\ln\frac{p_{t}}{p_{0}}\right)dt-\kappa r_{t}dt+\sigma dW_{t}
+\begin{bmatrix}dG_{t}\\
+dr_{t}\\
+dI_{t}
+\end{bmatrix}=\begin{bmatrix}\left(\mu+\theta I_{t}-\kappa r_{t}\right)G_{t}dt\\
+-\alpha\left(r_{t}-\overline{r}\right)dt\\
+-\beta\left(I_{t}-\overline{I}\right)dt
+\end{bmatrix}+\begin{bmatrix}\sigma G_{t} & 0 & 0\\
+0 & \eta & 0\\
+0 & 0 & \nu
+\end{bmatrix}\begin{bmatrix}dW_{t}\\
+dB_{t}\\
+dD_{t}
+\end{bmatrix}
 \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $p_{t}$
-\end_inset
-
- is the consumer price index at time 
-\begin_inset Formula $t$
-\end_inset
-
-,
- which is modelled as
-\begin_inset Formula 
-\begin{align*}
-p_{t} & =p_{0}\exp\left(\intop_{0}^{t}I_{s}ds\right)\\
-dI_{t} & =-\beta\left(I_{t}-\overline{I}\right)dt+\eta dB_{t}
-\end{align*}
 
 \end_inset
 
@@ -5465,11 +5455,22 @@ where
 \begin_inset Formula $I_{t}$
 \end_inset
 
- is the instantaneous inflation rate at time 
-\begin_inset Formula $t$
+ is the instantaneous inflation rate of USD and 
+\begin_inset Formula $r_{t}$
 \end_inset
 
-.
+ is the USD risk-free rate,
+ i.e.
+ SOFR.
+ Moreover,
+\begin_inset Formula 
+\[
+dB_{t}dD_{t}=\rho dt
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
