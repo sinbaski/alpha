@@ -5973,9 +5973,36 @@ That is,
 \begin_layout Standard
 It then follows
 \begin_inset Formula 
-\[
-q=-\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}\Phi^{-1}\left(1-\alpha\right)-\sum_{i=1}^{N}b_{i}\mu_{i}
-\]
+\begin{align*}
+q & =-\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}\Phi^{-1}\left(1-\alpha\right)-\sum_{i=1}^{N}b_{i}\mu_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\begin{align*}
+\mu & =\sum_{i=1}^{N}b_{i}\mu_{i}\\
+\sigma & =\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we have
+\begin_inset Formula 
+\begin{align*}
+q & =-\sigma\Phi^{-1}\left(1-\alpha\right)-\mu\\
+ & =-\sigma\left[2\mu-\Phi^{-1}\left(\alpha\right)\right]-\mu\\
+ & =-\mu\left(1+2\sigma\right)+\sigma\Phi^{-1}\left(\alpha\right)
+\end{align*}
 
 \end_inset
 
@@ -6005,21 +6032,8 @@ Using the approximation
 \begin_layout Standard
 we have
 \begin_inset Formula 
-\[
-\tilde{R}\sim\boldsymbol{N}\left(\sum_{i=1}^{N}b_{i}\mu_{i},\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Let
-\begin_inset Formula 
 \begin{align*}
-\mu & =\sum_{i=1}^{N}b_{i}\mu_{i}\\
-\sigma & =\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}
+\tilde{R} & \sim\boldsymbol{N}\left(\sum_{i=1}^{N}b_{i}\mu_{i},\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)=\boldsymbol{N}\left(\mu,\sigma^{2}\right)
 \end{align*}
 
 \end_inset
