@@ -5059,7 +5059,7 @@ dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma W_{t}
 By definition,
 \begin_inset Formula 
 \[
-e^{R_{i}T_{i}}=\mathbb{E}\exp\left(\intop_{0}^{T_{i}}I_{t}dt\right)
+e^{R_{i}T_{i}}=\mathbb{E}\exp\left(\intop_{0}^{T_{i}}r_{t}dt\right)
 \]
 
 \end_inset
@@ -5096,7 +5096,7 @@ The variance of this integral is
 Therefore,
 \begin_inset Formula 
 \[
-\mathbb{E}\exp\left(\intop_{0}^{T}I_{t}dt\right)=\exp\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]
+\mathbb{E}\exp\left(\intop_{0}^{T}r_{t}dt\right)=\exp\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]
 \]
 
 \end_inset
@@ -5107,10 +5107,312 @@ Therefore,
 \begin_layout Standard
 Then it follows
 \begin_inset Formula 
+\begin{align}
+R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]\nonumber \\
+ & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\label{eq:6tyb6yj}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ When 
+\begin_inset Formula $T\to0$
+\end_inset
+
+,
+ we have,
+ to the first order in 
+\begin_inset Formula $T$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align}
+R & =\overline{r}+\left(r_{0}-\overline{r}\right)\frac{1-\left(1-\alpha T+\frac{1}{2}\alpha^{2}T^{2}+o(T^{2})\right)}{\alpha T}\nonumber \\
+ & +\frac{\sigma^{2}}{2\alpha^{2}T}\left[\frac{1-\left(1-2\alpha T+\frac{1}{2}4\alpha^{2}T^{2}+o(T^{2})\right)}{2\alpha}-2\frac{1-\left(1-\alpha T+\frac{1}{2}\alpha^{2}T^{2}+o(T^{2})\right)}{\alpha}+T\right]\nonumber \\
+ & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{1}{2}\alpha T+o(T)\right)+\frac{\sigma^{2}}{2\alpha^{2}T}\left[\frac{2\alpha T-2\alpha^{2}T^{2}-o(T^{2})}{2\alpha}-2\left(T-\frac{1}{2}\alpha T^{2}-o(T^{2})\right)+T\right]\nonumber \\
+ & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{\alpha T}{2}\right)+o(T)+\frac{\sigma^{2}}{2\alpha^{2}T}\left[T-\alpha T^{2}-o(T^{2})-T+\alpha T^{2}+o(T^{2})\right]\nonumber \\
+ & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{\alpha T}{2}\right)+o(T)\label{eq:hg6y5j78kj}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ when 
+\begin_inset Formula $T\to\infty$
+\end_inset
+
+,
+ let 
+\begin_inset Formula $\nu=1/T$
+\end_inset
+
+ and re-write (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6tyb6yj"
+
+\end_inset
+
+) as
+\begin_inset Formula 
+\begin{align}
+R & =\overline{r}+\frac{r_{0}-\overline{r}}{\alpha}\nu\left(1-e^{-\alpha/\nu}\right)+\frac{\sigma^{2}}{2\alpha^{2}}\nu\left(\frac{1-e^{-2\alpha/\nu}}{2\alpha}-2\cdot\frac{1-e^{-\alpha/\nu}}{\alpha}+\frac{1}{\nu}\right)\nonumber \\
+ & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\frac{r_{0}-\overline{r}}{\alpha}\nu-\frac{r_{0}-\overline{r}}{\alpha}\nu\cdot e^{-\alpha/\nu}+\frac{\sigma^{2}}{2\alpha^{2}}\nu\left(\frac{1-e^{-2\alpha/\nu}}{2\alpha}-2\cdot\frac{1-e^{-\alpha/\nu}}{\alpha}\right)\nonumber \\
+ & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\frac{r_{0}-\overline{r}}{\alpha}\nu-\frac{3}{2\alpha}\frac{\sigma^{2}}{2\alpha^{2}}\nu+o(\nu)\nonumber \\
+ & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\left(\frac{r_{0}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\nu+o(\nu)\label{eq:32t6n8mi}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose on day 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ we have a yield curve 
+\begin_inset Formula $\left\{ \left(T_{i}^{n},R_{i}^{n}\right)\right\} _{i=1,2,\cdots,M;n=0,1,2,\cdots N}$
+\end_inset
+
+,
+ we want to infer the short rates 
+\begin_inset Formula $\{r_{n}\},n=0,1,2,\cdots,N$
+\end_inset
+
+,
+ as well as the model parameters 
+\begin_inset Formula $\alpha,\overline{r},\sigma$
+\end_inset
+
+.
+ Clearly,
+ we have
+\begin_inset Formula 
 \begin{align*}
-R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]\\
- & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)
+R_{M}^{n}-R_{M}^{n-1} & =\left(\frac{r_{n}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\frac{1}{T_{M}}-\left(\frac{r_{n-1}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\frac{1}{T_{M}}+o\left(\frac{1}{T_{M}}\right)\\
+ & =\frac{r_{n}-r_{n-1}}{\alpha T_{M}}+O\left(\frac{1}{T_{M}^{2}}\right)\\
+R_{1}^{n}-R_{1}^{n-1} & =\left(r_{n}-\overline{r}\right)\left(1-\frac{\alpha T_{1}}{2}\right)-\left(r_{n-1}-\overline{r}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+o\left(T_{1}\right)\\
+ & =\left(r_{n}-r_{n-1}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+O(T_{1}^{2})
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\begin{align*}
+\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}} & =\frac{\frac{r_{n}-r_{n-1}}{\alpha T_{M}}+O\left(\frac{1}{T_{M}^{2}}\right)}{\left(r_{n}-r_{n-1}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+O(T_{1}^{2})}\\
+ & =\frac{1+O(1/T_{M})}{\alpha T_{M}\left(1-\frac{\alpha T_{1}}{2}\right)+O\left(T_{1}^{2}T_{M}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $T_{1}=O(1/T_{M})$
+\end_inset
+
+.
+ Neglecting higher-order terms,
+ we can solve for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ using the above equation.
+ This gives us an estimate of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+ call it 
+\begin_inset Formula $\hat{\alpha}_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\frac{T_{1}T_{M}}{2}\left(\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}}\right)\hat{\alpha_{n}}^{2}+T_{M}\left(\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}}\right)\hat{\alpha}_{n}-1=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally,
+ we can estimate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\hat{\alpha}=\frac{1}{N}\sum_{n=1}^{n}\hat{\alpha}_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Having obtained an estimate of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+ we can use (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hg6y5j78kj"
+
+\end_inset
+
+) to write
+\begin_inset Formula 
+\begin{align}
+R_{2}^{n}-R_{1}^{n} & =\left(r_{n}-\overline{r}\right)\left[-\frac{\alpha}{2}\left(T_{2}-T_{1}\right)\right]+O(T_{1}^{2})+O(T_{2}^{2})\nonumber \\
+r_{n}-\overline{r} & =\frac{R_{2}^{n}-R_{1}^{n}-O(T_{1}^{2})-O(T_{2}^{2})}{-\frac{\alpha}{2}\left(T_{2}-T_{1}\right)}\nonumber \\
+r_{n}-\overline{r} & =\frac{R_{1}^{n}-R_{2}^{n}+O(T_{1}^{2})+O(T_{2}^{2})}{\frac{\alpha}{2}\left(T_{2}-T_{1}\right)}\label{eq:5h67jjkj8k}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5h67jjkj8k"
+
+\end_inset
+
+) allows us to estimate 
+\begin_inset Formula $r_{n}-\overline{r}$
+\end_inset
+
+ as 
+\begin_inset Formula $\hat{d}_{n}=\frac{2}{\alpha}\cdot\frac{R_{1}^{n}-R_{2}^{n}}{T_{2}-T_{1}}$
+\end_inset
+
+.
+ Substituting this expression into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6tyb6yj"
+
+\end_inset
+
+) yields
+\begin_inset Formula 
+\[
+R_{m}^{n}=\overline{r}+\frac{\hat{d}_{n}\left(1-e^{-\hat{\alpha}T_{m}}\right)}{\hat{\alpha}T_{m}}+\frac{\sigma^{2}}{2\hat{\alpha}^{2}T_{m}}\left(\frac{1-e^{-2\hat{\alpha}T_{m}}}{2\hat{\alpha}}-2\cdot\frac{1-e^{-\hat{\alpha}T_{m}}}{\hat{\alpha}}+T_{m}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With this expression we can estimate the remaining parameters 
+\begin_inset Formula $\overline{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ by OLS using 
+\begin_inset Formula $\left\{ R_{m}^{n}\right\} _{n=0,1,\cdots,N;m=3,4,\cdots M-1}$
+\end_inset
+
+.
+ Then we estimate 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\hat{r}_{n}=\hat{d}_{n}+\hat{\overline{r}}
+\]
 
 \end_inset
 
@@ -5413,6 +5715,416 @@ Similarly,
 = & \intop_{-\infty}^{\infty}\left[\intop_{-\frac{\sigma}{a}\sqrt{T}x+\frac{\sigma^{2}T}{2a}-\frac{b}{a}+\frac{1}{a}\ln\frac{K}{X_{0}}}^{\infty}e^{-ay-b}\phi(y)dy\right]\phi(x)dx
 \end{align*}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Portfolio Management
+\end_layout
+
+\begin_layout Section
+Asset Allocation
+\end_layout
+
+\begin_layout Standard
+Suppose we have 
+\begin_inset Formula $N$
+\end_inset
+
+ assets,
+ whose current prices are 
+\begin_inset Formula $\{p_{i}\}_{i=1,2,\dots,N}$
+\end_inset
+
+ and whose future prices are forecasted to be 
+\begin_inset Formula $p_{i}e^{\mu_{i}+\sigma_{i}Z_{i}}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ are i.i.d and 
+\begin_inset Formula $Z_{i}\sim\boldsymbol{N}(0,1)$
+\end_inset
+
+.
+ 
+\lang american
+Let 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ be the number of units of asset 
+\begin_inset Formula $i$
+\end_inset
+
+ to buy/sell.
+ Then the total relative return of the portfolio is
+\begin_inset Formula 
+\[
+R=\left(\sum_{i=1}^{N}\left|a_{i}\right|p_{i}\right)^{-1}\sum_{i=1}^{N}a_{i}p_{i}\left(e^{\mu_{i}+\sigma_{i}Z_{i}}-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Let
+\begin_inset Formula 
+\[
+a_{i}p_{i}\left(\sum_{i=1}^{N}\left|a_{i}\right|p_{i}\right)^{-1}=b_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+so
+\begin_inset Formula 
+\begin{equation}
+R=\sum_{i=1}^{N}b_{i}\left(e^{\mu_{i}+\sigma_{i}Z_{i}}-1\right)\label{eq:4g5th8k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}R & =\sum_{i=1}^{N}b_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\\
+\text{var}(R) & =\sum_{i=1}^{N}b_{i}^{2}\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+We want to maximize
+\begin_inset Formula 
+\[
+\frac{\mathbb{E}R}{\sqrt{\text{var}(R)}}=\left[\sum_{i=1}^{N}b_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\right]\left[\sum_{i=1}^{N}b_{i}^{2}\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)\right]^{-1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+subject to the constraint
+\begin_inset Formula 
+\[
+\sum_{i=1}^{N}|b_{i}|=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $b_{i}=s_{i}c_{i}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $s_{i}=\pm1$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $c_{i}=|b_{i}|$
+\end_inset
+
+.
+ 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ has been determined.
+ So the problem becomes maximizing
+\begin_inset Formula 
+\[
+\left[\sum_{i=1}^{N}s_{i}c_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\right]\left[\sum_{i=1}^{N}c_{i}^{2}\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)\right]^{-1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subject to the constraint 
+\begin_inset Formula $c_{i}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1}+c_{2}+\cdots+c_{N}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Value at Risk
+\end_layout
+
+\begin_layout Standard
+Suppose we have determined the values of 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+.
+ Now we want to find 
+\begin_inset Formula $q$
+\end_inset
+
+ for a given 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\mathbb{P}\left(R\leq-q\right)=1-\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\sum_{i=1}^{N}b_{i}\left(e^{\mu_{i}+\sigma_{i}Z_{i}}-1\right)\leq-q\right)=1-\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ is small,
+ we may approximate 
+\begin_inset Formula $e^{\mu_{i}+\sigma_{i}Z_{i}}-1$
+\end_inset
+
+ by 
+\begin_inset Formula $\mu_{i}+\sigma_{i}Z_{i}$
+\end_inset
+
+.
+ With this approximation,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[\sum_{i=1}^{N}b_{i}\left(\mu_{i}+\sigma_{i}Z_{i}\right)\leq-q\right] & =1-\alpha\\
+\mathbb{P}\left[\sum_{i=1}^{N}b_{i}\sigma_{i}Z_{i}\leq-\sum_{i=1}^{N}b_{i}\mu_{i}-q\right] & =1-\alpha\\
+\mathbb{P}\left[\sqrt{\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}}Z\leq-\sum_{i=1}^{N}b_{i}\mu_{i}-q\right] & =1-\alpha
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+\begin_inset Formula 
+\[
+-\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{-1/2}\left(\sum_{i=1}^{N}b_{i}\mu_{i}+q\right)=\Phi^{-1}\left(1-\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It then follows
+\begin_inset Formula 
+\[
+q=-\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}\Phi^{-1}\left(1-\alpha\right)-\sum_{i=1}^{N}b_{i}\mu_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Expected Shortfall
+\end_layout
+
+\begin_layout Standard
+Using the approximation 
+\begin_inset Formula $R\approx\tilde{R}$
+\end_inset
+
+ with
+\begin_inset Formula 
+\[
+\tilde{R}=\sum_{i=1}^{N}b_{i}\left(\mu_{i}+\sigma_{i}Z_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we have
+\begin_inset Formula 
+\[
+\tilde{R}\sim\boldsymbol{N}\left(\sum_{i=1}^{N}b_{i}\mu_{i},\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\begin{align*}
+\mu & =\sum_{i=1}^{N}b_{i}\mu_{i}\\
+\sigma & =\left(\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2}\right)^{1/2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(\tilde{R};\tilde{R}\leq-q\right) & =\intop_{-\infty}^{-(q+\mu)/\sigma}\phi(r)\left(\mu+\sigma r\right)dr\\
+ & =\mu\left(1-\alpha\right)+\sigma\intop_{-\infty}^{-(q+\mu)/\sigma}r\phi(r)dr\\
+ & =\mu\left(1-\alpha\right)+\sigma\intop_{-\infty}^{-(q+\mu)/\sigma}re^{-r^{2}/2}\frac{dr}{\sqrt{2\pi}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $-(q+\mu)/\sigma<0$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(\tilde{R};\tilde{R}\leq-q\right) & =\mu\left(1-\alpha\right)+\sigma\intop_{-\infty}^{-(q+\mu)/\sigma}e^{-r^{2}/2}\frac{d\left(r^{2}/2\right)}{\sqrt{2\pi}}\\
+ & =\mu\left(1-\alpha\right)+\sigma\intop_{\infty}^{(q+\mu)^{2}/2\sigma^{2}}e^{-x}\frac{dx}{\sqrt{2\pi}}\\
+ & =\mu\left(1-\alpha\right)-\sigma\intop_{(q+\mu)^{2}/2\sigma^{2}}^{\infty}e^{-x}\frac{dx}{\sqrt{2\pi}}\\
+ & =\mu\left(1-\alpha\right)-\frac{\sigma}{\sqrt{2\pi}}\left[-e^{-x}\right]_{x=(q+\mu)^{2}/2\sigma^{2}}^{\infty}\\
+ & =\mu\left(1-\alpha\right)+\frac{\sigma}{\sqrt{2\pi}}\left[e^{-x}\right]_{x=(q+\mu)^{2}/2\sigma^{2}}^{\infty}\\
+ & =\mu\left(1-\alpha\right)+\frac{\sigma}{\sqrt{2\pi}}\left[0-e^{-(q+\mu)^{2}/2\sigma^{2}}\right]\\
+ & =\mu\left(1-\alpha\right)-\frac{\sigma^{2}}{\sqrt{2\pi\sigma^{2}}}e^{-(q+\mu)^{2}/2\sigma^{2}}\\
+ & =\mu\left(1-\alpha\right)-\sigma^{2}\phi_{\mu,\sigma}\left(-q\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note
+\begin_inset Formula 
+\begin{align*}
+\phi_{\mu,\sigma}\left(x\right) & =\frac{d}{dx}\mathbb{P}\left(\mu+\sigma Z\leq x\right)\\
+ & =\frac{d}{dx}\mathbb{P}\left(Z\leq\frac{x-\mu}{\sigma}\right)\\
+ & =\frac{1}{\sigma}\phi\left(\frac{x-\mu}{\sigma}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(R|R\leq-q\right) & =\frac{\mathbb{E}\left(R;R\leq-q\right)}{1-\alpha}\\
+ & =\frac{\mu\left(1-\alpha\right)-\sigma\phi\left(\frac{-q-\mu}{\sigma}\right)}{1-\alpha}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging in
+\begin_inset Formula 
+\[
+q=-\sigma\Phi^{-1}\left(1-\alpha\right)-\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we get
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(R|R\leq-q\right) & =\mu-\frac{\sigma}{1-\alpha}\phi\left[\frac{\mu+\sigma\Phi^{-1}\left(1-\alpha\right)-\mu}{\sigma}\right]\\
+ & =\mu-\frac{\sigma}{1-\alpha}\phi\left[\Phi^{-1}\left(1-\alpha\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note 
+\begin_inset Formula $\phi\left[\Phi^{-1}\left(1-\alpha\right)\right]=\phi\left[\Phi^{-1}\left(\alpha\right)\right]$
 \end_inset
 
 
