@@ -8,6 +8,8 @@
 \begin_preamble
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,bookmarksopen=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{amsmath}
+\newcommand{\sech}{\text{sech}}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -2499,8 +2501,998 @@ dY_{t}=\alpha_{t}dt+\sigma_{t}d\hat{B}_{t}
 
 \end_layout
 
+\begin_layout Section
+The Brownian Bridge
+\end_layout
+
+\begin_layout Standard
+The Brownian bridge is given by
+\begin_inset Formula 
+\begin{equation}
+dY_{t}=\frac{b-Y_{t}}{1-t}dt+dB_{t}\label{eq:g56yh6j6j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for 
+\begin_inset Formula $t\in(0,1)$
+\end_inset
+
+.
+ From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g56yh6j6j"
+
+\end_inset
+
+) it follows
+\begin_inset Formula 
+\[
+dY_{t}+\frac{Y_{t}}{1-t}dt=\frac{b}{1-t}dt+dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose there exists function 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ that satisfies
+\begin_inset Formula 
+\[
+df(t)=\frac{f(t)}{1-t}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+\frac{df(t)}{f(t)} & =\frac{dt}{1-t}\\
+\ln\left[f(t)\right]-\ln\left[f(0)\right] & =\intop_{0}^{t}\frac{ds}{1-s}\\
+\ln\frac{f(t)}{f(0)} & =\left[-\ln\left(1-s\right)\right]_{s=0}^{t}\\
+\ln\frac{f(t)}{f(0)} & =-\ln\left(1-t\right)\\
+f(t) & =\frac{f(0)}{1-t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $f(0)=1$
+\end_inset
+
+.
+ Then we have
+\begin_inset Formula 
+\begin{align*}
+d\left[\frac{Y_{t}}{1-t}\right] & =\frac{bdt}{(1-t)^{2}}+\frac{dB_{t}}{1-t}\\
+\frac{Y_{t}}{1-t}-Y_{0} & =b\intop_{0}^{t}\frac{ds}{(1-s)^{2}}+\intop_{0}^{t}\frac{dB_{s}}{1-s}\\
+ & =b\left[(-1)^{2}\frac{1}{1-s}\right]_{s=0}^{t}+\intop_{0}^{t}\frac{dB_{s}}{1-s}\\
+ & =b\left(\frac{1}{1-t}-1\right)+\intop_{0}^{t}\frac{dB_{s}}{1-s}\\
+Y_{t} & =Y_{0}(1-t)+b\left[1-(1-t)\right]+\intop_{0}^{t}\frac{(1-t)}{1-s}dB_{s}\\
+ & =Y_{0}\left(1-t\right)+bt+\intop_{0}^{t}\frac{(1-t)}{1-s}dB_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider
+\begin_inset Formula 
+\[
+dX_{t}=\frac{b-X_{t}}{T-t}dt+dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can solve this SDE in a similar way:
+\begin_inset Formula 
+\begin{align*}
+dX_{t}+\frac{X_{t}dt}{T-t} & =\frac{bdt}{T-t}+dB_{t}\\
+\frac{dX_{t}}{T-t}+\frac{X_{t}}{(T-t)^{2}}dt & =\frac{b}{(T-t)^{2}}dt+\frac{dB_{t}}{T-t}\\
+d\left(\frac{X_{t}}{T-t}\right) & =\frac{b}{(T-t)^{2}}dt+\frac{dB_{t}}{T-t}\\
+\frac{X_{t}}{T-t}-\frac{X_{0}}{T} & =\left[\frac{b}{T-s}\right]_{s=0}^{t}+\intop_{0}^{t}\frac{dB_{s}}{T-s}\\
+X_{t} & =\frac{X_{0}}{T}\left(T-t\right)+\left(\frac{b}{T-t}-\frac{b}{T}\right)\left(T-t\right)+\left(T-t\right)\intop_{0}^{t}\frac{dB_{s}}{T-s}\\
+ & =X_{0}\left(1-\frac{t}{T}\right)+b\left(1-\frac{T-t}{T}\right)+\left(T-t\right)\intop_{0}^{t}\frac{dB_{s}}{T-s}\\
+ & =X_{0}\left(1-\frac{t}{T}\right)+b\frac{t}{T}+\left(T-t\right)\intop_{0}^{t}\frac{dB_{s}}{T-s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ornstein-Uhlenbeck process conditional on a future value
+\end_layout
+
+\begin_layout Standard
+We want to understand the process 
+\begin_inset Formula $X_{t}|X_{T}$
+\end_inset
+
+ where 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is an OU process governed by
+\begin_inset Formula 
+\[
+dX_{t}=-\theta X_{t}dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving the SDE gives
+\begin_inset Formula 
+\[
+X_{t}=X_{0}e^{-\theta t}+\sigma\intop_{0}^{t}e^{\theta(s-t)}dW_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\[
+\mathbb{E}X_{t}=X_{0}e^{-\theta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(X_{t}\right) & =\sigma^{2}\intop_{0}^{t}e^{2\theta(s-t)}ds\\
+ & =\sigma^{2}e^{-2\theta t}\frac{e^{2\theta t}-1}{2\theta}\\
+ & =\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+By using the Brownian bridge
+\end_layout
+
+\begin_layout Standard
+We want to change the probability to 
+\begin_inset Formula $Q$
+\end_inset
+
+ such that for each 
+\begin_inset Formula $0\leq t\leq T$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\frac{dQ}{dP}=M_{t}=\exp\left[-\intop_{0}^{t}u_{s}dW_{s}-\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+u_{t}=\frac{1}{\sigma}\left(-\theta X_{t}-\frac{b-X_{t}}{T-t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To do this,
+ we need to show that the Novikov's condition holds,
+ i.e.We have
+\begin_inset Formula 
+\[
+dU_{t}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The profit that we make from time 0 to time 
+\begin_inset Formula $T$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+P_{T} & =\intop_{0}^{T}\frac{h\left(\ln X_{t}-\mu\right)}{X_{t}}dX_{t}\\
+ & =\intop_{0}^{T}h\left(\ln X_{t}-\mu\right)d\ln X_{t}+\intop_{0}^{T}h\left(\ln X_{t}-\mu\right)\cdot\frac{\sigma^{2}}{2}dt
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left(\frac{1}{2}\intop_{0}^{T}u_{t}^{2}dt\right)<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the following we show that Novikov's condition is satisfied if 
+\begin_inset Formula $\theta<1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Jensen's inequality,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left(\frac{1}{2}\intop_{0}^{T}u_{t}^{2}dt\right) & \leq\mathbb{E}\intop_{0}^{T}\exp\left(\frac{u_{t}^{2}}{2}\right)dt\\
+ & =\intop_{0}^{T}\mathbb{E}\exp\left[\frac{1}{2\sigma^{2}}\left(\theta X_{t}+\frac{b-X_{t}}{T-t}\right)^{2}\right]dt\\
+ & =\intop_{0}^{T}\mathbb{E}\exp\left\{ \frac{\left[\left(T-t\right)\theta-1\right]X_{t}+b}{\sqrt{2}\sigma\left(T-t\right)}\right\} ^{2}dt\\
+ & =\intop_{0}^{T}\mathbb{E}\exp\left\{ \left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]X_{t}+\frac{b}{\sqrt{2}\sigma\left(T-t\right)}\right\} ^{2}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know
+\begin_inset Formula 
+\[
+X_{t}\sim\boldsymbol{N}\left[X_{0}e^{-\theta t},\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta t}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the integrand of the above integral can be limited as follows
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}\exp\left\{ \left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]X_{t}+\frac{b}{\sqrt{2}\sigma\left(T-t\right)}\right\} ^{2}\\
+= & \mathbb{E}\exp\left\{ \left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]\left[\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}Z+X_{0}e^{-\theta t}\right]+\frac{b}{\sqrt{2}\sigma\left(T-t\right)}\right\} ^{2}\\
+= & C\times\mathbb{E}\exp\left\{ \left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]^{2}\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta t}\right)Z^{2}+DZ\right\} \\
+\leq & \frac{C}{2}\mathbb{E}\exp\left\{ \left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]^{2}\frac{\sigma^{2}}{\theta}\left(1-e^{-2\theta t}\right)Z^{2}\right\} +\frac{C}{2}\mathbb{E}\exp\left(DZ\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C,D$
+\end_inset
+
+ are constants and
+\begin_inset Formula 
+\[
+Z\sim\boldsymbol{N}(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 2nd term is obviously finite.
+ The 1st term is finite if
+\begin_inset Formula 
+\[
+\left[\frac{\theta}{\sqrt{2}\sigma}-\frac{1}{\sqrt{2}\sigma\left(T-t\right)}\right]^{2}\frac{\sigma^{2}}{\theta}\left(1-e^{-2\theta t}\right)<\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is equivalent to
+\begin_inset Formula 
+\begin{align*}
+\left[\frac{\theta}{2\sigma^{2}}-\frac{1}{\sigma^{2}(T-t)}+\frac{1}{2\sigma^{2}(T-t)\theta}\right]\sigma^{2}\left(1-e^{-2\theta t}\right) & <\frac{1}{2}\\
+\left[\frac{\theta}{2}-\frac{1}{(T-t)}+\frac{1}{2(T-t)\theta}\right]\left(1-e^{-2\theta t}\right) & <\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\begin{align*}
+f(\theta,t) & =\left[\frac{\theta}{2}-\frac{1}{(T-t)}+\frac{1}{2(T-t)\theta}\right]\left(1-e^{-2\theta t}\right)\\
+ & =\left[\frac{\theta}{2}+\frac{1}{T-t}\left(\frac{1}{2\theta}-1\right)\right]\left(1-e^{-2\theta t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $\theta<1/2$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f(\theta,t)$
+\end_inset
+
+ is monotonically increasing with 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\lim_{t\to T}f(\theta,t) & =\frac{\theta}{2}\left(1-e^{-2\theta T}\right)+\left(\frac{1}{2\theta}-1\right)\lim_{t\to T}\frac{1-e^{-2\theta t}}{T-t}\\
+ & =\frac{\theta}{2}\left(1-e^{-2\theta T}\right)+\left(\frac{1}{2\theta}-1\right)\lim_{t\to T}\frac{2\theta e^{-2\theta t}}{-1}\\
+ & =\frac{\theta}{2}\left(1-e^{-2\theta T}\right)-\left(\frac{1}{2\theta}-1\right)2\theta e^{-2\theta T}\\
+ & =\frac{3\theta}{2}e^{-2\theta T}+\frac{\theta}{2}-e^{-2\theta T}\\
+ & =\left(\frac{3\theta}{2}-1\right)e^{-2\theta T}+\frac{\theta}{2}\\
+ & <-\frac{1}{4}+\frac{1}{4}=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $\theta>1/2$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\begin{align*}
+f(\theta,t) & =\left[\frac{\theta}{2}-\frac{1}{T-t}\left(1-\frac{1}{2\theta}\right)\right]\left(1-e^{-2\theta t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $\theta\to\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f(\theta,t)\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\theta<1/2$
+\end_inset
+
+,
+ we can define 
+\begin_inset Formula $Q$
+\end_inset
+
+ properly and 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+ is governed by
+\begin_inset Formula 
+\[
+dX_{t}=\frac{b-X_{t}}{T-t}dt+\sigma d\tilde{W}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+\tilde{W}_{t}=\intop_{0}^{t}u_{s}ds+W_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(X_{t}|X_{T}=b\right) & =\mathbb{E}_{Q}\left(\frac{X_{t}}{M_{t}}\right)\\
+ & =\mathbb{E}_{Q}\left\{ \exp\left[\intop_{0}^{t}u_{s}dW_{s}+\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right]X_{t}\right\} \\
+ & =\mathbb{E}_{Q}\left\{ \exp\left[\intop_{0}^{t}u_{s}dW_{s}+\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right]X_{t}\right\} \\
+ & =\mathbb{E}_{Q}\left\{ \exp\left[\intop_{0}^{t}u_{s}\left(-u_{s}ds+d\tilde{W_{s}}\right)+\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right]X_{t}\right\} \\
+ & =\mathbb{E}_{Q}\left\{ \exp\left[\intop_{0}^{t}u_{s}d\tilde{W_{s}}-\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right]X_{t}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall
+\begin_inset Formula 
+\[
+u_{t}=\frac{1}{\sigma}\left(-\theta X_{t}-\frac{b-X_{t}}{T-t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+By calculating the conditional probability density
+\end_layout
+
+\begin_layout Standard
+We want to first calculate
+\begin_inset Formula 
+\[
+p_{t}(x,y)=\mathbb{P}\left(X_{t}\in dx|X_{T}\in dy\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(X_{t}\in dx|X_{T}\in dy\right) & =\frac{\mathbb{P}\left(X_{t}\in dx,X_{T}\in dy\right)}{\mathbb{P}\left(X_{T}\in dy\right)}\\
+ & =\frac{\mathbb{P}\left(X_{T}\in dy|X_{t}\in dx\right)\mathbb{P}\left(X_{t}\in dx\right)}{\mathbb{P}\left(X_{T}\in dy\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know
+\begin_inset Formula 
+\[
+X_{T}|\left(X_{t}=x\right)\sim\boldsymbol{N}\left[x^{-\theta(T-t)},\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta(T-t)}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[X_{t}\in(x,x+\Delta x)|X_{T}\in(y,y+\Delta y)\right] & =\mathbb{P}\left[\sigma\sqrt{\frac{1-e^{-2\theta(T-t)}}{2\theta}}Z_{1}+xe^{-\theta(T-t)}\in\left(y,y+\Delta y\right)\right]\times\\
+ & =\mathbb{P}\left[\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}Z_{2}+e^{-\theta t}X_{0}\in\left(x,x+\Delta x\right)\right]\times\\
+ & =\left\{ \mathbb{P}\left[\sigma\sqrt{\frac{1-e^{-2\theta T}}{2\theta}}Z_{3}+X_{0}e^{-\theta T}\in\left(y,y+\Delta y\right)\right]\right\} ^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}Z_{2}+e^{-\theta t}X_{0}\in\left(x,x+\Delta x\right)\right] & =\Phi\left(\frac{x+\Delta x-e^{-\theta t}X_{0}}{\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}}\right)-\Phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}}\right)\\
+ & =\frac{1}{\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}}\phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}}\right)\Delta x+O\left(\Delta x^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[X_{t}\in(x,x+\Delta x)|X_{T}\in(y,y+\Delta y)\right] & =\left[\frac{1}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\phi\left(\frac{y-e^{-\theta(T-t)}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\right)\Delta y+O\left(\Delta y^{2}\right)\right]\times\\
+ & \left[\frac{1}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)\Delta x+O\left(\Delta x^{2}\right)\right]\times\\
+ & \left\{ \frac{1}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\Delta y+O\left(\Delta y^{2}\right)\right\} ^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta y\to0$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(X_{t}\in dx|X_{T}=y\right) & =\frac{1}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}\cdot\frac{2\theta}{1-e^{-2\theta t}}\cdot\frac{1-e^{-2\theta T}}{2\theta}}\times\\
+ & \phi\left(\frac{y-e^{-\theta(T-t)}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\right)\times\\
+ & \phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)\\
+ & \left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}dx\\
+ & =\frac{1}{\sigma}\sqrt{\frac{2\theta\left(1-e^{-2\theta T}\right)}{\left(1-e^{-2\theta(T-t)}\right)\left(1-e^{-2\theta t}\right)}}\times\\
+ & \phi\left(\frac{y-e^{-\theta(T-t)}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\right)\times\\
+ & \phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)\times\\
+ & \left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $t\to0,$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(X_{t}\in dx|X_{T}=y\right) & \to\phi\left(\frac{y-e^{-\theta T}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\times\delta\left(x-X_{0}\right)\\
+ & \left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $t\to T$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t}\in dx|X_{T}=y\right)\to\delta\left(y-x\right)\phi\left(\frac{x-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(X_{t}\in dx|X_{T}=y\right) & =\frac{1}{\sigma}\sqrt{\frac{2\theta\left(1-e^{-2\theta T}\right)}{\left(1-e^{-2\theta(T-t)}\right)\left(1-e^{-2\theta t}\right)}}\left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}\times\\
+ & \phi\left(\frac{y-e^{-\theta(T-t)}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\right)\phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $e^{-x^{2}/2}/\sqrt{2\pi}$
+\end_inset
+
+,
+ we get
+\begin_inset Formula 
+\begin{align*}
+ & \phi\left(\frac{y-e^{-\theta(T-t)}x}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta(T-t)}}}\right)\phi\left(\frac{x-e^{-\theta t}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)\\
+= & \exp\left[-\frac{2\theta}{1-e^{-2\theta(T-t)}}\frac{\left(y-e^{-\theta(T-t)}x\right)^{2}}{2\sigma^{2}}\right]\times\\
+ & \exp\left[-\frac{2\theta}{1-e^{-2\theta t}}\frac{\left(x-e^{-\theta t}X_{0}\right)^{2}}{2\sigma^{2}}\right]\times\frac{1}{2\pi}\\
+= & \frac{1}{2\pi}\exp\left[-\frac{2\theta}{1-e^{-2\theta(T-t)}}\frac{e^{-2\theta(T-t)}x^{2}}{2\sigma^{2}}-\frac{2\theta}{1-e^{-2\theta t}}\frac{x^{2}}{2\sigma^{2}}\right]\times\\
+ & \exp\left[-\frac{2\theta}{1-e^{-2\theta(T-t)}}\frac{-2xye^{-\theta(T-t)}}{2\sigma^{2}}-\frac{2\theta}{1-e^{-2\theta t}}\frac{-2xX_{0}e^{-\theta t}}{2\sigma^{2}}\right]\times\\
+ & \exp\left[-\frac{2\theta}{1-e^{-2\theta(T-t)}}\frac{y^{2}}{2\sigma^{2}}-\frac{2\theta}{1-e^{-2\theta t}}\frac{e^{-2\theta t}X_{0}^{2}}{2\sigma^{2}}\right]\\
+= & \frac{1}{2\pi}\exp\left[-\frac{\theta}{\sigma^{2}}\left(\frac{1}{e^{2\theta(T-t)}-1}+\frac{e^{2\theta t}}{e^{2\theta t}-1}\right)x^{2}\right]\times\\
+ & \exp\left[2\frac{\theta}{\sigma^{2}}\left(\frac{ye^{\theta(T-t)}}{e^{2\theta(T-t)}-1}+\frac{X_{0}e^{\theta t}}{e^{2\theta t}-1}\right)x\right]\times\\
+ & \exp\left[-\frac{\theta}{\sigma^{2}}\left(\frac{y^{2}e^{2\theta(T-t)}}{e^{2\theta(T-t)}-1}+\frac{X_{0}^{2}}{e^{2\theta t}-1}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity,
+ we can write
+\begin_inset Formula 
+\begin{align}
+\mathbb{P}\left(X_{t}\in dx|X_{T}=y\right) & =\frac{1}{\sigma}\sqrt{\frac{2\theta\left(1-e^{-2\theta T}\right)}{\left(1-e^{-2\theta(T-t)}\right)\left(1-e^{-2\theta t}\right)}}\left[\phi\left(\frac{y-e^{-\theta T}X_{0}}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta T}}}\right)\right]^{-1}\times\label{eq:7j5h6j78}\\
+ & \frac{1}{2\pi}\exp\left[-\frac{\theta}{\sigma^{2}}\left(\frac{y^{2}e^{2\theta(T-t)}}{e^{2\theta(T-t)}-1}+\frac{X_{0}^{2}}{e^{2\theta t}-1}\right)\right]\times\nonumber \\
+ & \exp\left[-\frac{\theta}{\sigma^{2}}\left(\frac{1}{e^{2\theta(T-t)}-1}+\frac{e^{2\theta t}}{e^{2\theta t}-1}\right)x^{2}\right]\times\nonumber \\
+ & \exp\left[2\frac{\theta}{\sigma^{2}}\left(\frac{ye^{\theta(T-t)}}{e^{2\theta(T-t)}-1}+\frac{X_{0}e^{\theta t}}{e^{2\theta t}-1}\right)x\right]\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The supremum of an OU process
+\end_layout
+
+\begin_layout Standard
+Consider the process
+\begin_inset Formula 
+\[
+dY_{t}=-\theta Y_{t}dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+e^{\theta t}dY_{t}+\theta e^{\theta t}Y_{t}dt & =\sigma e^{\theta t}dW_{t}\\
+d\left(e^{\theta t}Y_{t}\right) & =\sigma e^{\theta t}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\[
+X_{t}=e^{\theta t}Y_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now that
+\begin_inset Formula 
+\[
+dX_{t}=\sigma e^{\theta t}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we know
+\begin_inset Formula 
+\[
+X_{\alpha(t)}\overset{d}{=}W_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\begin_inset Formula 
+\[
+\sigma^{2}e^{2\theta t}=c(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+\alpha(t)=\inf\left\{ \tau>0:\intop_{0}^{\tau}c(s)ds>t\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\begin_inset Formula 
+\[
+\beta(\tau)=\intop_{0}^{\tau}\sigma^{2}e^{2\theta s}ds=\sigma^{2}\frac{e^{2\theta\tau}-1}{2\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we have
+\begin_inset Formula 
+\[
+\alpha(t)=\beta^{-1}(t)=\frac{1}{2\theta}\ln\left(\frac{2\theta t}{\sigma^{2}}+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\[
+X_{t}\overset{d}{=}W_{\beta(t)}=W\left(\sigma^{2}\frac{e^{2\theta t}-1}{2\theta},\omega\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\[
+e^{\theta t}Y_{t}\overset{d}{=}W\left(\sigma^{2}\frac{e^{2\theta t}-1}{2\theta},\omega\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+Y_{t}\overset{d}{=}e^{-\theta t}W\left(\sigma^{2}\frac{e^{2\theta t}-1}{2\theta},\omega\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\sup_{s\leq t}Y_{s}>c\right) & =\mathbb{P}\left[\sup_{s\leq t}e^{-\theta s}W\left(\sigma^{2}\frac{e^{2\theta s}-1}{2\theta}\right)>c\right]\\
+ & =\mathbb{P}\left[\sup_{s\leq t}W\left(\sigma^{2}\frac{1-e^{-2\theta s}}{2\theta}\right)>c\right]\\
+ & =2\mathbb{P}\left[W\left(\sigma^{2}\frac{1-e^{-2\theta t}}{2\theta}\right)>c\right]\\
+ & =2\mathbb{P}\left[\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}Z>c\right]\\
+ & =2\mathbb{P}\left(Z>\frac{c}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)\\
+ & =2\Phi\left(-\frac{c}{\sigma}\sqrt{\frac{2\theta}{1-e^{-2\theta t}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note
+\begin_inset Formula 
+\[
+\lim_{t\to\infty}\mathbb{P}\left(\sup_{s\leq t}Y_{s}>c\right)=2\Phi\left(-\frac{c\sqrt{2\theta}}{\sigma}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Mathematical Finance
+\end_layout
+
+\begin_layout Section
+The price of zero-coupon bonds
+\end_layout
+
+\begin_layout Standard
+The price at time 
+\begin_inset Formula $t$
+\end_inset
+
+ of a zero-coupon bond that expires at time 
+\begin_inset Formula $T$
+\end_inset
+
+ and pays $1 at that time is given by
+\begin_inset Formula 
+\begin{align*}
+P_{t,T} & =\mathbb{E}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)|\mathcal{F}_{t}\right]\\
+ & =\mathbb{E}\left[\exp\left(-\intop_{0}^{T}r_{s}ds+\intop_{0}^{t}r_{s}ds\right)|\mathcal{F}_{t}\right]\\
+ & =\exp\left(\intop_{0}^{t}r_{s}ds\right)\mathbb{E}\left[\exp\left(-\intop_{0}^{T}r_{s}ds\right)|\mathcal{F}_{t}\right]\\
+ & =\xi_{t}^{-1}\mathbb{E}\left[\xi_{T}|\mathcal{F}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4728,7 +5720,7 @@ Define
 \end_inset
 
  as 
-\begin_inset Formula $\mathbb{P}\left(\frac{X_{T}}{X_{0}}-1\leq q\right)=1-\alpha\}$
+\begin_inset Formula $\mathbb{P}\left(\frac{X_{T}}{X_{0}}-1\leq q\right)=1-\alpha$
 \end_inset
 
 .
@@ -4841,6 +5833,341 @@ Suppose
 \[
 \frac{\ln P_{(n+1)\Delta t}-\ln P_{n\Delta t}}{\Delta t}=I_{n\Delta t}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calibration by OLS
+\end_layout
+
+\begin_layout Standard
+We know
+\begin_inset Formula 
+\[
+\intop_{t}^{t+\Delta t}I_{s}ds=\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}+\bar{I}\Delta t-\frac{\eta}{\beta}\intop_{t}^{t+\Delta t}\left[e^{\beta(s-t-\Delta t)}-1\right]dB_{s}
+\]
+
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left\{ \frac{\eta}{\beta}\intop_{t}^{t+\Delta t}\left[e^{\beta(s-t-\Delta t)}-1\right]dB_{s}\right\}  & =\frac{\eta^{2}}{\beta^{2}}\intop_{t}^{t+\Delta t}\left[e^{\beta(s-t-\Delta t)}-1\right]^{2}ds\\
+ & =\frac{\eta^{2}}{\beta^{2}}\intop_{t}^{t+\Delta t}\left[e^{2\beta(s-t-\Delta t)}-2e^{\beta(s-t-\Delta t)}+1\right]ds\\
+ & =\frac{\eta^{2}}{\beta^{2}}\left\{ \frac{e^{-2\beta(t+\Delta t)}}{2\beta}\left[e^{2\beta(t+\Delta t)}-e^{2\beta t}\right]-2\frac{e^{-\beta(t+\Delta t)}}{\beta}\left[e^{\beta(t+\Delta t)}-e^{\beta t}\right]+\Delta t\right\} \\
+ & =\frac{\eta^{2}}{\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)|I_{t}\right]=\exp\left[\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}+\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} \right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also know
+\begin_inset Formula 
+\[
+I_{t}=I_{0}e^{-\beta t}+\bar{I}\left(1-e^{-\beta t}\right)+\eta\intop_{0}^{t}e^{\beta(s-t)}dB_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\text{var}I_{t} & =\eta^{2}\intop_{0}^{t}e^{2\beta(s-t)}ds\\
+ & =\eta^{2}\frac{e^{-2\beta t}}{2\beta}\left(e^{2\beta t}-1\right)\\
+ & =\frac{\eta^{2}}{2\beta}\left(1-e^{-2\beta t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)\right] & =\exp\left[\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} \right]\\
+ & \times\mathbb{E}\exp\left[\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because
+\begin_inset Formula 
+\[
+\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}\sim\boldsymbol{N}\left(u,v^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\begin_inset Formula 
+\begin{align*}
+u & =\frac{\left(1-e^{-\beta\Delta t}\right)}{\beta}\left[\left(I_{0}-\bar{I}\right)e^{-\beta t}+\bar{I}-\bar{I}\right]\\
+ & =\frac{\left(1-e^{-\beta\Delta t}\right)}{\beta}\left(I_{0}-\bar{I}\right)e^{-\beta t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+v^{2}=\frac{\left(1-e^{-\beta\Delta t}\right)^{2}}{\beta^{2}}\cdot\frac{\eta^{2}}{2\beta}\left(1-e^{-2\beta t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\lim_{t\to\infty}\mathbb{E}\exp\left[\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}\right] & =\lim_{t\to\infty}\exp\left(u+\frac{v^{2}}{2}\right)\\
+ & =\exp\left[\frac{\left(1-e^{-\beta\Delta t}\right)^{2}}{\beta^{2}}\cdot\frac{\eta^{2}}{4\beta}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All in all,
+ we have
+\begin_inset Formula 
+\begin{align*}
+ & \lim_{t\to\infty}\mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)\right]\\
+= & \exp\left[\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} +\frac{\left(1-e^{-\beta\Delta t}\right)^{2}}{\beta^{2}}\cdot\frac{\eta^{2}}{4\beta}\right]\\
+= & \exp\left[\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left(\frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right)+\frac{\eta^{2}}{4\beta}\left(\frac{1-2e^{-\beta\Delta t}+e^{-2\beta\Delta t}}{\beta^{2}}\right)\right]\\
+= & \exp\left[e^{-2\beta\Delta t}\left(-\frac{\eta^{2}}{4\beta^{3}}+\frac{\eta^{2}}{4\beta^{3}}\right)+e^{-\beta\Delta t}\left(\frac{\eta^{2}}{\beta^{3}}-\frac{\eta^{2}}{2\beta^{3}}\right)+\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left(\frac{1}{2\beta}-\frac{2}{\beta}+\Delta t\right)+\frac{\eta^{2}}{4\beta^{3}}\right]\\
+= & \exp\left[e^{-\beta\Delta t}\frac{\eta^{2}}{2\beta^{3}}+\bar{I}\Delta t+\frac{\eta^{2}}{\beta^{3}}\left(\frac{1}{4}-1+\frac{1}{4}\right)+\frac{\eta^{2}}{2\beta^{2}}\Delta t\right]\\
+= & \exp\left[e^{-\beta\Delta t}\frac{\eta^{2}}{2\beta^{3}}+\bar{I}\Delta t-\frac{\eta^{2}}{2\beta^{3}}+\frac{\eta^{2}}{2\beta^{2}}\Delta t\right]\\
+= & \exp\left[\frac{\eta^{2}}{2\beta^{3}}\left(e^{-\beta\Delta t}-1+\Delta t\right)+\bar{I}\Delta t\right]\\
+= & \exp\left[\bar{I}\Delta t-\frac{\eta^{2}}{2\beta^{3}}\left(1-\Delta t-e^{-\beta\Delta t}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calibration by MLE
+\end_layout
+
+\begin_layout Standard
+It is assumed that the inflation rate follows the Ornstein-Uhlenbeck process:
+\begin_inset Formula 
+\[
+dI_{t}=-\beta\left(I_{t}-\bar{I}\right)dt+\eta dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align*}
+dI_{t}+\beta I_{t}dt & =\beta\bar{I}dt+\eta dB_{t}\\
+e^{\beta t}dI_{t}+\beta e^{\beta t}I_{t}dt & =\beta e^{\beta t}\bar{I}dt+\eta e^{\beta t}dB_{t}\\
+d\left(e^{\beta t}I_{t}\right) & =\beta e^{\beta t}\bar{I}dt+\eta e^{\beta t}dB_{t}\\
+e^{\beta T}I_{T}-e^{\beta t}I_{t} & =\beta\bar{I}\intop_{t}^{T}e^{\beta s}ds+\eta\intop_{t}^{T}e^{\beta s}dB_{s}\\
+ & =\beta\bar{I}\frac{e^{\beta T}-e^{\beta t}}{\beta}+\eta\intop_{t}^{T}e^{\beta s}dB_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(\eta\intop_{t}^{T}e^{\beta s}dB_{s}\right) & =\eta^{2}\intop_{t}^{T}e^{2\beta s}ds\\
+ & =\eta^{2}\frac{e^{2\beta T}-e^{2\beta t}}{2\beta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This allows us to estimate 
+\begin_inset Formula $e^{\beta t}I_{t}$
+\end_inset
+
+ by MLE.
+ Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a_{n} & =\beta\bar{I}\frac{e^{\beta T}-e^{\beta t}}{\beta}=\bar{I}\left[e^{\beta\left(n+1\right)\Delta t}-e^{\beta n\Delta t}\right]\\
+b_{n} & =\eta\sqrt{\frac{e^{2\beta(n+1)\Delta t}-e^{2\beta n\Delta t}}{2\beta}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $y_{n}=e^{\beta(n+1)\Delta t}I_{(n+1)\Delta t}-e^{\beta n\Delta t}I_{n\Delta t}$
+\end_inset
+
+ with 
+\begin_inset Formula $n=0,1,2,\dots,N-1$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+L\left(\vec{y},\beta,\bar{I},\eta\right) & =\sum_{n=0}^{N-1}\ln\phi_{a,b}\left(y_{n}\right)\\
+ & =\sum_{n=0}^{N-1}\left[-\frac{\left(y_{n}-a_{n}\right)^{2}}{2b_{n}^{2}}-\ln\sqrt{2\pi b_{n}^{2}}\right]\\
+ & =\sum_{n=0}^{N-1}\left[-\frac{\left(y_{n}-a_{n}\right)^{2}}{2b_{n}^{2}}-\frac{1}{2}\left(\ln2\pi+2\ln b_{n}\right)\right]\\
+ & =\sum_{n=0}^{N-1}\left[-\frac{\left(y_{n}-a_{n}\right)^{2}}{2b_{n}^{2}}-\ln b_{n}\right]-\frac{N\ln\left(2\pi\right)}{2}\\
+ & =\sum_{n=0}^{N-1}\left[-\frac{\left(y_{n}-a_{n}\right)^{2}}{2b_{n}^{2}}-\ln b_{n}\right]-\frac{N\ln\left(2\pi\right)}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial L}{\partial a_{k}} & =\frac{2\left(y_{k}-a_{k}\right)}{2b_{k}^{2}}=\frac{y_{k}-a_{k}}{b_{k}^{2}}\\
+\frac{\partial L}{\partial b_{k}} & =2\frac{\left(y_{k}-a_{k}\right)^{2}}{2b_{k}^{3}}-\frac{1}{b_{k}}=\frac{\left(y_{k}-a_{k}\right)^{2}-b_{k}^{2}}{b_{k}^{3}}\\
+\frac{\partial L}{\partial y_{k}} & =-\frac{2\left(y_{k}-a_{k}\right)}{2b_{k}^{2}}=-\frac{y_{k}-a_{k}}{b_{k}^{2}}=-\frac{\partial L}{\partial a_{k}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial a_{k}}{\partial\beta} & =\frac{\partial}{\partial\beta}\left[e^{\beta\left(k+1\right)\Delta t}-e^{\beta k\Delta t}\right]\\
+ & =(k+1)\Delta te^{\beta(k+1)\Delta t}-k\Delta te^{\beta k\Delta t}
+\end{align*}
+
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial b_{k}}{\partial\beta} & =\frac{\partial}{\partial\beta}\left[\eta\sqrt{\frac{e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}}{2\beta}}\right]\\
+ & =\eta\frac{1}{2}\left[\frac{e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}}{2\beta}\right]^{-1/2}\cdot\frac{2\beta\left[2(k+1)\Delta te^{2\beta(k+1)\Delta t}-2k\Delta te^{2\beta k\Delta t}\right]-2\left[e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}\right]}{4\beta^{2}}\\
+ & =\eta\left[\frac{e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}}{2\beta}\right]^{-1/2}\cdot\frac{\beta\left[2(k+1)\Delta te^{2\beta(k+1)\Delta t}-2k\Delta te^{2\beta k\Delta t}\right]-\left[e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}\right]}{2\beta^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial y_{k}}{\partial\beta} & =\frac{\partial}{\partial\beta}\left[e^{\beta(k+1)\Delta t}I_{(k+1)\Delta t}-e^{\beta k\Delta t}I_{k\Delta t}\right]\\
+ & =(k+1)\Delta te^{\beta(k+1)\Delta t}I_{(k+1)\Delta t}-k\Delta te^{\beta k\Delta t}I_{k\Delta t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial a_{k}}{\partial\bar{I}} & =e^{\beta(k+1)\Delta t}-e^{\beta k\Delta t}\\
+\frac{\partial b_{k}}{\partial\bar{I}} & =0\\
+\frac{\partial y_{k}}{\partial\bar{I}} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial a_{k}}{\partial\eta} & =0\\
+\frac{\partial b_{k}}{\partial\eta} & =\sqrt{\frac{e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}}{2\beta}}\\
+\frac{\partial y_{k}}{\partial\eta} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally,
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial L}{\partial\beta} & =\sum_{k=0}^{N-1}\left(\frac{\partial L}{\partial a_{k}}\cdot\frac{\partial a_{k}}{\partial\beta}+\frac{\partial L}{\partial b_{k}}\cdot\frac{\partial b_{k}}{\partial\beta}+\frac{\partial L}{\partial y_{k}}\cdot\frac{\partial y_{k}}{\partial\beta}\right)\\
+ & =\sum_{k=0}^{N-1}\left[\frac{\partial L}{\partial a_{k}}\cdot\left(\frac{\partial a_{k}}{\partial\beta}-\frac{\partial y_{k}}{\partial\beta}\right)+\frac{\partial L}{\partial b_{k}}\cdot\frac{\partial b_{k}}{\partial\beta}\right]\\
+\frac{\partial L}{\partial\bar{I}} & =\sum_{k=0}^{N-1}\frac{\partial L}{\partial a_{k}}\left(e^{\beta(k+1)\Delta t}-e^{\beta k\Delta t}\right)\\
+\frac{\partial L}{\partial\eta} & =\sum_{k=0}^{N-1}\frac{\partial L}{\partial b_{k}}\sqrt{\frac{e^{2\beta(k+1)\Delta t}-e^{2\beta k\Delta t}}{2\beta}}
+\end{align*}
 
 \end_inset
 
@@ -5025,6 +6352,10 @@ This expression allows us to estimate
 Calibrating the risk-free rate model to a yield curve
 \end_layout
 
+\begin_layout Subsection
+Continuously compounded interest
+\end_layout
+
 \begin_layout Standard
 Suppose we have a yield curve 
 \begin_inset Formula $\{T_{i},R_{i}\}_{i=1,2,3,\dots}$
@@ -5043,12 +6374,12 @@ Suppose we have a yield curve
 \begin_inset Formula $R_{i}$
 \end_inset
 
- is the corresponding yield.
+ is the corresponding spot rate.
  We would like to calibrate to this yield curve the short rate model
 \begin_inset Formula 
-\[
-dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma W_{t}
-\]
+\begin{equation}
+dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma dW_{t}\label{eq:trh6h6h}
+\end{equation}
 
 \end_inset
 
@@ -5056,10 +6387,14 @@ dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\sigma W_{t}
 \end_layout
 
 \begin_layout Standard
-By definition,
+The spot rate 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ is calculated according to the expected yield to maturity
 \begin_inset Formula 
 \[
-e^{R_{i}T_{i}}=\mathbb{E}\exp\left(\intop_{0}^{T_{i}}r_{t}dt\right)
+\mathbb{E}\exp\left(\intop_{0}^{T_{i}}r_{t}dt\right)
 \]
 
 \end_inset
@@ -5104,162 +6439,94 @@ Therefore,
 
 \end_layout
 
-\begin_layout Standard
-Then it follows
-\begin_inset Formula 
-\begin{align}
-R & =\frac{1}{T}\left[\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha}+\bar{r}T+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\right]\nonumber \\
- & =\overline{r}+\frac{\left(r_{0}-\bar{r}\right)\left(1-e^{-\alpha T}\right)}{\alpha T}+\frac{\sigma^{2}}{2\alpha^{2}T}\left(\frac{1-e^{-2\alpha T}}{2\alpha}-2\cdot\frac{1-e^{-\alpha T}}{\alpha}+T\right)\label{eq:6tyb6yj}
-\end{align}
-
-\end_inset
-
-
+\begin_layout Subsection
+Content of a Yield Curve 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{enumerate}
-\end_layout
-
+Now suppose the risk-free rate at time 
+\begin_inset Formula $t$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- When 
-\begin_inset Formula $T\to0$
-\end_inset
-
-,
- we have,
- to the first order in 
-\begin_inset Formula $T$
-\end_inset
-
-,
-\begin_inset Formula 
-\begin{align}
-R & =\overline{r}+\left(r_{0}-\overline{r}\right)\frac{1-\left(1-\alpha T+\frac{1}{2}\alpha^{2}T^{2}+o(T^{2})\right)}{\alpha T}\nonumber \\
- & +\frac{\sigma^{2}}{2\alpha^{2}T}\left[\frac{1-\left(1-2\alpha T+\frac{1}{2}4\alpha^{2}T^{2}+o(T^{2})\right)}{2\alpha}-2\frac{1-\left(1-\alpha T+\frac{1}{2}\alpha^{2}T^{2}+o(T^{2})\right)}{\alpha}+T\right]\nonumber \\
- & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{1}{2}\alpha T+o(T)\right)+\frac{\sigma^{2}}{2\alpha^{2}T}\left[\frac{2\alpha T-2\alpha^{2}T^{2}-o(T^{2})}{2\alpha}-2\left(T-\frac{1}{2}\alpha T^{2}-o(T^{2})\right)+T\right]\nonumber \\
- & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{\alpha T}{2}\right)+o(T)+\frac{\sigma^{2}}{2\alpha^{2}T}\left[T-\alpha T^{2}-o(T^{2})-T+\alpha T^{2}+o(T^{2})\right]\nonumber \\
- & =\overline{r}+\left(r_{0}-\overline{r}\right)\left(1-\frac{\alpha T}{2}\right)+o(T)\label{eq:hg6y5j78kj}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- when 
-\begin_inset Formula $T\to\infty$
-\end_inset
-
-,
- let 
-\begin_inset Formula $\nu=1/T$
-\end_inset
-
- and re-write (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:6tyb6yj"
-
-\end_inset
-
-) as
-\begin_inset Formula 
-\begin{align}
-R & =\overline{r}+\frac{r_{0}-\overline{r}}{\alpha}\nu\left(1-e^{-\alpha/\nu}\right)+\frac{\sigma^{2}}{2\alpha^{2}}\nu\left(\frac{1-e^{-2\alpha/\nu}}{2\alpha}-2\cdot\frac{1-e^{-\alpha/\nu}}{\alpha}+\frac{1}{\nu}\right)\nonumber \\
- & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\frac{r_{0}-\overline{r}}{\alpha}\nu-\frac{r_{0}-\overline{r}}{\alpha}\nu\cdot e^{-\alpha/\nu}+\frac{\sigma^{2}}{2\alpha^{2}}\nu\left(\frac{1-e^{-2\alpha/\nu}}{2\alpha}-2\cdot\frac{1-e^{-\alpha/\nu}}{\alpha}\right)\nonumber \\
- & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\frac{r_{0}-\overline{r}}{\alpha}\nu-\frac{3}{2\alpha}\frac{\sigma^{2}}{2\alpha^{2}}\nu+o(\nu)\nonumber \\
- & =\overline{r}+\frac{\sigma^{2}}{2\alpha^{2}}+\left(\frac{r_{0}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\nu+o(\nu)\label{eq:32t6n8mi}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{enumerate}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Suppose on day 
-\begin_inset Formula $n$
-\end_inset
-
-,
- we have a yield curve 
-\begin_inset Formula $\left\{ \left(T_{i}^{n},R_{i}^{n}\right)\right\} _{i=1,2,\cdots,M;n=0,1,2,\cdots N}$
-\end_inset
-
-,
- we want to infer the short rates 
-\begin_inset Formula $\{r_{n}\},n=0,1,2,\cdots,N$
-\end_inset
-
-,
- as well as the model parameters 
-\begin_inset Formula $\alpha,\overline{r},\sigma$
+ is 
+\begin_inset Formula $r_{t}$
 \end_inset
 
 .
- Clearly,
- we have
+ Then
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left(\intop_{t}^{t+\Delta t}r_{s}ds\right)=\begin{cases}
+1+R_{t,\Delta t}\Delta t & \Delta t<1\\
+\left(1+R_{t,\Delta t}\right)^{\Delta t} & \Delta t>1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
 \begin_inset Formula 
 \begin{align*}
-R_{M}^{n}-R_{M}^{n-1} & =\left(\frac{r_{n}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\frac{1}{T_{M}}-\left(\frac{r_{n-1}-\overline{r}}{\alpha}-\frac{3\sigma^{2}}{4\alpha^{3}}\right)\frac{1}{T_{M}}+o\left(\frac{1}{T_{M}}\right)\\
- & =\frac{r_{n}-r_{n-1}}{\alpha T_{M}}+O\left(\frac{1}{T_{M}^{2}}\right)\\
-R_{1}^{n}-R_{1}^{n-1} & =\left(r_{n}-\overline{r}\right)\left(1-\frac{\alpha T_{1}}{2}\right)-\left(r_{n-1}-\overline{r}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+o\left(T_{1}\right)\\
- & =\left(r_{n}-r_{n-1}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+O(T_{1}^{2})
+\exp\left[\frac{\left(r_{t}-\bar{r}\right)\left(1-e^{-\alpha\Delta t}\right)}{\alpha}+\bar{r}\Delta t+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha\Delta t}}{2\alpha}-2\cdot\frac{1-e^{-\alpha\Delta t}}{\alpha}+\Delta t\right)\right] & =\begin{cases}
+1+R_{t,\Delta t}\Delta t & \Delta t<1\\
+\left(1+R_{t,\Delta t}\right)^{\Delta t} & \Delta t>1
+\end{cases}\\
+\frac{\left(r_{t}-\bar{r}\right)\left(1-e^{-\alpha\Delta t}\right)}{\alpha}+\bar{r}\Delta t+\frac{\sigma^{2}}{2\alpha^{2}}\left(\frac{1-e^{-2\alpha\Delta t}}{2\alpha}-2\cdot\frac{1-e^{-\alpha\Delta t}}{\alpha}+\Delta t\right) & =\begin{cases}
+\ln\left(1+R_{t,\Delta t}\Delta t\right) & \Delta t<1\\
+\Delta t\ln\left(1+R_{t,\Delta t}\right) & \Delta t>1
+\end{cases}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last expression allows us to estimate 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ as well as the parameters 
+\begin_inset Formula $\alpha,\bar{r},\sigma$
+\end_inset
+
+ by OLS.
+\end_layout
+
+\begin_layout Subsection
+When the mean-reversion rate is very small
+\end_layout
+
+\begin_layout Standard
+We consider the case when 
+\begin_inset Formula $\alpha\to0$
+\end_inset
+
+.
+ In this case,
+ the defining SDE of the process 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+,
+ i.e.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:trh6h6h"
+
+\end_inset
+
+) becomes
+\begin_inset Formula 
+\[
+dr_{t}=\sigma dW_{t}
+\]
 
 \end_inset
 
@@ -5268,10 +6535,11 @@ R_{1}^{n}-R_{1}^{n-1} & =\left(r_{n}-\overline{r}\right)\left(1-\frac{\alpha T_{
 
 \begin_layout Standard
 Thus
+\lang american
+
 \begin_inset Formula 
 \begin{align*}
-\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}} & =\frac{\frac{r_{n}-r_{n-1}}{\alpha T_{M}}+O\left(\frac{1}{T_{M}^{2}}\right)}{\left(r_{n}-r_{n-1}\right)\left(1-\frac{\alpha T_{1}}{2}\right)+O(T_{1}^{2})}\\
- & =\frac{1+O(1/T_{M})}{\alpha T_{M}\left(1-\frac{\alpha T_{1}}{2}\right)+O\left(T_{1}^{2}T_{M}\right)}
+r_{t} & =\sigma W_{t}+r_{0}
 \end{align*}
 
 \end_inset
@@ -5280,30 +6548,28 @@ Thus
 \end_layout
 
 \begin_layout Standard
-Suppose 
-\begin_inset Formula $T_{1}=O(1/T_{M})$
-\end_inset
 
-.
- Neglecting higher-order terms,
- we can solve for 
-\begin_inset Formula $\alpha$
-\end_inset
+\lang american
+Then
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{t}r_{s}ds & =r_{0}t+\sigma\intop_{0}^{t}W_{s}ds\\
+ & =r_{0}t+\sigma\left[sW_{s}\right]_{s=0}^{t}-\sigma\intop_{0}^{t}sdW_{s}\\
+ & =r_{0}t+\sigma tW_{t}-\sigma\intop_{0}^{t}sdW_{s}
+\end{align*}
 
- using the above equation.
- This gives us an estimate of 
-\begin_inset Formula $\alpha$
-\end_inset
-
-,
- call it 
-\begin_inset Formula $\hat{\alpha}_{n}$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+We have
 \begin_inset Formula 
 \[
--\frac{T_{1}T_{M}}{2}\left(\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}}\right)\hat{\alpha_{n}}^{2}+T_{M}\left(\frac{R_{M}^{n}-R_{M}^{n-1}}{R_{1}^{n}-R_{1}^{n-1}}\right)\hat{\alpha}_{n}-1=0
+\mathbb{E}\left(\intop_{0}^{t}r_{s}ds\right)=r_{0}t
 \]
 
 \end_inset
@@ -5312,16 +6578,14 @@ Suppose
 \end_layout
 
 \begin_layout Standard
-Finally,
- we can estimate 
-\begin_inset Formula $\alpha$
-\end_inset
 
- as
+\lang american
+and
 \begin_inset Formula 
-\[
-\hat{\alpha}=\frac{1}{N}\sum_{n=1}^{n}\hat{\alpha}_{n}
-\]
+\begin{align*}
+\sigma tW_{t}-\sigma\intop_{0}^{t}sdW_{s} & =\sigma t\intop_{0}^{t}dW_{s}-\sigma\intop_{0}^{t}sdW_{s}\\
+ & =\sigma\intop_{0}^{t}\left(t-s\right)dW_{s}
+\end{align*}
 
 \end_inset
 
@@ -5329,90 +6593,17 @@ Finally,
 \end_layout
 
 \begin_layout Standard
-Having obtained an estimate of 
-\begin_inset Formula $\alpha$
-\end_inset
 
-,
- we can use (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:hg6y5j78kj"
-
-\end_inset
-
-) to write
+\lang american
+Therefore
 \begin_inset Formula 
-\begin{align}
-R_{2}^{n}-R_{1}^{n} & =\left(r_{n}-\overline{r}\right)\left[-\frac{\alpha}{2}\left(T_{2}-T_{1}\right)\right]+O(T_{1}^{2})+O(T_{2}^{2})\nonumber \\
-r_{n}-\overline{r} & =\frac{R_{2}^{n}-R_{1}^{n}-O(T_{1}^{2})-O(T_{2}^{2})}{-\frac{\alpha}{2}\left(T_{2}-T_{1}\right)}\nonumber \\
-r_{n}-\overline{r} & =\frac{R_{1}^{n}-R_{2}^{n}+O(T_{1}^{2})+O(T_{2}^{2})}{\frac{\alpha}{2}\left(T_{2}-T_{1}\right)}\label{eq:5h67jjkj8k}
-\end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eq.
- (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:5h67jjkj8k"
-
-\end_inset
-
-) allows us to estimate 
-\begin_inset Formula $r_{n}-\overline{r}$
-\end_inset
-
- as 
-\begin_inset Formula $\hat{d}_{n}=\frac{2}{\alpha}\cdot\frac{R_{1}^{n}-R_{2}^{n}}{T_{2}-T_{1}}$
-\end_inset
-
-.
- Substituting this expression into (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:6tyb6yj"
-
-\end_inset
-
-) yields
-\begin_inset Formula 
-\[
-R_{m}^{n}=\overline{r}+\frac{\hat{d}_{n}\left(1-e^{-\hat{\alpha}T_{m}}\right)}{\hat{\alpha}T_{m}}+\frac{\sigma^{2}}{2\hat{\alpha}^{2}T_{m}}\left(\frac{1-e^{-2\hat{\alpha}T_{m}}}{2\hat{\alpha}}-2\cdot\frac{1-e^{-\hat{\alpha}T_{m}}}{\hat{\alpha}}+T_{m}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-With this expression we can estimate the remaining parameters 
-\begin_inset Formula $\overline{r}$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma$
-\end_inset
-
- by OLS using 
-\begin_inset Formula $\left\{ R_{m}^{n}\right\} _{n=0,1,\cdots,N;m=3,4,\cdots M-1}$
-\end_inset
-
-.
- Then we estimate 
-\begin_inset Formula $r_{n}$
-\end_inset
-
- as
-\begin_inset Formula 
-\[
-\hat{r}_{n}=\hat{d}_{n}+\hat{\overline{r}}
-\]
+\begin{align*}
+\text{var}\left(\intop_{0}^{t}r_{s}ds\right) & =\sigma^{2}\intop_{0}^{t}\left(t-s\right)^{2}ds\\
+ & =\sigma^{2}\intop_{0}^{t}\left(s-t\right)^{2}d\left(s-t\right)\\
+ & =\sigma^{2}\left[\frac{\left(s-t\right)^{3}}{3}\right]_{s=0}^{t}\\
+ & =\sigma^{2}\left[\frac{\left(t-t\right)^{3}-\left(0-t\right)^{3}}{3}\right]\\
+ & =\sigma^{2}\frac{t^{3}}{3}
+\end{align*}
 
 \end_inset
 
@@ -5553,10 +6744,10 @@ d\ln X_{t} & =\left(r_{A,t}dt+\sigma d\tilde{B}_{t}\right)-\frac{1}{2X_{t}^{2}}\
 \begin_layout Standard
 Therefore,
 \begin_inset Formula 
-\begin{align*}
-\ln X_{t} & =\ln X_{0}+\intop_{0}^{t}\left(r_{A,s}-\frac{\sigma^{2}}{2}\right)ds+\sigma\tilde{W}_{t}\\
-X_{t} & =X_{0}\exp\left[\intop_{0}^{t}r_{A,s}ds-\frac{\sigma^{2}}{2}t+\sigma\tilde{W}_{t}\right]
-\end{align*}
+\begin{align}
+\ln X_{t} & =\ln X_{0}+\intop_{0}^{t}\left(r_{A,s}-\frac{\sigma^{2}}{2}\right)ds+\sigma\tilde{W}_{t}\nonumber \\
+X_{t} & =X_{0}\exp\left[\intop_{0}^{t}r_{A,s}ds-\frac{\sigma^{2}}{2}t+\sigma\tilde{W}_{t}\right]\label{eq:5g5th6j7uj}
+\end{align}
 
 \end_inset
 
@@ -5583,10 +6774,10 @@ X_{t}=X_{0}\xi_{t}^{-1}\exp\left(\sigma\tilde{W}_{t}-\frac{\sigma^{2}}{2}t\right
 \begin_layout Standard
 Therefore,
 \begin_inset Formula 
-\begin{align*}
-C_{0} & =\mathbb{E}_{Q}\left[\xi_{T}\left(X_{T}-K\right)1_{\left\{ X_{T}>K\right\} }\right]\\
- & =\mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]-K\mathbb{E}_{Q}\left(\xi_{T};X_{T}>K\right)
-\end{align*}
+\begin{align}
+C_{0} & =\mathbb{E}_{Q}\left[\xi_{T}\left(X_{T}-K\right)1_{\left\{ X_{T}>K\right\} }\right]\nonumber \\
+ & =\mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]-K\mathbb{E}_{Q}\left(\xi_{T};X_{T}>K\right)\label{eq:45g5vyb}
+\end{align}
 
 \end_inset
 
@@ -5628,8 +6819,7 @@ Clearly,
 \begin_inset Formula 
 \begin{align*}
 X_{T}>K & \Leftrightarrow X_{0}\xi_{T}^{-1}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>K\\
- & \Leftrightarrow\exp\left(\intop_{0}^{T}r_{A,t}dt+\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>\frac{K}{X_{0}}\\
- & \Leftrightarrow\exp\left(-\ln\xi_{T}+\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>\frac{K}{X_{0}}
+ & \Leftrightarrow\exp\left(\intop_{0}^{T}r_{A,t}dt+\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right)>\frac{K}{X_{0}}
 \end{align*}
 
 \end_inset
@@ -5642,7 +6832,7 @@ We have
 \begin_inset Formula 
 \begin{align*}
  & \mathbb{E}_{Q}\left[X_{0}\exp\left(\sigma\tilde{W}_{T}-\frac{\sigma^{2}}{2}T\right);X_{T}>K\right]\\
-= & X_{0}\intop_{-\infty}^{\infty}\intop_{-\infty}^{\infty}\exp\left(\sigma\sqrt{T}x-\frac{\sigma^{2}}{2}T\right)1_{\left\{ \sigma\sqrt{T}x-\sigma^{2}T/2+ay+b>\ln\left(K/X_{0}\right)\right\} }\phi(x)\phi(y)dxdy
+= & X_{0}\intop_{-\infty}^{\infty}\intop_{-\infty}^{\infty}\exp\left(\sigma\sqrt{T}x-\frac{\sigma^{2}}{2}T\right)\chi\left[\sigma\sqrt{T}x-\sigma^{2}T/2+ay+b>\ln\left(K/X_{0}\right)\right]\phi(x)\phi(y)dxdy
 \end{align*}
 
 \end_inset
@@ -5651,7 +6841,11 @@ We have
 \end_layout
 
 \begin_layout Standard
-where
+where 
+\begin_inset Formula $\chi$
+\end_inset
+
+ is the indicator function and
 \begin_inset Formula 
 \begin{align*}
 a & =\frac{\sigma_{A}}{\alpha_{A}}\sqrt{\frac{1-e^{-2\alpha_{A}T}}{2\alpha_{A}}-2\cdot\frac{1-e^{-\alpha_{A}T}}{\alpha_{A}}+T}\\
@@ -5720,6 +6914,930 @@ Similarly,
 
 \end_layout
 
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\[
+f(x)=-\frac{\sigma}{a}\sqrt{T}x+\frac{\sigma^{2}T}{2a}-\frac{b}{a}+\frac{1}{a}\ln\frac{K}{X_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we have
+\begin_inset Formula 
+\begin{align*}
+\intop_{f(x)}^{\infty}e^{-ay-b}\phi(y)dy & =\frac{1}{\sqrt{2\pi}}\intop_{f(x)}^{\infty}\exp\left(-\frac{y^{2}}{2}-ay-b\right)dy\\
+ & =\frac{1}{\sqrt{2\pi}}\intop_{f(x)}^{\infty}\exp\left[-\frac{1}{2}\left(y+a\right)^{2}+\frac{a^{2}}{2}-b\right]dy\\
+ & =\frac{1}{\sqrt{2\pi}}\intop_{f(x)+a}^{\infty}\exp\left[-\frac{1}{2}y'^{2}+\frac{a^{2}}{2}-b\right]dy'\\
+ & =e^{a^{2}/2-b}\Phi\left[-f(x)-a\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then it follows
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left(\xi_{T};X_{T}>K\right) & =\intop_{-\infty}^{\infty}e^{a^{2}/2-b}\Phi\left[-f(x)-a\right]\phi(x)dx\\
+ & =\intop_{0}^{1}e^{a^{2}/2-b}\Phi\left[-f\left(\Phi^{-1}(x')\right)-a\right]dx'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Putting together the two terms in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:45g5vyb"
+
+\end_inset
+
+),
+ we get
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}_{Q}\left[\xi_{T}\left(X_{T}-K\right)1_{\left\{ X_{T}>K\right\} }\right]\\
+= & X_{0}e^{-\sigma^{2}T/2}\intop_{0}^{1}e^{\sigma\sqrt{T}\Phi^{-1}(x')}\Phi\left[-f\left(\Phi^{-1}(x')\right)\right]dx'\\
+ & -K\intop_{0}^{1}e^{a^{2}/2-b}\Phi\left[-f\left(\Phi^{-1}(x')\right)-a\right]dx'\\
+= & \intop_{0}^{1}\left\{ X_{0}e^{-\sigma^{2}T/2}e^{\sigma\sqrt{T}\Phi^{-1}(x')}\Phi\left[-f\left(\Phi^{-1}(x')\right)\right]-Ke^{a^{2}/2-b}\Phi\left[-f\left(\Phi^{-1}(x')\right)-a\right]\right\} dx'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+FX Futures and Futures' options
+\end_layout
+
+\begin_layout Standard
+Consider an FX future with delivery date 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Its price at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{align*}
+F_{t} & =\mathbb{E}_{Q}\left(X_{T}|\mathcal{F}_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the previous section we have
+\begin_inset Formula 
+\[
+X_{t}=X_{0}\exp\left[\intop_{0}^{t}r_{A,s}ds-\frac{\sigma^{2}}{2}t+\sigma\tilde{W}_{t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $r_{A,s}$
+\end_inset
+
+ is the risk-free rate of the quote currency.
+ Therefore
+\begin_inset Formula 
+\begin{align}
+F_{t} & =X_{t}\mathbb{E}_{Q}\exp\left[\intop_{t}^{T}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\nonumber \\
+ & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\label{eq:g5y7j78k8k5g}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now consider a call option on 
+\begin_inset Formula $F_{t}$
+\end_inset
+
+.
+ Its price at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+.
+ Its strike price is 
+\begin_inset Formula $K$
+\end_inset
+
+ and it expires at 
+\begin_inset Formula $T'<T$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+C_{T'}=\left(F_{T'}-K\right)\chi\left(F_{T'}>K\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+C_{t}=\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot\left(F_{T'}-K\right)\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\chi$
+\end_inset
+
+ in the above denotes the indicator function.
+ 
+\begin_inset Formula $t\leq T'$
+\end_inset
+
+.
+ It follows
+\begin_inset Formula 
+\[
+C_{t}=A_{t}-B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\begin_inset Formula 
+\begin{align*}
+A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
+B_{t} & =K\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g5y7j78k8k5g"
+
+\end_inset
+
+),
+ we get
+\begin_inset Formula 
+\begin{align*}
+F_{T'} & =X_{T'}\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,s}ds\right)|\mathcal{F}_{T'}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We model 
+\begin_inset Formula $r_{A,t}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+dr_{A,t}=-\alpha_{A}\left(r_{A,t}-\overline{r}_{A}\right)dt+\sigma_{A}dW_{A,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{equation}
+\intop_{T'}^{T}r_{A,t}dt=\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{T'}^{T}\left[e^{\alpha_{A}(t-T)}-1\right]dW_{A,t}\label{eq:hg65uik87k8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right] & =\exp\left[\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)\right]\\
+ & \times\exp\left[\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+a & =\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\\
+b & =-\frac{\bar{r}_{A}\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)\\
+ & +\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we can write
+\begin_inset Formula 
+\[
+\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right]=e^{ar_{A,T'}+b}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\[
+F_{T'}=X_{T'}e^{ar_{A,T'}+b}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5g5th6j7uj"
+
+\end_inset
+
+) gives
+\begin_inset Formula 
+\[
+X_{T'}=X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align*}
+A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
+ & =\mathbb{E}_{Q}\left\{ \exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}+b\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
+ & =\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+b\right]\\
+ & \times\mathbb{E}_{Q}\left\{ \exp\left[\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
+ & =\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+b\right]\\
+ & \times\mathbb{E}_{Q}\left\{ \exp\left[\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}\right]\chi\left(X_{T'}e^{ar_{A,T'}+b}>K\right)|\mathcal{F}_{t}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The condition 
+\begin_inset Formula $X_{T'}e^{ar_{A,T'}+b}>K$
+\end_inset
+
+ can be expanded as
+\begin_inset Formula 
+\[
+X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}+b\right]>K
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover,
+ we can write 
+\begin_inset Formula $r_{A,T'}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+r_{A,T'}=\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}+\sigma_{A}\intop_{t}^{T'}e^{\alpha_{A}\left(s-T'\right)}dW_{A,s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\intop_{t}^{T'}r_{A,s}ds$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\intop_{t}^{T'}r_{A,s}ds=\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{t}^{T'}\left[e^{\alpha_{A}\left(s-T'\right)}-1\right]dW_{A,s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\text{cov}\left(\intop_{t}^{T'}r_{A,s}ds,r_{A,T'}\right) & =\frac{\sigma_{A}^{2}}{\alpha_{A}}\mathbb{E}\left\{ \left[\intop_{t}^{T'}e^{\alpha_{A}\left(s-T'\right)}dW_{A,s}\right]\cdot\left[\intop_{t}^{T'}\left[e^{\alpha_{A}\left(s-T'\right)}-1\right]dW_{A,s}\right]\right\} \\
+ & =\frac{\sigma_{A}^{2}}{\alpha_{A}}\intop_{t}^{T'}\left[e^{2\alpha_{A}\left(s-T'\right)}-e^{\alpha_{A}\left(s-T'\right)}\right]ds\\
+ & =\frac{\sigma_{A}^{2}}{\alpha_{A}}\left[\frac{1-e^{-2\alpha_{A}\left(T'-t\right)}}{2\alpha_{A}}-\frac{1-e^{-\alpha_{A}\left(T'-t\right)}}{\alpha_{A}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(\intop_{t}^{T'}r_{A,s}ds\right) & =\frac{\sigma_{A}^{2}}{\alpha_{A}^{2}}\intop_{t}^{T'}\left[e^{\alpha_{A}\left(s-T'\right)}-1\right]^{2}ds\\
+ & =\frac{\sigma_{A}^{2}}{\alpha_{A}^{2}}\left[\frac{1-e^{-2\alpha_{A}\left(T'-t\right)}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}\left(T'-t\right)}}{\alpha_{A}}+\left(T'-t\right)\right]\\
+\text{var}\left(r_{A,T'}\right) & =\sigma_{A}^{2}\intop_{t}^{T'}e^{2\alpha_{A}\left(s-T'\right)}ds\\
+ & =\sigma_{A}^{2}\frac{1-e^{-2\alpha_{A}\left(T'-t\right)}}{2\alpha_{A}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let the variance-covariance matrix of 
+\begin_inset Formula $r_{A,T'}$
+\end_inset
+
+ and 
+\begin_inset Formula $\intop_{t}^{T'}r_{A,s}ds$
+\end_inset
+
+ be
+\begin_inset Formula 
+\[
+C=\begin{bmatrix}\nu_{1}^{2} & \nu_{1}\nu_{2}\varphi\\
+\nu_{1}\nu_{2}\varphi & \nu_{2}^{2}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can diagonalize 
+\begin_inset Formula $C$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+C=\begin{bmatrix}p_{11} & p_{12}\\
+p_{21} & p_{22}
+\end{bmatrix}\begin{bmatrix}\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{bmatrix}\begin{bmatrix}p_{11} & p_{21}\\
+p_{12} & p_{22}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we can write
+\begin_inset Formula 
+\begin{align*}
+r_{A,T'} & =p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\\
+\intop_{t}^{T'}r_{A,s}ds & =p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}+\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Z_{1}\perp Z_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{1},Z_{2}\sim\boldsymbol{N}(0,1)$
+\end_inset
+
+.
+ Furthermore,
+ define 
+\begin_inset Formula $Z_{3}\sim\boldsymbol{N}(0,1)$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{3}\perp Z_{1}\perp Z_{2}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+F_{T'} & =X_{T'}e^{ar_{A,T'}+b}\\
+ & \overset{d}{=}X_{t}\exp\left[\left(p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}\right)+a\left(p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}\right)+\sigma\left(T'-t\right)Z_{3}\right]\\
+ & \times\exp\left[b-\frac{\sigma^{2}}{2}\left(T'-t\right)+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\right]\\
+ & \times\exp\left[\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity,
+ let's write
+\begin_inset Formula 
+\[
+F_{T'}\overset{d}{=}X_{t}\exp\left(a_{0}+a_{1}Z_{1}+a_{2}Z_{2}+a_{3}Z_{3}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $a_{3}=\sigma\left(T'-t\right)>0$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
+ & =X_{t}\exp\left[-\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}-\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\exp\left[b-\frac{\sigma^{2}}{2}\left(T'-t\right)+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\right]\\
+ & \times\exp\left[\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{z}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left(-p_{21}\sqrt{\lambda_{1}}z_{1}-p_{22}\sqrt{\lambda_{2}}z_{2}+\sum_{i=1}^{3}a_{i}z_{i}\right)\prod_{i=1}^{3}\phi(z_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+L\left(z_{1},z_{2}\right)=\frac{1}{a_{3}}\left(\ln\frac{K}{X_{t}}-a_{0}-a_{1}z_{1}-a_{2}z_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Pegged Currencies
+\end_layout
+
+\begin_layout Standard
+The EUR to DKK rate is pegged by Denmark at 7.46 and is required to deviate no more than 2.25% from this value.
+ We may model the log-exchange rate 
+\begin_inset Formula $\ln X_{t}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+d\ln X_{t}=-\theta\left(\ln X_{t}-\mu\right)dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =de^{\ln X_{t}}\\
+ & =e^{\ln X_{t}}\left(d\ln X_{t}\right)+\frac{1}{2}e^{\ln X_{t}}\left(d\ln X_{t}\right)^{2}\\
+ & =X_{t}\left[-\theta\left(\ln X_{t}-\mu\right)dt+\sigma dW_{t}\right]+\frac{X_{t}}{2}\sigma^{2}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\[
+Y_{t}=\ln X_{t}-\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =-\theta\left(\ln X_{t}-\mu\right)dt+\sigma dW_{t}\\
+ & =-\theta Y_{t}dt+\sigma dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving this SDE gives
+\begin_inset Formula 
+\[
+Y_{t}=Y_{0}e^{-\theta t}+\sigma\intop_{0}^{t}e^{\theta(s-t)}dW_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's say the total value of our s-elf-financing portfolio at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is 
+\begin_inset Formula $V_{t}$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+V_{t}=C_{t}+X_{t}U_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+ are the amount of cash and the number of DKK/EUR that we hold at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Of course,
+\begin_inset Formula 
+\[
+dV_{t}=dC_{t}+X_{t}dU_{t}+U_{t}dX_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the portfolio is self-financing,
+ 
+\begin_inset Formula $dC_{t}+X_{t}dU_{t}=0$
+\end_inset
+
+.
+ Let
+\begin_inset Formula $U_{t}=\frac{V_{t}h\left(Y_{t}\right)}{X_{t}}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dV_{t} & =\frac{V_{t}h(Y_{t})}{X_{t}}dX_{t}\\
+ & =V_{t}h\left(Y_{t}\right)\left[-\theta\left(\ln X_{t}-\mu\right)dt+\sigma dW_{t}+\frac{\sigma^{2}}{2}dt\right]\\
+ & =V_{t}h\left(Y_{t}\right)\left[\left(-\theta Y_{t}+\frac{\sigma^{2}}{2}\right)dt+\sigma dW_{t}\right]\\
+dV_{t} & =V_{t}h(Y_{t})\left(-\theta Y_{t}+\frac{\sigma^{2}}{2}\right)dt+\sigma V_{t}h\left(Y_{t}\right)dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $V_{0}>0$
+\end_inset
+
+,
+ we can make sure 
+\begin_inset Formula $\mathbb{E}V_{t}>V_{0}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>0$
+\end_inset
+
+,
+ provided that 
+\begin_inset Formula $h(\cdot)$
+\end_inset
+
+ is an odd,
+ monotonically decreasing function that satisfies 
+\begin_inset Formula $-1\leq h(\cdot)\leq1$
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+\lim_{y\to\infty}h(y) & =-1\\
+\lim_{y\to-\infty}h(y) & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For example,
+ we may choose
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $h(y)=-\tanh(y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $h(y)=\left(1-e^{y}\right)/\left(1+e^{y}\right)=2/\left(1+e^{y}\right)-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $h(y)=1-2\Phi(y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose we choose
+\begin_inset Formula 
+\[
+h(y)=\frac{2}{1+e^{\nu y}}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+d\ln V_{t} & =h(Y_{t})\left(-\theta Y_{t}+\frac{\sigma^{2}}{2}\right)dt+\sigma h(Y_{t})dW_{t}-\frac{\sigma^{2}h^{2}(Y_{t})}{2}dt\\
+ & =\left[h(Y_{t})\left(-\theta Y_{t}+\frac{\sigma^{2}}{2}\right)-\frac{\sigma^{2}h^{2}(Y_{t})}{2}\right]dt+\sigma h(Y_{t})dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\ln\frac{V_{T}}{V_{0}} & =\intop_{0}^{T}dt\left[h(Y_{t})\left(-\theta Y_{t}+\frac{\sigma^{2}}{2}\right)-\frac{\sigma^{2}h^{2}(Y_{t})}{2}\right]\\
+ & =\intop_{0}^{T}\frac{dt}{b_{t}}\intop_{-\infty}^{\infty}dy\cdot\phi\left(\frac{y-a_{t}}{b_{t}}\right)\left[h(y)\left(-\theta y+\frac{\sigma^{2}}{2}\right)-\frac{\sigma^{2}h^{2}(y)}{2}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+a_{t} & =Y_{0}e^{-\theta t}\\
+b_{t} & =\sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\nu}\mathbb{E}\left(\ln\frac{V_{T}}{V_{0}}\right)=\intop_{0}^{T}\frac{dt}{b_{t}}\intop_{-\infty}^{\infty}dy\cdot\phi\left(\frac{y-a_{t}}{b_{t}}\right)\left[\frac{\partial h(y)}{\partial\nu}\left(-\theta y+\frac{\sigma^{2}}{2}\right)-\sigma^{2}h(y)\frac{\partial h(y)}{\partial\nu}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+\frac{\partial h(y)}{\partial\nu}=-\frac{2ye^{\nu y}}{\left(1+e^{\nu y}\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\nu}\mathbb{E}\left(\ln\frac{V_{T}}{V_{0}}\right)=-\intop_{0}^{T}\frac{dt}{b_{t}}\intop_{-\infty}^{\infty}dy\cdot\phi\left(\frac{y-a_{t}}{b_{t}}\right)\frac{2ye^{\nu y}}{\left(1+e^{\nu y}\right)^{2}}\left[\left(-\theta y+\frac{\sigma^{2}}{2}\right)-\sigma^{2}h(y)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Portfolio Management
 \end_layout
@@ -5735,11 +7853,11 @@ Suppose we have
 
  assets,
  whose current prices are 
-\begin_inset Formula $\{p_{i}\}_{i=1,2,\dots,N}$
+\begin_inset Formula $\{P_{i}\}_{i=1,2,\dots,N}$
 \end_inset
 
  and whose future prices are forecasted to be 
-\begin_inset Formula $p_{i}e^{\mu_{i}+\sigma_{i}Z_{i}}$
+\begin_inset Formula $P_{i}e^{\mu_{i}+\sigma_{i}Z_{i}}$
 \end_inset
 
 ,
@@ -5766,7 +7884,7 @@ Let
  Then the total relative return of the portfolio is
 \begin_inset Formula 
 \[
-R=\left(\sum_{i=1}^{N}\left|a_{i}\right|p_{i}\right)^{-1}\sum_{i=1}^{N}a_{i}p_{i}\left(e^{\mu_{i}+\sigma_{i}Z_{i}}-1\right)
+R=\left(\sum_{i=1}^{N}\left|a_{i}\right|P_{i}\right)^{-1}\sum_{i=1}^{N}a_{i}P_{i}\left(e^{\mu_{i}+\sigma_{i}Z_{i}}-1\right)
 \]
 
 \end_inset
@@ -5780,7 +7898,7 @@ R=\left(\sum_{i=1}^{N}\left|a_{i}\right|p_{i}\right)^{-1}\sum_{i=1}^{N}a_{i}p_{i
 Let
 \begin_inset Formula 
 \[
-a_{i}p_{i}\left(\sum_{i=1}^{N}\left|a_{i}\right|p_{i}\right)^{-1}=b_{i}
+a_{i}P_{i}\left(\sum_{i=1}^{N}\left|a_{i}\right|P_{i}\right)^{-1}=b_{i}
 \]
 
 \end_inset
@@ -5868,9 +7986,9 @@ Let
  has been determined.
  So the problem becomes maximizing
 \begin_inset Formula 
-\[
-\left[\sum_{i=1}^{N}s_{i}c_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\right]\left[\sum_{i=1}^{N}c_{i}^{2}\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)\right]^{-1/2}
-\]
+\begin{align*}
+f\left(c_{1},c_{2},\cdots c_{N}\right) & =\left[\sum_{i=1}^{N}s_{i}c_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\right]\left[\sum_{i=1}^{N}c_{i}^{2}\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)\right]^{-1/2}
+\end{align*}
 
 \end_inset
 
@@ -5887,6 +8005,129 @@ subject to the constraint
 \end_inset
 
 .
+ To simplify the notation,
+ define
+\begin_inset Formula 
+\begin{align*}
+p_{i} & =s_{i}\left(e^{\mu_{i}+\sigma_{i}^{2}/2}-1\right)\\
+q_{i} & =\left(e^{\sigma_{i}^{2}}-1\right)\left(e^{2\mu_{i}+\sigma_{i}^{2}}\right)\\
+A & =\sum_{i=1}^{N}p_{i}c_{i}\\
+B & =\sum_{i=1}^{N}q_{i}c_{i}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial A}{\partial c_{k}} & =p_{k}\\
+\frac{\partial B}{\partial c_{k}} & =2q_{k}c_{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we can express the objective function 
+\begin_inset Formula $f$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f=\left(\sum_{i=1}^{N}p_{i}c_{i}\right)\left(\sum_{i=1}^{N}q_{i}c_{i}^{2}\right)^{-1/2}=AB^{-1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To compute the gradient,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial f}{\partial c_{k}} & =p_{k}B^{-1/2}-q_{k}c_{k}AB^{-3/2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover,
+ for 
+\begin_inset Formula $k\neq l$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}f}{\partial c_{k}\partial c_{l}} & =p_{k}\cdot\left(-\frac{1}{2}\right)B^{-3/2}\cdot2q_{l}c_{l}-q_{k}c_{k}p_{l}B^{-3/2}-q_{k}c_{k}A\cdot\left(-\frac{3}{2}B^{-5/2}\cdot2q_{l}c_{l}\right)\\
+ & =B^{-5/2}\left(-p_{k}q_{l}c_{l}B-p_{l}q_{k}c_{k}B+3q_{k}q_{l}c_{k}c_{l}A\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}f}{\partial c_{k}^{2}} & =p_{k}\left(-\frac{1}{2}\right)B^{-3/2}\cdot2p_{k}c_{k}-q_{k}\left[AB^{-3/2}+c_{k}p_{k}B^{-3/2}+c_{k}A\left(-\frac{3}{2}\right)B^{-5/2}\cdot2q_{k}c_{k}\right]\\
+ & =-p_{k}^{2}c_{k}B^{-3/2}-q_{k}B^{-5/2}\left(AB+p_{k}c_{k}B-3q_{k}c_{k}^{2}A\right)\\
+ & =-B^{-5/2}\left(p_{k}^{2}c_{k}B+q_{k}AB+p_{k}q_{k}c_{k}B-3q_{k}^{2}c_{k}^{2}A\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+A twist to the price forecast
+\end_layout
+
+\begin_layout Standard
+Suppose the future asset price is forecast to be 
+\begin_inset Formula $e^{\mu_{i}'+\sigma_{i}Z_{i}}=P_{i}e^{\mu_{i}+\sigma_{i}Z_{i}}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+P_{i}e^{\mu_{i}+\sigma_{i}Z_{i}}=e^{\mu_{i}+\ln P_{i}+\sigma_{i}Z_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+\mu_{i}'=\mu_{i}+\ln P_{i}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -6153,7 +8394,7 @@ Model specification
 \end_layout
 
 \begin_layout Standard
-We consider the following model of the S&P 500 index and the gold price:
+We consider the following model of the gold price:
 \begin_inset Formula 
 \[
 \begin{bmatrix}dG_{t}\\
@@ -6201,6 +8442,92 @@ dB_{t}dD_{t}=\rho dt
 
 \begin_layout Section
 Solution of the model
+\end_layout
+
+\begin_layout Standard
+From the 1st equation we get
+\begin_inset Formula 
+\begin{align*}
+d\ln G_{t} & =\frac{\left(\mu+\theta I_{t}-\kappa r_{t}\right)G_{t}dt+\sigma G_{t}dW_{t}}{G_{t}}-\frac{\sigma^{2}G_{t}^{2}dt}{2G_{t}^{2}}\\
+ & =\left(\mu+\theta I_{t}-\kappa r_{t}-\frac{\sigma^{2}}{2}\right)dt+\sigma dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\[
+\ln G_{t}-\ln G_{0}=\left(\mu-\frac{\sigma^{2}}{2}\right)t+\theta\intop_{0}^{t}I_{s}ds-\kappa\intop_{0}^{t}r_{s}ds+\sigma W_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From
+\begin_inset Formula 
+\[
+dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\eta dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we get
+\begin_inset Formula 
+\[
+r_{t}=\overline{r}+\left(r_{0}-\overline{r}\right)e^{-\alpha t}+\sigma\intop_{0}^{t}e^{\alpha(s-t)}dB_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover,
+\begin_inset Formula 
+\[
+r_{t}-r_{0}=-\alpha\intop_{0}^{t}r_{s}ds+\alpha\overline{r}t+\eta B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align*}
+\alpha\intop_{0}^{t}r_{s}ds & =r_{0}-r_{t}+\alpha\overline{r}t+\eta B_{t}\\
+\intop_{0}^{t}r_{s}ds & =\frac{r_{0}-r_{t}}{\alpha}+\overline{r}t+\frac{\eta}{\alpha}B_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\begin_inset Formula 
+\[
+\intop_{0}^{t}I_{s}ds=\frac{I_{0}-I_{t}}{\beta}+\overline{I}t+\frac{\nu}{\beta}D_{t}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
