@@ -7186,9 +7186,8 @@ Define
 :
 \begin_inset Formula 
 \begin{align*}
-a & =\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\\
-b & =-\frac{\bar{r}_{A}\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)\\
- & +\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)
+q_{1} & =\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\\
+q_{2} & =\bar{r}_{A}\left(T-T'\right)+\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)
 \end{align*}
 
 \end_inset
@@ -7200,7 +7199,7 @@ b & =-\frac{\bar{r}_{A}\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}
 So we can write
 \begin_inset Formula 
 \[
-\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right]=e^{ar_{A,T'}+b}
+\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right]=e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
 \]
 
 \end_inset
@@ -7212,7 +7211,7 @@ So we can write
 Thus we have
 \begin_inset Formula 
 \[
-F_{T'}=X_{T'}e^{ar_{A,T'}+b}
+F_{T'}=X_{T'}e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
 \]
 
 \end_inset
@@ -7240,15 +7239,23 @@ X_{T'}=X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\ri
 \end_layout
 
 \begin_layout Standard
+Then
+\begin_inset Formula 
+\[
+F_{T'}=X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Hence
 \begin_inset Formula 
 \begin{align*}
 A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
- & =\mathbb{E}_{Q}\left\{ \exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}+b\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
- & =\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+b\right]\\
- & \times\mathbb{E}_{Q}\left\{ \exp\left[\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
- & =\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+b\right]\\
- & \times\mathbb{E}_{Q}\left\{ \exp\left[\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}\right]\chi\left(X_{T'}e^{ar_{A,T'}+b}>K\right)|\mathcal{F}_{t}\right\} 
+ & =\mathbb{E}_{Q}\left\{ \exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} 
 \end{align*}
 
 \end_inset
@@ -7257,14 +7264,14 @@ A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)F_{T'}\ch
 \end_layout
 
 \begin_layout Standard
-The condition 
-\begin_inset Formula $X_{T'}e^{ar_{A,T'}+b}>K$
+Expand the condition 
+\begin_inset Formula $F_{T'}>K$
 \end_inset
 
- can be expanded as
+ as
 \begin_inset Formula 
 \[
-X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+ar_{A,T'}+b\right]>K
+X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}\right]>K
 \]
 
 \end_inset
@@ -7280,9 +7287,9 @@ Moreover,
 
  as
 \begin_inset Formula 
-\[
-r_{A,T'}=\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}+\sigma_{A}\intop_{t}^{T'}e^{\alpha_{A}\left(s-T'\right)}dW_{A,s}
-\]
+\begin{equation}
+r_{A,T'}=\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}+\sigma_{A}\intop_{t}^{T'}e^{\alpha_{A}\left(s-T'\right)}dW_{A,s}\label{eq:h67j7uk89l}
+\end{equation}
 
 \end_inset
 
@@ -7296,9 +7303,9 @@ and
 
  as
 \begin_inset Formula 
-\[
-\intop_{t}^{T'}r_{A,s}ds=\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{t}^{T'}\left[e^{\alpha_{A}\left(s-T'\right)}-1\right]dW_{A,s}
-\]
+\begin{equation}
+\intop_{t}^{T'}r_{A,s}ds=\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{t}^{T'}\left[e^{\alpha_{A}\left(s-T'\right)}-1\right]dW_{A,s}\label{eq:7j78k89ll9}
+\end{equation}
 
 \end_inset
 
@@ -7363,15 +7370,23 @@ We can diagonalize
 
  as
 \begin_inset Formula 
-\[
-C=\begin{bmatrix}p_{11} & p_{12}\\
+\begin{align*}
+C & =\begin{bmatrix}p_{11} & p_{12}\\
 p_{21} & p_{22}
 \end{bmatrix}\begin{bmatrix}\lambda_{1} & 0\\
 0 & \lambda_{2}
 \end{bmatrix}\begin{bmatrix}p_{11} & p_{21}\\
 p_{12} & p_{22}
+\end{bmatrix}\\
+ & =\begin{bmatrix}p_{11}\lambda_{1} & p_{12}\lambda_{2}\\
+p_{21}\lambda_{1} & p_{22}\lambda_{2}
+\end{bmatrix}\begin{bmatrix}p_{11} & p_{21}\\
+p_{12} & p_{22}
+\end{bmatrix}\\
+ & =\begin{bmatrix}p_{11}^{2}\lambda_{1}+p_{12}^{2}\lambda_{2} & p_{11}p_{21}\lambda_{1}+p_{12}p_{22}\lambda_{2}\\
+p_{11}p_{21}\lambda_{1}+p_{12}p_{22}\lambda_{2} & p_{21}^{2}\lambda_{1}+p_{22}\lambda_{2}
 \end{bmatrix}
-\]
+\end{align*}
 
 \end_inset
 
@@ -7379,11 +7394,26 @@ p_{12} & p_{22}
 \end_layout
 
 \begin_layout Standard
-Thus we can write
+Thus,
+ using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h67j7uk89l"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:7j78k89ll9"
+
+\end_inset
+
+) we can write
 \begin_inset Formula 
 \begin{align*}
-r_{A,T'} & =p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\\
-\intop_{t}^{T'}r_{A,s}ds & =p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}+\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)
+r_{A,T'} & \overset{d}{=}p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\\
+\intop_{t}^{T'}r_{A,s}ds & \overset{d}{=}p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}+\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)
 \end{align*}
 
 \end_inset
@@ -7414,10 +7444,10 @@ where
  We have
 \begin_inset Formula 
 \begin{align*}
-F_{T'} & =X_{T'}e^{ar_{A,T'}+b}\\
- & \overset{d}{=}X_{t}\exp\left[\left(p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}\right)+a\left(p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}\right)+\sigma\left(T'-t\right)Z_{3}\right]\\
- & \times\exp\left[b-\frac{\sigma^{2}}{2}\left(T'-t\right)+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\right]\\
- & \times\exp\left[\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)\right]
+F_{T'} & =X_{T'}e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}\\
+ & =X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}\right]\\
+ & \overset{d}{=}X_{t}\exp\left[\left(p_{21}\sqrt{\lambda_{1}}Z_{1}+p_{22}\sqrt{\lambda_{2}}Z_{2}\right)+\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\exp\left\{ \sigma\sqrt{T'-t}Z_{3}+q_{1}\left[p_{11}\sqrt{\lambda_{1}}Z_{1}+p_{12}\sqrt{\lambda_{2}}Z_{2}+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}\right]+q_{2}\right\} 
 \end{align*}
 
 \end_inset
@@ -7439,19 +7469,73 @@ F_{T'}\overset{d}{=}X_{t}\exp\left(a_{0}+a_{1}Z_{1}+a_{2}Z_{2}+a_{3}Z_{3}\right)
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $a_{3}=\sigma\left(T'-t\right)>0$
+where
+\begin_inset Formula 
+\begin{align*}
+a_{0} & =\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)+q_{1}\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+q_{2}\\
+ & =\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\overline{r}_{A}\left(T-t\right)+\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}\\
+ & +\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left[\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right]\\
+ & =\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}+e^{-\alpha_{A}(T'-t)}-e^{-\alpha_{A}\left(T-t\right)}\right]}{\alpha_{A}}+\overline{r}_{A}\left(T-t\right)\\
+ & +\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left[\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right]\\
+ & =\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T-t\right)}\right]}{\alpha_{A}}+\overline{r}_{A}\left(T-t\right)+\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left[\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right]
+\end{align*}
+
 \end_inset
 
-.
- We have
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a_{1} & =p_{21}\sqrt{\lambda_{1}}+q_{1}p_{11}\sqrt{\lambda_{1}}\\
+a_{2} & =p_{22}\sqrt{\lambda_{2}}+q_{1}p_{12}\sqrt{\lambda_{2}}\\
+a_{3} & =\sigma\sqrt{T'-t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we rewrite the condition 
+\begin_inset Formula $F_{T'}>K$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+F_{T'}>K & \Leftrightarrow X_{t}\exp\left(a_{0}+a_{1}Z_{1}+a_{2}Z_{2}+a_{3}Z_{3}\right)>K\\
+ & \Leftrightarrow a_{0}+a_{1}Z_{1}+a_{2}Z_{2}+a_{3}Z_{3}>\ln\frac{K}{X_{t}}\\
+ & \Leftrightarrow a_{3}Z_{3}>\ln\frac{K}{X_{t}}-a_{0}-a_{1}Z_{1}-a_{2}Z_{2}\\
+ & \Leftrightarrow Z_{3}>\frac{1}{a_{3}}\left(\ln\frac{K}{X_{t}}-a_{0}-a_{1}Z_{1}-a_{2}Z_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
 \begin_inset Formula 
 \begin{align*}
 A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
- & =X_{t}\exp\left[-\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}-\bar{r}_{A}\left(T'-t\right)\right]\\
- & \times\exp\left[b-\frac{\sigma^{2}}{2}\left(T'-t\right)+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\right]\\
- & \times\exp\left[\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}+\bar{r}_{A}\left(T'-t\right)\right]\\
- & \times\intop_{-\infty}^{\infty}dz_{z}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left(-p_{21}\sqrt{\lambda_{1}}z_{1}-p_{22}\sqrt{\lambda_{2}}z_{2}+\sum_{i=1}^{3}a_{i}z_{i}\right)\prod_{i=1}^{3}\phi(z_{i})
+ & =X_{t}\mathbb{E}_{Q}\left\{ \exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
+ & =X_{t}\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)-q_{1}\overline{r}_{A}+q_{2}\right]\\
+ & \times\mathbb{E}_{Q}\left\{ \exp\left[\sigma\left(\tilde{W}_{T'}-\tilde{W}_{t}\right)+q_{1}r_{A,T'}\right]\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right\} \\
+ & =X_{t}\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)-q_{1}\overline{r}_{A}+q_{2}\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{z}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\\
+ & \times\exp\left\{ \sigma\sqrt{T'-t}z_{3}+q_{1}\left[p_{11}\sqrt{\lambda_{1}}z_{1}+p_{12}\sqrt{\lambda_{2}}z_{2}+\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+\bar{r}_{A}\right]\right\} \\
+ & \times\prod_{i=1}^{3}\phi(z_{i})\\
+ & =X_{t}\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)-q_{1}\overline{r}_{A}+q_{2}+q_{1}\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+q_{1}\overline{r}_{A}\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{z}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left[\sigma\sqrt{T'-t}z_{3}+q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right]\prod_{i=1}^{3}\phi(z_{i})\\
+ & =X_{t}\exp\left[-\frac{\sigma^{2}}{2}\left(T'-t\right)+q_{1}\left(r_{A,t}-\bar{r}_{A}\right)e^{-\alpha_{A}(T'-t)}+q_{2}\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{z}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left[\sigma\sqrt{T'-t}z_{3}+q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right]\prod_{i=1}^{3}\phi(z_{i})
 \end{align*}
 
 \end_inset
@@ -7465,6 +7549,54 @@ where
 \[
 L\left(z_{1},z_{2}\right)=\frac{1}{a_{3}}\left(\ln\frac{K}{X_{t}}-a_{0}-a_{1}z_{1}-a_{2}z_{2}\right)
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's denote the triple integral as 
+\begin_inset Formula $J_{A}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+J_{A} & =\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left(\sigma\sqrt{T'-t}z_{3}+q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{3}\phi(z_{i})\\
+ & =\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\\
+ & \times\frac{1}{\sqrt{2\pi}}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left(\sigma\sqrt{T'-t}z_{3}-\frac{z_{3}^{2}}{2}\right)\\
+ & =\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\\
+ & \times\frac{1}{\sqrt{2\pi}}\intop_{L(z_{1},z_{2})}^{\infty}dz_{3}\exp\left[-\frac{1}{2}\left(z_{3}-a_{3}\right)^{2}+\frac{a_{3}^{2}}{2}\right]\\
+ & =\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\\
+ & \times\exp\left(\frac{a_{3}^{2}}{2}\right)\frac{1}{\sqrt{2\pi}}\intop_{L(z_{1},z_{2})-a_{3}}^{\infty}dz_{3}'\exp\left(-\frac{1}{2}z_{3}'^{2}\right)\\
+ & =\exp\left(\frac{a_{3}^{2}}{2}\right)\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\Phi\left[a_{3}-L\left(z_{1},z_{2}\right)\right]\\
+ & \times\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As for 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+B_{t} & =K\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
+ & =K\exp\left[-\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}-\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\intop_{L\left(z_{1},z_{2}\right)}^{\infty}dz_{3}\exp\left(-p_{21}\sqrt{\lambda_{1}}z_{1}-p_{22}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\\
+ & =K\exp\left[-\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}-\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\exp\left(-p_{21}\sqrt{\lambda_{1}}z_{1}-p_{22}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\intop_{L\left(z_{1},z_{2}\right)}^{\infty}dz_{3}\phi(z_{3})\\
+ & =K\exp\left[-\frac{\left(r_{A,t}-\bar{r}_{A}\right)\left[1-e^{-\alpha_{A}\left(T'-t\right)}\right]}{\alpha_{A}}-\bar{r}_{A}\left(T'-t\right)\right]\\
+ & \times\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\exp\left(-p_{21}\sqrt{\lambda_{1}}z_{1}-p_{22}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})\Phi\left[-L\left(z_{1},z_{2}\right)\right]
+\end{align*}
 
 \end_inset
 
