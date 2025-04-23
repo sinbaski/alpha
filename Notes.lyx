@@ -1407,6 +1407,372 @@ By Markov inequality,
 \end_layout
 
 \begin_layout Section
+Linear Equations
+\end_layout
+
+\begin_layout Standard
+Consider the equation
+\begin_inset Formula 
+\begin{equation}
+dX_{t}=\left[A(t)X_{t}+a(t)\right]dt+\sigma(t)dW_{t}\label{eq:hj67ik78k879lk8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $X_{t}\in\boldsymbol{R}^{n}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A(t)\in\boldsymbol{R}^{n\times n}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a(t)\in\boldsymbol{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(t)\in\boldsymbol{R}^{n}$
+\end_inset
+
+.
+ To solve this equation,
+ we first solve the deterministic matrix differential equation with the initial condition 
+\begin_inset Formula $\xi(0)=I_{n}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $I_{n}$
+\end_inset
+
+ is the 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ identity matrix:
+\begin_inset Formula 
+\[
+\frac{d\xi}{dt}=A(t)\xi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote the solution to this equation as 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+.
+ This matrix must be non-singular for all 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+,
+ because otherwise there exists a non-zero vector 
+\begin_inset Formula $\lambda\in\boldsymbol{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{0}\geq0$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi(t_{0})\lambda=0$
+\end_inset
+
+.
+ Notice 
+\begin_inset Formula $\forall t\geq0$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\left[\varphi(t)\lambda\right]=A(t)\left[\varphi(t)\lambda\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But 
+\begin_inset Formula $(0,0,\cdots,0)$
+\end_inset
+
+ is the only solution to 
+\begin_inset Formula $d\xi/dt=A(t)\xi$
+\end_inset
+
+ that vanishes at 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{d}{dt}\begin{bmatrix}\xi_{1}\\
+\xi_{2}\\
+\vdots\\
+\xi_{n}
+\end{bmatrix}=\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}\begin{bmatrix}\xi_{1}\\
+\xi_{2}\\
+\vdots\\
+\xi_{n}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a first-order equation.
+ Its solution is uniquely determined by specifying the value of 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ at any 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+.
+ Obviously 
+\begin_inset Formula $(0,0,\cdots,0)$
+\end_inset
+
+ is a solution and it satisfies 
+\begin_inset Formula $\xi(t_{0})=0$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $(0,0,\cdots,0)$
+\end_inset
+
+ is the only solution that satisfies the condition 
+\begin_inset Formula $\xi(t_{0})=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\varphi(t)\lambda$
+\end_inset
+
+ satisfies the equation 
+\begin_inset Formula $d\xi(t)/dt=A(t)\xi(t)$
+\end_inset
+
+ and the condition 
+\begin_inset Formula $\xi(t_{0})=0$
+\end_inset
+
+.
+ Hence by uniqueness of the solution 
+\begin_inset Formula $\varphi(t)\lambda=(0,0,\cdots,0)$
+\end_inset
+
+ for all 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+.
+ But it is required that 
+\begin_inset Formula $\varphi(0)=I_{n}$
+\end_inset
+
+,
+ which implies 
+\begin_inset Formula $\varphi(0)\lambda=\lambda$
+\end_inset
+
+.
+ Thus we have contradition and 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+ must be non-singular for all 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The solution to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hj67ik78k879lk8"
+
+\end_inset
+
+) can be easily expressed in terms of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ Here we assume 
+\begin_inset Formula $X_{0}$
+\end_inset
+
+ is deterministic.
+\begin_inset Formula 
+\begin{equation}
+X_{t}=\varphi(t)\left[X_{0}+\intop_{0}^{t}\varphi^{-1}(s)a(s)ds+\intop_{0}^{t}\varphi^{-1}(s)\sigma(s)dW_{s}\right]\label{eq:g56h67j7j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let
+\begin_inset Formula 
+\[
+Z_{t}=X_{0}+\intop_{0}^{t}\varphi^{-1}(s)a(s)ds+\intop_{0}^{t}\varphi^{-1}(s)\sigma(s)dW_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+By Ito's lemma,
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =d\varphi(t)Z_{t}+\varphi(t)dZ_{t}\\
+ & =A(t)\varphi(t)dtZ_{t}+\varphi(t)\left[\varphi^{-1}(t)a(t)dt+\varphi^{-1}(t)\sigma(t)dW_{t}\right]\\
+ & =A(t)X_{t}dt+a(t)dt+\sigma(t)dW_{t}\\
+ & =\left[A(t)X_{t}+a(t)\right]dt+\sigma(t)dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g56h67j7j"
+
+\end_inset
+
+) we can compute
+\begin_inset Formula 
+\[
+m(t)\overset{\triangle}{=}\mathbb{E}X_{t}=\varphi(t)\left[X_{0}+\intop_{0}^{t}\varphi^{-1}(s)a(s)ds\right]
+\]
+
+\end_inset
+
+and,
+ assuming 
+\begin_inset Formula $s<t$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\rho(s,t) & =\mathbb{E}\left[\left(X_{s}-\mathbb{E}X_{s}\right)\otimes\left(X_{t}-\mathbb{E}X_{t}\right)\right]\\
+ & =\mathbb{E}\left[\left(\varphi_{s}\intop_{0}^{s}\varphi_{u}^{-1}\sigma_{u}dW_{u}\right)\otimes\left(\varphi_{t}\intop_{0}^{t}\varphi_{v}^{-1}\sigma_{v}dW_{v}\right)^{\top}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\[
+\left[\intop_{0}^{s}\varphi_{u}^{-1}\sigma_{u}dW_{u}\right]_{i}=\intop_{0}^{s}\sum_{k,l=1}^{n}\varphi_{i,k}^{-1}(u)\sigma_{k,l}(u)dW_{u}^{l}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+\left[\varphi_{s}\intop_{0}^{s}\varphi_{u}^{-1}\sigma_{u}dW_{u}\right]_{i} & =\sum_{j,k,l=1}^{n}\varphi_{i,j}(s)\intop_{0}^{s}\varphi_{j,k}^{-1}(u)\sigma_{k,l}(u)dW_{u}^{l}\\
+ & =\intop_{0}^{s}\sum_{j,k,l=1}^{n}\varphi_{i,j}(s)\varphi_{j,k}^{-1}(u)\sigma_{k,l}(u)dW_{u}^{l}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And
+\begin_inset Formula 
+\begin{align*}
+\left[\varphi_{t}\intop_{0}^{t}\varphi_{v}^{-1}\sigma_{v}dW_{v}\right]_{i'} & =\left[\varphi_{t}\intop_{0}^{s}\varphi_{v}^{-1}\sigma_{v}dW_{v}+\varphi_{t}\intop_{s}^{t}\varphi_{v}^{-1}\sigma_{v}dW_{v}\right]_{i'}\\
+ & =\intop_{0}^{s}\sum_{j',k',l'=1}^{n}\varphi_{i',j'}(t)\varphi_{j',k'}^{-1}(v)\sigma_{k',l'}(v)dW_{v}^{l'}\\
+ & +\intop_{s}^{t}\sum_{j',k',l'=1}^{n}\varphi_{i',j'}(t)\varphi_{j',k'}^{-1}(v)\sigma_{k',l'}(v)dW_{v}^{l'}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ using 
+\begin_inset Formula $\mathbb{E}\left(dW_{v}^{l'}dW_{u}^{l}\right)=\delta_{uv}\delta_{ll'}du$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\left[\rho(s,t)\right]_{i,i'} & =\intop_{0}^{s}\sum_{j,k,j',k',l=1}^{n}\varphi_{i,j}(s)\varphi_{j,k}^{-1}(u)\sigma_{k,l}(u)\varphi_{i',j'}(t)\varphi_{j',k'}^{-1}(u)\sigma_{k',l}(u)du\\
+ & =\intop_{0}^{s}\sum_{j,k,j',k'}^{n}\varphi_{i,j}(s)\varphi_{j,k}^{-1}(u)\left[\sigma(u)\sigma^{\top}(u)\right]_{k,k'}\varphi_{i',j'}(t)\varphi_{j',k'}^{-1}(u)du\\
+ & =\intop_{0}^{s}\sum_{k,k'}^{n}\left[\varphi(s)\varphi^{-1}(u)\right]_{i,k}\left[\sigma(u)\sigma^{\top}(u)\right]_{k,k'}\left[\varphi(t)\varphi^{-1}(u)\right]_{i',k'}(u)du\\
+ & =\intop_{0}^{s}\left[\varphi(s)\varphi^{-1}(u)\right]\left[\sigma(u)\sigma^{\top}(u)\right]\left[\varphi(t)\varphi^{-1}(u)\right]^{\top}du\\
+ & =\varphi(s)\cdot\intop_{0}^{s}\varphi^{-1}(u)\cdot\sigma(u)\sigma^{\top}(u)\cdot\left[\varphi^{-1}(u)\right]^{\top}du\cdot\varphi^{\top}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This gives us the covariance matrix 
+\begin_inset Formula $\text{cov}\left(X_{s},X_{t}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Dynkin's formula
 \end_layout
 
@@ -1476,6 +1842,209 @@ where
 \[
 \mathbb{E}^{x}f(X_{\tau})=f(x)+\mathbb{E}^{x}\left[\intop_{0}^{\tau}\mathscr{A}_{X}f(X_{t})dt\right]
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Doob's 
+\begin_inset Formula $h$
+\end_inset
+
+-transform
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $D\subset\boldsymbol{R}^{n}$
+\end_inset
+
+ be an open bounded set.
+ Let 
+\begin_inset Formula $\left\{ D_{k}\right\} $
+\end_inset
+
+ be an increasing sequence of subsets of 
+\begin_inset Formula $D$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bar{D}_{k}\subset D$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigcup_{k=1}^{\infty}D_{k}=D$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $h$
+\end_inset
+
+ be a harmonic function,
+ i.e.
+ 
+\begin_inset Formula $\Delta h=\nabla^{2}h=0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be the solution to the following SDE:
+\begin_inset Formula 
+\[
+dX_{t}=\nabla\left(\ln h\right)\left(X_{t}\right)dt+dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ is an n-dimensional Brownian motion.
+\end_layout
+
+\begin_layout Standard
+We can write the SDE has
+\begin_inset Formula 
+\[
+d\begin{bmatrix}X_{1,t}\\
+X_{2,t}\\
+\vdots\\
+X_{n,t}
+\end{bmatrix}=\begin{bmatrix}\frac{\partial\ln h}{\partial x_{1}}\left(X_{t}\right)\\
+\frac{\partial\ln h}{\partial x_{2}}\left(X_{t}\right)\\
+\vdots\\
+\frac{\partial\ln h}{\partial x_{n}}\left(X_{t}\right)
+\end{bmatrix}dt+\begin{bmatrix}1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & 0\\
+0 & 0 & \cdots & 1
+\end{bmatrix}\begin{bmatrix}dB_{1,t}\\
+dB_{2,t}\\
+\vdots\\
+dB_{n,t}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+Af & =\sum_{i=1}^{n}\frac{\partial\ln h}{\partial x_{i}}\cdot\frac{\partial f}{\partial x_{i}}+\frac{1}{2}\sum_{i=1}^{n}\frac{\partial^{2}f}{\partial x_{i}^{2}}\\
+ & =\sum_{i=1}^{n}\left(\frac{1}{h}\frac{\partial h}{\partial x_{i}}\cdot\frac{\partial f}{\partial x_{i}}+\frac{1}{2}\frac{\partial^{2}f}{\partial x_{i}^{2}}\right)\\
+ & =\frac{1}{2h}\sum_{i=1}^{n}\left(f\frac{\partial^{2}h}{\partial x_{i}^{2}}+2\frac{\partial h}{\partial x_{i}}\cdot\frac{\partial f}{\partial x_{i}}+h\frac{\partial^{2}f}{\partial x_{i}^{2}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where in the last equation we have used the fact 
+\begin_inset Formula $\nabla^{2}h=0$
+\end_inset
+
+.
+ The last equation yields
+\begin_inset Formula 
+\[
+Af=\frac{1}{2h}\sum_{i=1}^{n}\frac{\partial^{2}}{\partial x_{i}^{2}}\left(hf\right)=\frac{1}{2h}\nabla^{2}\left(hf\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next we show that,
+ if there exists 
+\begin_inset Formula $x_{0}\in\partial D$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\lim_{x\to y\in\partial D}h(x)=\begin{cases}
+0 & y\neq x_{0}\\
+\infty & y=x_{0}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\[
+\lim_{t\to\tau}X_{t}=x_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+\tau & =\lim_{k\to\infty}\tau_{k}\\
+\tau_{k} & =\inf\left\{ t>0:X_{t}\notin D_{k}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Using Dynkin's formula,
+ we get for 
+\begin_inset Formula $x\in D$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}f\left(X_{\tau_{k}}\right)=f(x)+\mathbb{E}\left[\intop_{0}^{\tau_{k}}Af\left(X_{s}\right)ds\right]
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $f=1/h$
+\end_inset
+
+ so that 
+\begin_inset Formula $Af=\frac{1}{2h}\nabla^{2}\left(hf\right)=0$
+\end_inset
+
+.
+ That is
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}^{x}\left[\frac{1}{h\left(X_{\tau_{k}}\right)}\right] & =\frac{1}{h(x)}
+\end{align*}
 
 \end_inset
 
@@ -2314,7 +2883,7 @@ dX_{t}=b(X_{t})dt+\sigma(X_{t})dB_{t}
 \end_layout
 
 \begin_layout Standard
-and let
+and let 
 \begin_inset Formula $Y_{t}$
 \end_inset
 
@@ -2623,6 +3192,133 @@ X_{t} & =\frac{X_{0}}{T}\left(T-t\right)+\left(\frac{b}{T-t}-\frac{b}{T}\right)\
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Solving the Brownian Bridge SDE as a Linear Equation
+\end_layout
+
+\begin_layout Standard
+We can also solve the Brownian Bridge SDE using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g56h67j7j"
+
+\end_inset
+
+).
+ Given
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =\frac{b-X_{t}}{T-t}dt+\sigma dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we first solve the following differential equation with the initial condition 
+\begin_inset Formula $\xi(0)=1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{d\xi}{dt} & =-\frac{\xi}{T-t}\\
+\frac{d\xi}{\xi} & =-\frac{dt}{T-t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align*}
+d\ln\xi & =\frac{dt}{t-T}\\
+\ln\xi & =\intop_{0}^{t}\frac{ds}{s-T}+C\\
+ & =\intop_{-T}^{t-T}\frac{ds}{s}+C\\
+ & =\ln\left|\frac{t-T}{T}\right|+C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\xi(0)=1$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\xi(t)=\frac{T-t}{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g56h67j7j"
+
+\end_inset
+
+) gives
+\begin_inset Formula 
+\begin{align*}
+X_{t} & =\frac{T-t}{T}\left[X_{0}+\intop_{0}^{t}\frac{T}{T-s}\cdot\frac{b}{T-s}ds+\intop_{0}^{t}\frac{T}{T-s}\cdot\sigma dW_{s}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{t}\frac{T}{T-s}\cdot\frac{b}{T-s}ds & =\intop_{0}^{t}\frac{bT}{\left(T-s\right)^{2}}ds\\
+ & =bT\intop_{-T}^{t-T}\frac{ds}{s^{2}}\\
+ & =bT\left[-\frac{1}{s}\right]_{s=-T}^{t-T}\\
+ & =bT\left(-\frac{1}{t-T}+\frac{1}{-T}\right)\\
+ & =bT\left(\frac{1}{T-t}-\frac{1}{T}\right)\\
+ & =bT\frac{T-T+t}{T\left(T-t\right)}\\
+ & =\frac{bt}{T-t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally we have
+\begin_inset Formula 
+\begin{align*}
+X_{t} & =\frac{T-t}{T}\left[X_{0}+\frac{bt}{T-t}+\intop_{0}^{t}\frac{T}{T-s}\cdot\sigma dW_{s}\right]\\
+ & =\left(1-\frac{t}{T}\right)X_{0}+\frac{bt}{T}+\sigma\intop_{0}^{t}\frac{T-t}{T-s}dW_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is indeed the same solution that we have obtained before.
 \end_layout
 
 \begin_layout Section
@@ -3645,6 +4341,249 @@ The obvious boundary condition is
 
 .
  
+\end_layout
+
+\begin_layout Subsection
+The two-factor Gaussian model G2++
+\end_layout
+
+\begin_layout Standard
+Under this model,
+ the short rate dynamics is specified as
+\begin_inset Formula 
+\begin{align*}
+r_{t} & =x_{t}+y_{t}+\varphi_{t}\\
+dx_{t} & =-ax_{t}dt+\sigma dW_{t}\\
+dy_{t} & =-by_{t}dt+\eta dW'_{t}\\
+dW_{t}dW'_{t} & =\rho dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The function 
+\begin_inset Formula $\varphi_{t}$
+\end_inset
+
+ is deterministic and is chosen to match the term structure at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The price of a zero-coupon bond is given by
+\begin_inset Formula 
+\[
+P_{t}=\mathbb{E}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)|\mathcal{F}_{t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To calculate 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+,
+ we first rewrite the SDE of 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+dx_{t} & =-ax_{t}dt+\sigma dB_{t}\nonumber \\
+dy_{t} & =-by_{t}dt+\eta\left(\rho dB_{t}+\sqrt{1-\rho^{2}}dB'_{t}\right)\label{eq:y6j7u6j76j67j}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $B'_{t}$
+\end_inset
+
+ are standard Brownian motions and are independent of each other.
+ We have
+\begin_inset Formula 
+\[
+a\intop_{t}^{T}x_{s}ds=\sigma\left(B_{T}-B_{t}\right)-x_{T}+x_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Meanwhile,
+\begin_inset Formula 
+\[
+x_{t}=x_{0}e^{-at}+\sigma\intop_{0}^{t}e^{a\left(s-t\right)}dB_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align}
+a\intop_{t}^{T}x_{s}ds & =\sigma\left(B_{T}-B_{t}\right)-x_{t}e^{-a\left(T-t\right)}-\sigma\intop_{t}^{T}e^{a\left(s-T\right)}dB_{s}+x_{t}\nonumber \\
+ & =\sigma\intop_{t}^{T}\left[1-e^{a(s-T)}\right]dB_{s}+x_{t}\left[1-e^{-a(T-t)}\right]\nonumber \\
+\intop_{t}^{T}x_{s}ds & =\frac{x_{t}}{a}\left[1-e^{-a(T-t)}\right]+\frac{\sigma}{a}\intop_{t}^{T}\left[1-e^{a(s-T)}\right]dB_{s}\label{eq:yuukiki8}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\begin_inset Formula 
+\[
+b\intop_{t}^{T}y_{s}ds=\eta\left(\rho B_{T}-\rho B_{t}+\sqrt{1-\rho^{2}}B'_{T}-\sqrt{1-\rho^{2}}B'_{t}\right)-y_{T}+y_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To solve for 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+,
+ rewrite (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:y6j7u6j76j67j"
+
+\end_inset
+
+) as
+\begin_inset Formula 
+\begin{align*}
+dy_{t}+by_{t}dt & =\eta\rho dB_{t}+\eta\sqrt{1-\rho^{2}}dB'_{t}\\
+e^{bt}dy_{t}+be^{bt}y_{t}dt & =\eta\rho e^{bt}dB_{t}+\eta\sqrt{1-\rho^{2}}e^{bt}dB'_{t}\\
+d\left(e^{bt}y_{t}\right) & =\eta\rho e^{bt}dB_{t}+\eta\sqrt{1-\rho^{2}}e^{bt}dB'_{t}\\
+e^{bt}y_{t}-y_{0} & =\eta\rho\intop_{0}^{t}e^{bs}dB_{s}+\eta\sqrt{1-\rho^{2}}\intop_{0}^{t}e^{bs}dB'_{s}\\
+y_{t} & =y_{0}e^{-bt}+\eta\rho\intop_{0}^{t}e^{b(s-t)}dB_{s}+\eta\sqrt{1-\rho^{2}}\intop_{0}^{t}e^{b(s-t)}dB'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\[
+y_{T}-y_{t}=y_{t}\left[e^{-b(T-t)}-1\right]+\eta\rho\intop_{t}^{T}e^{b(s-T)}dB_{s}+\eta\sqrt{1-\rho^{2}}\intop_{t}^{T}e^{b(s-T)}dB'_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and it follows
+\begin_inset Formula 
+\begin{align}
+b\intop_{t}^{T}y_{s}ds & =y_{t}\left[1-e^{-b(T-t)}\right]+\eta\rho\intop_{t}^{T}\left[1-e^{b(s-T)}\right]dB_{s}+\eta\sqrt{1-\rho^{2}}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]dB'_{s}\nonumber \\
+\intop_{t}^{T}y_{s}ds & =\frac{y_{t}}{b}\left[1-e^{-b(T-t)}\right]+\frac{\eta\rho}{b}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]dB_{s}+\frac{\eta\sqrt{1-\rho^{2}}}{b}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]dB'_{s}\label{eq:6hth5h54}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:yuukiki8"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6hth5h54"
+
+\end_inset
+
+),
+ we get
+\begin_inset Formula 
+\begin{align*}
+\intop_{t}^{T}\left(x_{s}+y_{s}\right)ds & =\frac{x_{t}}{a}\left[1-e^{-a(T-t)}\right]+\frac{y_{t}}{b}\left[1-e^{-b(T-t)}\right]\\
+ & +\intop_{t}^{T}\left[\sigma\frac{1-e^{a(s-T)}}{a}+\eta\rho\frac{1-e^{b(s-T)}}{b}\right]dB_{s}\\
+ & +\frac{\eta\sqrt{1-\rho^{2}}}{b}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]dB'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+ & \text{var}\left[\intop_{t}^{T}\left(x_{s}+y_{s}\right)ds\right]\\
+= & \intop_{t}^{T}\left[\sigma\frac{1-e^{a(s-T)}}{a}+\eta\rho\frac{1-e^{b(s-T)}}{b}\right]^{2}ds+\frac{\eta^{2}\left(1-\rho^{2}\right)}{b^{2}}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]^{2}ds\\
+= & \intop_{t}^{T}\frac{\sigma^{2}}{a^{2}}\left[1-e^{a(s-T)}\right]^{2}ds+\frac{\eta^{2}}{b^{2}}\intop_{t}^{T}\left[1-e^{b(s-T)}\right]^{2}ds+\frac{2\sigma\eta\rho}{ab}\intop_{t}^{T}\left[1-e^{a(s-T)}\right]\left[1-e^{b(s-T)}\right]ds\\
+= & \frac{\sigma^{2}}{a^{2}}\left[\left(T-t\right)-2\frac{1-e^{-a(T-t)}}{a}+\frac{1-e^{-2a(T-t)}}{2a}\right]\\
++ & \frac{\eta^{2}}{b^{2}}\left[\left(T-t\right)-2\frac{1-e^{-b(T-t)}}{b}+\frac{1-e^{-2b(T-t)}}{2b}\right]\\
++ & \frac{2\sigma\eta\rho}{ab}\intop_{t}^{T}\left[1-e^{a(s-T)}-e^{b(s-T)}+e^{(a+b)(s-T)}\right]ds\\
+ & =\frac{\sigma^{2}}{a^{2}}\left[\left(T-t\right)-2\frac{1-e^{-a(T-t)}}{a}+\frac{1-e^{-2a(T-t)}}{2a}\right]\\
+ & \frac{\eta^{2}}{b^{2}}\left[\left(T-t\right)-2\frac{1-e^{-b(T-t)}}{b}+\frac{1-e^{-2b(T-t)}}{2b}\right]\\
+ & +\frac{2\sigma\eta\rho}{ab}\left[\left(T-t\right)-\frac{1-e^{-a(T-t)}}{a}-\frac{1-e^{-b(T-t)}}{b}+\frac{1-e^{-(a+b)(T-t)}}{a+b}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simplifying this expression gives us
+\begin_inset Formula 
+\begin{align*}
+ & \text{var}\left[\intop_{t}^{T}\left(x_{s}+y_{s}\right)ds\right]\\
+= & \frac{\sigma^{2}}{a^{2}}\left[\left(T-t\right)+\frac{2}{a}e^{-a(T-t)}-\frac{1}{2a}e^{-2a(T-t)}-\frac{3}{2a}\right]\\
++ & \frac{\eta^{2}}{b^{2}}\left[\left(T-t\right)+\frac{2}{b}e^{-b(T-t)}-\frac{1}{2b}e^{-2b(T-t)}-\frac{3}{2b}\right]\\
++ & \frac{2\sigma\eta\rho}{ab}\left[\left(T-t\right)-\frac{1-e^{-a(T-t)}}{a}-\frac{1-e^{-b(T-t)}}{b}+\frac{1-e^{-(a+b)(T-t)}}{a+b}\right]
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -6981,6 +7920,10 @@ reference "eq:45g5vyb"
 FX Futures and Futures' options
 \end_layout
 
+\begin_layout Subsection
+Future
+\end_layout
+
 \begin_layout Standard
 Consider an FX future with delivery date 
 \begin_inset Formula $T$
@@ -7003,7 +7946,19 @@ F_{t} & =\mathbb{E}_{Q}\left(X_{T}|\mathcal{F}_{t}\right)
 \end_layout
 
 \begin_layout Standard
-From the previous section we have
+where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the risk-neutral probability measure.
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5g5th6j7uj"
+
+\end_inset
+
+) gives
 \begin_inset Formula 
 \[
 X_{t}=X_{0}\exp\left[\intop_{0}^{t}r_{A,s}ds-\frac{\sigma^{2}}{2}t+\sigma\tilde{W}_{t}\right]
@@ -7024,12 +7979,107 @@ where
 \begin_inset Formula 
 \begin{align}
 F_{t} & =X_{t}\mathbb{E}_{Q}\exp\left[\intop_{t}^{T}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\nonumber \\
+ & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\cdot\mathbb{E}_{Q}\left[-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\\
  & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\label{eq:g5y7j78k8k5g}
 \end{align}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We model 
+\begin_inset Formula $r_{A,t}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+dr_{A,t}=-\alpha_{A}\left(r_{A,t}-\overline{r}_{A}\right)dt+\sigma_{A}dW_{A,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence for 
+\begin_inset Formula $T'<T$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\intop_{T'}^{T}r_{A,t}dt=\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{T'}^{T}\left[e^{\alpha_{A}(t-T)}-1\right]dW_{A,t}\label{eq:hg65uik87k8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right] & =\exp\left[\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)\right]\\
+ & \times\exp\left[\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $q_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+q_{1} & =\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\label{eq:q3r54g65h}\\
+q_{2} & =\bar{r}_{A}\left(T-T'\right)+\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)\label{eq:q5g5h7ju7j}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we can write
+\begin_inset Formula 
+\[
+\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right]=e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\[
+F_{T'}=X_{T'}e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Future's option
 \end_layout
 
 \begin_layout Standard
@@ -7134,88 +8184,6 @@ F_{T'} & =X_{T'}\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,s}ds\right)|\m
 \end_layout
 
 \begin_layout Standard
-We model 
-\begin_inset Formula $r_{A,t}$
-\end_inset
-
- as
-\begin_inset Formula 
-\[
-dr_{A,t}=-\alpha_{A}\left(r_{A,t}-\overline{r}_{A}\right)dt+\sigma_{A}dW_{A,t}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hence
-\begin_inset Formula 
-\begin{equation}
-\intop_{T'}^{T}r_{A,t}dt=\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)-\frac{\sigma_{A}}{\alpha_{A}}\intop_{T'}^{T}\left[e^{\alpha_{A}(t-T)}-1\right]dW_{A,t}\label{eq:hg65uik87k8}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Therefore
-\begin_inset Formula 
-\begin{align*}
-\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right] & =\exp\left[\frac{\left(r_{A,T'}-\bar{r}_{A}\right)\left(1-e^{-\alpha_{A}(T-T')}\right)}{\alpha_{A}}+\bar{r}_{A}\left(T-T'\right)\right]\\
- & \times\exp\left[\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Define 
-\begin_inset Formula $a$
-\end_inset
-
- and 
-\begin_inset Formula $b$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align*}
-q_{1} & =\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}\\
-q_{2} & =\bar{r}_{A}\left(T-T'\right)+\frac{\sigma_{A}^{2}}{2\alpha_{A}^{2}}\left(\frac{1-e^{-2\alpha_{A}(T-T')}}{2\alpha_{A}}-2\frac{1-e^{-\alpha_{A}(T-T')}}{\alpha_{A}}+(T-T')\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-So we can write
-\begin_inset Formula 
-\[
-\mathbb{E}_{Q}\left[\exp\left(\intop_{T'}^{T}r_{A,t}dt\right)|\mathcal{F}_{T'}\right]=e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Thus we have
-\begin_inset Formula 
-\[
-F_{T'}=X_{T'}e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
-\]
-
-\end_inset
-
 
 \end_layout
 
@@ -7251,7 +8219,26 @@ F_{T'}=X_{t}\exp\left[\intop_{t}^{T'}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T'-t\ri
 \end_layout
 
 \begin_layout Standard
-Hence
+where 
+\begin_inset Formula $q_{1},q_{2}$
+\end_inset
+
+ are defined by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q3r54g65h"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q5g5h7ju7j"
+
+\end_inset
+
+).
+ Hence
 \begin_inset Formula 
 \begin{align*}
 A_{t} & =\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)F_{T'}\chi\left(F_{T'}>K\right)|\mathcal{F}_{t}\right]\\
@@ -7573,6 +8560,19 @@ J_{A} & =\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\intop_{L
  & \times\exp\left(\frac{a_{3}^{2}}{2}\right)\frac{1}{\sqrt{2\pi}}\intop_{L(z_{1},z_{2})-a_{3}}^{\infty}dz_{3}'\exp\left(-\frac{1}{2}z_{3}'^{2}\right)\\
  & =\exp\left(\frac{a_{3}^{2}}{2}\right)\intop_{-\infty}^{\infty}dz_{1}\intop_{-\infty}^{\infty}dz_{2}\Phi\left[a_{3}-L\left(z_{1},z_{2}\right)\right]\\
  & \times\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)\prod_{i=1}^{2}\phi(z_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can further simplify this integral for easier numerical evaluation:
+\begin_inset Formula 
+\begin{align*}
+J_{A} & =e^{a_{3}^{2}/2}\intop_{-\infty}^{\infty}\intop_{-\infty}^{\infty}\Phi\left[a_{3}-L\left(z_{1},z_{2}\right)\right]\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}z_{1}+q_{1}p_{12}\sqrt{\lambda_{2}}z_{2}\right)d\Phi(z_{1})d\Phi(z_{2})\\
+ & =e^{a_{3}^{2}/2}\intop_{0}^{1}\intop_{0}^{1}\Phi\left[a_{3}-L\left(\Phi^{-1}(\xi_{1}),\Phi^{-1}(\xi_{2})\right)\right]\exp\left(q_{1}p_{11}\sqrt{\lambda_{1}}\Phi^{-1}(\xi_{1})+q_{1}p_{12}\sqrt{\lambda_{2}}\Phi^{-1}(\xi_{2})\right)d\xi_{1}d\xi_{2}
 \end{align*}
 
 \end_inset
