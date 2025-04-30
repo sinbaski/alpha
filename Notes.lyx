@@ -1411,6 +1411,36 @@ Linear Equations
 \end_layout
 
 \begin_layout Standard
+The content of this section is based on 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+5.6 of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{KaratzasShreve1991}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Consider the equation
 \begin_inset Formula 
 \begin{equation}
@@ -1756,7 +1786,8 @@ Thus,
  & =\intop_{0}^{s}\sum_{j,k,j',k'}^{n}\varphi_{i,j}(s)\varphi_{j,k}^{-1}(u)\left[\sigma(u)\sigma^{\top}(u)\right]_{k,k'}\varphi_{i',j'}(t)\varphi_{j',k'}^{-1}(u)du\\
  & =\intop_{0}^{s}\sum_{k,k'}^{n}\left[\varphi(s)\varphi^{-1}(u)\right]_{i,k}\left[\sigma(u)\sigma^{\top}(u)\right]_{k,k'}\left[\varphi(t)\varphi^{-1}(u)\right]_{i',k'}(u)du\\
  & =\intop_{0}^{s}\left[\varphi(s)\varphi^{-1}(u)\right]\left[\sigma(u)\sigma^{\top}(u)\right]\left[\varphi(t)\varphi^{-1}(u)\right]^{\top}du\\
- & =\varphi(s)\cdot\intop_{0}^{s}\varphi^{-1}(u)\cdot\sigma(u)\sigma^{\top}(u)\cdot\left[\varphi^{-1}(u)\right]^{\top}du\cdot\varphi^{\top}(t)
+ & =\varphi(s)\cdot\intop_{0}^{s}\varphi^{-1}(u)\cdot\sigma(u)\sigma^{\top}(u)\cdot\left[\varphi^{-1}(u)\right]^{\top}du\cdot\varphi^{\top}(t)\\
+ & =\varphi(s)\cdot\int_{0}^{s}\left[\varphi^{-1}(u)\sigma(u)\right]\left[\varphi^{-1}(u)\sigma(u)\right]^{\top}du\cdot\varphi^{\top}(t)
 \end{align*}
 
 \end_inset
@@ -1766,10 +1797,118 @@ Thus,
 
 \begin_layout Standard
 This gives us the covariance matrix 
-\begin_inset Formula $\text{cov}\left(X_{s},X_{t}\right)$
+\begin_inset Formula $\rho(s,t)=\text{cov}\left(X_{s},X_{t}\right)$
 \end_inset
 
 .
+ Let 
+\begin_inset Formula $V(t)=\rho(t,t)$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $V(t)$
+\end_inset
+
+ is the variance function of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $m(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $V(t)$
+\end_inset
+
+ solve the following linear differential equations
+\begin_inset Formula 
+\begin{align*}
+\frac{dm}{dt} & =A(t)m(t)+a(t)\\
+\frac{dV}{dt} & =A(t)V(t)+V(t)A^{\top}(t)+\sigma(t)\sigma^{\top}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Constant 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the 
+\begin_inset Formula $d\times d$
+\end_inset
+
+ matrices 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ are constants,
+ the fundamental solution 
+\begin_inset Formula $\varphi(t)$
+\end_inset
+
+ has a particularly simple form:
+\begin_inset Formula 
+\[
+\varphi(t)=e^{tA}=\sum_{n=0}^{\infty}\frac{t^{n}}{n!}A^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting this into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g56h67j7j"
+
+\end_inset
+
+),
+ we get
+\begin_inset Formula 
+\begin{align*}
+X_{t} & =\varphi(t)\left[X_{0}+\int_{0}^{t}\varphi^{-1}(s)a(s)ds+\int_{0}^{t}\varphi^{-1}(s)\sigma(s)dW_{s}\right]\\
+ & =e^{tA}\left[X_{0}+\int_{0}^{t}e^{-tA}a(s)ds+\int_{0}^{t}e^{-tA}\sigma(s)dW_{s}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+V(t) & =\varphi(t)\cdot\left\{ V(0)+\int_{0}^{t}\left[\varphi^{-1}(u)\sigma(u)\right]\left[\varphi^{-1}(u)\sigma(u)\right]^{\top}du\right\} \cdot\varphi^{\top}(t)\\
+ & =e^{tA}\cdot\left\{ V(0)+\int_{0}^{t}\left[e^{-uA}\sigma(u)\right]\left[e^{-uA}(u)\sigma(u)\right]^{\top}du\right\} \cdot e^{tA^{\top}}
+\end{align*}
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Section
@@ -9799,6 +9938,19 @@ Let
 \[
 \zeta(2)=\intop_{1}^{\infty}\frac{\ln y}{y\left(y-1\right)}dy
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "MyReferences"
+options "plain"
+encoding "default"
 
 \end_inset
 
