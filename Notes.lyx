@@ -3460,6 +3460,343 @@ X_{t} & =\frac{T-t}{T}\left[X_{0}+\frac{bt}{T-t}+\intop_{0}^{t}\frac{T}{T-s}\cdo
 This is indeed the same solution that we have obtained before.
 \end_layout
 
+\begin_layout Subsection
+Finite dimensional distribution
+\end_layout
+
+\begin_layout Standard
+Given
+\begin_inset Formula 
+\[
+X_{t}=\begin{cases}
+a\left(1-\frac{t}{T}\right)+b\frac{t}{T}+\left(T-t\right)\int_{0}^{t}\frac{dW_{s}}{T-s} & t<T\\
+b & t=T
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We show in the following
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\bigwedge_{i=1}^{n}X_{t_{i}}\in dx_{i}\right)=\frac{p\left(T-t_{n},x_{n},b\right)}{p\left(T,a,b\right)}\prod_{i=1}^{n}p\left(t_{i}-t_{i-1},x_{i-1},x_{i}\right)\cdot dx_{1}\cdots dx_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $0=t_{0}<t_{1}<t_{2}<\cdots<t_{n}<T$
+\end_inset
+
+.
+ 
+\begin_inset Formula $p(t,x,y)$
+\end_inset
+
+ is the Gaussian kernel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p\left(t,x,y\right)=\frac{1}{\sqrt{2\pi t}}\exp\left[-\frac{\left(y-x\right)^{2}}{2t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+When 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t_{1}}\in dx_{1}\right)=\mathbb{P}\left[\left(1-\frac{t_{1}}{T}\right)a+\frac{t_{1}}{T}b+\left(T-t_{1}\right)\int_{0}^{t_{1}}\frac{dW_{s}}{T-s}\in dx_{1}\right]
+\]
+
+\end_inset
+
+Clearly,
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\left(1-\frac{t_{1}}{T}\right)a+\frac{t_{1}}{T}b+\left(T-t_{1}\right)\int_{0}^{t_{1}}\frac{dW_{s}}{T-s}\right]=\left(1-\frac{t_{1}}{T}\right)a+\frac{t_{1}}{T}b
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left[\left(1-\frac{t_{1}}{T}\right)a+\frac{t_{1}}{T}b+\left(T-t_{1}\right)\int_{0}^{t_{1}}\frac{dW_{s}}{T-s}\right] & =\left(T-t_{1}\right)^{2}\int_{0}^{t_{1}}\frac{ds}{(T-s)^{2}}\\
+ & =\left[-\frac{(T-t_{1})^{2}}{s-T}\right]_{s=0}^{t_{1}}\\
+ & =(T-t_{1})^{2}\left[\frac{1}{T-t_{1}}-\frac{1}{T}\right]\\
+ & =\left(T-t_{1}\right)^{2}\frac{t_{1}}{\left(T-t_{1}\right)T}\\
+ & =\frac{\left(T-t_{1}\right)t_{1}}{T}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Therefore
+\begin_inset Formula 
+\[
+\frac{1}{dx_{1}}\mathbb{P}\left(X_{t_{1}}\in dx_{1}\right)=\frac{1}{\sqrt{2\pi\left(T-t_{1}\right)t_{1}/T}}\exp\left\{ -\frac{\left[x_{1}-\left(1-\frac{t_{1}}{T}\right)a-\frac{t_{1}}{T}b\right]^{2}}{2\left(T-t_{1}\right)t_{1}/T}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+For 
+\begin_inset Formula $n=2$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t_{1}}\in dx_{1},X_{t_{2}}\in dx_{2}\right)=\mathbb{P}\left(X_{t_{2}}\in dx_{2}|X_{t_{1}}\in dx_{1}\right)\mathbb{P}\left(X_{t_{1}}\in dx_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Given 
+\begin_inset Formula $X_{t_{1}}=x_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ (
+\begin_inset Formula $t_{1}\leq t\leq T$
+\end_inset
+
+) is itself a Brownian bridge on 
+\begin_inset Formula $[x_{1},b]$
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\begin{align*}
+X_{t} & =\left(1-\frac{t-t_{1}}{T-t_{1}}\right)x_{1}+\frac{t-t_{1}}{T-t_{1}}b+\left(T-t\right)\int_{t_{1}}^{t}\frac{dW_{s}}{T-s}\\
+ & =\frac{T-t}{T-t_{1}}x_{1}+\frac{t-t_{1}}{T-t_{1}}b+\left(T-t\right)\int_{t_{1}}^{t}\frac{dW_{s}}{T-s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then we have
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(X_{t}|X_{t_{1}}\right) & =\left(T-t\right)^{2}\int_{t_{1}}^{t}\frac{ds}{\left(T-s\right)^{2}}\\
+ & =\left(T-t\right)^{2}\left[-\frac{1}{s-T}\right]_{s=t_{1}}^{t}\\
+ & =(T-t)^{2}\left[\frac{1}{T-s}\right]_{s=t_{1}}^{t}\\
+ & =(T-t)^{2}\left[\frac{1}{T-t}-\frac{1}{T-t_{1}}\right]\\
+ & =(T-t)^{2}\frac{t-t_{1}}{\left(T-t\right)\left(T-t_{1}\right)}\\
+ & =\frac{(t-t_{1})(T-t)}{T-t_{1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scriptsize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t_{2}}\in dx_{2}|X_{t_{1}}\in dx_{1}\right)=\frac{\sqrt{T-t_{1}}}{\sqrt{2\pi(t_{2}-t_{1})(T-t_{2})}}\exp\left\{ -\frac{T-t_{1}}{2(t_{2}-t_{1})(T-t_{2})}\left[x_{2}-\frac{T-t_{2}}{T-t_{1}}x_{1}-\frac{t_{2}-t_{1}}{T-t_{1}}b\right]^{2}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Similarly,
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t_{3}}\in dx_{3}|X_{t_{1}}\in dx_{1},X_{t_{2}}\in dx_{2}\right)=\frac{\sqrt{T-t_{2}}}{\sqrt{2\pi(t_{3}-t_{2})(T-t_{3})}}\exp\left\{ -\frac{T-t_{2}}{2(t_{3}-t_{2})(T-t_{3})}\left[x_{3}-\frac{T-t_{3}}{T-t_{2}}x_{2}-\frac{t_{3}-t_{2}}{T-t_{2}}b\right]^{2}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+More generally,
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{dx_{n}}\mathbb{P}\left(X_{t_{n}}\in dx_{n}|\bigwedge_{i=1}^{n-1}X_{t_{i}}\in dx_{i}\right)\\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}\left[x_{n}-\left(1-\frac{t_{n}-t_{n-1}}{T-t_{n-1}}\right)x_{n-1}-\frac{t_{n}-t_{n-1}}{T-t_{n-1}}b\right]^{2}\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}\left[x_{n}-\left(\frac{T-t_{n}}{T-t_{n-1}}\right)x_{n-1}-\frac{t_{n}-t_{n-1}}{T-t_{n-1}}b\right]^{2}\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}\left[\frac{T-t_{n-1}}{T-t_{n-1}}x_{n}-\left(\frac{T-t_{n}}{T-t_{n-1}}\right)x_{n-1}-\frac{t_{n}-t_{n-1}}{T-t_{n-1}}b\right]^{2}\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}\left[\frac{\left(T-t_{n-1}\right)x_{n}-\left(T-t_{n}\right)x_{n-1}-\left(t_{n}-t_{n-1}\right)b}{T-t_{n-1}}\right]^{2}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We can write
+\begin_inset Formula 
+\begin{align*}
+\frac{\left(T-t_{n-1}\right)x_{n}-\left(T-t_{n}\right)x_{n-1}-\left(t_{n}-t_{n-1}\right)b}{T-t_{n-1}} & =\frac{\left(T-t_{n-1}\right)x_{n}-\left[\left(T-t_{n-1}\right)-\left(t_{n}-t_{n-1}\right)\right]x_{n-1}-\left(t_{n}-t_{n-1}\right)b}{T-t_{n-1}}\\
+ & =\frac{\left(T-t_{n-1}\right)\left(x_{n}-x_{n-1}\right)-\left(t_{n}-t_{n-1}\right)\left(b-x_{n-1}\right)}{T-t_{n-1}}\\
+ & =(x_{n}-x_{n-1})-\frac{t_{n}-t_{n-1}}{T-t_{n-1}}(b-x_{n-1})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{scriptsize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Therefore
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tiny}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{dx_{n}}\mathbb{P}\left(X_{t_{n}}\in dx_{n}|\bigwedge_{i=1}^{n-1}X_{t_{i}}\in dx_{i}\right)\\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}\cdot\left[(x_{n}-x_{n-1})^{2}-2(x_{n}-x_{n-1})\frac{t_{n}-t_{n-1}}{T-t_{n-1}}(b-x_{n-1})+\left(\frac{t_{n}-t_{n-1}}{T-t_{n-1}}\right)^{2}(b-x_{n-1})^{2}\right]\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}(x_{n}-x_{n-1})^{2}+\frac{(x_{n}-x_{n-1})(b-x_{n-1})}{T-t_{n}}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{T-t_{n}+t_{n}-t_{n-1}}{2(t_{n}-t_{n-1})(T-t_{n})}(x_{n}-x_{n-1})^{2}+\frac{(x_{n}-x_{n-1})(b-x_{n-1})}{T-t_{n}}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & \frac{\sqrt{T-t_{n-1}}}{\sqrt{2\pi(t_{n}-t_{n-1})(T-t_{n})}}\exp\left\{ -\frac{1}{2}\left[\frac{1}{t_{n}-t_{n-1}}+\frac{1}{T-t_{n}}\right](x_{n}-x_{n-1})^{2}+\frac{(x_{n}-x_{n-1})(b-x_{n-1})}{T-t_{n}}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\cdot\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(x_{n}-x_{n-1})^{2}}{2(T-t_{n})}+\frac{(x_{n}-x_{n-1})(b-x_{n-1})}{T-t_{n}}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\cdot\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(x_{n}-x_{n-1})^{2}}{2(T-t_{n})}+\frac{2(x_{n}-x_{n-1})(b-x_{n-1})}{2(T-t_{n})}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\cdot\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(x_{n}-x_{n-1}-b+x_{n-1})^{2}}{2(T-t_{n})}+\frac{(b-x_{n-1})^{2}}{2(T-t_{n})}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\cdot\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(b-x_{n})^{2}}{2(T-t_{n})}+\frac{(b-x_{n-1})^{2}(T-t_{n-1})}{2(T-t_{n-1})(T-t_{n})}-\frac{(t_{n}-t_{n-1})(b-x_{n-1})^{2}}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(b-x_{n})^{2}}{2(T-t_{n})}+\frac{(b-x_{n-1})^{2}(T-t_{n-1}-t_{n}+t_{n-1})}{2(T-t_{n-1})(T-t_{n})}\right\} \\
+= & p_{t_{n}-t_{n-1}}(x_{n-1},x_{n})\sqrt{\frac{T-t_{n-1}}{T-t_{n}}}\exp\left\{ -\frac{(b-x_{n})^{2}}{2(T-t_{n})}+\frac{(b-x_{n-1})^{2}}{2(T-t_{n-1})}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tiny}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We have
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{dx_{1}dx_{2}\cdots dx_{n}}\mathbb{P}\left(\bigwedge_{i=1}^{n}X_{t_{i}}\in dx_{i}\right)\\
+= & \prod_{i=1}^{n}p_{t_{i}-t_{i-1}}(x_{i-1},x_{i})\sqrt{\frac{T-t_{0}}{T-t_{n}}}\exp\left\{ \frac{(b-x_{0})^{2}}{2(T-t_{0})}-\frac{(b-x_{n})^{2}}{2(T-t_{n})}\right\} \\
+= & \frac{p_{T-t_{n}}(x_{n},b)}{p_{T-t_{0}}(x_{0},b)}\prod_{i=1}^{n}p_{t_{i}-t_{i-1}}(x_{i-1},x_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where 
+\begin_inset Formula $x_{0}=a$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{0}=0$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Ornstein-Uhlenbeck process conditional on a future value
 \end_layout
