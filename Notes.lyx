@@ -7320,11 +7320,13 @@ and
 \end_layout
 
 \begin_layout Standard
-Therefore
+Therefore,
+ using the tower rule of conditional expectations,
 \begin_inset Formula 
 \begin{align*}
-\mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)\right] & =\exp\left[\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} \right]\\
- & \times\mathbb{E}\exp\left[\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}\right]
+ & \mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)\right]\\
+= & \mathbb{E}\left\{ \mathbb{E}\left[\exp\left(\intop_{t}^{t+\Delta t}I_{s}ds\right)|I_{t}\right]\right\} \\
+= & \exp\left[\bar{I}\Delta t+\frac{\eta^{2}}{2\beta^{2}}\left\{ \frac{1-e^{-2\beta\Delta t}}{2\beta}-2\frac{1-e^{-\beta\Delta t}}{\beta}+\Delta t\right\} \right]\times\mathbb{E}\exp\left[\frac{\left(I_{t}-\bar{I}\right)\left(1-e^{-\beta\Delta t}\right)}{\beta}\right]
 \end{align*}
 
 \end_inset
