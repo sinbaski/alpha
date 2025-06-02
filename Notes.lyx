@@ -6843,6 +6843,49 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & +\frac{\theta\left(\overline{I}_{A}-I_{A,0}\right)}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & -\frac{\theta\left(\overline{I}_{B}-I_{B,0}\right)}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & =\sum_{i=1}^{5}E_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\kappa,\theta\to\infty$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\kappa/\theta\to1$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+E_{1} & \to\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)T\\
+E_{2} & \to\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left(e^{-\beta_{A}T}-1\right)\\
+E_{3} & \to-\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left(e^{-\beta_{B}T}-1\right)\\
+E_{4} & \to r_{B,0}e^{-\alpha_{B}T}+\overline{r}_{B}\left(1-e^{-\alpha_{B}T}\right)\\
+E_{5} & \to-\left[r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 This expression of 
 \begin_inset Formula $\ln X_{T}$
 \end_inset
