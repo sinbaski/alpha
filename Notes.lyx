@@ -8078,6 +8078,131 @@ F_{T'}=X_{T'}e^{q_{1}\left(r_{A,T'}-\overline{r}_{A}\right)+q_{2}}
 
 \end_layout
 
+\begin_layout Standard
+In the following we check the formula above with a few examples:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ When 
+\begin_inset Formula $T'=T$
+\end_inset
+
+,
+ we have 
+\begin_inset Formula $q_{1}=q_{2}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{T'}=X_{T'}$
+\end_inset
+
+,
+ i.e.
+ the future contract's price is equal to the spot price,
+ as expected.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ When 
+\begin_inset Formula $T-T'=\ln2$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\overline{r}_{A}=1/50$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma_{A}=1/20$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{A}=1/2$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+q_{1} & =\frac{1-2^{-1/2}}{1/2}\\
+q_{2} & =\frac{1}{50}\ln2+\frac{1/400}{2\times1/4}\left(\frac{1-2^{-1}}{1}-2\times\frac{1-2^{-1/2}}{1/2}+\ln2\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simplification gives
+\begin_inset Formula 
+\begin{align*}
+q_{1} & =0.5857864376269049\\
+q_{2} & =0.013970815137729582
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Future's option
 \end_layout
