@@ -6847,8 +6847,8 @@ Clearly,
 \begin_inset Formula 
 \begin{align*}
 \mathbb{E}\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & +\frac{\theta\left(\overline{I}_{A}-I_{A,0}\right)}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & -\frac{\theta\left(\overline{I}_{B}-I_{B,0}\right)}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & +\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left[\theta\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\left(1-e^{-\theta T}\right)\right]\\
+ & -\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left[\theta\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\left(1-e^{-\theta T}\right)\right]\\
  & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
  & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
  & =\sum_{i=1}^{5}E_{i}
@@ -6856,11 +6856,7 @@ Clearly,
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-When 
+ When 
 \begin_inset Formula $\kappa,\theta\to\infty$
 \end_inset
 
@@ -6878,6 +6874,36 @@ E_{2} & \to\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left(e^{-\beta_{A}T}-1\rig
 E_{3} & \to-\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left(e^{-\beta_{B}T}-1\right)\\
 E_{4} & \to r_{B,0}e^{-\alpha_{B}T}+\overline{r}_{B}\left(1-e^{-\alpha_{B}T}\right)\\
 E_{5} & \to-\left[r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Derivative of 
+\noun on
+
+\begin_inset Formula $\mathbb{E}\ln X_{t}$
+\end_inset
+
+ w.r.t.
+ 
+\begin_inset Formula $\kappa,\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E_{1}}{\partial\theta} & =-Te^{-\theta T}\ln X_{0}+Te^{-\theta T}\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left[-\frac{Te^{-\theta T}\theta-\left(1-e^{-\theta T}\right)}{\theta^{2}}\right]\\
+ & =Te^{-\theta T}\ln\frac{p_{0}}{X_{0}}-\left(\overline{I}_{A}-\overline{I}_{B}\right)\frac{e^{-\theta T}\left(\theta T+1\right)-1}{\theta^{2}}
 \end{align*}
 
 \end_inset
