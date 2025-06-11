@@ -6914,11 +6914,187 @@ Derivative of
 
 \begin_layout Standard
 We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\nabla E_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial E_{1}}{\partial\theta} & =-Te^{-\theta T}\ln X_{0}+Te^{-\theta T}\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left[-\frac{Te^{-\theta T}\theta-\left(1-e^{-\theta T}\right)}{\theta^{2}}\right]\\
  & =Te^{-\theta T}\ln\frac{p_{0}}{X_{0}}-\left(\overline{I}_{A}-\overline{I}_{B}\right)\frac{e^{-\theta T}\left(\theta T+1\right)-1}{\theta^{2}}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\nabla E_{2}:$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E_{2}}{\partial\theta} & =\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left(\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & +\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\cdot\theta\cdot\left[\frac{Te^{-\theta T}\left(\theta-\beta_{A}\right)-\left(e^{-\beta_{A}T}-e^{-\theta T}\right)}{\left(\theta-\beta_{A}\right)^{2}}-\frac{Te^{-\theta T}\theta-\left(1-e^{-\theta T}\right)}{\theta^{2}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\nabla E_{3}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E_{3}}{\partial\theta} & =-\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left(\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\frac{1-e^{-\theta T}}{\theta}\right)\\
+ & -\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\cdot\theta\cdot\left[\frac{Te^{-\theta T}\left(\theta-\beta_{B}\right)-\left(e^{-\beta_{B}T}-e^{-\theta T}\right)}{\left(\theta-\beta_{B}\right)^{2}}-\frac{Te^{-\theta T}\theta-\left(1-e^{-\theta T}\right)}{\theta^{2}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\nabla E_{4}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E_{4}}{\partial\theta} & =-\frac{\kappa}{\left(\theta-\alpha_{B}\right)^{2}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left(r_{B,0}Te^{-\theta T}-\alpha_{B}\overline{r}_{B}\frac{Te^{-\theta T}\theta+e^{-\theta T}}{\theta^{2}}\right)\\
+\frac{\partial E_{4}}{\partial\kappa} & =\frac{1}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\nabla E_{5}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E_{5}}{\partial\theta} & =\frac{\kappa}{\left(\theta-\alpha_{A}\right)^{2}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left(r_{A,0}Te^{-\theta T}-\alpha_{A}\overline{r}_{A}\frac{Te^{-\theta T}\theta+e^{-\theta T}}{\theta^{2}}\right)\\
+\frac{\partial E_{5}}{\partial\kappa} & =-\frac{1}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
 
 \end_inset
 
