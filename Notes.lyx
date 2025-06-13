@@ -6195,6 +6195,38 @@ Plugging in the expressions for
 
 \end_inset
 
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left[\intop_{0}^{t}e^{\theta(s-t)}dW_{s}\right] & =\intop_{0}^{t}e^{2\theta(s-t)}ds\\
+ & =e^{-2\theta t}\frac{\left[e^{2\theta s}\right]_{s=0}^{t}}{2\theta}\\
+ & =e^{-2\theta t}\frac{e^{2\theta t}-1}{2\theta}\\
+ & =\frac{1-e^{-2\theta t}}{2\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\theta,\kappa\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa/\theta\to c$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\ln X_{t}\overset{d}{\to}\ln p_{0}+\left(I_{A}-I_{B}\right)t+c\left(r_{B}-r_{A}\right)
+\]
+
+\end_inset
+
 
 \end_layout
 
@@ -6348,7 +6380,7 @@ Hence
 Recall
 \begin_inset Formula 
 \[
-r_{A,T}=r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)+\sigma\intop_{0}^{T}e^{\alpha_{A}(t-T)}dW_{A,t}
+r_{A,T}=r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)+\sigma_{A}\intop_{0}^{T}e^{\alpha_{A}(t-T)}dW_{A,t}
 \]
 
 \end_inset
@@ -6521,10 +6553,6 @@ I_{A,t}-I_{A,0} & =-\beta_{A}\intop_{0}^{t}I_{A,s}ds+\beta_{A}\overline{I}_{A}t+
 In the meantime,
 \begin_inset Formula 
 \begin{align*}
-dI_{A,t}+\beta_{A}I_{A,t}dt & =\beta_{A}\overline{I}_{A}dt+\eta_{A}dB_{A,t}\\
-e^{\beta_{A}t}dI_{A,t}+\beta_{A}e^{\beta_{A}t}I_{A,t}dt & =\beta_{A}e^{\beta_{A}t}\overline{I}_{A}dt+e^{\beta_{A}t}\eta_{A}dB_{A,t}\\
-d\left(e^{\beta_{A}t}I_{A,t}\right) & =\beta_{A}e^{\beta_{A}t}\overline{I}_{A}dt+e^{\beta_{A}t}\eta_{A}dB_{A,t}\\
-e^{\beta_{A}t}I_{A,t}-I_{A,0} & =\overline{I}_{A}\left(e^{\beta_{A}t}-1\right)+\eta_{A}\intop_{0}^{t}e^{\beta_{A}s}dB_{A,s}\\
 I_{A,t} & =I_{A,0}e^{-\beta_{A}t}+\overline{I}_{A}\left(1-e^{-\beta_{A}t}\right)+\eta_{A}\intop_{0}^{t}e^{\beta_{A}\left(s-t\right)}dB_{A,s}
 \end{align*}
 
@@ -6537,8 +6565,7 @@ I_{A,t} & =I_{A,0}e^{-\beta_{A}t}+\overline{I}_{A}\left(1-e^{-\beta_{A}t}\right)
 Therefore
 \begin_inset Formula 
 \begin{align*}
-\intop_{0}^{t}I_{A,s}ds & =-\frac{1}{\beta_{A}}\left[I_{A,0}\left(e^{-\beta_{A}t}-1\right)+\overline{I}_{A}\left(1-e^{-\beta_{A}t}\right)+\eta_{A}\intop_{0}^{t}e^{\beta_{A}\left(s-t\right)}dB_{A,s}\right]\\
- & +\overline{I}_{A}t+\frac{\eta_{A}}{\beta_{A}}B_{A,t}\\
+\intop_{0}^{t}I_{A,s}ds & =-\frac{1}{\beta_{A}}\left[I_{A,0}\left(e^{-\beta_{A}t}-1\right)+\overline{I}_{A}\left(1-e^{-\beta_{A}t}\right)+\eta_{A}\intop_{0}^{t}e^{\beta_{A}\left(s-t\right)}dB_{A,s}\right]+\overline{I}_{A}t+\frac{\eta_{A}}{\beta_{A}}B_{A,t}\\
  & =-\frac{1}{\beta_{A}}\left[\left(\overline{I}_{A}-I_{A,0}\right)\left(1-e^{-\beta_{A}t}\right)+\eta_{A}\intop_{0}^{t}e^{\beta_{A}(s-t)}dB_{A,s}\right]+\overline{I}_{A}t+\frac{\eta_{A}}{\beta_{A}}B_{A,t}\\
  & =-\frac{1}{\beta_{A}}\left\{ \left(\overline{I}_{A}-I_{A,0}\right)\left(1-e^{-\beta_{A}t}\right)+\eta_{A}\intop_{0}^{t}\left[e^{\beta_{A}(s-t)}-1\right]dB_{A,s}\right\} +\overline{I}_{A}t
 \end{align*}
@@ -6551,10 +6578,9 @@ Therefore
 \begin_layout Standard
 So we can write
 \begin_inset Formula 
-\begin{align}
-\intop_{0}^{t}I_{A,s}ds & =f\left(\overline{I}_{A},I_{A,0},\beta_{A},\eta_{A},t\right)-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}\nonumber \\
- & =f_{A,t}-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}\label{eq:inflation-1}
-\end{align}
+\begin{align*}
+\intop_{0}^{t}I_{A,s}ds & =f_{A,t}-\frac{\eta_{A}}{\beta_{A}}Z_{A,t}
+\end{align*}
 
 \end_inset
 
@@ -6568,18 +6594,6 @@ where
 Z_{A,t} & =\intop_{0}^{t}\left[e^{\beta_{A}(s-t)}-1\right]dB_{A,s}\label{eq:inflation-2}\\
 f_{A,t} & =-\frac{\left(\overline{I}_{A}-I_{A,0}\right)\left(1-e^{-\beta_{A}t}\right)}{\beta_{A}}+\overline{I}_{A}t\label{eq:inflation-3}
 \end{align}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We have
-\begin_inset Formula 
-\begin{align*}
-Z_{A,t} & =e^{-\beta_{A}t}\intop_{0}^{t}e^{\beta_{A}s}dB_{A,s}-B_{A,t}
-\end{align*}
 
 \end_inset
 
