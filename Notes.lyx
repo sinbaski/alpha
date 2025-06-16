@@ -6859,44 +6859,18 @@ nolink "false"
 \begin_layout Standard
 Clearly,
 \begin_inset Formula 
-\begin{align*}
-\mathbb{E}\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\\
- & +\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left[\theta\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\left(1-e^{-\theta T}\right)\right]\\
- & -\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left[\theta\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\left(1-e^{-\theta T}\right)\right]\\
- & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
- & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \\
- & =\sum_{i=1}^{5}E_{i}
-\end{align*}
+\begin{align}
+\mathbb{E}\ln X_{T} & =e^{-\theta T}\ln X_{0}+\left(1-e^{-\theta T}\right)\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)\left(T-\frac{1-e^{-\theta T}}{\theta}\right)\nonumber \\
+ & +\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left[\theta\frac{e^{-\beta_{A}T}-e^{-\theta T}}{\theta-\beta_{A}}-\left(1-e^{-\theta T}\right)\right]\label{eq:5g4hy67j7j}\\
+ & -\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left[\theta\frac{e^{-\beta_{B}T}-e^{-\theta T}}{\theta-\beta_{B}}-\left(1-e^{-\theta T}\right)\right]\nonumber \\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\left\{ r_{B,0}\left(e^{-\alpha_{B}T}-e^{-\theta T}\right)+\overline{r}_{B}\left[\left(1-e^{-\alpha_{B}T}\right)-\frac{\alpha_{B}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\left\{ r_{A,0}\left(e^{-\alpha_{A}T}-e^{-\theta T}\right)+\overline{r}_{A}\left[\left(1-e^{-\alpha_{A}T}\right)-\frac{\alpha_{A}}{\theta}\left(1-e^{-\theta T}\right)\right]\right\} \nonumber \\
+ & =\sum_{i=1}^{5}E_{i}\nonumber 
+\end{align}
 
 \end_inset
 
- When 
-\begin_inset Formula $\kappa,\theta\to\infty$
-\end_inset
-
-,
- and 
-\begin_inset Formula $\kappa/\theta\to1$
-\end_inset
-
-,
- we have
-\begin_inset Formula 
-\begin{align*}
-E_{1} & \to\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)T\\
-E_{2} & \to\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left(e^{-\beta_{A}T}-1\right)\\
-E_{3} & \to-\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left(e^{-\beta_{B}T}-1\right)\\
-E_{4} & \to r_{B,0}e^{-\alpha_{B}T}+\overline{r}_{B}\left(1-e^{-\alpha_{B}T}\right)\\
-E_{5} & \to-\left[r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
+ 
 \series bold
 Derivative of 
 \noun on
@@ -7356,6 +7330,282 @@ The relative return is therefore
 \[
 R_{T}=\frac{X_{T}}{X_{0}}-1
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The degenerate model
+\end_layout
+
+\begin_layout Standard
+Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rgt5h64yh"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5g4hy67j7j"
+
+\end_inset
+
+) give us
+\begin_inset Formula 
+\[
+\mathbb{E}\ln X_{T}=\sum_{i=1}^{5}E_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\kappa,\theta\to\infty$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\kappa/\theta\to c$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+E_{1} & \to\ln p_{0}+\left(\overline{I}_{A}-\overline{I}_{B}\right)T\\
+E_{2} & \to\frac{\overline{I}_{A}-I_{A,0}}{\beta_{A}}\left(e^{-\beta_{A}T}-1\right)\\
+E_{3} & \to-\frac{\overline{I}_{B}-I_{B,0}}{\beta_{B}}\left(e^{-\beta_{B}T}-1\right)\\
+E_{4} & \to c\left[r_{B,0}e^{-\alpha_{B}T}+\overline{r}_{B}\left(1-e^{-\alpha_{B}T}\right)\right]\\
+E_{5} & \to-c\left[r_{A,0}e^{-\alpha_{A}T}+\overline{r}_{A}\left(1-e^{-\alpha_{A}T}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\theta$
+\end_inset
+
+ has the dimension of inverse time whereas 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is dimensionless.
+ Therefore 
+\begin_inset Formula $c$
+\end_inset
+
+ has the dimension of time.
+ In this limiting case,
+ the stochastic integrals of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rgt5h64yh"
+
+\end_inset
+
+) becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The 
+\begin_inset Formula $W_{A,t}^{\top}$
+\end_inset
+
+ integral:
+\begin_inset Formula 
+\begin{align*}
+ & -\frac{\eta_{A}}{\beta_{A}}\frac{\sqrt{1-\rho_{A}^{2}}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}^{\perp}\\
+\to & -\frac{\eta_{A}}{\beta_{A}}\sqrt{1-\rho_{A}^{2}}\int_{0}^{T}\left[1-e^{-\beta_{A}(T-t)}\right]dW_{A,t}^{\top}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The variance of this normal variable is
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\eta_{A}^{2}}{\beta_{A}^{2}}\left(1-\rho_{A}^{2}\right)\int_{0}^{T}\left[1-e^{-\beta_{A}(T-t)}\right]^{2}dt\\
+= & \frac{\eta_{A}^{2}}{\beta_{A}^{2}}\left(1-\rho_{A}^{2}\right)\int_{0}^{T}\left[1-e^{-\beta_{A}(T-t)}\right]^{2}dt\\
+= & \frac{\eta_{A}^{2}}{\beta_{A}^{2}}\left(1-\rho_{A}^{2}\right)\left(T-\frac{3}{2\beta_{A}}+\frac{2e^{-T\beta_{A}}}{\beta_{A}}-\frac{e^{-2T\beta_{A}}}{2\beta_{A}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The 
+\begin_inset Formula $W_{B,t}^{\top}$
+\end_inset
+
+ integral:
+\end_layout
+
+\begin_layout Standard
+Similarly,
+ we have,
+ as 
+\begin_inset Formula $\theta,\kappa\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa/\theta\to c$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\eta_{B}}{\beta_{B}}\frac{\sqrt{1-\rho_{B}^{2}}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}^{\perp}\\
+\to & \frac{\eta_{B}}{\beta_{B}}\sqrt{1-\rho_{B}^{2}}\int_{0}^{T}\left[1-e^{-\beta_{B}(T-t)}\right]dW_{A,t}^{\top}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Its variance is
+\begin_inset Formula 
+\[
+\frac{\eta_{B}^{2}}{\beta_{B}^{2}}\left(1-\rho_{B}^{2}\right)\left(T-\frac{3}{2\beta_{B}}+\frac{2e^{-T\beta_{B}}}{\beta_{B}}-\frac{e^{-2T\beta_{B}}}{2\beta_{B}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The 
+\begin_inset Formula $W_{A,t}$
+\end_inset
+
+ integral:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & -\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}-\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\\
+\to & -\int_{0}^{T}\left\{ \frac{\eta_{A}\rho_{A}}{\beta_{A}}\left[1-e^{-\beta_{A}(T-t)}\right]+c\sigma_{A}e^{\alpha_{A}(t-T)}\right\} dW_{A,t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
 
 \end_inset
 
