@@ -7597,6 +7597,38 @@ end{small}
 \end_layout
 
 \begin_layout Standard
+The variance of this integral is
+\begin_inset Formula 
+\[
+\frac{Te^{-2\beta_{A}\left(T-t\right)}\left\{ \beta_{A}ce^{-(T-t)(\alpha_{A}-\beta_{A})}\sigma+\eta_{A}\rho_{A}\left[e^{\beta_{A}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{A}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The 
+\begin_inset Formula $W_{B,t}^{\top}$
+\end_inset
+
+ integral
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
