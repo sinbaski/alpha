@@ -7221,7 +7221,7 @@ I_{5} & =-2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-I_{6} & =-2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}e^{(\theta+\beta_{A})(t-T)}dt\\
+I_{6} & =-2\intop_{0}^{T}\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}e^{(\theta+\beta_{A})(t-T)}dt\\
  & =-2\left(\frac{\eta_{A}\rho_{A}}{\theta-\beta_{A}}+\frac{\kappa\sigma_{A}}{\theta-\alpha_{A}}\right)\frac{\eta_{A}\rho_{A}}{\beta_{A}}\frac{\theta}{\theta-\beta_{A}}\frac{1-e^{-(\theta+\beta_{A})T}}{\theta+\beta_{A}}
 \end{align*}
 
@@ -7572,7 +7572,7 @@ begin{small}
 \begin_inset Formula 
 \begin{align*}
  & -\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}-\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\\
-\to & -\int_{0}^{T}\left\{ \frac{\eta_{A}\rho_{A}}{\beta_{A}}\left[1-e^{-\beta_{A}(T-t)}\right]+c\sigma_{A}e^{\alpha_{A}(t-T)}\right\} dW_{A,t}
+\to & \int_{0}^{T}\left\{ \frac{\eta_{A}\rho_{A}}{\beta_{A}}\left[1-e^{-\beta_{A}(T-t)}\right]-c\sigma_{A}e^{\alpha_{A}(t-T)}\right\} dW_{A,t}
 \end{align*}
 
 \end_inset
@@ -7600,7 +7600,7 @@ end{small}
 The variance of this integral is
 \begin_inset Formula 
 \[
-\frac{Te^{-2\beta_{A}\left(T-t\right)}\left\{ \beta_{A}ce^{-(T-t)(\alpha_{A}-\beta_{A})}\sigma+\eta_{A}\rho_{A}\left[e^{\beta_{A}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{A}^{2}}
+\frac{Te^{-2\beta_{A}\left(T-t\right)}\left\{ \beta_{A}ce^{\alpha_{A}\left(-T+t\right)+\beta_{A}\left(T-t\right)}\sigma_{A}-\eta_{A}\rho_{A}\left[e^{\beta_{A}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{A}^{2}}
 \]
 
 \end_inset
@@ -7622,10 +7622,68 @@ item
 \end_inset
 
  The 
-\begin_inset Formula $W_{B,t}^{\top}$
+\begin_inset Formula $W_{B,t}$
 \end_inset
 
- integral
+ integral:
+ As 
+\begin_inset Formula $\theta,\kappa\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa/\theta\to c$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\eta_{B}}{\beta_{B}}\frac{\rho_{B}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}+\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\\
+\to & \intop_{0}^{T}\left\{ -\frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]+c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} dW_{B,t}
+\end{align*}
+
+\end_inset
+
+The variance of this integral is
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{0}^{T}\left\{ -\frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]+c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} ^{2}dt\\
+= & \intop_{0}^{T}\left\{ \frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]-c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} ^{2}dt\\
+= & \frac{Te^{-2\beta_{B}\left(T-t\right)}\left\{ \beta_{B}ce^{\alpha_{B}\left(-T+t\right)+\beta_{B}\left(T-t\right)}\sigma_{B}-\eta_{B}\rho_{B}\left[e^{\beta_{B}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{B}^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ integral:
+ As 
+\begin_inset Formula $\theta\to\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma\intop_{0}^{T}e^{\theta(t-T)}dW_{t}\overset{d}{\to}0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
