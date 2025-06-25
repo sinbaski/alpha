@@ -7553,55 +7553,12 @@ item
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{small}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
- & -\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}-\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\\
+ & -\frac{\eta_{A}}{\beta_{A}}\frac{\rho_{A}}{1-\beta_{A}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{A}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{A}(T-t)}\right]\right\} dW_{A,t}\\
+ & -\frac{\kappa}{\theta-\alpha_{A}}\sigma_{A}\intop_{0}^{T}\left[e^{\alpha_{A}(t-T)}-e^{\theta(t-T)}\right]dW_{A,t}\\
 \to & \int_{0}^{T}\left\{ \frac{\eta_{A}\rho_{A}}{\beta_{A}}\left[1-e^{-\beta_{A}(T-t)}\right]-c\sigma_{A}e^{\alpha_{A}(t-T)}\right\} dW_{A,t}
 \end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{small}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The variance of this integral is
-\begin_inset Formula 
-\[
-\frac{Te^{-2\beta_{A}\left(T-t\right)}\left\{ \beta_{A}ce^{\alpha_{A}\left(-T+t\right)+\beta_{A}\left(T-t\right)}\sigma_{A}-\eta_{A}\rho_{A}\left[e^{\beta_{A}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{A}^{2}}
-\]
 
 \end_inset
 
@@ -7637,18 +7594,9 @@ item
 ,
 \begin_inset Formula 
 \begin{align*}
- & \frac{\eta_{B}}{\beta_{B}}\frac{\rho_{B}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}+\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\\
+ & \frac{\eta_{B}}{\beta_{B}}\frac{\rho_{B}}{1-\beta_{B}/\theta}\intop_{0}^{T}\left\{ \frac{\beta_{B}}{\theta}\left[1-e^{-\theta(T-t)}\right]-\left[1-e^{-\beta_{B}(T-t)}\right]\right\} dW_{B,t}\\
+ & +\frac{\kappa}{\theta-\alpha_{B}}\sigma_{B}\intop_{0}^{T}\left[e^{\alpha_{B}(t-T)}-e^{\theta(t-T)}\right]dW_{B,t}\\
 \to & \intop_{0}^{T}\left\{ -\frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]+c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} dW_{B,t}
-\end{align*}
-
-\end_inset
-
-The variance of this integral is
-\begin_inset Formula 
-\begin{align*}
- & \intop_{0}^{T}\left\{ -\frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]+c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} ^{2}dt\\
-= & \intop_{0}^{T}\left\{ \frac{\eta_{B}\rho_{B}}{\beta_{B}}\left[1-e^{-\beta_{B}(T-t)}\right]-c\sigma_{B}e^{\alpha_{B}(t-T)}\right\} ^{2}dt\\
-= & \frac{Te^{-2\beta_{B}\left(T-t\right)}\left\{ \beta_{B}ce^{\alpha_{B}\left(-T+t\right)+\beta_{B}\left(T-t\right)}\sigma_{B}-\eta_{B}\rho_{B}\left[e^{\beta_{B}\left(T-t\right)}-1\right]\right\} ^{2}}{\beta_{B}^{2}}
 \end{align*}
 
 \end_inset
@@ -9056,7 +9004,7 @@ where
 \begin_inset Formula 
 \begin{align}
 F_{t} & =X_{t}\mathbb{E}_{Q}\exp\left[\intop_{t}^{T}r_{A,s}ds-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\nonumber \\
- & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\cdot\mathbb{E}_{Q}\left[-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\\
+ & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\cdot\mathbb{E}_{Q}\exp\left[-\frac{\sigma^{2}}{2}\left(T-t\right)+\sigma\left(\tilde{W}_{T}-\tilde{W}_{t}\right)|\mathcal{F}_{t}\right]\\
  & =X_{t}\mathbb{E}_{Q}\left[\exp\left(\intop_{t}^{T}r_{A,s}ds\right)|\mathcal{F}_{t}\right]\label{eq:g5y7j78k8k5g}
 \end{align}
 
