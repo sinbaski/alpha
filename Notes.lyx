@@ -3002,6 +3002,10 @@ end{enumerate}
 Random time change
 \end_layout
 
+\begin_layout Subsection
+Coincidence in law
+\end_layout
+
 \begin_layout Standard
 Let 
 \begin_inset Formula $X_{t}$
@@ -3070,6 +3074,122 @@ where
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Random time change
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be an Ito diffusion given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=b(X_{t})dt+\sigma(X_{t})dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and let 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ be a stochastic process given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dY_{t}=u(t,\omega)dt+v(t,\omega)dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\[
+\beta_{t}\left(\omega\right)=\intop_{0}^{t}c\left(s,\omega\right)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for an 
+\begin_inset Formula $\mathcal{F}_{t}$
+\end_inset
+
+-adapted process 
+\begin_inset Formula $c\left(t,\omega\right)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ Also define
+\begin_inset Formula 
+\[
+\alpha_{t}\left(\omega\right)=\inf\left\{ s>0:\beta_{s}\left(\omega\right)>t\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $u\left(t,\omega\right)=c\left(t,\omega\right)b\left(Y_{t}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $vv^{\top}(t,\omega)=c\left(t,\omega\right)\sigma\sigma^{\top}\left(Y_{t}\right)$
+\end_inset
+
+ for almost all 
+\begin_inset Formula $\left(t,\omega\right)$
+\end_inset
+
+,
+ then
+\begin_inset Formula 
+\[
+Y_{\alpha_{t}}\overset{d}{=}X_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or in other words,
+\begin_inset Formula 
+\[
+Y_{t}\overset{d}{=}X_{\beta_{t}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4629,6 +4749,273 @@ Note
 \begin_inset Formula 
 \[
 \lim_{t\to\infty}\mathbb{P}\left(\sup_{s\leq t}Y_{s}>c\right)=2\Phi\left(-\frac{c\sqrt{2\theta}}{\sigma}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The exit time of an OU process
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $dX_{t}=-\theta X_{t}dt+\sigma dB_{t}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ is a standard Brownian motion.
+ Define 
+\begin_inset Formula $\tau_{x}=\inf\{t>0:|B_{t}|>x\}$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+.
+ What is 
+\begin_inset Formula $\mathbb{E}\tau_{x}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsection
+Attempt using random time change
+\end_layout
+
+\begin_layout Standard
+The defining SDE gives us
+\begin_inset Formula 
+\begin{align*}
+\theta X_{t}dt+dX_{t} & =\sigma dB_{t}\\
+\theta e^{\theta t}X_{t}dt+e^{\theta t}dX_{t} & =\sigma e^{\theta t}dB_{t}\\
+d\left(e^{\theta t}X_{t}\right) & =\sigma e^{\theta t}dB_{t}
+\end{align*}
+
+\end_inset
+
+Therefore,
+ using theorem 8.5.1 of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Oksendal1998}
+\end_layout
+
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+e^{\theta t}X_{t}\overset{d}{=}B_{\beta_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+\beta_{t}=\intop_{0}^{t}\sigma^{2}e^{2\theta s}ds=\frac{\sigma^{2}}{2\theta}\left(e^{2\theta t}-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows
+\begin_inset Formula 
+\[
+t=\alpha\left(\beta_{t}\right)=\frac{1}{2\theta}\ln\left(\frac{2\theta\beta_{t}}{\sigma^{2}}+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know from example 7.4.2 of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Oksendal1998}
+\end_layout
+
+\end_inset
+
+ that 
+\begin_inset Formula $\mathbb{E}\inf\{t>0:|B_{t}|>x\}=x^{2}$
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\inf\{\beta_{t}>0:\left|B_{\beta_{t}}\right|>x\} & =x^{2}\\
+\mathbb{E}\inf\{t>0:\left|B_{\beta_{t}}\right|>x\} & =\frac{1}{2\theta}\ln\left(\frac{2\theta x^{2}}{\sigma^{2}}+1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is
+\begin_inset Formula 
+\[
+\mathbb{E}\inf\{t>0:\left|e^{\theta t}X_{t}\right|>x\}=\frac{1}{2\theta}\ln\left(\frac{2\theta x^{2}}{\sigma^{2}}+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Attempt using Dynkin's formula
+\end_layout
+
+\begin_layout Standard
+The generator of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\mathscr{A}f(y)=-\theta yf'(y)+\frac{1}{2}\sigma^{2}f''(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Attempt using Girsanov's theorem
+\end_layout
+
+\begin_layout Standard
+Define probability measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\frac{dQ}{dP}\left(\omega\right)=M_{T}\left(\omega\right)=\exp\left(-\intop_{0}^{T}udB_{t}-\frac{1}{2}\intop_{0}^{T}u^{2}dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+\sigma u=-\theta X_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left(\frac{1}{2}\intop_{0}^{T}u_{t}^{2}dt\right)<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we have
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =\sigma dW_{t}\\
+X_{t} & =\sigma W_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ is a Brownian motion w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ It is known
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\inf\left\{ t>0:\left|W_{t}\right|>x\right\}  & =x^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course 
+\begin_inset Formula $x^{2}=\mathbb{E}_{Q}\inf\left\{ t>0:\left|W_{t}\right|>x\right\} =\mathbb{E}_{Q}\inf\left\{ t>0:\left|\sigma W_{t}\right|>\sigma x\right\} $
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\[
+\mathbb{E}_{Q}\inf\left\{ t>0:\left|\sigma W_{t}\right|>x\right\} =\frac{x^{2}}{\sigma^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+\begin_inset Formula 
+\[
+\mathbb{E}_{Q}\tau_{x}=\intop_{\Omega}\tau_{x}(\omega)dQ(\omega)=\intop_{\Omega}\tau_{x}(\omega)M_{T}dP(\omega)
 \]
 
 \end_inset
