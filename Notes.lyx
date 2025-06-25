@@ -4915,6 +4915,109 @@ The generator of
 
 \end_layout
 
+\begin_layout Standard
+We want to find a function 
+\begin_inset Formula $f$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathscr{A}f=1$
+\end_inset
+
+.
+ That is
+\begin_inset Formula 
+\[
+-\theta yf'(y)+\frac{\sigma^{2}}{2}f''(y)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f'(y)=g(y)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+-\theta yg+\frac{\sigma^{2}}{2}\frac{dg}{dy} & =1\\
+-\theta y\frac{2}{\sigma^{2}}g+g' & =\frac{2}{\sigma^{2}}\\
+-\theta y\frac{2}{\sigma^{2}}\cdot\exp\left(-\frac{\theta}{\sigma^{2}}y^{2}\right)\cdot g+\exp\left(-\frac{\theta}{\sigma^{2}}y^{2}\right)g' & =\exp\left(-\frac{\theta}{\sigma^{2}}y^{2}\right)\frac{2}{\sigma^{2}}\\
+d\left[\exp\left(-\frac{\theta}{\sigma^{2}}y^{2}\right)g\right] & =\exp\left(-\frac{2\theta}{\sigma^{2}}y^{2}\right)\frac{2}{\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\exp\left(-\frac{\theta}{\sigma^{2}}y^{2}\right)g & =\frac{2}{\sigma^{2}}\intop_{-\infty}^{y}\exp\left(-\frac{2\theta}{\sigma^{2}}s^{2}\right)ds+C\\
+ & =\frac{2}{\sigma^{2}}\intop_{-\infty}^{y}\exp\left[-\frac{1}{2}\left(\frac{2\sqrt{\theta}}{\sigma}s\right)^{2}\right]ds+C\\
+ & =\frac{2}{\sigma^{2}}\cdot\frac{\sigma}{2\sqrt{\theta}}\intop_{-\infty}^{y}\exp\left[-\frac{1}{2}\left(\frac{2\sqrt{\theta}}{\sigma}s\right)^{2}\right]d\left(\frac{2\sqrt{\theta}}{\sigma}s\right)+C\\
+ & =\frac{1}{\sigma\sqrt{\theta}}\intop_{-\infty}^{\frac{2\sqrt{\theta}}{\sigma}y}e^{-s^{2}/2}ds+C\\
+ & =\sqrt{\frac{2\pi}{\theta\sigma^{2}}}\Phi\left(\frac{2\sqrt{\theta}}{\sigma}y\right)+C
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $C=0$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\[
+g=\sqrt{\frac{2\pi}{\theta\sigma^{2}}}\exp\left(\frac{\theta}{\sigma^{2}}y^{2}\right)\Phi\left(\frac{2\sqrt{\theta}}{\sigma}y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choosing 
+\begin_inset Formula $f(0)=0$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+f(z)=\intop_{0}^{z}g(y)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}f\left(X_{\tau_{x}}\right) & =f\left(X_{0}\right)+\mathbb{E}\left(\intop_{0}^{\tau_{x}}dt\right)\\
+\frac{f(x)+f(-x)}{2} & =\mathbb{E}\tau_{x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Attempt using Girsanov's theorem
 \end_layout
