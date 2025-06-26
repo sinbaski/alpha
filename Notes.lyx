@@ -8150,7 +8150,7 @@ end{itemize}
 \end_layout
 
 \begin_layout Section
-A 2nd Degenerate case:
+The 2nd Degenerate case:
  when 
 \begin_inset Formula $\theta=0$
 \end_inset
@@ -8263,7 +8263,7 @@ Plugging in the expression of
 ,
 \begin_inset Formula 
 \[
-r_{t}=\left(r_{0}-\overline{r}\right)e^{-\alpha t}+\overline{r}+\alpha\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}
+r_{t}=\left(r_{0}-\overline{r}\right)e^{-\alpha t}+\overline{r}+\gamma\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}
 \]
 
 \end_inset
@@ -8275,8 +8275,8 @@ r_{t}=\left(r_{0}-\overline{r}\right)e^{-\alpha t}+\overline{r}+\alpha\intop_{0}
 we get
 \begin_inset Formula 
 \begin{align*}
-\intop_{0}^{t}r_{s}ds & =\overline{r}t+\frac{\gamma}{\alpha}D_{t}-\left[\frac{\left(r_{0}-\overline{r}\right)e^{-\alpha t}}{\alpha}+\frac{\overline{r}}{\alpha}+\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}\right]\\
- & =-r_{0}\frac{e^{-\alpha t}}{\alpha}+\overline{r}\left(t-\frac{1-e^{-\alpha t}}{\alpha}\right)+\intop_{0}^{t}\left[\frac{\gamma}{\alpha}-e^{-\alpha(t-s)}\right]dD_{s}
+\intop_{0}^{t}r_{s}ds & =\overline{r}t+\frac{\gamma}{\alpha}D_{t}-\left[\frac{\left(r_{0}-\overline{r}\right)e^{-\alpha t}}{\alpha}+\frac{\overline{r}}{\alpha}+\frac{\gamma}{\alpha}\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}\right]\\
+ & =-r_{0}\frac{e^{-\alpha t}}{\alpha}+\overline{r}\left(t-\frac{1-e^{-\alpha t}}{\alpha}\right)+\frac{\gamma}{\alpha}\intop_{0}^{t}\left[1-e^{-\alpha(t-s)}\right]dD_{s}
 \end{align*}
 
 \end_inset
@@ -8296,15 +8296,42 @@ reference "eq:5g5j7kj7kj"
  we arrive at
 \begin_inset Formula 
 \begin{align*}
-Y_{t}-Y_{0} & =\kappa\left\{ -r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}+\overline{r}_{B}\left(t-\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}\right)+\intop_{0}^{t}\left[\frac{\sigma_{B}}{\alpha_{B}}-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}\right\} \\
- & -\kappa\left\{ -r_{A,0}\frac{e^{-\alpha_{A}t}}{\alpha_{A}}+\overline{r}_{A}\left(t-\frac{1-e^{-\alpha_{A}t}}{\alpha_{A}}\right)+\intop_{0}^{t}\left[\frac{\sigma_{A}}{\alpha_{A}}-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right\} \\
+Y_{t}-Y_{0} & =\kappa\left\{ -r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}+\overline{r}_{B}\left(t-\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}\right)+\frac{\sigma_{B}}{\alpha_{B}}\intop_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}\right\} \\
+ & -\kappa\left\{ -r_{A,0}\frac{e^{-\alpha_{A}t}}{\alpha_{A}}+\overline{r}_{A}\left(t-\frac{1-e^{-\alpha_{A}t}}{\alpha_{A}}\right)+\frac{\sigma_{A}}{\alpha_{A}}\intop_{0}^{t}\left[1-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right\} \\
  & =\left(r_{A,0}\frac{e^{-\alpha_{A}t}}{\alpha_{A}}-r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}\right)\kappa+\left[\overline{r}_{B}\left(t-\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}\right)-\overline{r}_{A}\left(t-\frac{1-e^{-\alpha_{A}t}}{\alpha_{A}}\right)\right]\kappa\\
- & +\left[\intop_{0}^{t}\left[\frac{\sigma_{B}}{\alpha_{B}}-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}-\intop_{0}^{t}\left[\frac{\sigma_{A}}{\alpha_{A}}-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right]\kappa
+ & +\left[\frac{\sigma_{B}}{\alpha_{B}}\intop_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}-\frac{\sigma_{A}}{\alpha_{A}}\intop_{0}^{t}\left[1-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right]\kappa\\
+ & +\sigma W_{t}
 \end{align*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+To calculate 
+\begin_inset Formula $\sigma$
+\end_inset
+
+,
+ we look at 
+\begin_inset Formula $N$
+\end_inset
+
+ points 
+\begin_inset Formula $\{\Delta Y_{n}\}_{n=1,2,\cdots,N}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\Delta Y_{n}$
+\end_inset
+
+ is the difference between the forecast and the actual logarithmic exchange rate on day 
+\begin_inset Formula $n$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
