@@ -1,0 +1,2316 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Solutions to Bernt Oksendal's SDE
+\end_layout
+
+\begin_layout Section
+Problem 4.4
+\end_layout
+
+\begin_layout Standard
+Let
+\begin_inset Formula 
+\begin{align*}
+X_{t} & =\intop_{0}^{t}\theta(s,\omega)dB_{s}\\
+Y_{t} & =\intop_{0}^{t}\theta^{2}(s,\omega)ds
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\[
+Z_{t}=\exp\left(X_{t}-\frac{1}{2}Y_{t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It then follows
+\begin_inset Formula 
+\begin{align*}
+dZ_{t} & =Z_{t}\left(dX_{t}-\frac{1}{2}dY_{t}\right)+\frac{1}{2}Z_{t}\left(dX_{t}-\frac{1}{2}dY_{t}\right)^{2}\\
+ & =Z_{t}\left(\theta_{t}dB_{t}-\frac{1}{2}\theta_{t}^{2}dt\right)+\frac{Z_{t}}{2}\left[\left(dX_{t}\right)^{2}-dX_{t}dY_{t}+\frac{1}{4}\left(dY_{t}\right)^{2}\right]\\
+ & =Z_{t}\left(\theta_{t}dB_{t}-\frac{1}{2}\theta_{t}^{2}dt\right)+\frac{Z_{t}}{2}\left[\theta_{t}^{2}dt-\theta_{t}dB_{t}\cdot\theta_{t}^{2}dt+\frac{1}{4}\left(\theta_{t}^{2}dt\right)^{2}\right]\\
+ & =Z_{t}\left(\theta_{t}dB_{t}-\frac{1}{2}\theta_{t}^{2}dt\right)+\frac{\theta_{t}^{2}}{2}Z_{t}dt\\
+ & =\theta_{t}Z_{t}dB_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+Z_{t}=Z_{0}+\intop_{0}^{t}\theta_{s}(\omega)Z_{s}(\omega)dB_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By the Martingale representation theorem,
+ 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ is a martingale.
+\end_layout
+
+\begin_layout Section
+Problem 4.8
+\end_layout
+
+\begin_layout Subsection
+Question a)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+df(B_{t}) & =\sum_{i=1}^{n}\partial_{i}f(B_{t})dB_{i,t}+\frac{1}{2}\sum_{i,j=1}^{n}\partial_{i,j}^{2}f(B_{t})dB_{i,t}dB_{j,t}\\
+ & =\nabla f(B_{t})\cdot dB_{t}+\frac{1}{2}\sum_{i=1}^{n}\partial_{i,i}^{2}f(B_{t})dt\\
+ & =\nabla f(B_{t})\cdot dB_{t}+\frac{1}{2}\Delta f(B_{t})dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+f(B_{t})=f(B_{0})+\intop_{0}^{t}\nabla f(B_{s})dB_{s}+\frac{1}{2}\intop_{0}^{t}\Delta f(B_{s})ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 7.4
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Let 
+\begin_inset Formula $\tau=\inf\{t>0:B_{t}>x\}$
+\end_inset
+
+ where 
+\begin_inset Formula $x>0$
+\end_inset
+
+.
+ We want show 
+\begin_inset Formula $\mathbb{E}\tau=\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Let 
+\begin_inset Formula $\sigma_{k}=\inf\{t>0:B_{t}>x\vee B_{t}<-k\}$
+\end_inset
+
+ for 
+\begin_inset Formula $k>0$
+\end_inset
+
+.
+ Clearly,
+ 
+\begin_inset Formula $\sigma_{k}\leq\inf\left\{ t>0:\left|B_{t}\right|>x\vee k\right\} $
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\[
+\mathbb{E}\sigma_{k}\leq\mathbb{E}\inf\left\{ t>0:\left|B_{t}\right|>x\vee k\right\} =\left(x\vee k\right)^{2}<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Thus by Dynkin's formula,
+\begin_inset Formula 
+\[
+\mathbb{E}\left(\frac{B_{\sigma_{k}}^{2}}{2}\right)=\mathbb{E}\left(\intop_{0}^{\sigma_{k}}dt\right)=\mathbb{E}\sigma_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Let 
+\begin_inset Formula $\mathbb{P}\left(B_{\sigma_{k}}=x\right)=p_{k}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+\frac{x^{2}}{2}p_{k}+\frac{k^{2}}{2}\left(1-p_{k}\right)=\mathbb{E}\sigma_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Again by Dynkin's formula,
+\begin_inset Formula 
+\[
+\mathbb{E}\left(B_{\sigma_{k}}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Hence
+\begin_inset Formula 
+\begin{align*}
+p_{k}x-(1-p_{k})k & =0\\
+\left(x+k\right)p_{k} & =k\\
+p_{k} & =\frac{k}{x+k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+Thus
+\begin_inset Formula 
+\[
+\frac{x^{2}}{2}\frac{k}{x+k}+\frac{x}{x+k}\frac{k^{2}}{2}=\mathbb{E}\sigma_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\lang american
+As 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{x^{2}}{2}\frac{k}{x+k}+\frac{x}{x+k}\frac{k^{2}}{2}\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{k}\to\tau$
+\end_inset
+
+.
+ Clearly 
+\begin_inset Formula $\lim_{k\to\infty}\sigma_{k}=\tau$
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\[
+\mathbb{E}\tau=\lim_{k\to\infty}\mathbb{E}\sigma_{k}=\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang american
+Problem 7.9
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be a geometric Brownian motion:
+\begin_inset Formula 
+\[
+dX_{t}=rX_{t}dt+\alpha X_{t}dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+For 
+\begin_inset Formula $x<R$
+\end_inset
+
+,
+ define 
+\begin_inset Formula $\tau=\inf\left\{ t>0:X_{t}^{x}>R\right\} $
+\end_inset
+
+.
+ What is 
+\begin_inset Formula $\mathbb{P}\left(\tau<\infty\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Solution:
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\sigma_{k}=\tau\wedge k$
+\end_inset
+
+.
+ Clearly,
+ as 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma_{k}\overset{d}{\to}\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbb{E}\sigma_{k}=\mathbb{E}\left(\tau\wedge k\right)\leq k$
+\end_inset
+
+.
+ We want to find a function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\mathscr{A}f(x)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathscr{A}$
+\end_inset
+
+ is the generator of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+ According to theorem 7.3.3 of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Oksendal1998}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathscr{A}f(x)=rxf'(x)+\frac{\alpha^{2}x^{2}}{2}f''(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equating the right side of the above to 1 yields
+\begin_inset Formula 
+\begin{align}
+rxf'(x)+\frac{\alpha^{2}x^{2}}{2}f''(x) & =1\nonumber \\
+\frac{2}{\alpha^{2}x^{2}}rxf'(x)+\frac{df'(x)}{dx} & =\frac{2}{\alpha^{2}x^{2}}\nonumber \\
+\frac{2r}{\alpha^{2}x}f'(x)+\frac{df'(x)}{dx} & =\frac{2}{\alpha^{2}x^{2}}\label{eq:g5th65h6h6}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We need a function 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+g'(x)=g(x)\frac{2r}{\alpha^{2}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This means
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{g}\frac{dg}{dx} & =\frac{2r}{\alpha^{2}x}\\
+\frac{d\ln g}{dx} & =\frac{2r}{\alpha^{2}x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore we may choose
+\begin_inset Formula 
+\begin{align*}
+\ln g(x) & =\frac{2r}{\alpha^{2}}\ln x\\
+g(x) & =x^{2r/\alpha^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying both sides of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g5th65h6h6"
+
+\end_inset
+
+) by 
+\begin_inset Formula $g(x)$
+\end_inset
+
+,
+ we get
+\begin_inset Formula 
+\begin{align*}
+g'(x)f'(x)+g(x)f''(x) & =\frac{2}{\alpha^{2}x^{2}}g(x)\\
+\frac{d\left[f'(x)g(x)\right]}{dx} & =\frac{2}{\alpha^{2}x^{2}}g(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can choose
+\begin_inset Formula 
+\begin{align*}
+f'(x)g(x) & =\intop_{1}^{x}\frac{2}{\alpha^{2}}u^{2r/\alpha^{2}-2}du\\
+f'(x)x^{2r/\alpha^{2}} & =\frac{2}{\alpha^{2}}\frac{x^{2r/\alpha^{2}-1}-1}{\frac{2r}{\alpha^{2}}-1}\\
+f'(x) & =\frac{2}{2r-\alpha^{2}}\left(\frac{1}{x}-\frac{1}{x^{2r/\alpha^{2}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we can choose
+\begin_inset Formula 
+\begin{align*}
+f(x) & =\intop_{1}^{x}\frac{2}{2r-\alpha^{2}}\left(\frac{1}{u}-u^{-2r/\alpha^{2}}\right)du\\
+ & =\frac{2}{2r-\alpha^{2}}\left(\ln x-\intop_{1}^{x}u^{-2r/\alpha^{2}}du\right)\\
+ & =\frac{2}{2r-\alpha^{2}}\left(\ln x-\frac{x^{1-2r/\alpha^{2}}-1}{1-2r/\alpha^{2}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ by Dynkin's formula,
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}f\left(X_{\sigma_{k}}\right)=f\left(X_{0}\right)+\mathbb{E}^{x}\sigma_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $k\to\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma_{k}\to\tau$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $X_{\sigma_{k}}\to R$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\frac{2}{2r-\alpha^{2}}\left(\ln R-\frac{R^{1-2r/\alpha^{2}}-1}{1-2r/\alpha^{2}}\right) & =\frac{2}{2r-\alpha^{2}}\left(\ln x-\frac{x^{1-2r/\alpha^{2}}-1}{1-2r/\alpha^{2}}\right)+\mathbb{E}\tau\\
+\mathbb{E}\tau & =\frac{2}{2r-\alpha^{2}}\left[\ln\frac{R}{x}-\frac{R^{1-2r/\alpha^{2}}-x^{1-2r/\alpha^{2}}}{1-2r/\alpha^{2}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 7.19
+\end_layout
+
+\begin_layout Subsection
+Question a)
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\tau=\inf\{t>0:B_{t}^{x}=0\}$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}\exp\left(-\sqrt{2\lambda}B_{\tau}-\lambda\tau\right)=\mathbb{E}^{x}e^{-\lambda\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $M_{t}=f(B_{t}^{x})=e^{-\sqrt{2\lambda}B_{t}^{x}-\lambda t}$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+dM_{t}=-\sqrt{2\lambda}M_{t}dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $M_{t}$
+\end_inset
+
+ is a martingale,
+ and hence
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}e^{-\lambda\tau}=\mathbb{E}^{x}M_{\tau}=e^{-\sqrt{2\lambda}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question b)
+\end_layout
+
+\begin_layout Standard
+On the other hand
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}e^{-\lambda\tau}=\intop_{0}^{\infty}e^{-\lambda t}f(t,x)dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ is the probability density function of 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ From the above expression we see
+\begin_inset Formula 
+\[
+f(t,x)=\mathscr{L}^{-1}\left(\mathbb{E}^{x}e^{-\lambda\tau}\right)=\mathscr{L}^{-1}\left(e^{-\sqrt{2\lambda}x}\right)=\frac{x}{\sqrt{2\pi}t^{3/2}}e^{-x^{2}/2t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 8.7
+\end_layout
+
+\begin_layout Standard
+From the integral definition of
+\begin_inset Formula $X_{t}$
+\end_inset
+
+,
+ it is immediately clear that
+\begin_inset Formula 
+\[
+dX_{t}=\sum_{i=1}^{n}v_{i}(s)dB_{i}(s)=\begin{bmatrix}v_{1},v_{2},\cdots,v_{n}\end{bmatrix}\begin{bmatrix}dB_{1}\\
+dB_{2}\\
+\vdots\\
+dB_{n}
+\end{bmatrix}=\vec{v}\cdot d\vec{B}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{v}\cdot\vec{v}^{\top}=\begin{bmatrix}v_{1},v_{2},\cdots,v_{n}\end{bmatrix}\begin{bmatrix}v_{1}\\
+v_{2}\\
+\vdots\\
+v_{n}
+\end{bmatrix}=\sum_{i=1}^{n}v_{i}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ if we introduce a random time change
+\begin_inset Formula 
+\[
+\beta_{t}=\intop_{0}^{t}\sum_{i=1}^{n}v_{i}^{2}(s,\omega)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then we can write
+\begin_inset Formula 
+\[
+X_{t}\overset{d}{=}W_{\beta_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ is a Brownian motion.
+ By the law of iterated logarithm and the assumption 
+\begin_inset Formula $\beta_{t}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+,
+ almost surely,
+ we have 
+\begin_inset Formula 
+\[
+\limsup_{t\to\infty}\frac{W_{\beta_{t}}}{\sqrt{2\beta_{t}\ln\ln\beta_{t}}}=\limsup_{t\to\infty}\frac{X_{t}}{\sqrt{2\beta_{t}\ln\ln\beta_{t}}}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+almost surely.
+\end_layout
+
+\begin_layout Section
+Problem 8.9
+\end_layout
+
+\begin_layout Standard
+Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =e^{t}dB_{t}\\
+dX_{t} & =tdB'_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Show
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{\alpha_{t}}\cong X_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha(t)=\frac{1}{2}\ln\left(1+\frac{2}{3}t^{3}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Proof:
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{\alpha\left(t\right)}\cong B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\beta\left(t\right) & =\intop_{0}^{t}e^{2s}ds=\left[\frac{e^{2s}}{2}\right]_{s=0}^{t}=\frac{1}{2}\left(e^{2t}-1\right)\\
+\alpha\left(t\right) & =\beta^{-1}\left(t\right)=\frac{1}{2}\ln\left(2t+1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Meanwhile
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{\alpha'\left(t\right)}\cong B'_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\beta'\left(t\right) & =\intop_{0}^{t}s^{2}ds=\frac{t^{3}}{3}\\
+\alpha'\left(t\right) & =\beta'^{-1}\left(t\right)=\left(3t\right)^{1/3}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+Y_{\alpha\left(t\right)} & \cong X_{\alpha'\left(t\right)}\\
+Y_{\ln\sqrt{2t+1}} & \cong X_{\left(3t\right)^{1/3}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(3t\right)^{1/3}=t'$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $t=\frac{t'^{3}}{3}$
+\end_inset
+
+.
+ Substituting this into 
+\begin_inset Formula $\alpha\left(t\right)$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{2}\ln\left(2t+1\right)=\frac{1}{2}\ln\left(1+\frac{2}{3}t'^{3}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence there exists 
+\begin_inset Formula $B'_{t}$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{\ln\sqrt{1+2t'^{3}/3}}=\intop_{0}^{t'}sdB'_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 8.10
+\end_layout
+
+\begin_layout Standard
+By Ito's lemma we have
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =2B_{t}dB_{t}+\frac{1}{2}\cdot2dt\\
+ & =2B_{t}dB_{t}+dt\\
+ & =v(t,\omega)dB_{t}+dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing this SDE with the Ito diffusion 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =dt+2\sqrt{\left|Y_{t}\right|}d\tilde{B}_{t}\\
+ & =dt+\sigma(Y_{t})d\tilde{B}_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we see
+\begin_inset Formula 
+\[
+\sigma^{2}(X_{t})=4\left|X_{t}\right|=4B_{t}^{2}=v^{2}(t,\omega)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence by theorem 8.4.3,
+ 
+\begin_inset Formula $X_{t}\overset{d}{=}Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 8.12
+\end_layout
+
+\begin_layout Standard
+To find 
+\begin_inset Formula $Q$
+\end_inset
+
+,
+ we first need to find 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}1 & 3\\
+-1 & -2
+\end{bmatrix}\begin{bmatrix}u_{1}\\
+u_{2}
+\end{bmatrix} & =\begin{bmatrix}0\\
+1
+\end{bmatrix}\\
+u_{1}+3u_{2} & =0\\
+-u_{1}-2u_{2} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u_{2} & =1\\
+u_{1} & =-3
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+M_{t} & =\exp\left\{ -\intop_{0}^{t}\begin{bmatrix}-3, & 1\end{bmatrix}\begin{bmatrix}dB_{1,s}\\
+dB_{2,s}
+\end{bmatrix}-\frac{1}{2}\intop_{0}^{t}\begin{bmatrix}-3, & 1\end{bmatrix}\begin{bmatrix}-3\\
+1
+\end{bmatrix}ds\right\} \\
+ & =\exp\left\{ -\intop_{0}^{t}\left(-3dB_{1,s}+dB_{2,s}\right)-\frac{1}{2}\intop_{0}^{t}10ds\right\} \\
+ & =\exp\left\{ 3B_{1,t}-B_{2,t}-5t\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A Brownian w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+,
+ call it 
+\begin_inset Formula $\hat{B}_{t}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{align*}
+\hat{B} & =\intop_{0}^{t}u_{s}ds+B_{t}\\
+ & =\intop_{0}^{t}\begin{bmatrix}-3\\
+1
+\end{bmatrix}ds+\begin{bmatrix}B_{1,t}\\
+B_{2,t}
+\end{bmatrix}\\
+ & =\begin{bmatrix}-3t\\
+t
+\end{bmatrix}+\begin{bmatrix}B_{1,t}\\
+B_{2,t}
+\end{bmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $Q$
+\end_inset
+
+ measure
+\begin_inset Formula 
+\[
+dY_{t}=\begin{bmatrix}1 & 3\\
+-1 & -2
+\end{bmatrix}\begin{bmatrix}d\hat{B}_{1,t}\\
+d\hat{B}_{2,t}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 8.13
+\end_layout
+
+\begin_layout Subsection
+Existence & Uniqueness of the solution
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $b(\cdot)$
+\end_inset
+
+ is Lipschitz continuous,
+ there exists a constant 
+\begin_inset Formula $K$
+\end_inset
+
+ such that,
+ 
+\begin_inset Formula $\forall x\in\boldsymbol{R}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\frac{\left|b(x)-b(0)\right|}{\left|x\right|}\leq K
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+\left|b(x)\right|-\left|b(0)\right|\leq\left|b(x)-b(0)\right|\leq K\left|x\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+therefore
+\begin_inset Formula 
+\begin{align*}
+\left|b(x)\right| & \leq K\left|x\right|+\left|b(0)\right|
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\left|b(0)\right|\leq K$
+\end_inset
+
+,
+ it is clear
+\begin_inset Formula 
+\[
+\left|b(x)\right|\leq K\left(\left|x\right|+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\left|b(0)\right|>K$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\left|b(x)\right| & \leq\left|b(0)\right|\left(\frac{K\left|x\right|}{\left|b(0)\right|}+1\right)\\
+ & \leq\left|b(0)\right|\left(\left|x\right|+1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\begin{align*}
+\left|b(x)\right| & \leq\max\left(\left|b(0)\right|,K\right)\cdot\left(\left|x\right|+1\right)\\
+ & =C\left(\left|x\right|+1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+ according to the existence and uniqueness theorem of stochastic differential equations,
+ for all 
+\begin_inset Formula $T>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathbb{E}\left(\intop_{0}^{T}\left|X_{t}\right|^{2}dt\right)<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question a)
+\end_layout
+
+\begin_layout Standard
+Use the Girsanov theorem to prove that,
+ for any 
+\begin_inset Formula $M<\infty$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x\in\boldsymbol{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $t>0$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\mathbb{P}\left(X_{t}^{x}\geq M\right)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Proof:
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $b(\cdot)$
+\end_inset
+
+ is bounded.
+ Then the Novikov condition is clearly satisfied:
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{t}b\left(X_{s}\right)^{2}ds\right]<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence we can define an equivalent probability measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ on 
+\begin_inset Formula $\mathcal{F}_{t}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\left(\frac{dQ}{dP}\right)_{t}=M_{t}=\exp\left[-\intop_{0}^{t}b\left(X_{s}\right)dB_{s}-\frac{1}{2}\intop_{0}^{t}b\left(X_{s}\right)^{2}ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Girsanov theorem,
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is a Brownian motion w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Hence
+\begin_inset Formula 
+\[
+Q\left(X_{t}^{x}\geq M\right)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for all 
+\begin_inset Formula $t>0$
+\end_inset
+
+ and all 
+\begin_inset Formula $M<\infty$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $P$
+\end_inset
+
+ are equivalent probability measures,
+ i.e.
+ they agree on all null sets,
+ we have
+\begin_inset Formula 
+\[
+P\left(X_{t}^{x}\geq M\right)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Box$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question (b)
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $b(x)=-r$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+dX_{t}=-rdt+dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is
+\begin_inset Formula 
+\[
+X_{t}^{x}=x-rt+B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know,
+ almost surely,
+\begin_inset Formula 
+\[
+\limsup_{t\to\infty}\frac{B_{t}}{\sqrt{2t\ln\ln t}}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence,
+ a.s.,
+\begin_inset Formula 
+\[
+\limsup_{t\to\infty}\frac{B_{t}-rt+x}{\sqrt{2t\ln\ln t}}=-\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+ 
+\begin_inset Formula $X_{t}^{x}\to-\infty$
+\end_inset
+
+ almost surely as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Problem 8.15
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f\in C_{0}^{2}\left(\boldsymbol{R}^{n}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha(x)=\left[\alpha_{1}(x),\alpha_{2}(x),\cdots,\alpha_{n}(x)\right]$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha_{i}\in C_{0}^{2}\left(\boldsymbol{R}^{n}\right)$
+\end_inset
+
+ be given functions and consider the partial differential equation
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial u}{\partial t} & =\sum_{i=1}^{n}\alpha_{i}(x)\frac{\partial u}{\partial x_{i}}+\frac{1}{2}\sum_{i=1}^{n}\frac{\partial^{2}u}{\partial x_{i}^{2}}\\
+u(0,x) & =f(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question a)
+\end_layout
+
+\begin_layout Standard
+Use Girsanov theorem to show that the unique bounded solution of this equation can be expressed by
+\begin_inset Formula 
+\[
+u(t,x)=\mathbb{E}^{x}\left[\exp\left(\intop_{0}^{t}\alpha(B_{s})dB_{s}-\frac{1}{2}\intop_{0}^{t}\alpha^{2}(B_{s})ds\right)f(B_{t})\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Proof:
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $X_{t}^{x}\in\boldsymbol{R}^{n}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+dX_{t}=\alpha(X_{t})dt+dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+\begin_inset Formula 
+\[
+d\begin{pmatrix}X_{1,t}\\
+X_{2,t}\\
+\vdots\\
+X_{n,t}
+\end{pmatrix}=\begin{pmatrix}\alpha_{1}\\
+\alpha_{2}\\
+\vdots\\
+\alpha_{n}
+\end{pmatrix}dt+\begin{pmatrix}1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}dB_{1,t}\\
+dB_{2,t}\\
+\vdots\\
+dB_{n,t}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The infinitesimal generator of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\mathscr{A}_{X}f(\vec{x})=\sum_{i=1}^{n}\alpha_{i}\frac{\partial f}{\partial x_{i}}+\frac{1}{2}\sum_{i=1}^{n}\frac{\partial^{2}f}{\partial x_{i}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $\alpha_{i}(\cdot)$
+\end_inset
+
+ are bounded functions such that for all 
+\begin_inset Formula $1\leq i\leq n$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{t}\alpha_{i}^{2}\left(X_{S}\right)ds\right]<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then by Girsanov theorem
+\begin_inset Formula 
+\[
+\frac{d\mathbb{Q}}{d\mathbb{P}}=M_{t}=\exp\left[-\sum_{i=1}^{n}\intop_{0}^{t}\alpha_{i}\left(X_{s}\right)dB_{s}-\frac{1}{2}\sum_{i=1}^{n}\intop_{0}^{t}\alpha_{i}^{2}\left(X_{s}\right)ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+defines an equivalent probability measure on 
+\begin_inset Formula $\mathcal{F}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is a Q-Brownian motion.
+ By Kolmogorov's backward equation,
+ the unique,
+ bounded solution to the PDE
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial u}{\partial t} & =\mathscr{A}_{X}u\\
+u(0,x) & =f(x)
+\end{align*}
+
+\end_inset
+
+is given by 
+\begin_inset Formula $\mathbb{E}^{x}f(X_{t})$
+\end_inset
+
+.
+ By Girsanov's theorem,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}^{x}f\left(X_{t}\right) & =\mathbb{E}_{Q}^{x}\left[M_{t}^{-1}f\left(X_{t}\right)\right]\\
+ & =\mathbb{E}_{Q}^{x}\left[\exp\left(\intop_{0}^{t}\alpha(X_{s})dB_{s}+\frac{1}{2}\intop_{0}^{t}\alpha^{2}(X_{s})ds\right)f(X_{t})\right]\\
+ & =\mathbb{E}_{Q}^{x}\left\{ \exp\left[\intop_{0}^{t}\alpha(X_{s})\left(dX_{s}-\alpha(X_{s})ds\right)+\frac{1}{2}\intop_{0}^{t}\alpha^{2}(X_{s})ds\right]f(X_{t})\right\} \\
+ & =\mathbb{E}_{Q}^{x}\left\{ \exp\left[\intop_{0}^{t}\alpha(X_{s})dX_{s}-\frac{1}{2}\intop_{0}^{t}\alpha^{2}(X_{s})ds\right]f(X_{t})\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is a Q-Brownian motion,
+ we can write
+\begin_inset Formula 
+\[
+\mathbb{E}^{x}f(X_{t})=\mathbb{E}^{x}\left\{ \exp\left[\intop_{0}^{t}\alpha(B_{s})dB_{s}-\frac{1}{2}\intop_{0}^{t}\alpha^{2}(B_{s})ds\right]f(B_{t})\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Box$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question b)
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\alpha=\nabla\gamma$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}^{x}f(X_{t}) & =\mathbb{E}^{x}\left\{ \exp\left[\intop_{0}^{t}\alpha(B_{s})dB_{s}-\frac{1}{2}\intop_{0}^{t}\alpha^{2}(B_{s})ds\right]f(B_{t})\right\} \\
+ & =\mathbb{E}^{x}\left\{ \exp\left[\sum_{i=1}^{n}\intop_{0}^{t}\frac{\partial\gamma}{\partial x_{i}}(B_{s})dB_{i,s}-\frac{1}{2}\sum_{i=1}^{n}\intop_{0}^{t}\left(\frac{\partial\gamma}{\partial x_{i}}(B_{s})\right)^{2}ds\right]f(B_{s})\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =\nabla\gamma(B_{t})\cdot dB_{t}-\frac{1}{2}\sum_{i=1}^{n}\left(\frac{\partial\gamma}{\partial x_{i}}(B_{t})\right)^{2}dt\\
+ & =\nabla\gamma(B_{t})\cdot dB_{t}-\frac{1}{2}\left|\nabla\gamma(B_{t})\right|^{2}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =\gamma'(B_{t})dB_{t}-\frac{1}{2}\gamma'^{2}(B_{t})dt\\
+ & =d\left[\gamma(B_{t})B_{t}\right]-B_{t}d\gamma(B_{t})-\frac{1}{2}\gamma'^{2}(B_{t})dt\\
+ & =d\left[\gamma(B_{t})B_{t}\right]-B_{t}\gamma'(B_{t})dB_{t}-\frac{1}{2}B_{t}\gamma''(B_{t})dt-\frac{1}{2}\gamma'^{2}(B_{t})dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\[
+Y_{t}=\gamma(B_{t})B_{t}-\intop_{0}^{t}B_{s}\gamma'(B_{s})dB_{s}-\frac{1}{2}\intop_{0}^{t}B_{s}\gamma''(B_{s})ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problem 12.11
+\end_layout
+
+\begin_layout Standard
+Suppose the market is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dX_{0}(t) & =\rho X_{0}(t)dt\\
+X_{0}(0) & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+dX_{1}(t) & =\left(m-X_{1}(t)\right)dt+\sigma dB_{t}\\
+X_{1}(0) & =x_{1}>0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\rho>0,m>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+ are constants.
+\end_layout
+
+\begin_layout Subsection
+Question a)
+\end_layout
+
+\begin_layout Standard
+Find the price 
+\begin_inset Formula $\mathbb{E}_{Q}\left[\xi(T)F\right]$
+\end_inset
+
+ of the European T-claim
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F(\omega)=X_{1}(T,\omega)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Solution:
+\end_layout
+
+\begin_layout Standard
+First of all,
+ we want to prove that there exists 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\sigma u_{t}=m-X_{1,t}-\rho X_{1,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}u_{s}^{2}ds\right]<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}u_{s}^{2}ds\right] & =\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}\frac{\left(m-X_{1,s}-\rho X_{1,s}\right)^{2}}{\sigma^{2}}ds\right]\\
+ & =\mathbb{E}\exp\left[\frac{1}{2\sigma^{2}}\intop_{0}^{T}m^{2}ds+\frac{1}{2\sigma^{2}}\intop_{0}^{T}(1+\rho)^{2}X_{1,s}^{2}ds-\frac{2m(1+\rho)}{2\sigma^{2}}\intop_{0}^{T}X_{1,s}ds\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice
+\begin_inset Formula 
+\begin{align*}
+dX_{1,t} & =\left(m-X_{1,t}\right)dt+\sigma dB_{t}\\
+dX_{1,t}+X_{1,t}dt & =mdt+\sigma dB_{t}\\
+d\left(e^{t}X_{1,t}\right) & =me^{t}dt+\sigma e^{t}dB_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows
+\begin_inset Formula 
+\[
+d\left(\frac{e^{t}X_{1,t}-me^{t}}{\sigma}\right)=e^{t}dB_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y_{t}=\frac{e^{t}X_{1,t}-me^{t}}{\sigma}$
+\end_inset
+
+.
+ Then we can write
+\begin_inset Formula 
+\[
+Y_{t}\overset{d}{=}W_{\beta_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ being a Brownian motion and
+\begin_inset Formula 
+\[
+\beta_{t}=\intop_{0}^{t}e^{2s}ds=\left[\frac{e^{2s}}{2}\right]_{s=0}^{t}=\frac{e^{2t}-1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+ with 
+\begin_inset Formula $\sim$
+\end_inset
+
+ denoting 
+\begin_inset Formula $\overset{d}{=}$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+W_{(e^{2t}-1)/2} & \sim\frac{e^{t}X_{1,t}-me^{t}}{\sigma}\\
+X_{1,t} & \sim\sigma e^{-t}W_{(e^{2t}-1)/2}+m
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}u_{s}^{2}ds\right] & =\mathbb{E}\exp\left\{ \frac{1}{2\sigma^{2}}\intop_{0}^{T}\left[m-\left(1+\rho\right)\sigma e^{-s}W_{(e^{2s}-1)/2}+m\left(1+\rho\right)\right]^{2}ds\right\} \\
+ & =\mathbb{E}\exp\left\{ \frac{1}{2\sigma^{2}}\intop_{0}^{T}\left[m\left(2+\rho\right)-\left(1+\rho\right)\sigma e^{-s}W_{(e^{2s}-1)/2}\right]^{2}ds\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $t=\frac{e^{2s}-1}{2}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+s=\frac{\ln(2t+1)}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+ds & =\frac{1}{2}\frac{2}{2t+1}dt\\
+ & =\frac{dt}{2t+1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}u_{s}^{2}ds\right] & =\mathbb{E}\exp\left\{ \frac{1}{2\sigma^{2}}\intop_{0}^{(e^{2T}-1)/2}\frac{\left[m\left(2+\rho\right)-\left(1+\rho\right)\sigma\left(2t+1\right)^{-1/2}W_{t}\right]^{2}}{2t+1}dt\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Holder's inequality,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[\frac{1}{2}\intop_{0}^{T}u_{s}^{2}ds\right] & \leq\exp\left[\intop_{0}^{(e^{2T}-1)/2}\frac{m^{2}(2+\rho)^{2}}{2\sigma^{2}(2t+1)}dt\right]\\
+ & \cdot\left\{ \mathbb{E}\exp\left[-2\intop_{0}^{(e^{2T}-1)/2}\frac{2m\sigma(\rho+1)(\rho+2)}{2\sigma^{2}(2t+1)^{3/2}}W_{t}dt\right]\right\} ^{1/2}\\
+ & \cdot\left\{ \mathbb{E}\exp\left[2\intop_{0}^{(e^{2T}-1)/2}\frac{\sigma^{2}(\rho+1)^{2}}{2\sigma^{2}(2t+1)^{2}}W_{t}^{2}dt\right]\right\} ^{1/2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first 2 terms on the RHS are obviously finite.
+ As for the 3rd term,
+ let 
+\begin_inset Formula $K=\frac{e^{2T}-1}{2}$
+\end_inset
+
+ and we have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[2\intop_{0}^{(e^{2T}-1)/2}\frac{\sigma^{2}(\rho+1)^{2}}{2\sigma^{2}(2t+1)^{2}}W_{t}^{2}dt\right] & =\mathbb{E}\exp\left[\intop_{0}^{K}\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}dt\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Jensen's inequality,
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left[\intop_{0}^{K}\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}dt\right]\leq\mathbb{E}\left\{ \intop_{0}^{K}\exp\left[\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}\right]dt\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Tonelli's theorem,
+\begin_inset Formula 
+\[
+\mathbb{E}\left\{ \intop_{0}^{K}\exp\left[\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}\right]dt\right\} =\intop_{0}^{K}\mathbb{E}\exp\left[\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}\right]dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the integrand,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\exp\left[\frac{(\rho+1)^{2}}{(2t+1)^{2}}W_{t}^{2}\right] & =\frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}\exp\left[\frac{(\rho+1)^{2}}{(2t+1)^{2}}\left(\sqrt{t}z\right)^{2}-\frac{z^{2}}{2}\right]dz\\
+ & =\frac{2}{\sqrt{2\pi}}\intop_{0}^{\infty}\exp\left\{ \left[\frac{(1+\rho)^{2}t}{(2t+1)^{2}}-\frac{1}{2}\right]z^{2}\right\} dz
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This integral is finite if and only if
+\begin_inset Formula 
+\begin{align*}
+\frac{(1+\rho)^{2}t}{(2t+1)^{2}}-\frac{1}{2} & <0\\
+(1+\rho)^{2} & <\frac{(2t+1)^{2}}{2t}\\
+1+\rho & <\frac{2t+1}{\sqrt{2t}}\\
+\rho & <\frac{2t+1}{\sqrt{2t}}-1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note
+\begin_inset Formula 
+\[
+\frac{2t+1}{\sqrt{2t}}=\sqrt{2t}+\frac{1}{\sqrt{2t}}\geq2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we need 
+\begin_inset Formula $\rho<1$
+\end_inset
+
+ for the inequality to hold for all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Thus,
+ assuming 
+\begin_inset Formula $\rho<1$
+\end_inset
+
+,
+ we have the Novikov's condition
+\begin_inset Formula 
+\[
+\mathbb{E}\exp\left(\intop_{0}^{T}u_{t}^{2}dt\right)<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+u_{t}=\frac{m}{\sigma}-\frac{1+\rho}{\sigma}X_{1,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows that
+\begin_inset Formula 
+\[
+M_{t}=\exp\left(-\intop_{0}^{t}u_{s}dB_{s}-\frac{1}{2}\intop_{0}^{t}u_{s}^{2}ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is a martingale for 
+\begin_inset Formula $t\in[0,T]$
+\end_inset
+
+.
+ We can define the measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\frac{dQ}{dP}=M_{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the Q-measure,
+\begin_inset Formula 
+\[
+dX_{1,t}=\rho X_{1,t}dt+\sigma d\tilde{B}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It follows
+\begin_inset Formula 
+\begin{align*}
+e^{-\rho t}dX_{1,t}-\rho X_{1,t}e^{-\rho t}dt & =\sigma e^{-\rho t}d\tilde{B}_{t}\\
+d\left(e^{-\rho t}X_{1,t}\right) & =\sigma e^{-\rho t}d\tilde{B}_{t}\\
+e^{-\rho t}X_{1,t}-X_{1,0} & =\sigma\intop_{0}^{t}e^{-\rho s}d\tilde{B}_{s}\\
+X_{1,t} & =X_{1,0}e^{\rho t}+\sigma\intop_{0}^{t}e^{\rho(t-s)}d\tilde{B}_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+\tilde{B}_{t}=\intop_{0}^{t}u_{s}ds+B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is a Brownian motion of Q.
+ Therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left(X_{0,T}^{-1}X_{1,T}\right) & =\mathbb{E}_{Q}\left[e^{-\rho T}X_{1,T}\right]\\
+ & =\mathbb{E}_{Q}\left[X_{1,0}+\sigma\intop_{0}^{T}e^{-\rho s}d\tilde{B}_{s}\right]\\
+ & =X_{1,0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Question b)
+\end_layout
+
+\begin_layout Standard
+To find the replication portfolio,
+ we need to find 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\theta_{1}e^{-\rho t}\sigma=\sigma e^{-\rho t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore 
+\begin_inset Formula $\theta_{1}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "MyReferences"
+options "bibtotoc,plain"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
