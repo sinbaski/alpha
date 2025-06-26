@@ -7827,7 +7827,16 @@ R_{T}=\frac{X_{T}}{X_{0}}-1
 \end_layout
 
 \begin_layout Section
-The degenerate model
+A Degenerate case:
+ when 
+\begin_inset Formula $\theta\to\infty,\kappa\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa/\theta\to c$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8134,6 +8143,164 @@ status open
 \backslash
 end{itemize}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+A 2nd Degenerate case:
+ when 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+,
+ the model becomes
+\begin_inset Formula 
+\begin{equation}
+dY_{t}=\kappa\left(r_{B,t}-r_{A,t}\right)dt+\sigma dW_{t}\label{eq:fr4rgtgrg}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Y_{t}=\ln X_{t}$
+\end_inset
+
+.
+ Integrating both sides of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fr4rgtgrg"
+
+\end_inset
+
+) gives
+\begin_inset Formula 
+\begin{equation}
+Y_{t}-Y_{0}=\kappa\intop_{0}^{t}r_{B,s}ds-\kappa\intop_{0}^{t}r_{A,s}ds+\sigma W_{t}\label{eq:5g5j7kj7kj}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose a short rate 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is modeled as an OU process:
+\begin_inset Formula 
+\begin{equation}
+dr_{t}=-\alpha\left(r_{t}-\overline{r}\right)dt+\gamma dD_{t}\label{eq:rf4rgrg}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $D_{t}$
+\end_inset
+
+ is a standard Brownian motion independent of 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+.
+ Integrating (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rf4rgrg"
+
+\end_inset
+
+) yields
+\begin_inset Formula 
+\[
+r_{t}=-\alpha\intop_{0}^{t}r_{s}ds+\alpha\overline{r}t+\gamma D_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+\intop_{0}^{t}r_{s}ds=\overline{r}t+\frac{\gamma}{\alpha}D_{t}-\frac{r_{t}}{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging in the expression of 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+r_{t}=\left(r_{0}-\overline{r}\right)e^{-\alpha t}+\overline{r}+\alpha\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we get
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{t}r_{s}ds & =\overline{r}t+\frac{\gamma}{\alpha}D_{t}-\left[\frac{\left(r_{0}-\overline{r}\right)e^{-\alpha t}}{\alpha}+\frac{\overline{r}}{\alpha}+\intop_{0}^{t}e^{-\alpha(t-s)}dD_{s}\right]\\
+ & =-r_{0}\frac{e^{-\alpha t}}{\alpha}+\overline{r}\left(t-\frac{1-e^{-\alpha t}}{\alpha}\right)+\intop_{0}^{t}\left[\frac{\gamma}{\alpha}-e^{-\alpha(t-s)}\right]dD_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging this into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5g5j7kj7kj"
+
+\end_inset
+
+),
+ we arrive at
+\begin_inset Formula 
+\begin{align*}
+Y_{t}-Y_{0} & =\kappa\left\{ -r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}+\overline{r}_{B}\left(t-\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}\right)+\intop_{0}^{t}\left[\frac{\sigma_{B}}{\alpha_{B}}-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}\right\} \\
+ & -\kappa\left\{ -r_{A,0}\frac{e^{-\alpha_{A}t}}{\alpha_{A}}+\overline{r}_{A}\left(t-\frac{1-e^{-\alpha_{A}t}}{\alpha_{A}}\right)+\intop_{0}^{t}\left[\frac{\sigma_{A}}{\alpha_{A}}-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right\} \\
+ & =\left(r_{A,0}\frac{e^{-\alpha_{A}t}}{\alpha_{A}}-r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}\right)\kappa+\left[\overline{r}_{B}\left(t-\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}\right)-\overline{r}_{A}\left(t-\frac{1-e^{-\alpha_{A}t}}{\alpha_{A}}\right)\right]\kappa\\
+ & +\left[\intop_{0}^{t}\left[\frac{\sigma_{B}}{\alpha_{B}}-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}-\intop_{0}^{t}\left[\frac{\sigma_{A}}{\alpha_{A}}-e^{-\alpha_{A}(t-s)}\right]dW_{A,s}\right]\kappa
+\end{align*}
 
 \end_inset
 
