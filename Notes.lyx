@@ -8309,29 +8309,16 @@ Y_{t}-Y_{0} & =\kappa\left\{ -r_{B,0}\frac{e^{-\alpha_{B}t}}{\alpha_{B}}+\overli
 \end_layout
 
 \begin_layout Standard
-To calculate 
-\begin_inset Formula $\sigma$
+Note
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left\{ \intop_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}\right\}  & =\int_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]^{2}ds\\
+ & =t-\frac{3}{2\alpha_{B}}-\frac{-4\alpha_{B}e^{-\alpha_{B}t}+\alpha_{B}e^{-2\alpha_{B}t}}{2\alpha_{B}^{2}}
+\end{align*}
+
 \end_inset
 
-,
- we look at 
-\begin_inset Formula $N$
-\end_inset
 
- points 
-\begin_inset Formula $\{\Delta Y_{n}\}_{n=1,2,\cdots,N}$
-\end_inset
-
-,
- where 
-\begin_inset Formula $\Delta Y_{n}$
-\end_inset
-
- is the difference between the forecast and the actual logarithmic exchange rate on day 
-\begin_inset Formula $n$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
