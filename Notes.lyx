@@ -6474,7 +6474,7 @@ P(a,b) & =\frac{1}{(b-a)L(a,b)+1}
 \end_layout
 
 \begin_layout Chapter
-An FX model
+FX model I
 \begin_inset ERT
 status open
 
@@ -8326,7 +8326,7 @@ Note
 \begin_inset Formula 
 \begin{align*}
 \text{var}\left\{ \intop_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]dW_{B,s}\right\}  & =\int_{0}^{t}\left[1-e^{-\alpha_{B}(t-s)}\right]^{2}ds\\
- & =t-\frac{3}{2\alpha_{B}}-\frac{-4\alpha_{B}e^{-\alpha_{B}t}+\alpha_{B}e^{-2\alpha_{B}t}}{2\alpha_{B}^{2}}
+ & =t-2\frac{1-e^{-\alpha_{B}t}}{\alpha_{B}}+\frac{1-e^{-2\alpha_{B}t}}{2\alpha_{B}}
 \end{align*}
 
 \end_inset
@@ -10438,7 +10438,7 @@ B_{t} & =K\mathbb{E}_{Q}\left[\exp\left(-\intop_{t}^{T'}r_{A,s}ds\right)\cdot\ch
 \end_layout
 
 \begin_layout Chapter
-An alternative FX Model
+FX Model II
 \end_layout
 
 \begin_layout Standard
