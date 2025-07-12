@@ -10503,10 +10503,10 @@ reference "eq:l9lny64n"
 ) yields
 \begin_inset Formula 
 \begin{align*}
-Y_{t}-Y_{0} & =\kappa\sum_{l\in\{A,B\}}s_{l}\left[\overline{r}_{l}\left(t-\frac{1-e^{-\alpha_{l}t}}{\alpha_{l}}\right)-r_{l,0}\frac{e^{-\alpha_{l}t}}{\alpha_{l}}\right]\\
- & -\theta\sum_{l\in\{A,B\}}s_{l}\left[\overline{I}_{l}\left(t-\frac{1-e^{-\beta_{l}t}}{\beta_{l}}\right)-I_{l,0}\frac{e^{-\beta_{l}t}}{\beta_{l}}\right]\\
- & +\kappa\sum_{l\in\{A,B\}}s_{l}\frac{\sigma_{l}}{\alpha_{l}}\intop_{0}^{t}\left[1-e^{-\alpha_{l}(t-s)}\right]dW_{l,s}\\
+Y_{t}-Y_{0} & =-\theta\sum_{l\in\{A,B\}}s_{l}\left[\overline{I}_{l}\left(t-\frac{1-e^{-\beta_{l}t}}{\beta_{l}}\right)-I_{l,0}\frac{e^{-\beta_{l}t}}{\beta_{l}}\right]\\
+ & +\kappa\sum_{l\in\{A,B\}}s_{l}\left[\overline{r}_{l}\left(t-\frac{1-e^{-\alpha_{l}t}}{\alpha_{l}}\right)-r_{l,0}\frac{e^{-\alpha_{l}t}}{\alpha_{l}}\right]\\
  & -\theta\sum_{l\in\{A,B\}}s_{l}\frac{\eta_{l}}{\beta_{l}}\intop_{0}^{t}\left[1-e^{-\beta_{l}(t-s)}\right]dB_{l,s}\\
+ & +\kappa\sum_{l\in\{A,B\}}s_{l}\frac{\sigma_{l}}{\alpha_{l}}\intop_{0}^{t}\left[1-e^{-\alpha_{l}(t-s)}\right]dW_{l,s}\\
  & +\sigma W_{t}
 \end{align*}
 
@@ -10541,7 +10541,6 @@ Assume
 \begin{align*}
  & \text{cov}\left\{ \intop_{0}^{t}\left[1-e^{-\alpha(t-s)}\right]dW_{s},\intop_{0}^{t}\left[1-e^{-\beta(t-s)}\right]dB_{s}\right\} \\
 = & \intop_{0}^{t}\left[1-e^{-\alpha_{l}(t-s)}\right]\left[1-e^{-\beta_{l}(t-s)}\right]\rho_{l}ds\\
-= & \rho\frac{\left(\alpha^{2}\beta te^{t\left(\alpha+\beta\right)}+\alpha^{2}e^{\alpha t}-\alpha^{2}e^{t\left(\alpha+\beta\right)}+\alpha\beta^{2}te^{t\left(\alpha+\beta\right)}+\alpha\beta e^{\alpha t}+\alpha\beta e^{\beta t}-\alpha\beta e^{t\left(\alpha+\beta\right)}-\alpha\beta+\beta^{2}e^{\beta t}-\beta^{2}e^{t\left(\alpha+\beta\right)}\right)e^{-t\left(\alpha+\beta\right)}}{\alpha\beta\left(\alpha+\beta\right)}\\
 = & \rho\frac{\alpha^{2}\beta t-\alpha^{2}+\alpha\beta^{2}t-\alpha\beta-\beta^{2}}{\alpha\beta\left(\alpha+\beta\right)}+\rho\frac{\alpha^{2}+\alpha\beta}{\alpha\beta\left(\alpha+\beta\right)}e^{-\beta t}+\rho\frac{\alpha\beta+\beta^{2}}{\alpha\beta\left(\alpha+\beta\right)}e^{-\alpha t}-\rho\frac{\alpha\beta}{\alpha\beta\left(\alpha+\beta\right)}e^{-t\left(\alpha+\beta\right)}\\
 = & \rho\frac{\alpha\beta t\left(\alpha+\beta\right)-\left(\alpha^{2}+\alpha\beta+\beta^{2}\right)}{\alpha\beta\left(\alpha+\beta\right)}+\rho\frac{1}{\beta}e^{-\beta t}+\rho\frac{e^{-\alpha t}}{\alpha}-\rho\frac{1}{\alpha+\beta}e^{-t\left(\alpha+\beta\right)}\\
 = & \rho\frac{\alpha\beta t\left(\alpha+\beta\right)-\left(\alpha+\beta\right)^{2}+\alpha\beta}{\alpha\beta\left(\alpha+\beta\right)}+\rho\frac{1}{\beta}e^{-\beta t}+\rho\frac{e^{-\alpha t}}{\alpha}-\rho\frac{1}{\alpha+\beta}e^{-t\left(\alpha+\beta\right)}\\
@@ -10559,6 +10558,50 @@ where for convenience we have omitted the subscript
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Estimation of correlation coefficients
+\end_layout
+
+\begin_layout Standard
+To estimate the correlation coefficients.
+ We consider a family of processes:
+\begin_inset Formula 
+\[
+dX_{t}^{i}=-\theta_{i}\left(X_{t}^{i}-\mu_{i}\right)dt+\sigma_{i}dW_{t}^{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which gives
+\begin_inset Formula 
+\[
+X_{t}^{i}=X_{0}^{i}e^{-\theta_{i}t}+\mu_{i}\left(1-e^{-\theta_{i}t}\right)+\sigma_{i}\int_{0}^{t}e^{(s-t)\theta_{i}}dW_{s}^{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{align*}
+ & \text{cov}\left[\int_{0}^{t}e^{(s-t)\theta_{i}}dW_{s}^{i},\int_{0}^{t}e^{(s-t)\theta_{i}}dW_{s}^{i}\right]\\
+= & \rho_{i,j}\int_{0}^{t}e^{(\theta_{i}+\theta_{j})(s-t)}ds\\
+= & \rho_{i,j}e^{-t(\theta_{i}+\theta_{j})}\frac{e^{(\theta_{i}+\theta_{j})t}-1}{\theta_{i}+\theta_{j}}\\
+= & \rho_{i,j}\frac{1-e^{-(\theta_{i}+\theta_{j})t}}{\theta_{i}+\theta_{j}}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
