@@ -5126,6 +5126,310 @@ On the other hand,
 
 \end_layout
 
+\begin_layout Section
+A Bounded OU process
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $X'_{t}$
+\end_inset
+
+ is an OU process:
+\begin_inset Formula 
+\[
+dX'_{t}=-\theta\left(X'_{t}-\mu\right)dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+X_{t}=\begin{cases}
+b & X'_{t}>b\\
+X'_{t} & a\leq X'_{t}\leq b\\
+2\mu-b & X'_{t}<2\mu-b
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $0<\frac{b}{2}<\mu<b$
+\end_inset
+
+ Consider the integral
+\begin_inset Formula 
+\[
+J=\int_{0}^{T}-k\left(X_{t}-\mu\right)dX_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the constant 
+\begin_inset Formula $k$
+\end_inset
+
+ is chosen such that
+\begin_inset Formula 
+\[
+-k\left(b-\mu\right)=-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which implies
+\begin_inset Formula 
+\[
+k=\frac{1}{b-\mu}
+\]
+
+\end_inset
+
+It remains to calculate
+\begin_inset Formula 
+\[
+\int_{0}^{T}X_{t}dX_{t}
+\]
+
+\end_inset
+
+Obviously,
+ for 
+\begin_inset Formula $2\mu-b\leq X_{t}\leq b$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+dX_{t}^{2} & =2X_{t}dX_{t}+\left(dX_{t}\right)^{2}\\
+X_{t}dX_{t} & =\frac{1}{2}dX_{t}^{2}-\frac{\sigma^{2}}{2}dt
+\end{align*}
+
+\end_inset
+
+Hence,
+\begin_inset Formula 
+\[
+\int_{0}^{T}X_{t}dX_{t}=\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\begin_inset Formula 
+\begin{align*}
+J & =-\frac{1}{b-\mu}\left(\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T\right)+\frac{\mu}{b-\mu}\left(X_{T}-X_{0}\right)\\
+ & =uX_{T}^{2}+vX_{T}+w
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+u & =-\frac{1}{2\left(b-\mu\right)}\\
+v & =\frac{\mu}{b-\mu}\\
+w & =\frac{X_{0}^{2}}{2\left(b-\mu\right)}-\frac{\mu X_{0}}{b-\mu}+\frac{1}{b-\mu}\cdot\frac{\sigma^{2}T}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find out the distribution of 
+\begin_inset Formula $J$
+\end_inset
+
+,
+ consider
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(J\leq y\right) & =\mathbb{P}\left(uX_{T}^{2}+vX_{T}+w-y\leq0\right)\\
+ & =\mathbb{P}\left[u\left(X_{T}+\frac{v}{2u}\right)^{2}-\frac{v^{2}}{4u}+w-y\leq0\right]\\
+ & =\mathbb{P}\left[\left(X_{T}-\frac{v}{2|u|}\right)^{2}\geq\frac{v^{2}}{4|u|^{2}}+\frac{w}{|u|}-\frac{y}{|u|}\right]\\
+ & =\mathbb{P}\left[\left(X_{T}-\mu\right)^{2}\geq(X_{0}-\mu)^{2}+\sigma^{2}T-2y(b-\mu)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{v^{2}}{4|u|^{2}}+\frac{w}{|u|}-\frac{y}{|u|}$
+\end_inset
+
+ is simplified to 
+\begin_inset Formula $(X_{0}-\mu)^{2}+\sigma^{2}T-2y(b-\mu)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ If
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(X_{0}-\mu)^{2}+\sigma^{2}T-2y(b-\mu)\leq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+that is,
+\begin_inset Formula 
+\[
+y\geq\frac{(X_{0}-\mu)^{2}+\sigma^{2}T}{2\left(b-\mu\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then 
+\begin_inset Formula $\mathbb{P}\left(J\leq y\right)=1$
+\end_inset
+
+.
+ Define
+\begin_inset Formula 
+\begin{align*}
+\hat{J}\left(X_{0}\right) & =\frac{(X_{0}-\mu)^{2}+\sigma^{2}T}{2\left(b-\mu\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ If
+\begin_inset Formula 
+\[
+y<\hat{J}\left(X_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then
+\begin_inset Formula 
+\[
+\mathbb{P}\left(J\leq y\right)=\mathbb{P}\left(X_{T}\leq\mu-\sqrt{S_{y}}\vee X_{T}\geq\mu+\sqrt{S_{y}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $S_{y}=(X_{0}-\mu)^{2}+\sigma^{2}T-2y(b-\mu)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Mathematical Finance
 \end_layout
