@@ -5243,10 +5243,10 @@ Hence,
 \begin_layout Standard
 Therefore,
 \begin_inset Formula 
-\begin{align*}
-J_{1} & =-\frac{1}{b-\mu}\left(\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T\right)+\frac{\mu}{b-\mu}\left(X_{T}-X_{0}\right)\\
- & =uX_{T}^{2}+vX_{T}+w
-\end{align*}
+\begin{align}
+J_{1} & =-\frac{1}{b-\mu}\left(\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T\right)+\frac{\mu}{b-\mu}\left(X_{T}-X_{0}\right)\label{9j4h5h5h}\\
+ & =uX_{T}^{2}+vX_{T}+w\nonumber 
+\end{align}
 
 \end_inset
 
@@ -5265,6 +5265,49 @@ w & =\frac{X_{0}^{2}}{2\left(b-\mu\right)}-\frac{\mu X_{0}}{b-\mu}+\frac{1}{b-\m
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Notice the term 
+\begin_inset Formula $\frac{\sigma^{2}T}{2\left(b-\mu\right)}$
+\end_inset
+
+ of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "9j4h5h5h"
+
+\end_inset
+
+).
+ It is deterministic and independent of 
+\begin_inset Formula $X_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{T}$
+\end_inset
+
+.
+ For convenience,
+ we define operator 
+\begin_inset Formula $\boldsymbol{D}(P_{t})$
+\end_inset
+
+ to take the deterministic part of 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ that is also independent of 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ is an arbitrary stochastic process.
 \end_layout
 
 \begin_layout Standard
@@ -5652,6 +5695,73 @@ J'_{n} & =Z_{n+1}+\sum_{i=1}^{(n-3)/2}\frac{n!!}{(2i+1)!!}\left(\frac{\sigma^{2}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "9j4h5h5h"
+
+\end_inset
+
+),
+ we see that the term of 
+\begin_inset Formula $J'_{n}$
+\end_inset
+
+ that is deterministic and independent of 
+\begin_inset Formula $X_{0}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{D}(J'_{n}) & =-n!!\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-1}{2}}\frac{\sigma^{2}T}{2\left(b-\mu\right)}\left(b-\mu\right)\\
+ & =-n!!\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-1}{2}}\frac{\sigma^{2}T}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{D}\left(J_{n}\right) & =n!!\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-1}{2}}\frac{\sigma^{2}T}{2\left(b-\mu\right)^{n}}\\
+ & =n!!\left(\frac{\sigma^{2}}{2\theta}\right)^{-1/2}\frac{\sigma^{2}T}{2}\left(\frac{1}{b-\mu}\sqrt{\frac{\sigma^{2}}{2\theta}}\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We would like to find an affine series 
+\begin_inset Formula $\{a_{n}\}_{n=1,3,5,\cdots}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+S=\sum_{i=1}^{\infty}\left(2i-1\right)!!a_{2i-1}q^{2i-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is maximized.
+ Here 
+\begin_inset Formula $q=\frac{1}{b-\mu}\sqrt{\frac{\sigma^{2}}{2\theta}}<1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
