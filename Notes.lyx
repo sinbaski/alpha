@@ -5174,7 +5174,7 @@ where
  Consider the integral
 \begin_inset Formula 
 \[
-J=\int_{0}^{T}-k\left(X_{t}-\mu\right)dX_{t}
+J_{1}=\int_{0}^{T}-k_{1}\left(X_{t}-\mu\right)dX_{t}
 \]
 
 \end_inset
@@ -5190,7 +5190,7 @@ where the constant
  is chosen such that
 \begin_inset Formula 
 \[
--k\left(b-\mu\right)=-1
+-k_{1}\left(b-\mu\right)=-1
 \]
 
 \end_inset
@@ -5202,7 +5202,7 @@ where the constant
 which implies
 \begin_inset Formula 
 \[
-k=\frac{1}{b-\mu}
+k_{1}=\frac{1}{b-\mu}
 \]
 
 \end_inset
@@ -5244,7 +5244,7 @@ Hence,
 Therefore,
 \begin_inset Formula 
 \begin{align*}
-J & =-\frac{1}{b-\mu}\left(\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T\right)+\frac{\mu}{b-\mu}\left(X_{T}-X_{0}\right)\\
+J_{1} & =-\frac{1}{b-\mu}\left(\frac{X_{T}^{2}-X_{0}^{2}}{2}-\frac{\sigma^{2}}{2}T\right)+\frac{\mu}{b-\mu}\left(X_{T}-X_{0}\right)\\
  & =uX_{T}^{2}+vX_{T}+w
 \end{align*}
 
@@ -5268,15 +5268,15 @@ w & =\frac{X_{0}^{2}}{2\left(b-\mu\right)}-\frac{\mu X_{0}}{b-\mu}+\frac{1}{b-\m
 \end_layout
 
 \begin_layout Standard
-To find out the distribution of 
-\begin_inset Formula $J$
+To find the distribution of 
+\begin_inset Formula $J_{1}$
 \end_inset
 
 ,
  consider
 \begin_inset Formula 
 \begin{align*}
-\mathbb{P}\left(J\leq y\right) & =\mathbb{P}\left(uX_{T}^{2}+vX_{T}+w-y\leq0\right)\\
+\mathbb{P}\left(J_{1}\leq y\right) & =\mathbb{P}\left(uX_{T}^{2}+vX_{T}+w-y\leq0\right)\\
  & =\mathbb{P}\left[u\left(X_{T}+\frac{v}{2u}\right)^{2}-\frac{v^{2}}{4u}+w-y\leq0\right]\\
  & =\mathbb{P}\left[\left(X_{T}-\frac{v}{2|u|}\right)^{2}\geq\frac{v^{2}}{4|u|^{2}}+\frac{w}{|u|}-\frac{y}{|u|}\right]\\
  & =\mathbb{P}\left[\left(X_{T}-\mu\right)^{2}\geq(X_{0}-\mu)^{2}+\sigma^{2}T-2y(b-\mu)\right]
@@ -5355,14 +5355,14 @@ y\geq\frac{(X_{0}-\mu)^{2}+\sigma^{2}T}{2\left(b-\mu\right)}
 
 \begin_layout Standard
 then 
-\begin_inset Formula $\mathbb{P}\left(J\leq y\right)=1$
+\begin_inset Formula $\mathbb{P}\left(J_{1}\leq y\right)=1$
 \end_inset
 
 .
  Define
 \begin_inset Formula 
 \begin{align*}
-\hat{J}\left(X_{0}\right) & =\frac{(X_{0}-\mu)^{2}+\sigma^{2}T}{2\left(b-\mu\right)}
+\hat{J}_{1}\left(X_{0}\right) & =\frac{(X_{0}-\mu)^{2}+\sigma^{2}T}{2\left(b-\mu\right)}
 \end{align*}
 
 \end_inset
@@ -5386,7 +5386,7 @@ item
  If
 \begin_inset Formula 
 \[
-y<\hat{J}\left(X_{0}\right)
+y<\hat{J}_{1}\left(X_{0}\right)
 \]
 
 \end_inset
@@ -5398,7 +5398,7 @@ y<\hat{J}\left(X_{0}\right)
 then
 \begin_inset Formula 
 \[
-\mathbb{P}\left(J\leq y\right)=\mathbb{P}\left(X_{T}\leq\mu-\sqrt{S_{y}}\vee X_{T}\geq\mu+\sqrt{S_{y}}\right)
+\mathbb{P}\left(J_{1}\leq y\right)=\mathbb{P}\left(X_{T}\leq\mu-\sqrt{S_{y}}\vee X_{T}\geq\mu+\sqrt{S_{y}}\right)
 \]
 
 \end_inset
@@ -5424,6 +5424,230 @@ status open
 \backslash
 end{itemize}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Allocation functions of higher order polynomials
+\end_layout
+
+\begin_layout Standard
+Now we consider integrals of the following form
+\begin_inset Formula 
+\[
+J_{n}=\intop_{0}^{T}-k_{n}\left(X_{t}-\mu\right)^{n}dX_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is an integer.
+ Again,
+ we choose 
+\begin_inset Formula $k_{n}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+-k_{n}\left(b-\mu\right)^{n}=-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so
+\begin_inset Formula 
+\[
+k_{n}=\frac{1}{\left(b-\mu\right)^{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y_{t}=X_{t}-\mu$
+\end_inset
+
+ so we have
+\begin_inset Formula 
+\[
+J_{n}=\intop_{0}^{T}-k_{n}Y_{t}^{n}dY_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\begin_inset Formula 
+\begin{align*}
+dY_{t} & =dX_{t}\\
+ & =-\theta\left(X_{t}-\mu\right)dt+\sigma dW_{t}\\
+ & =-\theta Y_{t}dt+\sigma dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Ito's lemma,
+\begin_inset Formula 
+\begin{align*}
+dY_{t}^{n} & =nY_{t}^{n-1}dY_{t}+\frac{n(n-1)}{2}Y_{t}^{n-2}\left(dY_{t}\right)^{2}\\
+ & =nY_{t}^{n-1}dY_{t}+\frac{n(n-1)}{2}Y_{t}^{n-2}\sigma^{2}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\[
+\intop_{0}^{T}Y_{t}^{n-1}dY_{t}=\frac{1}{n}\left(Y_{T}^{n}-Y_{0}^{n}\right)-\intop_{0}^{T}\frac{(n-1)}{2}Y_{t}^{n-2}\sigma^{2}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+\begin_inset Formula 
+\begin{equation}
+\intop_{0}^{T}Y_{t}^{n}dY_{t}=\frac{1}{n+1}\left(Y_{T}^{n+1}-Y_{0}^{n+1}\right)-\intop_{0}^{T}\frac{n}{2}Y_{t}^{n-1}\sigma^{2}dt\label{eq:667k8k8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}Y_{t}^{n}dY_{t} & =\intop_{0}^{T}Y_{t}^{n}\left(-\theta Y_{t}dt+\sigma dW_{t}\right)\\
+ & =-\theta\intop_{0}^{T}Y_{t}^{n+1}dt+\sigma\intop_{0}^{T}Y_{t}^{n}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence,
+\begin_inset Formula 
+\begin{equation}
+\intop_{0}^{T}Y_{t}^{n}dt=-\frac{1}{\theta}\intop_{0}^{T}Y_{t}^{n-1}dY_{t}+\frac{\sigma}{\theta}\intop_{0}^{T}Y_{t}^{n-1}dW_{t}\label{eq:bn7ukxhh90}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bn7ukxhh90"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:667k8k8"
+
+\end_inset
+
+) gives
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}Y_{t}^{n}dY_{t} & =\frac{1}{n+1}\left(Y_{T}^{n+1}-Y_{0}^{n+1}\right)-n\frac{\sigma^{2}}{2}\left(-\frac{1}{\theta}\intop_{0}^{T}Y_{t}^{n-2}dY_{t}+\frac{\sigma}{\theta}\intop_{0}^{T}Y_{t}^{n-2}dW_{t}\right)\\
+ & =\frac{1}{n+1}\left(Y_{T}^{n+1}-Y_{0}^{n+1}\right)+n\frac{\sigma^{2}}{2\theta}\intop_{0}^{T}Y_{t}^{n-2}dY_{t}-n\frac{\sigma^{3}}{2\theta}\intop_{0}^{T}Y_{t}^{n-2}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define
+\begin_inset Formula 
+\[
+J'_{n}=\intop_{0}^{T}Y_{t}^{n}dY_{t}=-\frac{J_{n}}{k_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{T}Y_{t}^{n}dW_{t} & =K_{n}\\
+\frac{1}{n+1}\left(Y_{T}^{n+1}-Y_{0}^{n+1}\right) & =Z_{n+1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then we can write
+\begin_inset Formula 
+\begin{align*}
+J'_{n} & =Z_{n+1}-n\frac{\sigma^{3}}{2\theta}K_{n-2}+n\frac{\sigma^{2}}{2\theta}J'_{n-2}\\
+ & =Z_{n+1}-n\frac{\sigma^{3}}{2\theta}K_{n-2}+n\frac{\sigma^{2}}{2\theta}\left[Z_{n-1}-\left(n-2\right)\frac{\sigma^{3}}{2\theta}K_{n-4}+\left(n-2\right)\frac{\sigma^{2}}{2\theta}J'_{n-4}\right]\\
+ & =Z_{n+1}+n\frac{\sigma^{2}}{2\theta}Z_{n-1}+n\left(n-2\right)\left(\frac{\sigma^{2}}{2\theta}\right)^{2}Z_{n-3}+\cdots+n(n-2)\cdots5\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-3}{2}}Z_{4}\\
+ & -n\frac{\sigma^{3}}{2\theta}K_{n-2}-n(n-2)\frac{\sigma^{2}}{2\theta}\cdot\frac{\sigma^{3}}{2\theta}K_{n-4}-\cdots-n(n-2)\cdots1\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-3}{2}}\frac{\sigma^{3}}{2\theta}K_{1}\\
+ & +n(n-2)\cdots3\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-1}{2}}J'_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\begin{align*}
+J'_{n} & =Z_{n+1}+\sum_{i=1}^{(n-3)/2}\frac{n!!}{(2i+1)!!}\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-2i-1}{2}}Z_{2i+2}\\
+ & -\frac{\sigma^{3}}{2\theta}\sum_{i=1}^{(n-1)/2}\frac{n!!}{(2i-1)!!}\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-2i-1}{2}}K_{2i-1}\\
+ & +n!!\left(\frac{\sigma^{2}}{2\theta}\right)^{\frac{n-1}{2}}J'_{1}
+\end{align*}
 
 \end_inset
 
