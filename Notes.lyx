@@ -5764,6 +5764,87 @@ is maximized.
 .
 \end_layout
 
+\begin_layout Section
+CIR process
+\end_layout
+
+\begin_layout Standard
+For a CIR process
+\begin_inset Formula 
+\[
+dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma\sqrt{X_{t}}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{T}X_{t}^{n}dX_{t}=\frac{1}{n+1}\left(X_{T}^{n+1}-X_{0}^{n+1}\right)-n\frac{\sigma^{2}}{2}\int_{0}^{T}X_{t}^{n}dt\label{eq:l;45ggh}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{T}X_{t}^{n}dX_{t}=-\theta\int_{0}^{T}X_{t}^{n}\left(X_{t}-\mu\right)dt+\sigma\int_{0}^{T}X_{t}^{n+1/2}dW_{t}\label{eq:5h5h76j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5h5h76j"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:l;45ggh"
+
+\end_inset
+
+) and taking expectation,
+ we get
+\begin_inset Formula 
+\begin{align*}
+-\theta\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt+\theta\mu\mathbb{E}\int_{0}^{T}X_{t}^{n}dt & =\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}-n\frac{\sigma^{2}}{2}\mathbb{E}\int_{0}^{T}X_{t}^{n}dt\\
+-\theta\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt & =-\left(\theta\mu+n\frac{\sigma^{2}}{2}\right)\mathbb{E}\int_{0}^{T}X_{t}^{n}dt+\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}\\
+\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt & =\left(\mu+n\frac{\sigma^{2}}{2\theta}\right)\mathbb{E}\int_{0}^{T}X_{t}^{n}dt-\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\begin_inset Formula 
+\[
+\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt=\left(\mathbb{E}\int_{0}^{T}X_{t}dt\right)\cdot\prod_{i=1}^{n}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Mathematical Finance
 \end_layout
