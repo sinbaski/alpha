@@ -5474,7 +5474,7 @@ end{itemize}
 \end_layout
 
 \begin_layout Subsection
-Allocation functions of higher order polynomials
+Integrals of higher order polynomials
 \end_layout
 
 \begin_layout Standard
@@ -5494,7 +5494,7 @@ where
 \begin_inset Formula $n$
 \end_inset
 
- is an integer.
+ is an odd integer.
  Again,
  we choose 
 \begin_inset Formula $k_{n}$
@@ -5765,11 +5765,101 @@ is maximized.
 \end_layout
 
 \begin_layout Section
+An integral of the OU process
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be an Ornstein-Uhlenbeck process defined as
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mu,\theta,\sigma>0$
+\end_inset
+
+.
+ Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(x)=-1+e^{-\lambda x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\lang american
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is a positive constant.
+ Assume 
+\begin_inset Formula $X_{0}>\mu$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\tau=\inf\{t>0:X_{t}\leq\mu\}$
+\end_inset
+
+.
+ What is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{\tau}f\left(X_{t}-\mu\right)dX_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Solution:
+\end_layout
+
+\begin_layout Section
 CIR process
 \end_layout
 
 \begin_layout Standard
-For a CIR process
+For 
+\begin_inset Formula $2\theta\mu>\sigma^{2}$
+\end_inset
+
+,
+ the CIR process
 \begin_inset Formula 
 \[
 dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma\sqrt{X_{t}}dW_{t}
@@ -5781,7 +5871,8 @@ dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma\sqrt{X_{t}}dW_{t}
 \end_layout
 
 \begin_layout Standard
-We have
+is guaranteed to have strictly positive values.
+ We have
 \begin_inset Formula 
 \begin{equation}
 \int_{0}^{T}X_{t}^{n}dX_{t}=\frac{1}{n+1}\left(X_{T}^{n+1}-X_{0}^{n+1}\right)-n\frac{\sigma^{2}}{2}\int_{0}^{T}X_{t}^{n}dt\label{eq:l;45ggh}
@@ -5837,7 +5928,19 @@ reference "eq:l;45ggh"
 Thus we have
 \begin_inset Formula 
 \[
-\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt=\left(\mathbb{E}\int_{0}^{T}X_{t}dt\right)\cdot\prod_{i=1}^{n}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)
+\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt=\left(\mathbb{E}\int_{0}^{T}X_{t}dt\right)\cdot\prod_{i=1}^{n}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)-\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}-\sum_{i=1}^{n}\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{i}-\mathbb{E}X_{0}^{i}}{i}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we consider
+\begin_inset Formula 
+\[
+\intop_{0}^{T}-\left(\frac{X_{t}-\mu}{b-\mu}\right)^{n}dX_{t}
 \]
 
 \end_inset
