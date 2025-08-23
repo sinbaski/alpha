@@ -5835,7 +5835,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\intop_{0}^{\tau}f\left(X_{t}-\mu\right)dX_{t}
+I_{\lambda}=\intop_{0}^{\tau}f\left(X_{t}-\mu\right)dX_{t}
 \]
 
 \end_inset
@@ -5847,6 +5847,746 @@ where
 
 \bar under
 Solution:
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{\lambda}=\intop_{0}^{\tau}\left(e^{-\lambda X_{t}}-1\right)dX_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ such that 
+\begin_inset Formula $f'(x)=e^{-\lambda x}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $f''(x)=-\lambda e^{-\lambda x}$
+\end_inset
+
+.
+ Clearly,
+\begin_inset Formula 
+\[
+f(x)=-\frac{1}{\lambda}e^{-\lambda x}-x+C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can choose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(x)=-\frac{1}{\lambda}\left(e^{-\lambda x}+x-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that 
+\begin_inset Formula $f(0)=0$
+\end_inset
+
+.
+ By Ito's lemma,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+df\left(X_{t}\right)=\left(e^{-\lambda X_{t}}-1\right)dX_{t}-\frac{\sigma^{2}}{2}\lambda e^{-\lambda X_{t}}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{\tau}\left(e^{-\lambda X_{t}}-1\right)dX_{t} & =f\left(X_{\tau}\right)-f\left(X_{0}\right)+\intop_{0}^{\tau}\frac{\sigma^{2}}{2}\lambda e^{-\lambda X_{t}}dt\\
+ & =f(\mu)-f(X_{0})+\intop_{0}^{\tau}\frac{\sigma^{2}}{2}\lambda e^{-\lambda X_{t}}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Taking expectation on both sides,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\intop_{0}^{\tau}\left(e^{-\lambda X_{t}}-1\right)dX_{t}=f(\mu)-f(X_{0})+\frac{\sigma^{2}}{2}\lambda\cdot\mathbb{E}\intop_{0}^{\tau}e^{-\lambda X_{t}}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y_{t}=X_{t}-\mu$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\tau=\inf\{t>0:Y_{t}\leq0\}$
+\end_inset
+
+,
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dY_{t}=-\theta Y_{t}dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\intop_{0}^{\tau}e^{-\lambda X_{t}}dt=e^{-\lambda\mu}\cdot\mathbb{E}\intop_{0}^{\tau}e^{-\lambda Y_{t}}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Z_{t}=e^{-\lambda Y_{t}}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{E}\intop_{0}^{\tau}\left(e^{-\lambda X_{t}}-1\right)dX_{t}=f(\mu)-f(X_{0})+\frac{\sigma^{2}}{2}\lambda e^{-\lambda\mu}\cdot\mathbb{E}\intop_{0}^{\tau}e^{-\lambda Y_{t}}dt\label{eq:8vevtn}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Z_{t}=e^{-\lambda Y_{t}}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dZ_{t} & =-\lambda Z_{t}\left(dY_{t}\right)+\frac{\lambda^{2}}{2}Z_{t}\left(dY_{t}\right)^{2}\\
+ & =-\lambda Z_{t}\left(-\theta\ln Z_{t}dt+\sigma dW_{t}\right)+\frac{\lambda^{2}\sigma^{2}}{2}Z_{t}dt\\
+ & =Z_{t}\left(\lambda\theta\ln Z_{t}+\frac{\lambda^{2}\sigma^{2}}{2}\right)dt-\lambda\sigma Z_{t}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The infinitesimal generator of 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{A}g(z)=z\left(\lambda\theta\ln z+\frac{\lambda^{2}\sigma^{2}}{2}\right)g'+\frac{1}{2}\lambda^{2}\sigma^{2}z^{2}g''(z)\label{eq:vtbnynu7}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a function 
+\begin_inset Formula $g\in C_{0}^{2}\left((0,1]\right)$
+\end_inset
+
+,
+ we have,
+ by Dynkin's formula,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathbb{E}g\left(Z_{\tau}\right) & =g(Z_{0})+\mathbb{E}\intop_{0}^{\tau}\mathcal{A}g\left(Z_{s}\right)ds\nonumber \\
+g(1) & =g\left(z_{0}\right)+\mathbb{E}\intop_{0}^{\tau}\mathcal{A}g\left(Z_{s}\right)ds\nonumber \\
+\mathbb{E}\intop_{0}^{\tau}\mathcal{A}g\left(Z_{s}\right)ds & =g(1)-g\left(z_{0}\right)\label{eq:hbytn}
+\end{align}
+
+\end_inset
+
+ We want to find 
+\begin_inset Formula $g$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathcal{A}g(y) & =z\nonumber \\
+z\left(\lambda\theta\ln z+\frac{\lambda^{2}\sigma^{2}}{2}\right)g'+\frac{\lambda^{2}\sigma^{2}}{2}z^{2}\frac{dg'}{dz} & =z\nonumber \\
+\frac{1}{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln z+1\right)g'+\frac{dg'}{dz} & =\frac{2}{\lambda^{2}\sigma^{2}}\frac{1}{z}\label{eq:hh67uj7k}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose we multiply both sides with 
+\begin_inset Formula $\xi(z)>0$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln z+1\right)\xi(z) & =\xi'(z)\\
+\frac{1}{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln z+1\right)\xi(z) & =\frac{d\xi(z)}{dz}\\
+\frac{1}{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln z+1\right)dz & =\frac{d\xi(z)}{\xi(z)}\\
+\ln\xi(z) & =\intop_{z_{0}}^{z}\frac{1}{u}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln u+1\right)du\\
+ & =\intop_{z_{0}}^{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln u+1\right)d\ln u\\
+ & =\frac{\theta}{\lambda\sigma^{2}}\left[\ln^{2}u\right]_{u=z_{0}}^{z}+\left[\ln u\right]_{u=z_{0}}^{z}\\
+ & =\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)+\ln\frac{z}{z_{0}}\\
+ & =\frac{\theta}{\lambda\sigma^{2}}\ln(zz_{0})\ln\frac{z}{z_{0}}+\ln\frac{z}{z_{0}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi(z)=\frac{z}{z_{0}}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hh67uj7k"
+
+\end_inset
+
+) yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dz}(g'\xi) & =\frac{2}{\lambda^{2}\sigma^{2}}\frac{1}{z}\xi\\
+ & =\frac{2}{\lambda^{2}\sigma^{2}z_{0}}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+g'\xi & =\frac{2}{\lambda^{2}\sigma^{2}z_{0}}\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z_{0}\right)\right]du\nonumber \\
+g' & =\frac{2}{\lambda^{2}\sigma^{2}z}\exp\left[-\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)\right]\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z_{0}\right)\right]du\nonumber \\
+ & =\frac{2}{\lambda^{2}\sigma^{2}z}\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z\right)\right]du\nonumber \\
+ & =\frac{2}{\lambda^{2}\sigma^{2}}\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z-\frac{\lambda\sigma^{2}}{\theta}\ln z\right)\right]du\label{eq:5mik.0p5y}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5mik.0p5y"
+
+\end_inset
+
+),
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{dg'}{dz} & =\frac{2}{\lambda^{2}\sigma^{2}}\left\{ \frac{1}{z}+\intop_{C_{1}}^{z}\left[\frac{\theta}{\lambda\sigma^{2}}\left(-2\ln z\cdot\frac{1}{z}-\frac{\lambda\sigma^{2}}{\theta}\cdot\frac{1}{z}\right)\right]\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z-\frac{\lambda\sigma^{2}}{\theta}\ln z\right)\right]du\right\} \\
+ & =\frac{2}{\lambda^{2}\sigma^{2}}\cdot\frac{1}{z}-\frac{2\theta}{\lambda^{3}\sigma^{4}}\frac{1}{z}\left(2\ln z+\frac{\lambda\sigma^{2}}{\theta}\right)\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z-\frac{\lambda\sigma^{2}}{\theta}\ln z\right)\right]du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{z}\left(\frac{2\theta}{\lambda\sigma^{2}}\ln z+1\right)g'\\
+= & \left(\frac{4\theta}{\lambda^{3}\sigma^{4}}\ln z+\frac{2}{\lambda^{2}\sigma^{2}}\right)\frac{1}{z}\intop_{C_{1}}^{z}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}z-\frac{\lambda\sigma^{2}}{\theta}\ln z\right)\right]du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we see (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hh67uj7k"
+
+\end_inset
+
+) is satisfied by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5mik.0p5y"
+
+\end_inset
+
+) for any choice of 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+.
+ Now we can obtain 
+\begin_inset Formula $g(z)$
+\end_inset
+
+ by integrating (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5mik.0p5y"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+g(z) & =\frac{2}{\lambda^{2}\sigma^{2}}\intop_{C_{2}}^{z}\intop_{C_{1}}^{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v-\frac{\lambda\sigma^{2}}{\theta}\ln v\right)\right]dudv\\
+ & =\frac{2}{\lambda^{2}\sigma^{2}}\intop_{C_{2}}^{z}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hbytn"
+
+\end_inset
+
+) gives us
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{\tau}Z_{s}ds=\frac{2}{\lambda^{2}\sigma^{2}}\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining this with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:8vevtn"
+
+\end_inset
+
+),
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\intop_{0}^{\tau}\left(e^{-\lambda X_{t}}-1\right)dX_{t} & =f(\mu)-f(X_{0})+\frac{\sigma^{2}}{2}\lambda e^{-\lambda\mu}\cdot\frac{2}{\lambda^{2}\sigma^{2}}\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv\\
+ & =-\frac{e^{-\lambda\mu}+\mu-e^{-\lambda x_{0}}-x_{0}}{\lambda}+\frac{e^{-\lambda\mu}}{\lambda}\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv\\
+ & =\frac{x_{0}-\mu}{\lambda}+\frac{e^{-\lambda x_{0}}-e^{-\lambda\mu}}{\lambda}+\frac{e^{-\lambda\mu}}{\lambda}\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Taking derivative w.r.t.
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ gives us
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial I(\lambda)}{\partial\lambda} & =-\frac{x_{0}-\mu}{\lambda^{2}}-\frac{e^{-\lambda x_{0}}-e^{-\lambda\mu}}{\lambda^{2}}+\frac{-x_{0}e^{-\lambda x_{0}}+\mu e^{-\lambda\mu}}{\lambda}\\
+ & +\left(-\frac{e^{-\lambda\mu}}{\lambda^{2}}-\mu\frac{e^{-\lambda\mu}}{\lambda}\right)\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv\\
+ & +\frac{e^{-\lambda\mu}}{\lambda}\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\left[-\frac{\theta}{\sigma^{2}\lambda^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]\frac{1}{v}\exp\left[\frac{\theta}{\lambda\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+A general allocation function
+\end_layout
+
+\begin_layout Standard
+Now consider a general allocation function 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+.
+ By Ito's lemma,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+df\left(X_{t}\right) & =f'\left(X_{t}\right)dX_{t}+\frac{1}{2}f''\left(X_{t}\right)\left(dX_{t}\right)^{2}\\
+ & =f'\left(X_{t}\right)dX_{t}+\frac{1}{2}f''\left(X_{t}\right)\left(\sigma^{2}dt\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{\tau}f'\left(X_{t}\right)dX_{t} & =f\left(X_{\tau}\right)-f\left(X_{0}\right)-\frac{\sigma^{2}}{2}\intop_{0}^{\tau}f''\left(X_{s}\right)ds\\
+ & =f(\mu)-f(x_{0})-\frac{\sigma^{2}}{2}\intop_{0}^{\tau}f''\left(X_{s}\right)ds
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Taking expectation,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{E}^{x_{0}}\intop_{0}^{\tau}f'\left(X_{t}\right)dX_{t}=f(\mu)-f(x_{0})-\frac{\sigma^{2}}{2}\mathbb{E}^{x_{0}}\intop_{0}^{\tau}f''\left(X_{s}\right)ds\label{eq:rt55h6h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Z_{t}=e^{-\left(X_{t}-\mu\right)}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Z_{t}\in(0,1]$
+\end_inset
+
+ since 
+\begin_inset Formula $X_{t}\in[\mu,\infty)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ be the generator of 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We wish to find function 
+\begin_inset Formula $g\in C_{0}^{2}\left((0,1]\right)$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{A}g(z)=h(z)\label{eq:xe6ji8k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $z=e^{-(x-\mu)}$
+\end_inset
+
+ and 
+\begin_inset Formula $h(z)=f''\left(x\right)$
+\end_inset
+
+.
+ That is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+h\left(e^{-x+\mu}\right) & =f''(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:vtbnynu7"
+
+\end_inset
+
+),
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xe6ji8k"
+
+\end_inset
+
+) translates to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+z\left(\theta\ln z+\frac{\sigma^{2}}{2}\right)g'+\frac{1}{2}\sigma^{2}z^{2}g''(z) & =h(z)\\
+\frac{1}{z}\left(\frac{2\theta}{\sigma^{2}}\ln z+1\right)g'+\frac{dg'}{dz} & =\frac{2}{\sigma^{2}}\cdot\frac{h}{z^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying both sides with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi(z)=\frac{z}{z_{0}}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dz}\left(g'\xi\right) & =\frac{2h}{\sigma^{2}z_{0}}\frac{1}{z}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}z-\ln^{2}z_{0}\right)\right]\\
+g'\xi & =\intop_{C_{1}}^{z}\frac{2}{\sigma^{2}z_{0}}\frac{h(u)}{u}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}u-\ln^{2}z_{0}\right)\right]du\\
+g' & =\intop_{C_{1}}^{z}\frac{2}{\sigma^{2}z}\frac{h(u)}{u}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}u-\ln^{2}z\right)\right]du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating the above equation yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(z)=\intop_{C_{2}}^{z}\intop_{C_{1}}^{v}\frac{2}{\sigma^{2}v}\frac{h(u)}{u}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then Dynkin's formula gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathbb{E}^{z_{0}}g\left(Z_{\tau}\right) & =g(z_{0})+\mathbb{E}^{z_{0}}\intop_{0}^{\tau}\mathcal{A}g\left(Z_{s}\right)ds\nonumber \\
+g(1) & =g(z_{0})+\mathbb{E}^{z_{0}}\intop_{0}^{\tau}h\left(Z_{s}\right)ds\nonumber \\
+\mathbb{E}^{z_{0}}\intop_{0}^{\tau}h\left(Z_{s}\right)ds & =g(1)-g(z_{0})\nonumber \\
+ & =\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{2}{\sigma^{2}v}\frac{h(u)}{u}\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]dudv\label{eq:6cvtj7j}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want to choose 
+\begin_inset Formula $h(z)$
+\end_inset
+
+ to maximize the LHS of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rt55h6h"
+
+\end_inset
+
+),
+ which implies minimizing the RHS of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6cvtj7j"
+
+\end_inset
+
+).
+ 
+\begin_inset Formula $h(z):(0,1]\to(-1,0]$
+\end_inset
+
+ must be monotonically increasing and satisfy 
+\begin_inset Formula $h(z)\to-1$
+\end_inset
+
+ as 
+\begin_inset Formula $z\to0$
+\end_inset
+
+ and 
+\begin_inset Formula $h(1)=0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
