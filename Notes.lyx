@@ -6550,43 +6550,153 @@ g(1) & =g(z_{0})+\mathbb{E}^{z_{0}}\intop_{0}^{\tau}h\left(Z_{s}\right)ds\nonumb
 \end_layout
 
 \begin_layout Standard
-We want to choose 
-\begin_inset Formula $h(z)$
+Since
+\begin_inset Formula 
+\[
+f''(x)=h(z)=h\left(e^{-x+\mu}\right)
+\]
+
 \end_inset
 
- to maximize the LHS of (
+
+\end_layout
+
+\begin_layout Standard
+we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f'(x) & =\intop_{C_{2}}^{x}h\left(e^{-u+\mu}\right)du\\
+f(x) & =\intop_{C_{3}}^{x}\intop_{C_{2}}^{v}h\left(e^{-u+\mu}\right)dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $u'=e^{-u+\mu}$
+\end_inset
+
+ and 
+\begin_inset Formula $v'=e^{-v+\mu}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+du' & =-u'du\\
+dv' & =-v'dv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f'\left(-\ln z+\mu\right) & =\intop_{C_{2}}^{x}h\left(e^{-u+\mu}\right)du\\
+ & =-\intop_{e^{-C_{2}+\mu}}^{z}\frac{h(u')}{u'}du'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f(x) & =\intop_{e^{-C_{3}+\mu}}^{e^{-x+\mu}}\intop_{e^{-C_{2}+\mu}}^{e^{-v+\mu}}h(u')\frac{du'dv'}{u'v'}\\
+f\left(-\ln z+\mu\right) & =\intop_{e^{-C_{3}+\mu}}^{z}\intop_{C_{1}}^{v'}h(u')\frac{du'dv'}{u'v'}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(\mu)-f(x_{0})=\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}h(u)\frac{dudv}{uv}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:rt55h6h"
 
 \end_inset
 
-),
- which implies minimizing the RHS of (
+) and (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:6cvtj7j"
 
 \end_inset
 
-).
- 
-\begin_inset Formula $h(z):(0,1]\to(-1,0]$
+) yield
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}^{x_{0}}\intop_{0}^{\tau}f'\left(X_{t}\right)dX_{t}=\intop_{z_{0}}^{1}\intop_{C_{1}}^{v}\frac{h(u)}{uv}\left\{ 1-\exp\left[\frac{\theta}{\sigma^{2}}\left(\ln^{2}u-\ln^{2}v\right)\right]\right\} dudv
+\]
+
 \end_inset
 
- must be monotonically increasing and satisfy 
-\begin_inset Formula $h(z)\to-1$
+
+\end_layout
+
+\begin_layout Standard
+We wish to maximize the above integral,
+ call it 
+\begin_inset Formula $\mathcal{I}h$
 \end_inset
 
- as 
-\begin_inset Formula $z\to0$
+ subject to the constraint
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+-\intop_{e^{-C_{2}+\mu}}^{1}\frac{h(u')}{u'}du' & =0\label{eq:6vr4h6j}\\
+-\intop_{e^{-C_{2}+\mu}}^{0}\frac{h(u')}{u'}du' & =-1\nonumber 
+\end{align}
+
 \end_inset
 
- and 
-\begin_inset Formula $h(1)=0$
-\end_inset
 
-.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
