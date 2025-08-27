@@ -5156,7 +5156,7 @@ and
 \[
 X_{t}=\begin{cases}
 b & X'_{t}>b\\
-X'_{t} & a\leq X'_{t}\leq b\\
+X'_{t} & 2\mu-b\leq X'_{t}\leq b\\
 2\mu-b & X'_{t}<2\mu-b
 \end{cases}
 \]
@@ -5764,8 +5764,443 @@ is maximized.
 .
 \end_layout
 
+\begin_layout Subsection
+Expected return before reverting to the mean
+\end_layout
+
+\begin_layout Standard
+Now suppose 
+\begin_inset Formula $X_{0}=x_{0}\in(\mu,b)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\tau=\inf\{t>0:X_{t}\leq\mu\}.$
+\end_inset
+
+ Clearly,
+ 
+\begin_inset Formula $\mathbb{E}\tau<\infty$
+\end_inset
+
+.
+ What is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{n} & =\mathbb{E}\int_{0}^{\tau}-\left(\frac{X_{t}-\mu}{b-\mu}\right)^{n}dX_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for 
+\begin_inset Formula $n\in[\epsilon,\infty)$
+\end_inset
+
+ and 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+ Again,
+ let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{t}=X_{t}-\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+such that 
+\begin_inset Formula $Y_{t}\in[\mu-b,b-\mu]$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dY_{t}=-\theta Y_{t}dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{n} & =\frac{-1}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n}dY_{t}\\
+ & =\frac{-1}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n}\left(-\theta Y_{t}dt+\sigma dW_{t}\right)\\
+ & =\frac{\theta}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want to find a function 
+\begin_inset Formula $g$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{A}g(y)=y^{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+is the generator of 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{A}g(y)=-\theta yg'(y)+\frac{\sigma^{2}}{2}g''(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{2}{\sigma^{2}}y^{n+1}=\frac{dg'(y)}{dy}-\frac{2\theta y}{\sigma^{2}}g'(y)\label{eq:5r4h56h67j}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\xi(y)$
+\end_inset
+
+ satisfies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d\xi}{dy} & =-\frac{2\theta y}{\sigma^{2}}\xi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can choose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi=\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying both sides of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5r4h56h67j"
+
+\end_inset
+
+) with 
+\begin_inset Formula $\xi$
+\end_inset
+
+,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{2}{\sigma^{2}}y^{n+1}\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)=\frac{d}{dy}\left[g'(y)\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating this equation gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\int_{C_{1}}^{y}\frac{2}{\sigma^{2}}u^{n+1}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)du & =g'(y)\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)\\
+g'(y) & =\int_{C_{1}}^{y}\frac{2}{\sigma^{2}}u^{n+1}\exp\left[\frac{\theta}{\sigma^{2}}\left(y^{2}-u^{2}\right)\right]du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(y)=\int_{C_{2}}^{y}\int_{C_{1}}^{v}\frac{2}{\sigma^{2}}u^{n+1}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus by Dinkin's formula,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}^{y_{0}}g(Y_{\tau}) & =g(y_{0})+\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt\\
+g(0) & =g(y_{0})+\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt\\
+\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt & =g(0)-g(y_{0})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the LHS of the last equation must be non-negative for all 
+\begin_inset Formula $y_{0}\in[0,b-\mu]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $g(\cdot)$
+\end_inset
+
+ must be monotonically decreasing on this interval.
+ Hence we must have 
+\begin_inset Formula $C_{1}=b-\mu$
+\end_inset
+
+.
+ For convenience,
+ we can choose 
+\begin_inset Formula $C_{2}=0$
+\end_inset
+
+.
+ Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(y)=-\int_{0}^{y}\int_{v}^{b-\mu}\frac{2}{\sigma^{2}}u^{n+1}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt=\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2}{\sigma^{2}}u^{n+1}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{n} & =\frac{\theta}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt\\
+ & =\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2\theta}{\sigma^{2}}\left(\frac{u}{b-\mu}\right)^{n}u\cdot\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial I_{n}}{\partial n}=\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2\theta}{\sigma^{2}}\ln\frac{u}{b-\mu}\cdot\left(\frac{u}{b-\mu}\right)^{n}u\cdot\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now consider
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+L_{n} & =\int_{y_{0}}^{b-\mu}\frac{d}{dy}\left[\frac{y^{n}}{(b-\mu)^{n}}\right]\cdot(b-\mu-y)dy\\
+ & =\frac{1}{(b-\mu)^{n}}\int_{y_{0}}^{b-\mu}ny^{n-1}(b-\mu-y)dy\\
+ & =n(b-\mu)\int_{y_{0}}^{b-\mu}\left(\frac{y}{b-\mu}\right)^{n-1}\left(1-\frac{y}{b-\mu}\right)d\left(\frac{y}{b-\mu}\right)\\
+ & =n(b-\mu)\int_{y_{0}/(b-\mu)}^{1}y'^{n-1}\left(1-y'\right)dy'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+L_{n} & =\int_{y_{0}}^{b-\mu}\frac{n}{(b-\mu)^{n}}\left[(b-\mu)y^{n-1}-y^{n}\right]dy\\
+ & =\frac{(b-\mu)^{n}-y_{0}^{n}}{(b-\mu)^{n-1}}-\frac{n}{(b-\mu)^{n}}\cdot\frac{(b-\mu)^{n+1}-y_{0}^{n+1}}{n+1}\\
+ & =\frac{(b-\mu)^{n}-y_{0}^{n}}{(b-\mu)^{n-1}}-\frac{n}{n+1}\left[(b-\mu)-y_{0}\left(\frac{y_{0}}{b-\mu}\right)^{n}\right]\\
+ & =\frac{b-\mu}{n+1}-\left(\frac{y_{0}}{b-\mu}\right)^{n}\left[(b-\mu)-y_{0}\frac{n}{n+1}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial L_{n}}{\partial n} & =(b-\mu)\int_{y_{0}/(b-\mu)}^{1}y'^{n-1}\left(1-y'\right)dy'\\
+ & +n(b-\mu)\int_{y_{0}/(b-\mu)}^{1}\ln y'\cdot y'^{n-1}\cdot\left(1-y'\right)dy'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We shall choose 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left[\frac{\partial L_{n}}{\partial n}\right]_{n=\epsilon}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial L_{n}}{\partial n}<0$
+\end_inset
+
+ for all 
+\begin_inset Formula $n>\epsilon$
+\end_inset
+
+.
+ We want to find the value of 
+\begin_inset Formula $n$
+\end_inset
+
+ that maximizes 
+\begin_inset Formula $\frac{I_{n}}{L_{n}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial n}\frac{I_{n}}{L_{n}}=\frac{1}{L_{n}^{2}}\left(L_{n}\cdot\frac{\partial I_{n}}{\partial n}-I_{n}\cdot\frac{\partial L_{n}}{\partial n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-An integral of the OU process
+An integral of the OU process b 
 \end_layout
 
 \begin_layout Standard
