@@ -6084,7 +6084,9 @@ It then follows
 \begin_inset Formula 
 \begin{align*}
 I_{n} & =\frac{\theta}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt\\
- & =\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2\theta}{\sigma^{2}}\left(\frac{u}{b-\mu}\right)^{n}u\cdot\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+ & =\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2\theta}{\sigma^{2}}\left(\frac{u}{b-\mu}\right)^{n}u\cdot\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv\\
+ & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{y_{0}}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n}u\cdot\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dvdu\\
+ & +\frac{2\theta}{\sigma^{2}}\intop_{y_{0}}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n}u\cdot\intop_{0}^{y_{0}}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dvdu
 \end{align*}
 
 \end_inset
@@ -6093,14 +6095,30 @@ I_{n} & =\frac{\theta}{(b-\mu)^{n}}\mathbb{E}\int_{0}^{\tau}Y_{t}^{n+1}dt\\
 \end_layout
 
 \begin_layout Standard
-We have
+Define
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\partial I_{n}}{\partial n}=\int_{0}^{y_{0}}\int_{v}^{b-\mu}\frac{2\theta}{\sigma^{2}}\ln\frac{u}{b-\mu}\cdot\left(\frac{u}{b-\mu}\right)^{n}u\cdot\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-u^{2}\right)\right]dudv
+\eta(u)=\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dv
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we can write
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{n} & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n}u\cdot\left[1_{[0,y_{0}]}(u)\cdot\eta(u)+1_{[y_{0},b-\mu]}(u)\cdot\eta(y_{0})\right]du\\
+ & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n}u\cdot\eta\left(u\wedge y_{0}\right)du
+\end{align*}
 
 \end_inset
 
@@ -6114,10 +6132,10 @@ Now consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-L_{n} & =\int_{y_{0}}^{b-\mu}\frac{d}{dy}\left[\frac{y^{n}}{(b-\mu)^{n}}\right]\cdot(b-\mu-y)dy\\
- & =\frac{1}{(b-\mu)^{n}}\int_{y_{0}}^{b-\mu}ny^{n-1}(b-\mu-y)dy\\
- & =n(b-\mu)\int_{y_{0}}^{b-\mu}\left(\frac{y}{b-\mu}\right)^{n-1}\left(1-\frac{y}{b-\mu}\right)d\left(\frac{y}{b-\mu}\right)\\
- & =n(b-\mu)\int_{y_{0}/(b-\mu)}^{1}y'^{n-1}\left(1-y'\right)dy'
+L_{n} & =\intop_{0}^{b-\mu}(b-\mu-y)d\left[\frac{y^{n}}{(b-\mu)^{n}}\right]\\
+ & =\left[\frac{(b-\mu-y)y^{n}}{(b-\mu)^{n}}\right]_{y=0}^{b-\mu}-\intop_{0}^{b-\mu}\frac{y^{n}}{(b-\mu)^{n}}(-1)dy\\
+ & =\left[\frac{y^{n+1}}{(n+1)(b-\mu)^{n}}\right]_{y=0}^{b-\mu}\\
+ & =\frac{b-\mu}{n+1}
 \end{align*}
 
 \end_inset
@@ -6126,16 +6144,33 @@ L_{n} & =\int_{y_{0}}^{b-\mu}\frac{d}{dy}\left[\frac{y^{n}}{(b-\mu)^{n}}\right]\
 \end_layout
 
 \begin_layout Standard
-We get
+We want to choose 
+\begin_inset Formula $n$
+\end_inset
+
+ to maximize
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-L_{n} & =\int_{y_{0}}^{b-\mu}\frac{n}{(b-\mu)^{n}}\left[(b-\mu)y^{n-1}-y^{n}\right]dy\\
- & =\frac{(b-\mu)^{n}-y_{0}^{n}}{(b-\mu)^{n-1}}-\frac{n}{(b-\mu)^{n}}\cdot\frac{(b-\mu)^{n+1}-y_{0}^{n+1}}{n+1}\\
- & =\frac{(b-\mu)^{n}-y_{0}^{n}}{(b-\mu)^{n-1}}-\frac{n}{n+1}\left[(b-\mu)-y_{0}\left(\frac{y_{0}}{b-\mu}\right)^{n}\right]\\
- & =\frac{b-\mu}{n+1}-\left(\frac{y_{0}}{b-\mu}\right)^{n}\left[(b-\mu)-y_{0}\frac{n}{n+1}\right]
+\frac{I_{n}}{L_{n}} & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\cdot\eta\left(u\wedge y_{0}\right)du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dn}\left[\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\right] & =\left(\frac{u}{b-\mu}\right)^{n+1}+(n+1)\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{u}{b-\mu}\\
+ & =\left(\frac{u}{b-\mu}\right)^{n+1}\left[1-(n+1)\ln\frac{b-\mu}{u}\right]
 \end{align*}
 
 \end_inset
@@ -6150,8 +6185,11 @@ Moreover,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial L_{n}}{\partial n} & =(b-\mu)\int_{y_{0}/(b-\mu)}^{1}y'^{n-1}\left(1-y'\right)dy'\\
- & +n(b-\mu)\int_{y_{0}/(b-\mu)}^{1}\ln y'\cdot y'^{n-1}\cdot\left(1-y'\right)dy'
+\frac{d^{2}}{dn^{2}}\left[\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\right] & =\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{u}{b-\mu}\left[1-(n+1)\ln\frac{b-\mu}{u}\right]\\
+ & -\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{b-\mu}{u}\\
+ & =-\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{b-\mu}{u}\cdot\left[-1+(n+1)\ln\frac{b-\mu}{u}+1\right]\\
+ & =-(n+1)\left(\frac{u}{b-\mu}\right)^{n+1}\left(\ln\frac{b-\mu}{u}\right)^{2}\\
+ & <0
 \end{align*}
 
 \end_inset
@@ -6160,38 +6198,66 @@ Moreover,
 \end_layout
 
 \begin_layout Standard
-We shall choose 
-\begin_inset Formula $\epsilon$
+So we see 
+\begin_inset Formula $\frac{I_{n}}{L_{n}}$
 \end_inset
 
- such that 
-\begin_inset Formula $\left[\frac{\partial L_{n}}{\partial n}\right]_{n=\epsilon}=0$
-\end_inset
-
- and 
-\begin_inset Formula $\frac{\partial L_{n}}{\partial n}<0$
-\end_inset
-
- for all 
-\begin_inset Formula $n>\epsilon$
-\end_inset
-
-.
- We want to find the value of 
+ is a concave function of 
 \begin_inset Formula $n$
 \end_inset
 
- that maximizes 
-\begin_inset Formula $\frac{I_{n}}{L_{n}}$
+ and hence must have a maximum value.
+\end_layout
+
+\begin_layout Subsection
+General allocation functions
+\end_layout
+
+\begin_layout Standard
+Now we consider the functional
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{I}h=\mathbb{E}\intop_{0}^{\tau}-h\left(Y_{t}\right)dY_{t}\label{eq:kj78k7u7}
+\end{equation}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+for 
+\begin_inset Formula $Y_{0}=y_{0}\in(0,b-\mu)$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau=\inf\{t>0:Y_{t}\leq0\}.$
+\end_inset
+
+ 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ must satisfy 
+\begin_inset Formula $h(b-\mu)=1$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $h(0)=0$
+\end_inset
+
+.
+ Let
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial n}\frac{I_{n}}{L_{n}}=\frac{1}{L_{n}^{2}}\left(L_{n}\cdot\frac{\partial I_{n}}{\partial n}-I_{n}\cdot\frac{\partial L_{n}}{\partial n}\right)
+\frac{d}{dy}H(y)=h(y)
 \]
 
 \end_inset
@@ -6199,8 +6265,460 @@ We shall choose
 
 \end_layout
 
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dH\left(Y_{t}\right) & =H'(Y_{t})dY_{t}+\frac{1}{2}H''(Y_{t})\left(dY_{t}\right)^{2}\\
+ & =H'(Y_{t})dY_{t}+\frac{H''\left(Y_{t}\right)}{2}\sigma^{2}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\begin_inset Formula 
+\begin{align}
+\intop_{0}^{\tau}H'(Y_{t})dY_{t} & =H\left(Y_{\tau}\right)-H\left(Y_{0}\right)-\frac{\sigma^{2}}{2}\intop_{0}^{\tau}H''\left(Y_{t}\right)dt\nonumber \\
+\mathbb{E}\intop_{0}^{\tau}H'(Y_{t})dY_{t} & =H(0)-H(y_{0})-\frac{\sigma^{2}}{2}\mathbb{E}\intop_{0}^{\tau}H''\left(Y_{t}\right)dt\label{eq:6btrbtgbt}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want to find function 
+\begin_inset Formula $g\in C_{0}^{2}\left([0,b-\mu]\right)$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{A}g=H''
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which means
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+-\theta y\cdot g'+\frac{\sigma^{2}}{2}g'' & =H''\\
+g''-\frac{2\theta}{\sigma^{2}}yg' & =\frac{2}{\sigma^{2}}H''
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying both sides with 
+\begin_inset Formula $\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)$
+\end_inset
+
+,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dy}\left[g'\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)\right] & =\frac{2}{\sigma^{2}}\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right)H''\\
+g'\exp\left(-\frac{\theta y^{2}}{\sigma^{2}}\right) & =\frac{2}{\sigma^{2}}\intop_{C_{1}}^{y}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)H''(u)du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+g'(y) & =\frac{2}{\sigma^{2}}\intop_{C_{1}}^{y}\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]H''(u)du\label{eq:g5h6h6ju}\\
+\frac{\sigma^{2}}{2}g'(y) & =\left\{ \exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]H'(u)\right\} _{u=C_{1}}^{y}\nonumber \\
+ & -\intop_{C_{1}}^{y}H'(u)d\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{2}g'(y) & =H'(y)-\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-C_{1}^{2})\right]H'(C_{1})\\
+ & -\intop_{C_{1}}^{y}H'(u)\cdot\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]\cdot\left(-\frac{2\theta}{\sigma^{2}}u\right)du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For convenience,
+ we choose 
+\begin_inset Formula $C_{1}=b-\mu$
+\end_inset
+
+ such that 
+\begin_inset Formula $H'\left(C_{1}\right)=1$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\sigma^{2}}{2}g'(y)=H'(y)-\exp\left[\frac{\theta}{\sigma^{2}}\left(y^{2}-(b-\mu)^{2}\right)\right]-\frac{2\theta}{\sigma^{2}}\intop_{y}^{b-\mu}u\cdot H'(u)\cdot\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating again,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{2}g(y) & =H(y)-\intop_{C_{2}}^{y}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\\
+ & -\frac{2\theta}{\sigma^{2}}\intop_{C_{2}}^{y}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choosing 
+\begin_inset Formula $C_{2}=b-\mu$
+\end_inset
+
+ and simplifying gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{\sigma^{2}}{2}g(y) & =H(y)+\intop_{y}^{b-\mu}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\label{eq:th6yju7ju7}\\
+ & +\frac{2\theta}{\sigma^{2}}\intop_{y}^{b-\mu}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Dynkin's formula,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{2}\mathbb{E}\intop_{0}^{\tau}H''\left(Y_{t}\right)dt & =\frac{\sigma^{2}}{2}\mathbb{E}g\left(Y_{\tau}\right)-\frac{\sigma^{2}}{2}g(y_{0})\\
+ & =\frac{\sigma^{2}}{2}\left[g(0)-g(y_{0})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining this with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6btrbtgbt"
+
+\end_inset
+
+),
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathbb{E}\intop_{0}^{\tau}-h\left(Y_{t}\right)dY_{t} & =-\mathbb{E}\intop_{0}^{\tau}H'(Y_{t})dY_{t}\label{eq:f4h65ju7j}\\
+ & =\frac{\sigma^{2}}{2}\left[g(0)-g(y_{0})\right]-\left[H(0)-H(y_{0})\right]\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the LHS of the above equation to be positive for all 
+\begin_inset Formula $y_{0}>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{\sigma^{2}}{2}g(y)-H(y)$
+\end_inset
+
+ must be monotonically decreasing for all 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Hence we must have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\sigma^{2}}{2}g'(y)-H'(y)<0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for all 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:g5h6h6ju"
+
+\end_inset
+
+) gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{2}g'(y)-H'(y) & =\intop_{C_{1}}^{y}\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]H''(u)du-H'(y)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+ for 
+\begin_inset Formula $y>C_{1}$
+\end_inset
+
+,
+ the integral on the RHS is positive.
+ If we choose 
+\begin_inset Formula $C_{1}=b-\mu$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{2}g'(y)-H'(y) & =\intop_{b-\mu}^{y}\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]H''(u)du-H'(y)\\
+ & =-\intop_{y}^{b-\mu}\exp\left[\frac{\theta}{\sigma^{2}}(y^{2}-u^{2})\right]H''(u)du-H'(y)\\
+ & <0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+ 
+\begin_inset Formula $C_{1}=b-\mu$
+\end_inset
+
+ is a viable choice.
+ Let 
+\begin_inset Formula $\psi(g)=\frac{\sigma^{2}}{2}g(y)-H(y)$
+\end_inset
+
+.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:f4h65ju7j"
+
+\end_inset
+
+) yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\intop_{0}^{\tau}-h\left(Y_{t}\right)dY_{t} & =-\mathbb{E}\intop_{0}^{\tau}H'(Y_{t})dY_{t}\\
+ & =\psi(0)-\psi(y_{0})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:th6yju7ju7"
+
+\end_inset
+
+) we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\psi(y)=\intop_{y}^{b-\mu}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv+\frac{2\theta}{\sigma^{2}}\intop_{y}^{b-\mu}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv
+\]
+
+\end_inset
+
+Now we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{I}h & =\intop_{0}^{b-\mu}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\\
+ & +\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv\\
+ & -\intop_{y_{0}}^{b-\mu}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\\
+ & -\frac{2\theta}{\sigma^{2}}\intop_{y_{0}}^{b-\mu}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simplifying the expression gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{I}h & =\intop_{0}^{y_{0}}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\\
+ & +\frac{2\theta}{\sigma^{2}}\intop_{0}^{y_{0}}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv\\
+ & =\intop_{0}^{y_{0}}\exp\left[\frac{\theta}{\sigma^{2}}\left(v^{2}-(b-\mu)^{2}\right)\right]dv\\
+ & +\frac{2\theta}{\sigma^{2}}\intop_{0}^{y_{0}}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can write the second integral as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{0}^{y_{0}}\intop_{v}^{b-\mu}H'(u)\cdot u\cdot\exp\left[\frac{\theta}{\sigma^{2}}(v^{2}-u^{2})\right]dudv\\
+= & \intop_{0}^{y_{0}}H'(u)\cdot u\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dvdu+\intop_{y_{0}}^{b-\mu}H'(u)\cdot u\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\intop_{0}^{y_{0}}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dvdu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The loss of the allocation scheme in the worst case is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}h & =\intop_{0}^{b-\mu}(b-\mu-y)dH'(y)\\
+ & =\intop_{0}^{b-\mu}(b-\mu-y)H''(y)dy
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a given pair 
+\begin_inset Formula $y_{1}<y_{2}$
+\end_inset
+
+,
+ we want to choose 
+\begin_inset Formula $H'(y)$
+\end_inset
+
+ for 
+\begin_inset Formula $y\in[y_{1},y_{2}]$
+\end_inset
+
+ so as to maximize
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{y_{1}}^{y_{2}}\left[H'(u)\cdot u\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dv-\lambda(b-\mu-u)H''(u)\right]du
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-An integral of the OU process b 
+An integral of the OU process 
 \end_layout
 
 \begin_layout Standard
