@@ -6100,9 +6100,12 @@ Define
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\eta(u)=\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dv
-\]
+\begin{align*}
+\eta(u) & =\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)dv\\
+ & =\frac{\sigma}{\sqrt{\theta}}\intop_{0}^{u}\exp\left(\frac{\theta v^{2}}{\sigma^{2}}\right)d\frac{\sqrt{\theta}v}{\sigma}\\
+ & =\frac{\sigma}{\sqrt{\theta}}\intop_{0}^{\sqrt{\theta}u/\sigma}e^{v'^{2}}dv'\\
+ & =\frac{\sigma}{\sqrt{\theta}}D\left(\frac{\sqrt{\theta}u}{\sigma}\right)\exp\left(\frac{\theta u^{2}}{\sigma^{2}}\right)
+\end{align*}
 
 \end_inset
 
@@ -6110,7 +6113,12 @@ Define
 \end_layout
 
 \begin_layout Standard
-Then we can write
+where 
+\begin_inset Formula $D(\cdot)$
+\end_inset
+
+ is the Dawson function.
+ Then we can write
 \end_layout
 
 \begin_layout Standard
@@ -6154,7 +6162,9 @@ We want to choose
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{I_{n}}{L_{n}} & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\cdot\eta\left(u\wedge y_{0}\right)du
+\frac{I_{n}}{L_{n}} & =\frac{2\theta}{\sigma^{2}}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\cdot\eta\left(u\wedge y_{0}\right)du\\
+ & =\frac{2\sqrt{\theta}}{\sigma}\intop_{0}^{b-\mu}\exp\left(-\frac{\theta u^{2}}{\sigma^{2}}\right)\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\cdot D\left[\frac{\sqrt{\theta}\left(u\wedge y_{0}\right)}{\sigma}\right]\exp\left[\frac{\theta}{\sigma^{2}}\left(u\wedge y_{0}\right)\right]du\\
+ & =\frac{2\sqrt{\theta}}{\sigma}\intop_{0}^{b-\mu}\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\cdot\left\{ D\left(\frac{\sqrt{\theta}u}{\sigma}\right)1_{\{u\leq y_{0}\}}+D\left(\frac{\sqrt{\theta}y_{0}}{\sigma}\right)\exp\left[\frac{\theta\left(y_{0}^{2}-u^{2}\right)}{\sigma^{2}}\right]1_{\{u>y_{0}\}}\right\} du
 \end{align*}
 
 \end_inset
@@ -6163,14 +6173,48 @@ We want to choose
 \end_layout
 
 \begin_layout Standard
-Clearly,
+Let 
+\begin_inset Formula $m=n+1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $b'=b-\mu$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\alpha=\sqrt{\theta}/\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{n+1}=\frac{I_{n}}{L_{n}}$
+\end_inset
+
+.
+ Then we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{m}=2\alpha\intop_{0}^{b-\mu}\left(\frac{u}{b-\mu}\right)^{m}m\cdot\left\{ D\left(\alpha u\right)1_{\{u\leq y_{0}\}}+D\left(\alpha y_{0}\right)\exp\left[\alpha^{2}\left(y_{0}^{2}-u^{2}\right)\right]1_{\{u>y_{0}\}}\right\} du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{d}{dn}\left[\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\right] & =\left(\frac{u}{b-\mu}\right)^{n+1}+(n+1)\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{u}{b-\mu}\\
- & =\left(\frac{u}{b-\mu}\right)^{n+1}\left[1-(n+1)\ln\frac{b-\mu}{u}\right]
+\frac{d}{dm}\left[\left(\frac{u}{b'}\right)^{m}m\right] & =m\ln\frac{u}{b'}\left(\frac{u}{b'}\right)^{m}+\left(\frac{u}{b'}\right)^{m}\\
+ & =\left(\frac{u}{b'}\right)^{m}\left(m\ln\frac{u}{b'}+1\right)
 \end{align*}
 
 \end_inset
@@ -6179,34 +6223,19 @@ Clearly,
 \end_layout
 
 \begin_layout Standard
-Moreover,
+and
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{d^{2}}{dn^{2}}\left[\left(\frac{u}{b-\mu}\right)^{n+1}(n+1)\right] & =\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{u}{b-\mu}\left[1-(n+1)\ln\frac{b-\mu}{u}\right]\\
- & -\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{b-\mu}{u}\\
- & =-\left(\frac{u}{b-\mu}\right)^{n+1}\ln\frac{b-\mu}{u}\cdot\left[-1+(n+1)\ln\frac{b-\mu}{u}+1\right]\\
- & =-(n+1)\left(\frac{u}{b-\mu}\right)^{n+1}\left(\ln\frac{b-\mu}{u}\right)^{2}\\
- & <0
+\frac{d^{2}}{dm^{2}}\left[\left(\frac{u}{b'}\right)^{m}m\right] & =\ln\frac{u}{b'}\left(\frac{u}{b'}\right)^{m}\left(m\ln\frac{u}{b'}+1\right)+\left(\frac{u}{b'}\right)^{m}\cdot\ln\frac{u}{b'}\\
+ & =\ln\frac{u}{b'}\left(\frac{u}{b'}\right)^{m}\left[m\ln\frac{u}{b'}+2\right]
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-So we see 
-\begin_inset Formula $\frac{I_{n}}{L_{n}}$
-\end_inset
-
- is a concave function of 
-\begin_inset Formula $n$
-\end_inset
-
- and hence must have a maximum value.
 \end_layout
 
 \begin_layout Subsection
@@ -13227,6 +13256,714 @@ We have
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+FX model in the Risk-Neutral measure
+\end_layout
+
+\begin_layout Standard
+Suppose the FX rate 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ in the risk-neutral probability measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=r_{t}X_{t}dt+\sigma X_{t}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+dr_{t}=-\theta\left(r_{t}-\mu\right)dt+\nu dW_{t}'\label{eq:h6ju78k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ be the natural filtration of 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathscr{F}'_{t}$
+\end_inset
+
+ that of 
+\begin_inset Formula $W'_{t}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is adapted to 
+\begin_inset Formula $\mathscr{F}_{t}\cup\mathscr{F}_{t}'$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\mathscr{F}_{t}\cup\mathscr{F}_{t}'$
+\end_inset
+
+ is the smallest sigma algebra to which 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is adapted.
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+d\ln X_{t} & =r_{t}dt+\sigma dW_{t}-\frac{\sigma^{2}}{2}dt\\
+ & =\left(r_{t}-\frac{\sigma^{2}}{2}\right)dt+\sigma dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\ln X_{t} & =\ln X_{0}+\intop_{0}^{t}\left(r_{s}-\frac{\sigma^{2}}{2}\right)ds+\sigma W_{t}\nonumber \\
+ & =\ln X_{0}+\intop_{0}^{t}r_{s}ds-\frac{\sigma^{2}}{2}t+\sigma W_{t}\label{eq:h6ju57j7}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h6ju78k"
+
+\end_inset
+
+) gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+-\theta r_{t}dt+\theta\mu dt+\nu dW'_{t} & =dr_{t}\\
+-\theta\intop_{0}^{t}r_{s}ds+\theta\mu t+\nu W'_{t} & =r_{t}-r_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{t}=\left(r_{0}-\mu\right)r^{-\theta t}+\mu+\nu\intop_{0}^{t}e^{\theta(s-t)}dW'_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+-\theta\intop_{0}^{t}r_{s}ds & =\left(r_{0}-\mu\right)e^{-\theta t}+\mu+\nu\intop_{0}^{t}\left[e^{\theta(s-t)}-1\right]dW'_{s}-r_{0}-\theta\mu t\\
+ & =r_{0}\left(e^{-\theta t}-1\right)+\mu\left(1-e^{-\theta t}\right)-\theta\mu t+\nu\intop_{0}^{t}\left[e^{\theta(s-t)}-1\right]dW'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{t}r_{s}ds & =\frac{r_{0}}{\theta}\left(1-e^{-\theta t}\right)-\frac{\mu}{\theta}\left(1-e^{-\theta t}\right)+\mu t+\frac{\nu}{\theta}\intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]dW'_{s}\\
+ & =\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\mu t+\frac{\nu}{\theta}\intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]dW'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:h6ju57j7"
+
+\end_inset
+
+),
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\ln\frac{X_{t}}{X_{0}} & =\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)t+\sigma W_{t}+\frac{\nu}{\theta}\intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]dW'_{s}\nonumber \\
+X_{t} & =X_{0}\exp\left[\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)t+\sigma W_{t}+\frac{\nu}{\theta}\intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]dW'_{s}\right]\label{eq:j7i87k}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+When 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $W'_{t}$
+\end_inset
+
+ are independent
+\end_layout
+
+\begin_layout Subsection
+The price of a future
+\end_layout
+
+\begin_layout Standard
+In this case,
+ taking expectation w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+,
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:j7i87k"
+
+\end_inset
+
+) yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}_{Q}\left(X_{t}\right)=X_{0}\exp\left[\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\mu t+\frac{\nu^{2}}{2\theta^{2}}\intop_{0}^{t}\left(1-e^{\theta(s-t)}\right)^{2}ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{0}^{t}\left(1-e^{\theta(s-t)}\right)^{2}ds\\
+= & \intop_{0}^{t}\left[1-2e^{\theta(s-t)}+e^{2\theta(s-t)}\right]ds\\
+= & t-2e^{-\theta t}\frac{e^{\theta t}-1}{\theta}+e^{-2\theta t}\frac{e^{2\theta t}-1}{2\theta}\\
+= & t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\mathbb{E}_{Q}X_{t} & =X_{0}\exp\left[\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\mu t+\frac{\nu^{2}}{2\theta^{2}}\left(t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}\right)\right]\nonumber \\
+ & =X_{0}\exp\left[\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu-\frac{\nu^{2}}{\theta^{2}}\right)+\mu t+\frac{\nu^{2}}{2\theta^{2}}\left(t+\frac{1-e^{-2\theta t}}{2\theta}\right)\right]\label{eq:g5h6yj}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The price at time 
+\begin_inset Formula $t$
+\end_inset
+
+ of a future's contract that expires at 
+\begin_inset Formula $t+\tau$
+\end_inset
+
+ is then given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F(t,\tau):=\mathbb{E}_{Q}\left(X_{t+\tau}|\mathscr{F}_{t}\cup\mathscr{F}_{t}'\right)=X_{t}\exp\left[\frac{1-e^{-\theta\tau}}{\theta}\left(r_{t}-\mu-\frac{\nu^{2}}{\theta^{2}}\right)+\mu\tau+\frac{\nu^{2}}{2\theta^{2}}\left(\tau+\frac{1-e^{-2\theta\tau}}{2\theta}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\ell(\tau) & :=\exp\left[-\frac{1-e^{-\theta\tau}}{\theta}\left(\mu+\frac{\nu^{2}}{\theta^{2}}\right)+\mu\tau+\frac{\nu^{2}}{2\theta^{2}}\left(\tau+\frac{1-e^{-2\theta\tau}}{2\theta}\right)\right]\\
+\varphi(\tau) & :=\frac{1-e^{-\theta\tau}}{\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F(t,\tau)=X_{t}e^{\varphi(\tau)r_{t}}\ell(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The price of a future's option
+\end_layout
+
+\begin_layout Standard
+Now consider a future's call option that expires at time 
+\begin_inset Formula $T$
+\end_inset
+
+ and that has strike price 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ Its underlying future expires at 
+\begin_inset Formula $T+\tau$
+\end_inset
+
+.
+ We want to know the option's price at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Denote the call option's price as 
+\begin_inset Formula $C(t,T,\tau)$
+\end_inset
+
+.
+ Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C(T,T,\tau)=1_{F(T,\tau)>K}\left(F(T,\tau)-K\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose the risk-free interest rate of the quote currency is 
+\begin_inset Formula $\gamma$
+\end_inset
+
+,
+ a constant.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+C\left(0,T,\tau\right) & =e^{-\gamma T}\mathbb{E}_{Q}\left[1_{F(T,\tau)>K}\left(F(T,\tau)-K\right)\right]\nonumber \\
+ & =e^{-\gamma T}\left\{ \mathbb{E}_{Q}\left[1_{F(T,\tau)>K}F(T,\tau)\right]-K\mathbb{P}_{Q}\left[F\left(T,\tau\right)>K\right]\right\} \label{eq:yj6j7k8ik}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \ln F(T,\tau)\\
+= & \ln X_{T}+\varphi(\tau)r_{T}+\ln\ell(\tau)\\
+= & \ln X_{0}+\varphi(T)\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)T+\sigma W_{T}+\frac{\nu}{\theta}\intop_{0}^{T}\left[1-e^{\theta(s-T)}\right]dW'_{s}+\varphi(\tau)r_{T}+\ln\ell(\tau)\\
+= & \ln X_{0}+\varphi(T)\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)T+\sigma W_{T}+\frac{\nu}{\theta}\intop_{0}^{T}\left[1-e^{\theta(s-T)}\right]dW'_{s}+\ln\ell(\tau)\\
+ & +\varphi(\tau)\left[\left(r_{0}-\mu\right)e^{-\theta T}+\mu+\nu\intop_{0}^{T}e^{\theta(s-T)}dW'_{s}\right]\\
+= & \ln X_{0}+\left[\varphi(T)+\varphi(\tau)e^{-\theta T}\right]\left(r_{0}-\mu\right)+\varphi(\tau)\mu+\left(\mu-\frac{\sigma^{2}}{2}\right)T+\ln\ell(\tau)\\
+ & +\sigma W_{T}+\frac{\nu}{\theta}W'_{T}+\nu\left[\varphi(\tau)-\frac{1}{\theta}\right]\intop_{0}^{T}e^{\theta(s-T)}dW'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+b & =\ln X_{0}+\left[\varphi(T)+\varphi(\tau)e^{-\theta T}\right]\left(r_{0}-\mu\right)+\varphi(\tau)\mu+\left(\mu-\frac{\sigma^{2}}{2}\right)T+\ln\ell(\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\ln F(T,\tau) & =b+\sigma W_{T}+\frac{\nu}{\theta}\intop_{0}^{T}\left\{ 1+\left[\theta\varphi(\tau)-1\right]e^{\theta(s-T)}\right\} dW'_{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(\ln F(T,\tau)\right) & =\frac{\nu^{2}}{\theta^{2}}\intop_{0}^{T}\left\{ 1+\left[\theta\varphi(\tau)-1\right]e^{\theta(s-T)}\right\} ^{2}ds\\
+ & =\frac{\nu^{2}}{\theta^{2}}\left\{ T+2\left[\theta\varphi(\tau)-1\right]\frac{1-e^{-\theta T}}{\theta}+\left[\theta\varphi(\tau)-1\right]^{2}\frac{1-e^{-2\theta T}}{2\theta}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For all 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Formula $W_{t}\perp W'_{t}$
+\end_inset
+
+,
+ so
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln F\left(T,\tau\right)\sim N\left(b,v^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v^{2}=\sigma^{2}T+\frac{\nu^{2}}{\theta^{2}}\left\{ T+2\left[\theta\varphi(\tau)-1\right]\frac{1-e^{-\theta T}}{\theta}+\left[\theta\varphi(\tau)-1\right]^{2}\frac{1-e^{-2\theta T}}{2\theta}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}_{Q}\left[F\left(T,\tau\right)>K\right] & =\mathbb{P}_{Q}\left[b+vZ>\ln K\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Z\sim N(0,1)$
+\end_inset
+
+ w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Now we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left[1_{F(T,\tau)>K}F\left(T,\tau\right)\right] & =\mathbb{E}_{Q}\left[1_{Z>(\ln K-b)/v}e^{b+vZ}\right]\\
+ & =\frac{1}{\sqrt{2\pi}}\intop_{(\ln K-b)/v}^{\infty}e^{b+vz}\cdot e^{-z^{2}/2}dz\\
+ & =\frac{1}{\sqrt{2\pi}}\intop_{(\ln K-b)/v}^{\infty}\exp\left[-\frac{1}{2}\left(z-v\right)^{2}+\frac{v^{2}}{2}+b\right]dz\\
+ & =\frac{e^{v^{2}/2+b}}{\sqrt{2\pi}}\intop_{(\ln K-b)/v-v}^{\infty}e^{-z^{2}/2}dz\\
+ & =\exp\left(\frac{v^{2}}{2}+b\right)\Phi\left(v-\frac{\ln K-b}{v}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}_{Q}\left[F\left(T,\tau\right)>K\right] & =\mathbb{P}_{Q}\left(Z>\frac{\ln K-b}{v}\right)\\
+ & =\Phi\left(-\frac{\ln K-b}{v}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging these expressions into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:yj6j7k8ik"
+
+\end_inset
+
+),
+ we get 
+\begin_inset Formula $C\left(0,T,\tau\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Replicating an option on spot rates
+\end_layout
+
+\begin_layout Standard
+Suppose we want to replicate the payoff function 
+\begin_inset Formula $C'\left(t,T\right)$
+\end_inset
+
+ of a call option on a spot rate that expires at time 
+\begin_inset Formula $T.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C'\left(T,T\right)=1_{X_{T}>K}\left(X_{T}-K\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F\left(T,\tau\right)=X_{T}e^{\varphi(\tau)r_{T}}\ell(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C'\left(T,T\right) & =\mathscr{I}\left[F\left(T,\tau\right)e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)>K\right]\cdot\left[F\left(T,\tau\right)e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)-K\right]\\
+ & =e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)\cdot\mathscr{I}\left[F\left(T,\tau\right)>Ke^{\varphi(\tau)r_{T}}\ell(\tau)\right]\cdot\left[F\left(T,\tau\right)-Ke^{\varphi(\tau)r_{T}}\ell(\tau)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathscr{I}(\cdot)$
+\end_inset
+
+ denotes the indicator function.
+ So we see that an option on the spot rate that expires at time 
+\begin_inset Formula $T$
+\end_inset
+
+ with strike price 
+\begin_inset Formula $K$
+\end_inset
+
+ is replicated by 
+\begin_inset Formula $e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)$
+\end_inset
+
+ units of future's options that expire at 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ have strike price 
+\begin_inset Formula $Ke^{\varphi(\tau)r_{T}}\ell(\tau)$
+\end_inset
+
+ and whose underlying future expires at 
+\begin_inset Formula $T+\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similarly,
+ for a put option on the spot rate,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P'\left(T,T\right)=e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)\cdot\mathscr{I}\left[F\left(T,\tau\right)<Ke^{\varphi(\tau)r_{T}}\ell(\tau)\right]\cdot\left[Ke^{\varphi(\tau)r_{T}}\ell(\tau)-F\left(T,\tau\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is replicated by 
+\begin_inset Formula $e^{-\varphi(\tau)r_{T}}\ell^{-1}(\tau)$
+\end_inset
+
+ units of future's put options with strike price 
+\begin_inset Formula $Ke^{\varphi(\tau)r_{T}}\ell(\tau)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
