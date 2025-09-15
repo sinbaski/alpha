@@ -13479,6 +13479,235 @@ When
 \end_layout
 
 \begin_layout Subsection
+The price of an FX option
+\end_layout
+
+\begin_layout Standard
+Now consider the price 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ of a European call option on 
+\begin_inset Formula $X_{T}$
+\end_inset
+
+.
+ The option expires at time 
+\begin_inset Formula $T$
+\end_inset
+
+ and has strike price 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{T}=\mathscr{I}\left(X_{T}>K\right)\cdot\left(X_{T}-K\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ denotes the indicator function.
+ Suppose the risk-free interest rate of the quote currency is 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+C_{0} & =e^{-\gamma T}\mathbb{E}_{Q}\left[\mathscr{I}\left(X_{T}>K\right)\cdot\left(X_{T}-K\right)\right]\nonumber \\
+ & =e^{-\gamma T}\mathbb{E}_{Q}\left[X_{T};X_{T}>K\right]-e^{-\gamma T}K\mathbb{P}_{Q}\left(X_{T}>K\right)\label{eq:rgy54h67j6}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observe that,
+ under the 
+\begin_inset Formula $Q$
+\end_inset
+
+ measure,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln\frac{X_{t}}{X_{0}}\sim\boldsymbol{N}\left\{ \frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)t,\sigma^{2}t+\frac{\nu^{2}}{\theta^{2}}\intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]^{2}ds\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \intop_{0}^{t}\left[1-e^{\theta(s-t)}\right]^{2}ds\\
+= & \intop_{0}^{t}\left[1-2e^{\theta(s-t)}+e^{2\theta(s-t)}\right]ds\\
+= & t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln\frac{X_{t}}{X_{0}}\sim\boldsymbol{N}\left[\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)t,\sigma^{2}t+\frac{\nu^{2}}{\theta^{2}}\left(t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a_{t} & =\frac{1-e^{-\theta t}}{\theta}\left(r_{0}-\mu\right)+\left(\mu-\frac{\sigma^{2}}{2}\right)t\\
+b_{t}^{2} & =\sigma^{2}t+\frac{\nu^{2}}{\theta^{2}}\left(t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{T}\overset{d}{=}a_{t}+b_{t}Z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Z\sim\boldsymbol{N}(0,1)$
+\end_inset
+
+.
+ It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}_{Q}\left(X_{T}>K\right) & =\mathbb{P}_{Q}\left(Z>\frac{K-a_{t}}{b_{t}}\right)\\
+ & =\Phi\left(\frac{a_{t}-K}{b_{t}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left(X_{T};X_{T}>K\right) & =\frac{1}{\sqrt{2\pi}}\intop_{\left(K-a_{t}\right)/b_{t}}^{\infty}\left(a_{t}+b_{t}x\right)e^{-x^{2}/2}dx\\
+ & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})/b_{t}}^{\infty}xe^{-x^{2}/2}dx\\
+ & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})/b_{t}}^{\infty}e^{-x^{2}/2}d\left(\frac{x^{2}}{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $xe^{-x^{2}/2}$
+\end_inset
+
+ is an odd function,
+ we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{Q}\left(X_{T};X_{T}>K\right) & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})^{2}/2b_{t}^{2}}^{\infty}e^{-x}dx\\
+ & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\exp\left[-\frac{\left(a_{t}-K\right)^{2}}{2b_{t}^{2}}\right]\\
+ & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\phi\left(\frac{a_{t}-K}{b_{t}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rgy54h67j6"
+
+\end_inset
+
+) gives us
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C_{0} & =e^{-\gamma T}\left\{ a_{T}\Phi\left(\frac{a_{T}-K}{b_{T}}\right)+b_{T}\phi\left(\frac{a_{T}-K}{b_{T}}\right)-K\Phi\left(\frac{a_{T}-K}{b_{T}}\right)\right\} \\
+ & =e^{-\gamma T}\left\{ \left(a_{T}-K\right)\cdot\Phi\left(\frac{a_{T}-K}{b_{T}}\right)+b_{T}\phi\left(\frac{a_{T}-K}{b_{T}}\right)\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 The price of a future
 \end_layout
 
