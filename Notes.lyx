@@ -3918,6 +3918,193 @@ where
 \end_layout
 
 \begin_layout Section
+The Ornstein-Uhlenbeck process
+\end_layout
+
+\begin_layout Standard
+The Ornstein-Uhlenbeck process is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving this SDE gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{t}=\left(X_{0}-\mu\right)e^{-\theta t}+\mu+\sigma^{2}\intop_{0}^{t}e^{\theta(s-t)}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+,
+ the distribution of 
+\begin_inset Formula $X_{t+\Delta t}$
+\end_inset
+
+ is therefore given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{t+\Delta t}|X_{t}\sim\boldsymbol{N}\left[\left(X_{t}-\mu\right)e^{-\theta\Delta t}+\mu,\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta\Delta t}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given a series of observations 
+\begin_inset Formula $\{t_{i},x_{i}\},i=0,1,2,\dots n$
+\end_inset
+
+,
+ the likelihood of the parameters 
+\begin_inset Formula $\left(\theta,\mu,\sigma\right)$
+\end_inset
+
+ is thus given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{P}\left(\bigcap_{i=0}^{n}X_{t_{i}}\in\left[x_{i},x_{i}+dx_{i}\right]\right)\\
+= & \mathbb{P}\left(X_{t_{0}}\in\left[x_{0},x_{0}+dx_{0}\right]\right)\prod_{i=1}^{n}\mathbb{P}\left(X_{t_{i}}\in\left[x_{i},x_{i}+dx_{i}\right]|X_{t_{i-1}}\in\left[x_{i-1},x_{i-1}+dx_{i-1}\right]\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $X_{t_{0}}\in\boldsymbol{N}\left(\mu,\frac{\sigma^{2}}{2\theta}\right)$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $X_{t_{0}}$
+\end_inset
+
+ has the distribution of 
+\begin_inset Formula $X_{\infty}$
+\end_inset
+
+,
+ we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{P}\left(\bigcap_{i=0}^{n}X_{t_{i}}\in\left[x_{i},x_{i}+dx_{i}\right]\right)\\
+= & \phi\left(x_{0};\mu,\frac{\sigma^{2}}{2\theta}\right)\cdot\prod_{i=1}^{n}\phi\left[x_{i};\left(x_{i-1}-\mu\right)e^{-\theta(t_{i}-t_{i-1})}+\mu,\frac{\sigma^{2}}{2\theta}\left(1-e^{-2\theta(t_{i}-t_{i-1})}\right)\right]dx_{i}\\
+= & \frac{\sqrt{2\theta}}{\sigma}\phi\left(\frac{x_{0}-\mu}{\sigma}\sqrt{2\theta}\right)\times\prod_{i=1}^{n}\frac{\sqrt{2\theta}}{\sigma\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\phi\left[\frac{x_{i}-\mu-\left(x_{i-1}-\mu\right)e^{-\theta(t_{i}-t_{i-1})}}{\sigma\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\sqrt{2\theta}\right]dx_{i}\\
+= & \left(\frac{\sqrt{2\theta}}{\sigma}\right)^{n+1}\cdot\phi\left(\frac{x_{0}-\mu}{\sigma}\sqrt{2\theta}\right)\times\prod_{i=1}^{n}\frac{dx_{i}}{\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\phi\left[\frac{x_{i}-\mu-\left(x_{i-1}-\mu\right)e^{-\theta(t_{i}-t_{i-1})}}{\sigma\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\sqrt{2\theta}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \ln\left\{ \frac{\mathbb{P}\left(\bigcap_{i=0}^{n}X_{t_{i}}\in\left[x_{i},x_{i}+dx_{i}\right]\right)}{dx_{0}\cdots dx_{n}}\right\} \\
+= & \left(n+1\right)\ln\frac{\sqrt{2\theta}}{\sigma}-\frac{1}{2}\ln\left(2\pi\right)-\frac{\left(\frac{x_{0}-\mu}{\sigma}\sqrt{2\theta}\right)^{2}}{2}\\
+ & +\sum_{i=1}^{n}\left\{ -\frac{1}{2}\ln\left[1-e^{-2\theta(t_{i}-t_{i-1})}\right]-\frac{1}{2}\ln\left(2\pi\right)-\frac{1}{2}\left[\frac{x_{i}-\mu-\left(x_{i-1}-\mu\right)e^{-\theta(t_{i}-t_{i-1})}}{\sigma\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\sqrt{2\theta}\right]^{2}\right\} \\
+= & \left(n+1\right)\ln\frac{\sqrt{2\theta}}{\sigma}-\frac{n+1}{2}\ln\left(2\pi\right)-\frac{\left(\frac{x_{0}-\mu}{\sigma}\sqrt{2\theta}\right)^{2}}{2}\\
+ & +\sum_{i=1}^{n}\left\{ -\frac{1}{2}\ln\left[1-e^{-2\theta(t_{i}-t_{i-1})}\right]-\frac{1}{2}\left[\frac{x_{i}-\mu-\left(x_{i-1}-\mu\right)e^{-\theta(t_{i}-t_{i-1})}}{\sigma\sqrt{1-e^{-2\theta(t_{i}-t_{i-1})}}}\sqrt{2\theta}\right]^{2}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L:=\ln\left\{ \frac{\mathbb{P}\left(\bigcap_{i=0}^{n}X_{t_{i}}\in\left[x_{i},x_{i}+dx_{i}\right]\right)}{dx_{0}\cdots dx_{n}}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial L}{\partial\theta}=\frac{n+1}{2\theta}-\frac{\left(x_{0}-\mu\right)^{2}}{\sigma^{2}}-\sum_{i=1}^{n}\frac{\left[\left(x_{i}-\mu\right)-e^{-\theta\cdot\left(t_{i}-t_{i-1}\right)}\left(x_{i-1}-\mu\right)\right]^{2}}{\sigma^{2}\cdot\left[1-e^{-2\theta\cdot\left(t_{i}-t_{i-1}\right)}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial L}{\partial\mu}=\frac{2\theta\left(x_{0}-\mu\right)}{\sigma^{2}}+\sum_{i=1}^{n}\frac{2\theta\left[1-e^{-\theta\cdot\left(t_{i}-t_{i-1}\right)}\right]\left[\left(x_{i}-\mu\right)-e^{-\theta\cdot\left(t_{i}-t_{i-1}\right)}\left(x_{i-1}-\mu\right)\right]}{\sigma^{2}\cdot\left[1-e^{-2\theta\cdot\left(t_{i}-t_{i-1}\right)}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial L}{\partial\sigma}=-\frac{n+1}{\sigma}+\frac{2\theta\left(x_{0}-\mu\right)^{2}}{\sigma^{3}}+\sum_{i=1}^{n}\frac{2\theta\left[\left(x_{i}-\mu\right)-e^{-\theta\cdot\left(t_{i}-t_{i-1}\right)}\left(x_{i-1}-\mu\right)\right]^{2}}{\sigma^{3}\cdot\left[1-e^{-2\theta\cdot\left(t_{i}-t_{i-1}\right)}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Ornstein-Uhlenbeck process conditional on a future value
 \end_layout
 
@@ -4753,9 +4940,10 @@ Then
 \begin_inset Formula 
 \begin{align*}
 \ln p_{N} & =\ln\left\{ \frac{\sqrt{2\theta}}{\sigma}\frac{1}{\sqrt{2\pi}}\exp\left[-\frac{\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}/\theta}\right]\right\} +\sum_{i=1}^{N-1}\ln\left\{ \frac{\sqrt{2\theta}}{\sigma}\frac{1}{\sqrt{2\pi}}\exp\left[-\frac{\left(x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right)^{2}}{2\sigma^{2}\frac{1-e^{-2\theta\Delta t_{i}}}{2\theta}}\right]\right\} \\
- & =\frac{1}{2}\ln\left(2\theta\right)-\ln\sigma-\frac{1}{2}\ln\left(2\pi\right)-\frac{\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}/\theta}+\sum_{i=1}^{N-1}\left\{ \frac{1}{2}\ln\left(2\theta\right)-\ln\sigma-\frac{1}{2}\ln\left(2\pi\right)-\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{2}\left(1-e^{-2\theta\Delta t_{i}}\right)}\right\} \\
+ & =\frac{1}{2}\ln\left(2\theta\right)-\ln\sigma-\frac{1}{2}\ln\left(2\pi\right)-\frac{\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}/\theta}\\
+ & +\sum_{i=1}^{N-1}\left\{ \frac{1}{2}\ln\left(2\theta\right)-\ln\sigma-\frac{1}{2}\ln\left(2\pi\right)-\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{2}\left(1-e^{-2\theta\Delta t_{i}}\right)}\right\} \\
  & =\frac{N}{2}\ln\left(2\theta\right)-N\ln\sigma-\frac{N}{2}\ln\left(2\pi\right)-\frac{\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}/\theta}-\sum_{i=1}^{N-1}\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{2}\left(1-e^{-2\theta\Delta t_{i}}\right)}\\
- & =\frac{N}{2}\left(\ln\theta-\ln\pi\right)-N\ln\sigma-\frac{\theta\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}}-\sum_{i=1}^{N-1}\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{2}\left(1-e^{-2\theta\Delta t_{i}}\right)}
+ & =\frac{N}{2}\left(\ln\theta-\ln\pi\right)-\frac{N}{2}\ln\sigma^{2}-\frac{\theta\left(x_{t_{1}}-\mu\right)^{2}}{\sigma^{2}}-\sum_{i=1}^{N-1}\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{2}\left(1-e^{-2\theta\Delta t_{i}}\right)}
 \end{align*}
 
 \end_inset
@@ -4765,6 +4953,46 @@ Then
 
 \begin_layout Standard
 Furthermore,
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\partial\ln p_{N}$
+\end_inset
+
+/
+\begin_inset Formula $\partial\theta$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
@@ -4779,15 +5007,124 @@ Furthermore,
 \end_layout
 
 \begin_layout Standard
-Obviously,
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\partial}{\partial\theta}\left\{ \frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{1-e^{-2\theta\Delta t_{i}}}\right\} \\
+= & \frac{\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{1-e^{-2\theta\Delta t_{i}}}\\
+ & +\frac{2\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]\cdot\Delta t_{i}\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}}{1-e^{-2\theta\Delta t_{i}}}\\
+ & -\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\left(1-e^{-2\theta\Delta t_{i}}\right)^{2}}2\Delta t_{i}e^{-2\theta\Delta t_{i}}
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\partial\ln p_{N}/\partial\mu$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\ln p_{N}}{\partial\mu}=\frac{2\theta}{\sigma^{2}}\left(x_{t_{1}}-\mu\right)-\frac{\theta}{\sigma^{2}}\sum_{i=1}^{N-1}\frac{\partial}{\partial\mu}\frac{\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\left(1-e^{-2\theta\Delta t_{i}}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
- & \frac{\partial}{\partial\theta}\left\{ \frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{1-e^{-2\theta\Delta t_{i}}}\right\} \\
-= & \frac{\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{1-e^{-2\theta\Delta t_{i}}}+\frac{2\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]\left[-\Delta t_{i}\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}\right]}{1-e^{-2\theta\Delta t_{i}}}-\frac{\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\left(1-e^{-2\theta\Delta t_{i}}\right)^{2}}2\Delta t_{i}e^{-2\theta\Delta t_{i}}
+ & \frac{\partial}{\partial\mu}\frac{\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\left(1-e^{-2\theta\Delta t_{i}}\right)}\\
+= & \frac{2\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]}{\left(1-e^{-2\theta\Delta t_{i}}\right)}\cdot\left(e^{-\theta\Delta t_{i}}-1\right)\\
+= & -\frac{2\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]}{1+e^{-\theta\Delta t_{i}}}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\ln p_{N}}{\partial\mu}=\frac{2\theta}{\sigma^{2}}\left[\left(x_{t_{1}}-\mu\right)+\sum_{i=1}^{N-1}\frac{x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu}{1+e^{-\theta\Delta t_{i}}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\partial\ln p_{N}/\partial\sigma$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \frac{\partial\ln p_{N}}{\partial\sigma}\\
+= & -\frac{N}{\sigma}+\frac{2\theta}{\sigma^{3}}\left(x_{t_{1}}-\mu\right)^{2}+\sum_{i=1}^{N-1}\frac{2\theta\left[x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu\right]^{2}}{\sigma^{3}\left(1-e^{-2\theta\Delta t_{i}}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
 
 \end_inset
 
@@ -13617,6 +13954,21 @@ We know
 \begin_inset Formula 
 \[
 r_{t}=\left(r_{0}-\mu\right)r^{-\theta t}+\mu+\nu\intop_{0}^{t}e^{\theta(s-t)}dW'_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{t}|r_{0}\sim\boldsymbol{N}\left[\left(r_{0}-\mu\right)r^{-\theta t}+\mu,\frac{\nu^{2}}{2\theta}\left(1-e^{-2\theta t}\right)\right]
 \]
 
 \end_inset
