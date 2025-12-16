@@ -14407,7 +14407,7 @@ Now consider the price
 \begin_layout Standard
 \begin_inset Formula 
 \[
-C_{T}=\mathscr{I}\left(X_{T}>K\right)\cdot\left(X_{T}-K\right)
+C_{T}=\mathscr{I}\left(X_{T}\geq K\right)\cdot\left(X_{T}-K\right)
 \]
 
 \end_inset
@@ -14433,7 +14433,7 @@ where
 \begin_inset Formula 
 \begin{align}
 C_{0} & =e^{-\gamma T}\mathbb{E}_{Q}\left[\mathscr{I}\left(X_{T}>K\right)\cdot\left(X_{T}-K\right)\right]\nonumber \\
- & =e^{-\gamma T}\mathbb{E}_{Q}\left[X_{T};X_{T}>K\right]-e^{-\gamma T}K\mathbb{P}_{Q}\left(X_{T}>K\right)\label{eq:rgy54h67j6}
+ & =e^{-\gamma T}\mathbb{E}_{Q}\left[X_{T};X_{T}>K\right]-e^{-\gamma T}K\mathbb{P}_{Q}\left(X_{T}\geq K\right)\label{eq:rgy54h67j6}
 \end{align}
 
 \end_inset
@@ -14516,7 +14516,7 @@ Then we have
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{T}\overset{d}{=}a_{t}+b_{t}Z
+\ln\frac{X_{T}}{X_{0}}\overset{d}{=}a_{t}+b_{t}Z
 \]
 
 \end_inset
@@ -14536,8 +14536,11 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\mathbb{P}_{Q}\left(X_{T}>K\right) & =\mathbb{P}_{Q}\left(Z>\frac{K-a_{t}}{b_{t}}\right)\\
- & =\Phi\left(\frac{a_{t}-K}{b_{t}}\right)
+\mathbb{P}_{Q}\left(X_{T}\geq K\right) & =\mathbb{P}_{Q}\left(X_{0}e^{a_{t}+b_{t}Z}\geq K\right)\\
+ & =\mathbb{P}_{Q}\left(a_{t}+b_{t}Z\geq\ln\frac{K}{X_{0}}\right)\\
+ & =\mathbb{P}_{Q}\left(Z\geq\frac{1}{b_{t}}\ln\frac{K}{X_{0}}-\frac{a_{t}}{b_{t}}\right)\\
+ & =\mathbb{P}_{Q}\left(Z\leq\frac{a_{t}}{b_{t}}-\frac{1}{b_{t}}\ln\frac{K}{X_{0}}\right)\\
+ & =\mathbb{P}_{Q}\left(Z\leq\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}\right)
 \end{align*}
 
 \end_inset
@@ -14552,9 +14555,9 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\mathbb{E}_{Q}\left(X_{T};X_{T}>K\right) & =\frac{1}{\sqrt{2\pi}}\intop_{\left(K-a_{t}\right)/b_{t}}^{\infty}\left(a_{t}+b_{t}x\right)e^{-x^{2}/2}dx\\
- & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})/b_{t}}^{\infty}xe^{-x^{2}/2}dx\\
- & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})/b_{t}}^{\infty}e^{-x^{2}/2}d\left(\frac{x^{2}}{2}\right)
+\mathbb{E}_{Q}\left(X_{T};X_{T}\geq K\right) & =\frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}}X_{0}e^{a_{t}+b_{t}x}e^{-x^{2}/2}dx\\
+ & =X_{0}e^{a_{t}}\frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}}\exp\left[-\frac{1}{2}\left(x-b_{t}\right)^{2}+\frac{b_{t}^{2}}{2}\right]dx\\
+ & =X_{0}e^{a_{t}+\frac{b_{t}^{2}}{2}}\cdot\frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}}\exp\left[-\frac{1}{2}\left(x-b_{t}\right)^{2}\right]dx
 \end{align*}
 
 \end_inset
@@ -14563,20 +14566,19 @@ and
 \end_layout
 
 \begin_layout Standard
-Since 
-\begin_inset Formula $xe^{-x^{2}/2}$
+Let 
+\begin_inset Formula $x-b_{t}=x'$
 \end_inset
 
- is an odd function,
- we have
+.
+ Then
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\mathbb{E}_{Q}\left(X_{T};X_{T}>K\right) & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\intop_{(K-a_{t})^{2}/2b_{t}^{2}}^{\infty}e^{-x}dx\\
- & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\frac{1}{\sqrt{2\pi}}\exp\left[-\frac{\left(a_{t}-K\right)^{2}}{2b_{t}^{2}}\right]\\
- & =a_{t}\Phi\left(\frac{a_{t}-K}{b_{t}}\right)+b_{t}\phi\left(\frac{a_{t}-K}{b_{t}}\right)
+\mathbb{E}_{Q}\left(X_{T};X_{T}\geq K\right) & =X_{0}e^{a_{t}+\frac{b_{t}^{2}}{2}}\cdot\frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}-b_{t}}e^{-x'^{2}/2}dx'\\
+ & =X_{0}e^{a_{t}+\frac{b_{t}^{2}}{2}}\cdot\Phi\left(\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}-b_{t}\right)
 \end{align*}
 
 \end_inset
@@ -14598,8 +14600,7 @@ reference "eq:rgy54h67j6"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-C_{0} & =e^{-\gamma T}\left\{ a_{T}\Phi\left(\frac{a_{T}-K}{b_{T}}\right)+b_{T}\phi\left(\frac{a_{T}-K}{b_{T}}\right)-K\Phi\left(\frac{a_{T}-K}{b_{T}}\right)\right\} \\
- & =e^{-\gamma T}\left\{ \left(a_{T}-K\right)\cdot\Phi\left(\frac{a_{T}-K}{b_{T}}\right)+b_{T}\phi\left(\frac{a_{T}-K}{b_{T}}\right)\right\} 
+C_{0} & =e^{-\gamma T}X_{0}e^{a_{t}+\frac{b_{t}^{2}}{2}}\cdot\Phi\left(\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}-b_{t}\right)-e^{-\gamma T}K\cdot\Phi\left(\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}\right)
 \end{align*}
 
 \end_inset
