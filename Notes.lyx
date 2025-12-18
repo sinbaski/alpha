@@ -4967,10 +4967,8 @@ Then
 \begin_inset Formula 
 \begin{align*}
 \ln p_{N} & =\ln\left\{ \frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}\exp\left[-\frac{\left(x_{t_{1}}-\mu_{1}\right)^{2}}{2\sigma_{1}^{2}}\right]\right\} +\sum_{i=2}^{N}\ln\left\{ \frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\exp\left[-\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{2}}\right]\right\} \\
- & =-\frac{1}{2}\ln\left(2\pi\sigma_{1}^{2}\right)-\frac{\left(x_{t_{1}}-\mu_{1}\right)^{2}}{2\sigma_{1}^{2}}+\sum_{i=2}^{N}\left[-\frac{1}{2}\ln\left(2\pi\sigma_{i}^{2}\right)-\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{2}}\right]\\
  & =-\frac{1}{2}\sum_{i=1}^{N}\ln\left(2\pi\sigma_{i}^{2}\right)-\sum_{i=1}^{N}\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{^{2}}}\\
- & =-\frac{1}{2}\sum_{i=1}^{N}\left(\ln2\pi+2\ln\sigma_{i}\right)-\sum_{i=1}^{N}\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{^{2}}}\\
- & =-\sum_{i=1}^{N}\ln\sigma_{i}-\frac{N}{2}\ln2\pi-\sum_{i=1}^{N}\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{^{2}}}
+ & =-\sum_{i=1}^{N}\ln\sigma_{i}-\sum_{i=1}^{N}\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{^{2}}}-\frac{N}{2}\ln2\pi
 \end{align*}
 
 \end_inset
@@ -5306,23 +5304,29 @@ Finally
 \end_layout
 
 \begin_layout Subsection
-When the time interval is constant
+When the process is not observed
 \end_layout
 
 \begin_layout Standard
-When 
-\begin_inset Formula $\Delta t_{1}=\Delta t_{2}=\cdots=\Delta t_{N-1}=T$
+When the process is not directly observed but inferred from other observations,
+ each 
+\begin_inset Formula $x_{t_{i}}$
 \end_inset
 
-,
- we have
+may be dependent on the parameters 
+\begin_inset Formula $\theta,\mu,\sigma$
+\end_inset
+
+.
+ In this case,
+ note
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\sigma_{1} & =\frac{\sigma}{\sqrt{2\theta}}\\
-\sigma_{i} & =\frac{\sigma}{\sqrt{2\theta}}\cdot\sqrt{1-e^{-2\theta T}}
+\ln p_{N} & =-\sum_{i=1}^{N}\ln\sigma_{i}-\sum_{i=1}^{N}\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2\sigma_{i}^{^{2}}}-\frac{N}{2}\ln2\pi\\
+ & =-\sum_{i=1}^{N}\ln\sigma_{i}-\frac{\left(x_{t_{1}}-\mu_{1}\right)^{2}}{2\sigma_{1}^{2}}-\sum_{i=2}^{N}\frac{\left[x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)e^{-\theta\Delta t_{i-1}}-\mu\right]^{2}}{2\sigma_{i}^{^{2}}}-\frac{N}{2}\ln2\pi
 \end{align*}
 
 \end_inset
@@ -5331,58 +5335,38 @@ When
 \end_layout
 
 \begin_layout Standard
-Let
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\alpha & =\frac{\sigma}{\sqrt{2\theta}}\\
-\beta & =e^{-\theta T}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Then
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sigma_{1} & =\alpha\\
-\sigma_{i} & =\alpha\sqrt{1-\beta^{2}}\\
-\mu_{1} & =\mu\\
-\mu_{i} & =\left(x_{t_{i-1}}-\mu\right)\cdot\beta+\mu
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Clearly,
+We have,
  for 
-\begin_inset Formula $i\geq2$
+\begin_inset Formula $1\leq i<N$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\ln p_{N}}{\partial x_{t_{i}}} & =-\frac{x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)e^{-\theta\Delta t_{i-1}}-\mu}{\sigma_{i}^{2}}-\frac{x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu}{\sigma_{i+1}^{2}}\cdot\left(-e^{-\theta\Delta t_{i}}\right)\\
+ & =-\frac{x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)e^{-\theta\Delta t_{i-1}}-\mu}{\sigma_{i}^{2}}+\frac{x_{t_{i+1}}-\left(x_{t_{i}}-\mu\right)e^{-\theta\Delta t_{i}}-\mu}{\sigma_{i+1}^{2}}\cdot e^{-\theta\Delta t_{i}}
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+For 
+\begin_inset Formula $i=N$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-\nabla\sigma_{i}=\begin{bmatrix}\partial_{\alpha}\sigma_{i}\\
-\partial_{\beta}\sigma_{i}\\
-\partial_{\mu}\sigma_{i}
-\end{bmatrix}=\begin{bmatrix}\sqrt{1-\beta^{2}}\\
--\frac{\alpha\beta}{\sqrt{1-\beta^{2}}}\\
-0
-\end{bmatrix}
+\frac{\partial\ln p_{N}}{\partial x_{t_{i}}}=-\frac{x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)e^{-\theta\Delta t_{i-1}}-\mu}{\sigma_{i}^{2}}
 \]
 
 \end_inset
@@ -5391,400 +5375,23 @@ Clearly,
 \end_layout
 
 \begin_layout Standard
-and
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\nabla\mu_{i}=\begin{bmatrix}\partial_{\alpha}\\
-\partial_{\beta}\\
-\partial_{\mu}
-\end{bmatrix}\mu_{i}=\begin{bmatrix}0\\
-x_{t_{i-1}}-\mu\\
-1-\beta
-\end{bmatrix}
-\]
-
+Now we have,
+ for 
+\begin_inset Formula $\xi$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Moreover
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{\partial}{\partial\sigma_{i}}\ln p_{N} & =-\frac{1}{\sigma_{i}}-\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{2}\left(-2\cdot\sigma_{i}^{-3}\right)\\
- & =\frac{1}{\sigma_{i}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\sigma_{i}^{2}}-1\right]\\
-\frac{\partial}{\partial\mu_{i}}\ln p_{N} & =\frac{x_{t_{i}}-\mu_{i}}{\sigma_{i}^{2}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Thus we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{\partial}{\partial\alpha}\ln p_{N} & =\sum_{i=1}^{N}\frac{\partial\ln p_{N}}{\partial\sigma_{i}}\cdot\frac{\partial\sigma_{i}}{\partial\alpha}\\
- & =\sum_{i=1}^{N}\frac{1}{\sigma_{i}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\sigma_{i}^{2}}-1\right]\cdot\left(1_{i=1}+1_{i\geq2}\cdot\sqrt{1-\beta^{2}}\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{\partial}{\partial\beta}\ln p_{N} & =\sum_{i=1}^{N}\left(\frac{\partial\ln p_{N}}{\partial\mu_{i}}\cdot\frac{\partial\mu_{i}}{\partial\beta}+\frac{\partial\ln p_{N}}{\partial\sigma_{i}}\cdot\frac{\partial\sigma_{i}}{\partial\beta}\right)\\
- & =\sum_{i=1}^{N}\left\{ \frac{\left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)1_{i\geq2}}{\sigma_{i}^{2}}+\frac{1}{\sigma_{i}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\sigma_{i}^{2}}-1\right]\cdot\left[1_{i\geq2}\cdot\left(-\frac{\alpha\beta}{\sqrt{1-\beta^{2}}}\right)\right]\right\} \\
- & =\sum_{i=2}^{N}\left\{ \frac{\left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)}{\sigma_{i}^{2}}-\frac{1}{\sigma_{i}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\sigma_{i}^{2}}-1\right]\cdot\frac{\alpha\beta}{\sqrt{1-\beta^{2}}}\right\} 
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{\partial}{\partial\mu}\ln p_{N} & =\sum_{i=1}^{N}\left(\frac{\partial\ln p_{N}}{\partial\mu_{i}}\cdot\frac{\partial\mu_{i}}{\partial\mu}+\frac{\partial\ln p_{N}}{\partial\sigma_{i}}\cdot\frac{\partial\sigma_{i}}{\partial\mu}\right)\\
- & =\sum_{i=1}^{N}\frac{x_{t_{i}}-\mu_{i}}{\sigma_{i}^{2}}\left[1_{i=1}\cdot+1_{i\geq2}\cdot\left(1-\beta\right)\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we can obtain the minimizing parameter values by setting the gradient to 0:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Let
-\begin_inset Formula 
-\[
-\frac{\partial\ln p_{N}}{\partial\alpha}=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\frac{1}{\alpha}\left[\frac{(1-\mu)^{2}}{\alpha^{2}}-1\right]+\sum_{i=2}^{N}\sqrt{1-\beta^{2}}\cdot\frac{1}{\alpha\sqrt{1-\beta^{2}}}\cdot\left\{ \frac{\left[x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)\cdot\beta-\mu\right]^{2}}{\alpha^{2}\left(1-\beta^{2}\right)}-1\right\}  & =0\\
-\left(1-\mu\right)^{2}-\alpha^{2}+\sum_{i=2}^{N}\frac{\left[x_{t_{i}}-\mu\cdot\left(1-\beta\right)-x_{t_{i-1}}\cdot\beta\right]^{2}}{1-\beta^{2}}-\alpha^{2} & =0\\
-\frac{\left(1-\mu\right)^{2}}{2}+\frac{1}{2}\sum_{i=2}^{N}\frac{\left[x_{t_{i}}-\mu\cdot\left(1-\beta\right)-x_{t_{i-1}}\cdot\beta\right]^{2}}{1-\beta^{2}} & =\alpha^{2}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Let
-\begin_inset Formula 
-\[
-\frac{\partial\ln p_{N}}{\partial\beta}=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sum_{i=2}^{N}\left\{ \frac{\left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)}{\sigma_{i}^{2}}-\frac{1}{\sigma_{i}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\sigma_{i}^{2}}-1\right]\cdot\frac{\alpha\beta}{\sqrt{1-\beta^{2}}}\right\}  & =0\\
-\sum_{i=2}^{N}\left\{ \frac{\left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)}{\alpha^{2}\left(1-\beta^{2}\right)}-\frac{1}{\alpha\sqrt{1-\beta^{2}}}\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\alpha^{2}\left(1-\beta^{2}\right)}-1\right]\cdot\frac{\alpha\beta}{\sqrt{1-\beta^{2}}}\right\}  & =0\\
-\sum_{i=2}^{N}\left\{ \frac{\left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)}{\alpha^{2}\left(1-\beta^{2}\right)}-\left[\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{\alpha^{2}\left(1-\beta^{2}\right)}-1\right]\cdot\frac{\beta}{1-\beta^{2}}\right\}  & =0
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Multiplying both sides with 
-\begin_inset Formula $\alpha^{2}\left(1-\beta^{2}\right)$
+ in 
+\begin_inset Formula $(\theta,\mu,\sigma)$
 \end_inset
 
 ,
- we get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sum_{i=2}^{N}\left\{ \left(x_{t_{i}}-\mu_{i}\right)\left(x_{t_{i-1}}-\mu\right)-\frac{\left(x_{t_{i}}-\mu_{i}\right)^{2}}{1-\beta^{2}}\cdot\beta+\alpha^{2}\beta\right\}  & =0\\
-\sum_{i=2}^{N}\left\{ \left[x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)\beta-\mu\right]\left(x_{t_{i-1}}-\mu\right)-\frac{\left[x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)\beta-\mu\right]^{2}}{1-\beta^{2}}\cdot\beta+\alpha^{2}\beta\right\}  & =0
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- Letting
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\partial\ln p_{N}}{\partial\mu}=0
+\frac{\partial\ln p_{N}}{\partial\xi}=\sum_{i=1}^{N}\left(\frac{\partial\ln p_{N}}{\partial\mu_{i}}\cdot\frac{\partial\mu_{i}}{\partial\xi}+\frac{\partial\ln p_{N}}{\partial\nu_{i}}\cdot\frac{\partial\nu_{i}}{\partial\xi}+\frac{\partial\ln p_{N}}{\partial x_{t_{i}}}\cdot\frac{\partial x_{t_{i}}}{\partial\xi}\right)
 \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-we get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\sum_{i=1}^{N}\frac{x_{t_{i}}-\mu_{i}}{\sigma_{i}^{2}}\left[1_{i=1}\cdot+1_{i\geq2}\cdot\left(1-\beta\right)\right] & =0\\
-\frac{x_{t_{1}}-\mu}{\alpha^{2}}+\sum_{i=2}^{N}\frac{x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)\beta-\mu}{\alpha^{2}\left(1-\beta^{2}\right)}\cdot\left(1-\beta\right) & =0\\
-\left(x_{t_{1}}-\mu\right)\left(1+\beta\right)+\sum_{i=2}^{N}\left[x_{t_{i}}-\left(x_{t_{i-1}}-\mu\right)\beta-\mu\right] & =0
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Re-arranging the terms,
- we get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\left[\left(x_{t_{1}}-\mu\right)-\sum_{i=2}^{N}\left(x_{t_{i-1}}-\mu\right)\right]\beta+\left(x_{t_{1}}-\mu\right)+\sum_{i=2}^{N}\left(x_{t_{i}}-\mu\right) & =0\\
-\left[\sum_{i=1}^{N}\left(x_{t_{i}}-\mu\right)\right]\left[\sum_{i=2}^{N}\left(x_{t_{i-1}}-\mu\right)-\left(x_{t_{1}}-\mu\right)\right]^{-1} & =\beta
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To obtain 
-\begin_inset Formula $\theta$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma$
-\end_inset
-
- from 
-\begin_inset Formula $\alpha$
-\end_inset
-
- and 
-\begin_inset Formula $\beta$
-\end_inset
-
-,
- we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\theta & =-\frac{\ln\beta}{T}\\
-\sigma & =\alpha\sqrt{2\theta}\\
- & =\alpha\sqrt{\ln\beta^{-\frac{2}{T}}}
-\end{align*}
 
 \end_inset
 
@@ -15077,7 +14684,525 @@ reference "eq:k78k89l8"
 \begin_inset Formula $\theta,\mu,\nu$
 \end_inset
 
- using quoted spot prices and futures' prices.
+ using quoted spot prices 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ and futures' prices 
+\begin_inset Formula $f_{t}$
+\end_inset
+
+.
+ Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+r_{t} & =\frac{1}{\varphi}\ln\frac{f_{t}}{x_{t}\ell}\\
+ & =\frac{1}{\varphi}\left(\ln\frac{f_{t}}{x_{t}}-\ln\ell\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $c_{t}=\ln\frac{f_{t}}{x_{t}}$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial r_{t}}{\partial\varphi} & =-\frac{1}{\varphi^{2}}\left(\ln\frac{f_{t}}{x_{t}}-\ln\ell\right)\\
+\frac{\partial r_{t}}{\partial\ell} & =-\frac{1}{\varphi\ell}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Derivatives w.r.t.
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\varphi}{\partial\theta}:$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\varphi}{\partial\theta}=\frac{\theta\tau e^{-\theta\tau}-\left(1-e^{-\theta\tau}\right)}{\theta^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\ell}{\partial\theta}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln\ell=\ell_{1}\ell_{2}+\mu\tau+\ell_{3}\ell_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\ell_{1} & =-\frac{1-e^{-\theta\tau}}{\theta}\\
+\ell_{2} & =\mu+\frac{\nu^{2}}{\theta^{2}}\\
+\ell_{3} & =\frac{\nu^{2}}{2\theta^{2}}\\
+\ell_{4} & =\tau+\frac{1-e^{-2\theta\tau}}{2\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta}\ell=\left(\frac{\partial\ln\ell}{\partial\theta}\right)\cdot\ell
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\ln\ell}{\partial\theta}=\frac{\partial\ell_{1}}{\partial\theta}\cdot\ell_{2}+\ell_{1}\cdot\frac{\partial\ell_{2}}{\partial\theta}+\frac{\partial\ell_{3}}{\partial\theta}\cdot\ell_{4}+\ell_{3}\cdot\frac{\partial\ell_{4}}{\partial\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\ell_{1}}{\partial\theta} & =-\frac{\theta\tau e^{-\theta\tau}-\left(1-e^{-\theta\tau}\right)}{\theta^{2}}\\
+\frac{\partial\ell_{2}}{\partial\theta} & =-\frac{2\nu^{2}}{\theta^{3}}\\
+\frac{\partial\ell_{3}}{\partial\theta} & =-\frac{\nu^{2}}{\theta^{3}}\\
+\frac{\partial\ell_{4}}{\partial\theta} & =\frac{2\theta\cdot2\tau e^{-2\theta\tau}-\left(1-e^{-2\theta\tau}\right)\cdot2}{4\theta^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Derivatives w.r.t.
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\varphi}{\partial\mu}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\ell}{\partial\mu}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Obviously,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\mu}\ell=\left(\frac{\partial\ln\ell}{\partial\mu}\right)\cdot\ell
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\ln\ell}{\partial\mu} & =\ell_{1}\frac{\partial\ell_{2}}{\partial\mu}+\tau\\
+ & =\ell_{1}+\tau
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Derivatives w.r.t 
+\begin_inset Formula $\nu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\varphi}{\partial\nu}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial\ell}{\partial\nu}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Again,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\nu}\ell=\left(\frac{\partial\ln\ell}{\partial\nu}\right)\cdot\ell
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\ln\ell}{\partial\nu}=\ell_{1}\frac{\partial\ell_{2}}{\partial\nu}+\frac{\partial\ell_{3}}{\partial\nu}\ell_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\ell_{2}}{\partial\nu} & =\frac{2\nu}{\theta^{2}}\\
+\frac{\partial\ell_{3}}{\partial\nu} & =\frac{\nu}{\theta^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
