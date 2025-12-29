@@ -14545,6 +14545,270 @@ C_{0} & =e^{-\gamma t}X_{0}e^{a_{t}+\frac{b_{t}^{2}}{2}}\cdot\Phi\left(\frac{a_{
 
 \end_layout
 
+\begin_layout Subsubsection
+The Derivative w.r.t.
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the purpose of calibration,
+ we need 
+\begin_inset Formula $\frac{\partial C_{0}}{\partial\sigma}$
+\end_inset
+
+.
+ Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+d_{1} & =\frac{a_{t}}{b_{t}}+b_{t}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}\\
+d_{2} & =d_{1}-b_{t}\\
+ & =\frac{a_{t}}{b_{t}}+\frac{1}{b_{t}}\ln\frac{X_{0}}{K}\\
+\xi & =e^{a_{t}+\frac{b_{t}^{2}}{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{0}=e^{-\gamma t}X_{0}\xi\Phi\left(d_{1}\right)-e^{-\gamma t}K\Phi\left(d_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial d_{1}}{\partial a_{t}} & =\frac{1}{b_{t}}\\
+\frac{\partial d_{1}}{\partial b_{t}} & =-\frac{a_{t}+\ln\frac{X_{0}}{K}}{b_{t}^{2}}+1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial d_{2}}{\partial a_{t}} & =\frac{\partial d_{1}}{\partial a_{t}}\\
+\frac{\partial d_{2}}{\partial b_{t}} & =\frac{\partial d_{1}}{\partial b_{t}}-1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\xi}{\partial a_{t}} & =\xi\\
+\frac{\partial\xi}{\partial b_{t}} & =b_{t}\xi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we calculate 
+\begin_inset Formula $\frac{da_{t}}{d\sigma}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{db_{t}}{d\sigma}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{da_{t}}{d\sigma}=-\sigma t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{db_{t}}{d\sigma} & =\frac{db_{t}}{db_{t}^{2}}\cdot\frac{db_{t}^{2}}{d\sigma}\\
+ & =\frac{1}{2b_{t}}\cdot2\sigma t\\
+ & =\frac{\sigma t}{b_{t}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 The price of a future
 \end_layout
