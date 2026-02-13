@@ -1,0 +1,1311 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass europasscv
+\begin_preamble
+
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 0
+\tocdepth -1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Name
+Xiaolei Xie
+\end_layout
+
+\begin_layout Email
+xie.xiaolei@gmail.com
+\end_layout
+
+\begin_layout Nationality
+U.K.
+\end_layout
+
+\begin_layout Telephone
++44 7380 1911 66
+\end_layout
+
+\begin_layout Section
+Experience
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item{
+\backslash
+color{purple}{
+\backslash
+bf Senior Quant Modeller} at {
+\backslash
+it London Stock Exchange Group,
+ Jun.
+ 2021 - Present}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ For convertible bonds,
+ I implemented the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Heston}
+\end_layout
+
+\end_inset
+
+ model for pricing European options and hence building the volatility surface of the bonds' underlying equities.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The work took advantage of a 2017 result (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://dx.doi.org/10.1016/j.ejor.2017.05.018}
+\end_layout
+
+\end_inset
+
+) that expressed the European call option price and its gradient w.r.t.
+ the model parameters as integrals that could be numerically evaluated at speed.
+ The model parameters were found by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Least-Square-Error}
+\end_layout
+
+\end_inset
+
+ estimate using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Levenberg-Marquardt Algorithm}
+\end_layout
+
+\end_inset
+
+ from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it GNU Scientific Library}
+\end_layout
+
+\end_inset
+
+ (GSL),
+ while numerical integration was done by the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Gauss-Legendre}
+\end_layout
+
+\end_inset
+
+ method - a fixed-point method that allowed sharing common terms among the 12 integrals and hence speeding up the computation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ After computing the European option prices with the Heston model at given expiry dates and strike prices,
+ these option prices were inverted via the Black-Scholes' model to produce a volatility surface using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Brent}
+\end_layout
+
+\end_inset
+
+ method.
+ Since the Heston model sometimes leads to call option prices that are outside of the price range of the Black-Scholes' model,
+ a curve-fitting algorithm was applied to yield a smooth curve for each slice of the surface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ The work was programmed in C++ using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it GSL}
+\end_layout
+
+\end_inset
+
+.
+ With the g++ compiler's support of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it OpenMP}
+\end_layout
+
+\end_inset
+
+,
+ parallel computation was implemented wherever possible and worthwhile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ For equities without traded European options,
+ I developed an algorithm to infer their Heston volatility surfaces using their daily closing prices and assuming constant correlations among the equities' relative returns.
+ The algorithm makes use of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it Principle Component Analysis}
+\end_layout
+
+\end_inset
+
+ (PCA) and the Heston volatility surfaces of equities that do come with European options and that have been successfully produced.
+ The algorithm was programmed in Python.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ I helped research and develop an in-house foreign exchange rate model based on the Ornstein-Uhlenbeck process.
+ I derived formulas in the risk-neutral probability measure to calculate the fair prices of FX options,
+ FX futures and FX futures' options.
+ The model was implemented in C++,
+ making use of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+it GSL}
+\end_layout
+
+\end_inset
+
+,
+ and the produced data were made available to the wider pricing library via a Python script that was run on a daily basis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Maintain the pricing & analytics library (YieldBook).
+ My daily responsibilities include fixing bugs,
+ answering clients' enquiries and occasionally enhancing the software.
+ The models that I have worked with include the Ornstien-Uhlenbeck (Vasicek) model,
+ the Hull-White model,
+ the CIR model,
+ and the Jarrow-Yildirim model.
+ The products that I have worked with include corporate bonds,
+ index-linked bonds and the aforementioned convertible bonds.
+ The library was written in C and C++.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{C,
+ C++,
+ Python,
+ SQL,
+ GSL (GNU Scientific Library)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item{
+\backslash
+color{purple} {
+\backslash
+bf Quantitative Analyst} at 
+\backslash
+it{Lloyds Bank,
+ Oct.
+ 2018 - May 2021}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Developed algorithms to forecast the volume of UK retail sales.
+ I used principle component analysis with heavy-tailed time series to obtain sector-by-sector predictions,
+ taking into account the influence of the weather and the correlations between the sectors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Developed algorithms to enhance the stress testing framework used by the Market Risk department.
+ The algorithms were based on multivariate distributions,
+ copulas and the Extreme Value Theory.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Built time series models to analyze financial reports and stock price series.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{Python,
+ SQL}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item{
+\backslash
+color{purple} {
+\backslash
+bf Quantitative Analyst} at 
+\backslash
+it{Atenvia Asset Management,
+ Oct.
+ 2017 - Apr.
+ 2018}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ I built ARIMA models to forecast the revenue and profit,
+ among others,
+ of publicly traded companies such as Apple,
+ Amazon,
+ Google,
+ Intel,
+ AMD,
+ Coca Cola,
+ Pepsi,
+ etc.
+ The forecast was based on the historical values of those quantities found in the companies' quarterly financial reports.
+ The results were provided to discretionary traders as references.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ I fitted the Ornstein-Uhlenbeck (OU) process to the historical values of a portfolio of stock indices.
+ I received the portfolio compositions from the strategists and calculated the historical values of the portfolio from the historical values of the stock indices.
+ Then the OU process was fitted by regressing the price increments onto the prices,
+ with a constant term included.
+ The parameters of the fitted process were used as an input to algorithmic trading signal generation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ I developed Monte-Carlo simulations for trading strategy backtesting.
+ By design,
+ algorithmic trading processes communicated with the interface process via named pipes and were woken by the latter when a price update was received.
+ So I programmed a Python script that mimicked the price updates sent over the pipes but replaced them with historical prices or simulated prices.
+ The historical prices were real-time prices that had been received by the interface program and stored in a database,
+ whereas the simulated prices were generated by Monte-Carlo simulations,
+ using models such as the Geometric Brownian Motion and the Heston model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{C++,
+ Python,
+ SQL,
+ GSL (GNU Scientific Library)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item {
+\backslash
+color{purple} {
+\backslash
+bf Audio Software Engineer} at 
+\backslash
+it{ST-Ericsson,
+ Sep.
+ 2008 - Jan.
+ 2011}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Developed audio device drivers in the Linux OS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Optimized audio signal routing to minimize noise and power consumption.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{C,
+ Linux kernel}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Education
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item {Ph.D,
+ Copenhagen University,
+ Oct.
+ 2014 - Sep.
+ 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Publications:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Janssen,
+ A.;
+ Mikosch,
+ T.;
+ Rezapour,
+ M;
+ Xie,
+ X.
+ The eigenvalues of the sample covariance matrix of a multivariate heavy-tailed stochastic volatility model.
+ Bernoulli 24 (2018),
+ no.
+ 2,
+ 1351--1393.
+ doi:10.3150/16-BEJ901.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://projecteuclid.org/euclid.bj/1505980898}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Davis,
+ R.A.,
+ Heiny,
+ J.,
+ Mikosch,
+ T.,
+ Xie,
+ X.
+ Extreme value analysis for the sample auto-covariance matrices of heavy-tailed multivariate time series.
+ Extremes (2016) 19:
+ 517.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://link.springer.com/article/10.1007/s10687-016-0251-7}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{R,
+ C++,
+ Python}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item {Master of Physics,
+ Lund University,
+ Jan.
+ 2011 - Jun.
+ 2014}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ GPA:
+ 4.3/5
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item {Master of Computer Science,
+ Aalto University,
+ Sep.
+ 2005 - Jun.
+ 2008}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ GPA:
+ 4.17/5
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item {Bachelor of Computer Science,
+ Beijing Institute of Technology,
+ Sep.
+ 2001 - Jun.
+ 2005}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ GPA:
+ 85.5/100
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
