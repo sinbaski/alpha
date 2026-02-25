@@ -776,6 +776,134 @@ It is understood that
  is unbiased.
 \end_layout
 
+\begin_layout Section
+Kalman Filter
+\end_layout
+
+\begin_layout Standard
+The Kalman-filter is used to calibrate a state-space model.
+ Let 
+\begin_inset Formula $\vec{X_{n}}$
+\end_inset
+
+ be a vector of state-space variables that evolve according to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{X}_{n+1}=\boldsymbol{A}\left(\vec{\theta}\right)\vec{X}_{n}+\vec{\epsilon}_{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\vec{\theta}$
+\end_inset
+
+ is the vector of model parameters and 
+\begin_inset Formula $\vec{\epsilon}\sim N\left(0,\boldsymbol{Q}\right)$
+\end_inset
+
+.
+ The state-space variales are not observed but are related to observed quantities 
+\begin_inset Formula $\vec{Y}_{n}$
+\end_inset
+
+ via the measurement process 
+\begin_inset Formula 
+\[
+\vec{Y}_{n}=\boldsymbol{B}\left(\vec{\theta}\right)\vec{X}_{n}+\vec{\eta}_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\vec{\eta}_{n}\sim N\left(0,\boldsymbol{R}\right)$
+\end_inset
+
+.
+ Given a sequence of observations 
+\begin_inset Formula $\{\vec{y}_{1},\vec{y}_{2},\cdots,\vec{y}_{N}\}$
+\end_inset
+
+.
+ We want to estimate 
+\begin_inset Formula $\vec{\theta}$
+\end_inset
+
+ using MLE.
+ For this purpose,
+ we need 
+\begin_inset Formula $\mathbb{P}\left(\vec{Y}_{n+1}\in d\vec{y}|\vec{Y}_{n}=\vec{y}_{n}\right)$
+\end_inset
+
+.
+ Clearly,
+\begin_inset Formula 
+\[
+\vec{Y}_{n+1}=\boldsymbol{B}\left(\boldsymbol{A}\vec{X}_{n}+\vec{\epsilon}_{n+1}\right)+\vec{\eta}_{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\vec{X}_{n}=\boldsymbol{B}^{-1}\left(\vec{Y}_{n}-\vec{\eta}_{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\vec{Y}_{n+1} & =\boldsymbol{B}\left[\boldsymbol{A}\left(\boldsymbol{B}^{-1}\vec{Y}_{n}-\boldsymbol{B}^{-1}\vec{\eta}_{n}\right)+\vec{\epsilon}_{n+1}\right]+\vec{\eta}_{n+1}\\
+ & =\boldsymbol{B}\boldsymbol{A}\boldsymbol{B}^{-1}\vec{Y}_{n}+\boldsymbol{B}\vec{\epsilon}_{n+1}-\boldsymbol{B}\boldsymbol{A}\boldsymbol{B}^{-1}\vec{\eta}_{n}+\vec{\eta}_{n+1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{cov}\left(\boldsymbol{B}\vec{\epsilon}_{n+1}-\boldsymbol{B}\boldsymbol{A}\boldsymbol{B}^{-1}\vec{\eta}_{n}+\vec{\eta}_{n+1}\right) & =\boldsymbol{B}\boldsymbol{Q}\boldsymbol{B}^{\top}+\left(\boldsymbol{B}\boldsymbol{A}\boldsymbol{B}^{-1}\right)\boldsymbol{R}\left(\boldsymbol{B}\boldsymbol{A}\boldsymbol{B}^{-1}\right)^{\top}+\boldsymbol{R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Results of large random matrices
 \end_layout
