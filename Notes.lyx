@@ -786,7 +786,7 @@ The Kalman-filter is used to calibrate a state-space model.
 \begin_inset Formula $\vec{X_{n}}$
 \end_inset
 
- be a vector of state-space variables that evolve according to
+ be a vector of state variables that evolve according to
 \end_layout
 
 \begin_layout Standard
