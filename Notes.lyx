@@ -2319,7 +2319,7 @@ Let
 \end_layout
 
 \begin_layout Section
-Komogorov's backward equation
+Kolmogorov's backward equation
 \end_layout
 
 \begin_layout Standard
@@ -8633,15 +8633,17 @@ CIR process
 \end_layout
 
 \begin_layout Standard
-For 
-\begin_inset Formula $2\theta\mu>\sigma^{2}$
+Let 
+\begin_inset Formula $v_{t}$
 \end_inset
 
-,
- the CIR process
+ be a CIR process:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma\sqrt{X_{t}}dW_{t}
+dv_{t}=-\kappa\left(v_{t}-\mu\right)dt+\sigma\sqrt{v_{t}}dW_{t}
 \]
 
 \end_inset
@@ -8650,12 +8652,14 @@ dX_{t}=-\theta\left(X_{t}-\mu\right)dt+\sigma\sqrt{X_{t}}dW_{t}
 \end_layout
 
 \begin_layout Standard
-is guaranteed to have strictly positive values.
- We have
+Its generator is
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-\int_{0}^{T}X_{t}^{n}dX_{t}=\frac{1}{n+1}\left(X_{T}^{n+1}-X_{0}^{n+1}\right)-n\frac{\sigma^{2}}{2}\int_{0}^{T}X_{t}^{n}dt\label{eq:l;45ggh}
-\end{equation}
+\[
+\mathcal{A}f(x)=-\kappa\left(x-\mu\right)f'(x)+\frac{\sigma^{2}x}{2}f''(x)
+\]
 
 \end_inset
 
@@ -8663,11 +8667,11 @@ is guaranteed to have strictly positive values.
 \end_layout
 
 \begin_layout Standard
-and
+Consider its Laplace transform:
 \begin_inset Formula 
-\begin{equation}
-\int_{0}^{T}X_{t}^{n}dX_{t}=-\theta\int_{0}^{T}X_{t}^{n}\left(X_{t}-\mu\right)dt+\sigma\int_{0}^{T}X_{t}^{n+1/2}dW_{t}\label{eq:5h5h76j}
-\end{equation}
+\[
+g(t,v_{0})=\mathbb{E}^{v_{0}}e^{-uv_{t}}
+\]
 
 \end_inset
 
@@ -8675,27 +8679,14 @@ and
 \end_layout
 
 \begin_layout Standard
-Substituting (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:5h5h76j"
+Kolmogorov's backward equation gives
+\end_layout
 
-\end_inset
-
-) into (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:l;45ggh"
-
-\end_inset
-
-) and taking expectation,
- we get
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
--\theta\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt+\theta\mu\mathbb{E}\int_{0}^{T}X_{t}^{n}dt & =\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}-n\frac{\sigma^{2}}{2}\mathbb{E}\int_{0}^{T}X_{t}^{n}dt\\
--\theta\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt & =-\left(\theta\mu+n\frac{\sigma^{2}}{2}\right)\mathbb{E}\int_{0}^{T}X_{t}^{n}dt+\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}\\
-\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt & =\left(\mu+n\frac{\sigma^{2}}{2\theta}\right)\mathbb{E}\int_{0}^{T}X_{t}^{n}dt-\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}
+\frac{\partial}{\partial t}g & =\mathcal{A}g\\
+g(0,v_{0}) & =e^{-uv_{0}}
 \end{align*}
 
 \end_inset
@@ -8704,22 +8695,13 @@ reference "eq:l;45ggh"
 \end_layout
 
 \begin_layout Standard
-Thus we have
-\begin_inset Formula 
-\[
-\mathbb{E}\int_{0}^{T}X_{t}^{n+1}dt=\left(\mathbb{E}\int_{0}^{T}X_{t}dt\right)\cdot\prod_{i=1}^{n}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)-\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{n+1}-X_{0}^{n+1}}{n+1}-\sum_{i=1}^{n}\frac{1}{\theta}\frac{\mathbb{E}X_{T}^{i}-\mathbb{E}X_{0}^{i}}{i}\left(\mu+i\frac{\sigma^{2}}{2\theta}\right)
-\]
-
-\end_inset
-
-
+That is
 \end_layout
 
 \begin_layout Standard
-Now we consider
 \begin_inset Formula 
 \[
-\intop_{0}^{T}-\left(\frac{X_{t}-\mu}{b-\mu}\right)^{n}dX_{t}
+\frac{\partial}{\partial t}g(t,v)=-\kappa\left(v-\mu\right)\frac{\partial g}{\partial v}+\frac{\sigma^{2}v}{2}\frac{\partial^{2}g}{\partial v^{2}}
 \]
 
 \end_inset
@@ -10068,6 +10050,73 @@ Recall
 \frac{1}{P(a,b)}-1 & =L(a,b)(b-a)\\
 P(a,b) & =\frac{1}{(b-a)L(a,b)+1}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Heston model for FX
+\end_layout
+
+\begin_layout Standard
+Suppose the risk-free interest rate of the domestic currency is 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ and that of the foreign currency is 
+\begin_inset Formula $\tilde{r}_{t}$
+\end_inset
+
+.
+ Then,
+ in the risk-neutral measure of the domestic currency,
+ the exchange rate 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+,
+ i.e.
+ the worth of 1 unit of the foreign currency measured by the domestic currency,
+ can be modeled as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dX_{t} & =\left(r_{t}-\tilde{r}_{t}\right)X_{t}dt+\sqrt{v_{t}}X_{t}dW_{t}\\
+dv_{t} & =-\kappa\left(v_{t}-\mu\right)dt+\sigma\sqrt{v_{t}}d\tilde{W}_{t}\\
+dW_{t}d\tilde{W}_{t} & =\rho dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+d\ln X_{t} & =\left(r_{t}-\tilde{r}_{t}\right)dt-\sqrt{v_{t}}dW_{t}-\frac{v_{t}}{2}dt\\
+ & =\left(r_{t}-\tilde{r}_{t}-\frac{v_{t}}{2}\right)dt-\sqrt{v_{t}}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating both sides gives
+\begin_inset Formula 
+\[
+\ln X_{t}-\ln X_{0}=\intop_{0}^{t}r_{s}ds-\intop_{0}^{t}\tilde{r}_{s}ds-\frac{1}{2}\intop_{0}^{t}v_{s}ds-\intop_{0}^{t}\sqrt{v_{s}}dW_{s}
+\]
 
 \end_inset
 
