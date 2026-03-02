@@ -91,7 +91,7 @@ Notes on the Seasonal Stochastic Volatility Model
 \end_layout
 
 \begin_layout Section
-The model proposed
+The model
 \end_layout
 
 \begin_layout Standard
@@ -234,6 +234,29 @@ item
 
 \end_inset
 
+ The state variables have non-Gaussian distributions.
+ For example,
+ 
+\begin_inset Formula $s_{1,j}(t)$
+\end_inset
+
+ is a normal-variance mixture.
+ The Kalman filter is not the optimal estimator in this case.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
  We need the details of the log-likelihood function.
  Its derivation is rather sketchy.
 \end_layout
@@ -265,6 +288,38 @@ status open
 \backslash
 end{enumerate}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+An alternative
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}dS_{1,t}\\
+dS_{2,t}\\
+\vdots\\
+dS_{n,t}
+\end{bmatrix} & =\begin{bmatrix}\rho\\
+\rho\\
+\vdots\\
+\rho
+\end{bmatrix}dt+\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}\begin{bmatrix}\sqrt{v_{1,t}}dB_{1,t}\\
+\sqrt{v_{2,t}}dB_{2,t}\\
+\vdots\\
+\sqrt{v_{n,t}}dB_{n,t}
+\end{bmatrix}\\
+dv_{i,t} & =-\kappa_{i}\left[v_{i,t}-\overline{v}_{i}-A_{i}\sin\left(\frac{2\pi t}{T_{i}}+\varphi\right)\right]dt+\sigma_{i}\sqrt{v_{i,t}}dB'_{i,t}
+\end{align*}
 
 \end_inset
 
