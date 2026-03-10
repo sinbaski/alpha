@@ -8700,9 +8700,10 @@ That is
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\frac{\partial}{\partial t}g(t,v)=-\kappa\left(v-\mu\right)\frac{\partial g}{\partial v}+\frac{\sigma^{2}v}{2}\frac{\partial^{2}g}{\partial v^{2}}
-\]
+\begin{align*}
+\frac{\partial}{\partial t}g(t,v) & =-\kappa\left(v-\mu\right)\frac{\partial g}{\partial v}+\frac{\sigma^{2}v}{2}\frac{\partial^{2}g}{\partial v^{2}}\\
+g(0,v_{0}) & =e^{-uv_{0}}
+\end{align*}
 
 \end_inset
 
@@ -16034,6 +16035,143 @@ It is replicated by
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Chapter
+Heston Model for the Exchange rate
+\end_layout
+
+\begin_layout Standard
+Suppose we model the exchange rate 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ in the risk-neutral measure of the domestic currency using the Heston model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dS_{t} & =\left(r_{t}-\tilde{r}_{t}\right)S_{t}+\sqrt{v_{t}}S_{t}dW_{t}\\
+dv_{t} & =-\kappa\left(v_{t}-\bar{v}\right)dt+\sigma\sqrt{v_{t}}dB_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ are standard Brownian motions in the dometic risk-neutral measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ and they satisfy 
+\begin_inset Formula $dW_{t}dB_{t}=\rho dt$
+\end_inset
+
+.
+ 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is the risk-free interest rate of the domestic currency,
+ and 
+\begin_inset Formula $\tilde{r}_{t}$
+\end_inset
+
+ is the risk-free interest rate of the foreign currency.
+ Let 
+\begin_inset Formula $\tilde{Q}$
+\end_inset
+
+ denote the foreign risk-neutral measure.
+ They are related by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\tilde{Q}}{dQ}|\mathcal{F}_{t}=M_{t}=\frac{S_{t}}{S_{0}}\exp\left[\intop_{0}^{t}\left(\tilde{r}_{s}-r_{s}\right)ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M_{t}$
+\end_inset
+
+ is a Martingale w.r.t.
+ 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Applying Ito's lemma,
+ we get
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+dM_{t} & =\frac{dS_{t}}{S_{0}}\exp\left[\intop_{0}^{t}\left(\tilde{r}_{s}-r_{s}\right)ds\right]+\left(\tilde{r}_{t}-r_{t}\right)\exp\left[\intop_{0}^{t}\left(\tilde{r}_{s}-r_{s}\right)ds\right]\frac{S_{t}}{S_{0}}dt\\
+ & =\frac{1}{S_{0}}\exp\left[\intop_{0}^{t}\left(\tilde{r}_{s}-r_{s}\right)ds\right]\cdot\left[\left(r_{t}-\tilde{r}_{t}\right)S_{t}dt+\sigma S_{t}dW_{t}+\left(\tilde{r}_{t}-r_{t}\right)S_{t}dt\right]\\
+ & =\sigma\frac{S_{t}}{S_{0}}\exp\left[\intop_{0}^{t}\left(\tilde{r}_{s}-r_{s}\right)ds\right]dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus 
+\begin_inset Formula $M_{t}$
+\end_inset
+
+ is a Martingale.
+\end_layout
+
+\begin_layout Section
+Ornstein-Uhlenbeck Risk-free rates:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dr_{t} & =-\lambda\left(r_{t}-\theta\right)dt+\eta dR_{t}\\
+d\tilde{r}_{t} & =-\tilde{\lambda}\left(\tilde{r}-\tilde{\theta}\right)dt+\tilde{\eta}d\tilde{R}_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $R_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{R}_{t}$
+\end_inset
+
+ are standard Brownian motions in the do
 \end_layout
 
 \begin_layout Chapter
