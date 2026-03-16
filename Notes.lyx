@@ -1238,6 +1238,86 @@ Results of Stochastic Calculus
 \end_layout
 
 \begin_layout Section
+The Characteristic Function
+\end_layout
+
+\begin_layout Standard
+Given a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+,
+ its characteristic function 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varphi(u)=\mathbb{E}e^{iuX}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose we know 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+ How do we find 
+\begin_inset Formula $\mathbb{E}f(X)$
+\end_inset
+
+ for a given function 
+\begin_inset Formula $f$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Proof
+We have
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\mathbb{E}f(X)=\frac{1}{2\pi}\mathbb{E}\left[\intop_{-\infty}^{\infty}e^{iuX}\tilde{f}(u)du\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ is the Fourier transform of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Thus
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\mathbb{E}f(X)=\frac{1}{2\pi}\intop_{-\infty}^{\infty}\varphi(u)\tilde{f}(u)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Local Martingales
 \end_layout
 
@@ -10058,66 +10138,203 @@ P(a,b) & =\frac{1}{(b-a)L(a,b)+1}
 \end_layout
 
 \begin_layout Section
-The Heston model for FX
+The Risk-neutral Measure
 \end_layout
 
 \begin_layout Standard
-Suppose the risk-free interest rate of the domestic currency is 
-\begin_inset Formula $r_{t}$
+
+\lang british
+Suppose
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\[
+dS_{i,t}=\mu_{i}S_{i,t}dt+\sigma_{i}S_{i,t}dW_{i,t}
+\]
+
 \end_inset
 
- and that of the foreign currency is 
-\begin_inset Formula $\tilde{r}_{t}$
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+where 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ is a Brownian motion under 
+\begin_inset Formula $P$
 \end_inset
 
 .
- Then,
- in the risk-neutral measure of the domestic currency,
- the exchange rate 
-\begin_inset Formula $X_{t}$
+ Find 
+\begin_inset Formula $\theta_{i}$
 \end_inset
 
-,
- i.e.
- the worth of 1 unit of the foreign currency measured by the domestic currency,
- can be modeled as
+ such that
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-dX_{t} & =\left(r_{t}-\tilde{r}_{t}\right)X_{t}dt+\sqrt{v_{t}}X_{t}dW_{t}\\
-dv_{t} & =-\kappa\left(v_{t}-\mu\right)dt+\sigma\sqrt{v_{t}}d\tilde{W}_{t}\\
-dW_{t}d\tilde{W}_{t} & =\rho dt
-\end{align*}
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Clearly,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-d\ln X_{t} & =\left(r_{t}-\tilde{r}_{t}\right)dt-\sqrt{v_{t}}dW_{t}-\frac{v_{t}}{2}dt\\
- & =\left(r_{t}-\tilde{r}_{t}-\frac{v_{t}}{2}\right)dt-\sqrt{v_{t}}dW_{t}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Integrating both sides gives
+\lang british
 \begin_inset Formula 
 \[
-\ln X_{t}-\ln X_{0}=\intop_{0}^{t}r_{s}ds-\intop_{0}^{t}\tilde{r}_{s}ds-\frac{1}{2}\intop_{0}^{t}v_{s}ds-\intop_{0}^{t}\sqrt{v_{s}}dW_{s}
+\begin{bmatrix}\sigma_{1}S_{1,t} & 0 & \cdots & 0\\
+0 & \sigma_{2}S_{2,t} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \sigma_{n}S_{n,t}
+\end{bmatrix}\begin{bmatrix}\theta_{1}\\
+\theta_{2}\\
+\vdots\\
+\theta_{n}
+\end{bmatrix}=\begin{bmatrix}\mu_{1}S_{1,t}\\
+\mu_{2}S_{2,t}\\
+\vdots\\
+\mu_{n}S_{n,t}
+\end{bmatrix}-\begin{bmatrix}rS_{1,t}\\
+rS_{2,t}\\
+\vdots\\
+rS_{n,t}
+\end{bmatrix}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Thus
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\[
+\theta_{i}=\frac{\mu_{i}-r}{\sigma_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Then
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\[
+dS_{i,t}=rS_{i,t}dt+\sigma_{i}dW'_{i,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+where
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\[
+dW'_{i,t}=\theta_{i}dt+dW_{i,t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+and
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\begin{align*}
+\frac{dQ}{dP}|\mathscr{F}_{t} & =\exp\left[-\intop_{0}^{t}\sum_{i=1}^{n}\theta_{i}dW_{i,t}-\frac{1}{2}\sum_{i=1}^{n}\intop_{0}^{t}\theta_{i}^{2}ds\right]\\
+ & =\exp\left[-\intop_{0}^{t}\vec{\theta}\cdot d\vec{W}_{t}-\frac{1}{2}\intop_{0}^{t}\left|\vec{\theta}\right|^{2}ds\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Define
+\begin_inset Formula 
+\begin{align*}
+\bar{S}_{i,t} & =\xi_{t}S_{i,t}\\
+\xi_{t} & =\exp\left(-\intop_{0}^{t}r_{s}ds\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+Then
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\[
+d\xi_{t}=-r_{t}\xi_{t}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+And
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+\begin_inset Formula 
+\begin{align*}
+d\bar{S}_{i,t} & =d\xi_{t}\cdot S_{i,t}+\xi_{t}dS_{i,t}\\
+ & =-r_{t}\xi_{t}S_{i,t}dt+\xi_{t}\left(r_{t}S_{i,t}dt+\sigma S_{i,t}dW'_{t}\right)\\
+ & =\sigma\xi_{t}S_{i,t}dW'_{t}\\
+ & =\sigma\bar{S}_{i,t}dW'_{t}
+\end{align*}
 
 \end_inset
 
@@ -16041,6 +16258,138 @@ It is replicated by
 Heston Model for the Exchange rate
 \end_layout
 
+\begin_layout Section
+Dynamics of an FX rate in the Risk-Neutral measure
+\end_layout
+
+\begin_layout Standard
+Suppose the only assets on the domestic market that can be invested into is (1) a risk-free bank account that grows like
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D_{t}=\exp\left(\intop_{0}^{t}r_{s}ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and (2) a foreign risk-free bank account that grows like
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{t}=\exp\left(\intop_{0}^{t}\tilde{r}_{s}ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The domestic market has no arbitrage if and only if there exists a probability measure 
+\begin_inset Formula $Q$
+\end_inset
+
+ such that 
+\begin_inset Formula $\forall t\leq T$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{E}^{Q}\left[S_{T}F_{T}\exp\left(-\intop_{t}^{T}r_{s}ds\right)|\mathscr{F}_{t}\right]=S_{t}F_{t}\label{eq:h67j78k8}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+G_{T} & =S_{T}F_{T}\exp\left(-\intop_{t}^{T}r_{s}ds\right)\\
+ & =S_{T}\exp\left[\intop_{t}^{T}\left(\tilde{r}_{s}-r_{s}\right)ds\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dS_{t}=\mu\left(S_{t}\right)dt+\sigma\left(S_{t}\right)dW_{t}^{Q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dG_{T} & =\exp\left[\intop_{t}^{T}\left(\tilde{r}_{s}-r_{s}\right)ds\right]dS_{T}+\exp\left[\intop_{t}^{T}\left(\tilde{r}_{s}-r_{s}\right)ds\right]S_{T}\cdot\left(\tilde{r}_{T}-r_{T}\right)dt\\
+ & =\exp\left[\intop_{t}^{T}\left(\tilde{r}_{s}-r_{s}\right)ds\right]\cdot\left[\mu dt+\sigma dW_{t}^{Q}+S_{T}\cdot\left(\tilde{r}_{T}-r_{T}\right)dt\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $G_{T}$
+\end_inset
+
+ to be a martingale under 
+\begin_inset Formula $Q$
+\end_inset
+
+,
+ we must have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mu=\left(r_{T}-\tilde{r}_{T}\right)S_{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Heston model of FX rates
+\end_layout
+
 \begin_layout Standard
 Suppose we model the exchange rate 
 \begin_inset Formula $S_{t}$
@@ -16146,15 +16495,255 @@ Thus
  is a Martingale.
 \end_layout
 
-\begin_layout Section
-Ornstein-Uhlenbeck Risk-free rates:
+\begin_layout Standard
+Now consider 
+\begin_inset Formula $\ln S_{t}$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-dr_{t} & =-\lambda\left(r_{t}-\theta\right)dt+\eta dR_{t}\\
-d\tilde{r}_{t} & =-\tilde{\lambda}\left(\tilde{r}-\tilde{\theta}\right)dt+\tilde{\eta}d\tilde{R}_{t}
+d\ln S_{t} & =\frac{dS_{t}}{S_{t}}-\frac{\left(dS_{t}\right)^{2}}{2S_{t}^{2}}\\
+ & =\left[\left(r_{t}-\tilde{r}_{t}\right)dt+\sqrt{v_{t}}dW_{t}\right]-\frac{v_{t}S_{t}^{2}dt}{2S_{t}^{2}}\\
+ & =\left(r_{t}-\tilde{r}_{t}-\frac{v_{t}}{2}\right)dt+\sqrt{v_{t}}dW_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\ln S_{t}-\ln S_{0} & =\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\\
+S_{t} & =S_{0}\exp\left[\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{t}=\intop_{0}^{t}\sqrt{v_{s}}dW_{s}-\frac{1}{2}\intop_{0}^{t}v_{s}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dY_{t}=-\frac{v_{t}}{2}dt+\sqrt{v_{t}}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Characteristic function of 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The characteristic function of 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is defined by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\varphi_{t}(u) & =\mathbb{E}e^{iuY_{t}}\\
+ & =\mathbb{E}\left[\cos\left(uY_{t}\right)+i\sin\left(uY_{t}\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\varphi_{1}(t,u) & =\mathbb{E}\cos\left(uY_{t}\right)\\
+\varphi_{2}(t,u) & =\mathbb{E}\sin\left(uY_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kolmogorov's forward equation gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\varphi_{1}}{\partial t} & =\mathcal{A}\varphi_{1}\\
+\varphi_{1}(0,y,z) & =\cos(uy)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is the generator of 
+\begin_inset Formula $\left(Y_{t},v_{t}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{bmatrix}dY_{t}\\
+dv_{t}
+\end{bmatrix}=\begin{bmatrix}-\frac{v_{t}}{2}\\
+-\kappa\left(v_{t}-\bar{v}\right)
+\end{bmatrix}dt+\begin{bmatrix}\sqrt{v_{t}} & 0\\
+0 & \sigma\sqrt{v_{t}}
+\end{bmatrix}\begin{bmatrix}dW_{t}\\
+dB_{t}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{bmatrix}dW_{t}\\
+dB_{t}
+\end{bmatrix}=\begin{bmatrix}1 & 0\\
+\rho & \sqrt{1-\rho^{2}}
+\end{bmatrix}\begin{bmatrix}dW_{t}\\
+dW'_{t}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $W_{t}\perp W'_{t}$
+\end_inset
+
+.
+ Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}dY_{t}\\
+dv_{t}
+\end{bmatrix} & =\begin{bmatrix}-\frac{v_{t}}{2}\\
+-\kappa\left(v_{t}-\bar{v}\right)
+\end{bmatrix}dt+\begin{bmatrix}\sqrt{v_{t}} & 0\\
+0 & \sigma\sqrt{v_{t}}
+\end{bmatrix}\begin{bmatrix}1 & 0\\
+\rho & \sqrt{1-\rho^{2}}
+\end{bmatrix}\begin{bmatrix}dW_{t}\\
+dW'_{t}
+\end{bmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{A}f(y,z)=-\frac{z}{2}\frac{\partial f}{\partial y}-\kappa\left(z-\bar{v}\right)\frac{\partial f}{\partial z}+\frac{1}{2}\oplus\left(\begin{bmatrix}z & \rho\sigma z\\
+\rho\sigma z & \sigma^{2}z
+\end{bmatrix}\odot\begin{bmatrix}\frac{\partial^{2}f}{\partial y^{2}} & \frac{\partial^{2}f}{\partial y\partial z}\\
+\frac{\partial^{2}f}{\partial y\partial z} & \frac{\partial^{2}f}{\partial z^{2}}
+\end{bmatrix}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ denotes summing over all the elements of the matrix argument and 
+\begin_inset Formula $\odot$
+\end_inset
+
+ denotes element-wise multiplication of its matrix arguments.
+\end_layout
+
+\begin_layout Section
+Ornstein-Uhlenbeck Risk-free interest rates:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dr_{t} & =-\theta\left(r_{t}-\mu\right)dt+\eta dR_{t}\\
+d\tilde{r}_{t} & =-\tilde{\theta}\left(\tilde{r}-\tilde{\mu}\right)dt+\tilde{\eta}d\tilde{R}_{t}
 \end{align*}
 
 \end_inset
@@ -16171,7 +16760,141 @@ where
 \begin_inset Formula $\tilde{R}_{t}$
 \end_inset
 
- are standard Brownian motions in the do
+ are standard Brownian motions in the domestic risk-neutral measure.
+ 
+\begin_inset Formula $R_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{R}_{t}$
+\end_inset
+
+ are independent of each other.
+ 
+\begin_inset Formula $\mu,\tilde{\mu},\theta,\tilde{\theta},\eta,\tilde{\eta}$
+\end_inset
+
+ are constant parameters.
+ Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+r_{t}-r_{0} & =-\theta\intop_{0}^{t}r_{s}ds+\theta\mu t+\eta R_{t}\\
+\intop_{0}^{t}r_{s}ds & =-\frac{r_{t}-r_{0}}{\theta}+\mu t+\frac{\eta}{\theta}R_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{t}=r_{0}e^{-\theta t}+\left(1-e^{-\theta t}\right)\mu+\eta\intop_{0}^{t}e^{-\theta\left(t-s\right)}dR_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore
+\begin_inset Formula 
+\begin{align*}
+\intop_{0}^{t}r_{s}ds & =-\frac{1}{\theta}\left[r_{0}\cdot\left(e^{-\theta t}-1\right)+\left(1-e^{-\theta t}\right)\mu+\eta\intop_{0}^{t}e^{-\theta\left(t-s\right)}dR_{s}\right]+\mu t+\frac{\eta}{\theta}R_{t}\\
+ & =\frac{1}{\theta}\left(1-e^{-\theta t}\right)\left(r_{0}-\mu\right)-\frac{\eta}{\theta}\intop_{0}^{t}e^{-\theta\left(t-s\right)}dR_{s}+\mu t+\frac{\eta}{\theta}R_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rearranging the terms,
+ we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{t}r_{s}ds=\frac{1}{\theta}\left(1-e^{-\theta t}\right)\left(r_{0}-\mu\right)+\mu t+\frac{\eta}{\theta}\intop_{0}^{t}\left[1-e^{-\theta(t-s)}\right]dR_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{t}\tilde{r}_{s}ds=\frac{1}{\tilde{\theta}}\left(1-e^{-\tilde{\theta}t}\right)\left(\tilde{r}_{0}-\tilde{\mu}\right)+\tilde{\mu}t+\frac{\tilde{\eta}}{\tilde{\theta}}\intop_{0}^{t}\left[1-e^{-\tilde{\theta}(t-s)}\right]d\tilde{R}_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The price of a Forex Option
+\end_layout
+
+\begin_layout Standard
+Consider the price of a forex call option that has strike price 
+\begin_inset Formula $K$
+\end_inset
+
+ and that matures at time 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Denote this price 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+.
+ By definition,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{T}=\left(S_{T}-K\right)\boldsymbol{1}_{S_{T}>K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{t}=\mathbb{E}^{Q}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)\cdot\left(S_{T}-K\right)\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
