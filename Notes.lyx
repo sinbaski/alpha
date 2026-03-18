@@ -16263,7 +16263,11 @@ Dynamics of an FX rate in the Risk-Neutral measure
 \end_layout
 
 \begin_layout Standard
-Suppose the only assets on the domestic market that can be invested into is (1) a risk-free bank account that grows like
+Suppose the only assets on the domestic market that can be invested into is (1) a risk-free bank account 
+\begin_inset Formula $D_{t}$
+\end_inset
+
+ that grows like
 \end_layout
 
 \begin_layout Standard
@@ -16278,7 +16282,11 @@ D_{t}=\exp\left(\intop_{0}^{t}r_{s}ds\right)
 \end_layout
 
 \begin_layout Standard
-and (2) a foreign risk-free bank account that grows like
+and (2) a foreign risk-free bank account 
+\begin_inset Formula $F_{t}$
+\end_inset
+
+ that grows like
 \end_layout
 
 \begin_layout Standard
@@ -16347,7 +16355,16 @@ dS_{t}=\mu\left(S_{t}\right)dt+\sigma\left(S_{t}\right)dW_{t}^{Q}
 \end_layout
 
 \begin_layout Standard
-Then
+where 
+\begin_inset Formula $W_{t}^{Q}$
+\end_inset
+
+ is a standard Brownian motion under 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Then
 \end_layout
 
 \begin_layout Standard
@@ -16522,10 +16539,10 @@ Thus we have
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\ln S_{t}-\ln S_{0} & =\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\\
-S_{t} & =S_{0}\exp\left[\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\right]
-\end{align*}
+\begin{align}
+\ln S_{t}-\ln S_{0} & =\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\nonumber \\
+S_{t} & =S_{0}\exp\left[\intop_{0}^{t}\left(r_{s}-\tilde{r}_{s}-\frac{v_{s}}{2}\right)ds+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}\right]\label{eq:rthy67u5j}
+\end{align}
 
 \end_inset
 
@@ -16556,6 +16573,57 @@ That is,
 \[
 dY_{t}=-\frac{v_{t}}{2}dt+\sqrt{v_{t}}dW_{t}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For convenience,
+ also define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{t}=\intop_{0}^{t}r_{s}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tilde{I}_{t}=\intop_{0}^{t}\tilde{r}_{s}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This way,
+ we can write 
+\begin_inset Formula $S_{T}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+S_{T}=S_{t}e^{\left(I_{T}-I_{t}\right)-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\label{eq:5gth7j7}
+\end{equation}
 
 \end_inset
 
@@ -16825,9 +16893,9 @@ Rearranging the terms,
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\intop_{0}^{t}r_{s}ds=\frac{1}{\theta}\left(1-e^{-\theta t}\right)\left(r_{0}-\mu\right)+\mu t+\frac{\eta}{\theta}\intop_{0}^{t}\left[1-e^{-\theta(t-s)}\right]dR_{s}
-\]
+\begin{equation}
+\intop_{0}^{t}r_{s}ds=\frac{1}{\theta}\left(1-e^{-\theta t}\right)\left(r_{0}-\mu\right)+\mu t+\frac{\eta}{\theta}\intop_{0}^{t}\left[1-e^{-\theta(t-s)}\right]dR_{s}\label{eq:th6yj6j}
+\end{equation}
 
 \end_inset
 
@@ -16840,9 +16908,34 @@ Similarly,
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\intop_{0}^{t}\tilde{r}_{s}ds=\frac{1}{\tilde{\theta}}\left(1-e^{-\tilde{\theta}t}\right)\left(\tilde{r}_{0}-\tilde{\mu}\right)+\tilde{\mu}t+\frac{\tilde{\eta}}{\tilde{\theta}}\intop_{0}^{t}\left[1-e^{-\tilde{\theta}(t-s)}\right]d\tilde{R}_{s}
-\]
+\begin{equation}
+\intop_{0}^{t}\tilde{r}_{s}ds=\frac{1}{\tilde{\theta}}\left(1-e^{-\tilde{\theta}t}\right)\left(\tilde{r}_{0}-\tilde{\mu}\right)+\tilde{\mu}t+\frac{\tilde{\eta}}{\tilde{\theta}}\intop_{0}^{t}\left[1-e^{-\tilde{\theta}(t-s)}\right]d\tilde{R}_{s}\label{eq:6h67j7k7}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Clearly,
+ 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ is normally distributed and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{var}\left(\intop_{0}^{t}r_{s}ds\right) & =\frac{\eta^{2}}{\theta^{2}}\intop_{0}^{t}\left[1-e^{-\theta(t-s)}\right]^{2}ds\\
+ & =\frac{\eta^{2}}{\theta^{2}}\left(t-2\frac{1-e^{-\theta t}}{\theta}+\frac{1-e^{-2\theta t}}{2\theta}\right)
+\end{align*}
 
 \end_inset
 
@@ -16888,8 +16981,192 @@ Then
 
 \begin_layout Standard
 \begin_inset Formula 
+\begin{align*}
+C_{t} & =\mathbb{E}^{Q}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)\cdot\left(S_{T}-K\right)\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]\\
+ & =\mathbb{E}^{Q}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)S_{T}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]-K\cdot\mathbb{E}^{Q}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5gth7j7"
+
+\end_inset
+
+),
+ 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ can be reduced to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C_{t} & =S_{t}\mathbb{E}^{Q}\left[e^{-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]-K\cdot\mathbb{E}^{Q}\left[e^{-\left(I_{T}-I_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+When risk-free rates are OU processes and 
+\begin_inset Formula $v_{t}$
+\end_inset
+
+ is constant
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $a_{t},\tilde{a}_{t},b_{t},\tilde{b}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau=T-t$
+\end_inset
+
+,
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{T}-I_{t} & \sim N\left(a_{\tau},b_{\tau}\right)\\
+\tilde{I}_{T}-\tilde{I}_{t} & \sim N\left(\tilde{a}_{\tau},\tilde{b}_{\tau}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\kappa\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma\to0$
+\end_inset
+
+,
+ we have 
+\begin_inset Formula $v_{t}\to\bar{v}.$
+\end_inset
+
+ In this case,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =\intop_{0}^{t}\sqrt{v_{s}}dW_{s}-\frac{1}{2}\intop_{0}^{t}v_{s}ds\\
+ & =\sqrt{\bar{v}}W_{t}-\frac{\bar{v}}{2}t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It then follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
 \[
-C_{t}=\mathbb{E}^{Q}\left[\exp\left(-\intop_{t}^{T}r_{s}ds\right)\cdot\left(S_{T}-K\right)\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]
+Y_{T}-Y_{t}\sim N\left(-\frac{\bar{v}}{2}\tau,\bar{v}\tau\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Delta I_{\tau} & =I_{T}-I_{t}\\
+\Delta\tilde{I}_{\tau} & =\tilde{I}_{T}-\tilde{I}_{t}\\
+\Delta Y_{\tau} & =Y_{T}-Y_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left\{ \omega\in\mathscr{F}_{T}-\mathscr{F}_{t}:S_{T}>K\right\}  & =\left\{ \omega\in\mathscr{F}_{T}-\mathscr{F}_{t}:\ln\frac{S_{T}}{S_{t}}>\ln\frac{K}{S_{t}}\right\} \\
+ & =\left\{ \omega\in\mathscr{F}_{T}-\mathscr{F}_{t}:\Delta I_{\tau}-\Delta\tilde{I}_{\tau}+\Delta Y_{\tau}>\ln\frac{K}{S_{t}}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we have
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}^{Q}\left[e^{-\left(I_{T}-I_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]\\
+= & \mathbb{E}^{Q}\left(e^{-\Delta I_{\tau}}\boldsymbol{1}_{\Delta I_{\tau}-\Delta\tilde{I}_{\tau}+\Delta Y_{\tau}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right)\\
+= & \mathbb{E}^{Q}\left[e^{-\left(a_{\tau}+\sqrt{b_{\tau}}Z_{1}\right)}\boldsymbol{1}_{a_{\tau}+\sqrt{b_{\tau}}Z_{1}-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}Z_{2}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above expression can be evaluated as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}^{Q}\left[e^{-\left(a_{\tau}+\sqrt{b_{\tau}}Z_{1}\right)}\boldsymbol{1}_{a_{\tau}+\sqrt{b_{\tau}}Z_{1}-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}Z_{2}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right]\\
+= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x\right)}\cdot e^{-\frac{x^{2}}{2}}\intop_{c(x,\tau)}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{y^{2}}{2}}dydx\\
+= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x+\frac{x^{2}}{2}\right)}\Phi\left[-c\left(x,\tau\right)\right]dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c(x,\tau)=\frac{\ln\frac{K}{S_{t}}-a_{\tau}+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-\sqrt{b_{\tau}}x}{\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}}
 \]
 
 \end_inset
