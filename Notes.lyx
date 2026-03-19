@@ -16556,7 +16556,7 @@ Let
 \begin_layout Standard
 \begin_inset Formula 
 \[
-Y_{t}=\intop_{0}^{t}\sqrt{v_{s}}dW_{s}-\frac{1}{2}\intop_{0}^{t}v_{s}ds
+Y_{t}=Y_{0}+\intop_{0}^{t}\sqrt{v_{s}}dW_{s}-\frac{1}{2}\intop_{0}^{t}v_{s}ds
 \]
 
 \end_inset
@@ -16565,7 +16565,12 @@ Y_{t}=\intop_{0}^{t}\sqrt{v_{s}}dW_{s}-\frac{1}{2}\intop_{0}^{t}v_{s}ds
 \end_layout
 
 \begin_layout Standard
-That is,
+for a constant 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+.
+ That is,
 \end_layout
 
 \begin_layout Standard
@@ -16639,7 +16644,12 @@ Characteristic function of
 \end_layout
 
 \begin_layout Standard
-The characteristic function of 
+Suppose 
+\begin_inset Formula $\left(Y_{0},v_{0}\right)=\left(y,z\right)$
+\end_inset
+
+.
+ The characteristic function of 
 \begin_inset Formula $Y_{t}$
 \end_inset
 
@@ -16649,9 +16659,24 @@ The characteristic function of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\varphi_{t}(u) & =\mathbb{E}e^{iuY_{t}}\\
- & =\mathbb{E}\left[\cos\left(uY_{t}\right)+i\sin\left(uY_{t}\right)\right]
+\varphi_{t}(u) & =\mathbb{E}^{(y,z)}e^{iuY_{t}}\\
+ & =\mathbb{E}^{(y,z)}\left[\cos\left(uY_{t}\right)+i\sin\left(uY_{t}\right)\right]
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}^{(y,z)}\left(\cdot\right):=\mathbb{E}\left(\cdot|Y_{0}=y,v_{0}=z\right)
+\]
 
 \end_inset
 
@@ -16665,8 +16690,8 @@ Let
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\varphi_{1}(t,u) & =\mathbb{E}\cos\left(uY_{t}\right)\\
-\varphi_{2}(t,u) & =\mathbb{E}\sin\left(uY_{t}\right)
+\varphi_{1}(t,y,z) & =\mathbb{E}^{(y,z)}\cos\left(uY_{t}\right)\\
+\varphi_{2}(t,y,z) & =\mathbb{E}^{(y,z)}\sin\left(uY_{t}\right)
 \end{align*}
 
 \end_inset
@@ -16682,7 +16707,7 @@ Kolmogorov's forward equation gives
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial\varphi_{1}}{\partial t} & =\mathcal{A}\varphi_{1}\\
-\varphi_{1}(0,y,z) & =\cos(uy)
+\varphi_{1}(0,y,z) & =\cos\left(uy\right)
 \end{align*}
 
 \end_inset
@@ -16801,6 +16826,39 @@ where
 \end_inset
 
  denotes element-wise multiplication of its matrix arguments.
+\end_layout
+
+\begin_layout Subsection
+The real part
+\end_layout
+
+\begin_layout Standard
+For the PDE
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\varphi_{1}}{\partial t} & =\mathcal{A}\varphi_{1}\\
+\varphi_{1}\left(0,y,z\right) & =\cos(uy)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+try 
+\begin_inset Formula $\varphi_{1}(t,y,z)=\cos(uy)e^{A(t)+B(t)z}$
+\end_inset
+
+ with 
+\begin_inset Formula $A(0)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $B(0)=0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -17009,9 +17067,9 @@ reference "eq:5gth7j7"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-C_{t} & =S_{t}\mathbb{E}^{Q}\left[e^{-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]-K\cdot\mathbb{E}^{Q}\left[e^{-\left(I_{T}-I_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]
-\end{align*}
+\begin{align}
+C_{t} & =S_{t}\mathbb{E}^{Q}\left[e^{-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]-K\cdot\mathbb{E}^{Q}\left[e^{-\left(I_{T}-I_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]\label{eq:7jyumum}
+\end{align}
 
 \end_inset
 
@@ -17143,15 +17201,20 @@ Now we have
 \end_layout
 
 \begin_layout Standard
-The above expression can be evaluated as
+where 
+\begin_inset Formula $Z_{1},Z_{2}\sim N(0,1)$
+\end_inset
+
+.
+ The above expression can be evaluated as
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
  & \mathbb{E}^{Q}\left[e^{-\left(a_{\tau}+\sqrt{b_{\tau}}Z_{1}\right)}\boldsymbol{1}_{a_{\tau}+\sqrt{b_{\tau}}Z_{1}-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}Z_{2}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right]\\
-= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x\right)}\cdot e^{-\frac{x^{2}}{2}}\intop_{c(x,\tau)}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{y^{2}}{2}}dydx\\
-= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x+\frac{x^{2}}{2}\right)}\Phi\left[-c\left(x,\tau\right)\right]dx
+= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x\right)}\cdot e^{-\frac{x^{2}}{2}}\intop_{c_{2}(x,\tau)}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{y^{2}}{2}}dydx\\
+= & \intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x\right)}\Phi\left[-c_{2}\left(x,\tau\right)\right]\cdot\phi(x)dx
 \end{align*}
 
 \end_inset
@@ -17166,8 +17229,93 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \[
-c(x,\tau)=\frac{\ln\frac{K}{S_{t}}-a_{\tau}+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-\sqrt{b_{\tau}}x}{\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}}
+c_{2}(x,\tau)=\frac{\ln\frac{K}{S_{t}}-a_{\tau}+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-\sqrt{b_{\tau}}x}{\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we calculate the first term of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:7jyumum"
+
+\end_inset
+
+).
+ We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}^{Q}\left[e^{-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]\\
+= & \mathbb{E}^{Q}\left(e^{-\Delta\tilde{I}_{\tau}+\Delta Y_{\tau}}\boldsymbol{1}_{\Delta I_{\tau}-\Delta\tilde{I}_{\tau}+\Delta Y_{\tau}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right)\\
+= & \mathbb{E}^{Q}\left(e^{-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}Z_{2}}\boldsymbol{1}_{a_{\tau}+\sqrt{b_{\tau}}Z_{1}-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}Z_{2}>\ln\frac{K}{S_{t}}}|\mathscr{F}_{t}\right)\\
+= & \frac{1}{\sqrt{2\pi}}\intop_{-\infty}^{\infty}e^{-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}y}\cdot e^{-\frac{y^{2}}{2}}\intop_{c_{1}(y,\tau)}^{\infty}\frac{1}{\sqrt{2\pi}}\cdot e^{-\frac{x^{2}}{2}}dxdy
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{1}(y,\tau)=\frac{1}{\sqrt{b_{\tau}}}\left(\ln\frac{K}{S_{t}}-\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}y+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-a_{\tau}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & \mathbb{E}^{Q}\left[e^{-\left(\tilde{I}_{T}-\tilde{I}_{t}\right)+\left(Y_{T}-Y_{t}\right)}\boldsymbol{1}_{S_{T}>K}|\mathscr{F}_{t}\right]\\
+= & \intop_{-\infty}^{\infty}e^{-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}y}\Phi\left[-c_{1}(y,\tau)\right]\cdot\phi(y)dy
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All in all,
+ we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{t}=S_{t}\intop_{-\infty}^{\infty}e^{-\frac{\bar{v}}{2}\tau-\tilde{a}_{\tau}+\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}y}\Phi\left[-c_{1}(y,\tau)\right]\cdot\phi(y)dy-K\intop_{-\infty}^{\infty}e^{-\left(a_{\tau}+\sqrt{b_{\tau}}x\right)}\Phi\left[-c_{2}\left(x,\tau\right)\right]\cdot\phi(x)dx
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+c_{1}(y,\tau) & =\frac{1}{\sqrt{b_{\tau}}}\left(\ln\frac{K}{S_{t}}-\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}y+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-a_{\tau}\right)\\
+c_{2}(x,\tau) & =\frac{1}{\sqrt{\tilde{b}_{\tau}+\bar{v}\tau}}\left(\ln\frac{K}{S_{t}}-a_{\tau}+\tilde{a}_{\tau}+\frac{\bar{v}}{2}\tau-\sqrt{b_{\tau}}x\right)
+\end{align*}
 
 \end_inset
 
