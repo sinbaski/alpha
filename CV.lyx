@@ -433,25 +433,31 @@ item
 
 \end_inset
 
- I helped research and develop an in-house foreign exchange rate model based on the Ornstein-Uhlenbeck process.
- I derived formulas in the risk-neutral probability measure to calculate the fair prices of FX options,
- FX futures and FX futures' options.
- The model was implemented in C++,
- making use of 
+ I implemented the two-additive-factor Gaussian interest rate model which provided an alternative to the existing CIR and one-factor Hull-White models in bond pricing.
+ The model was calibrated to zero-coupon bonds and European options on zero-coupon bonds.
+ The implementation was programmed in both Python and C++.
+ The Python implementation serves the purpose of prototyping and helps debugging the C++ implementation.
+ The C++ implementation was integrated into the production system.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-{
+
 \backslash
-it GSL}
+item
 \end_layout
 
 \end_inset
 
-,
- and the produced data were made available to the wider pricing library via a Python script that was run on a daily basis.
+ I helped research and develop an in-house foreign exchange rate model.
+ The purpose was to offer a model that could be calibrated to FX futures and options so that users without a fixed-income data subscription can use it.
+ The idea was to model the difference between the domestic risk-free interest rate and the foreign risk-free interest rate directly.
+ Both constant volatility and CIR stochastic volatility analogous to Heston were considered.
+ I implemented the calibration of the model in Python with the help of Code Copilot.
 \end_layout
 
 \begin_layout Standard
